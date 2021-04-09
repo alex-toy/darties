@@ -50,7 +50,7 @@ def create_bucket(bucket_name, region=None):
 
 
 
-def upload_file(file_name, bucket, object_name=None):
+def upload_file(file_name, bucket, object_name=None, ACL={'ACL' : 'public-read'}):
     """
     Upload a file to an S3 bucket
 
@@ -65,9 +65,13 @@ def upload_file(file_name, bucket, object_name=None):
         object_name = file_name
 
     # Upload the file
-    s3_client = boto3.client('s3')
+    s3_client = boto3.client(
+        's3',
+        aws_access_key_id=aws_access_key_id,
+        aws_secret_access_key=aws_secret_access_key,
+    )
     try:
-        response = s3_client.upload_file(file_name, bucket, object_name)
+        response = s3_client.upload_file(file_name, bucket, object_name, ExtraArgs=ACL)
     except ClientError as e:
         logging.error(e)
         return False
@@ -76,5 +80,6 @@ def upload_file(file_name, bucket, object_name=None):
 
 if __name__ == '__main__':
     bucket_name = "darties"
-    create_bucket(bucket_name, region="us-west-2")
-    #upload_file(file_name, bucket_name, object_name=None)
+    region="us-west-2"
+    create_bucket(bucket_name, region)
+    upload_file(file_name, bucket_name, object_name=None)

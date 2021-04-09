@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "lead-scoring-alessio-marieme"
+version = "0.1.0"
+description = "\"project machine learning: lead scoring\""
+authors = ["marieme gueye <masogu724@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pandas = "^1.1.4"
+numpy = "^1.19.3"
+matplotlib = "^3.3.2"
+pyarrow = "^2.0.0"
+pandas-profiling = "^2.9.0"
+jupyter = "^1.0.0"
+notebook = "^6.1.4"
+ipython = "^7.19.0"
+setuptools = "^50.3.2"
+PyYAML = "^5.3.1"
+download = "^0.3.5"
+scikit-learn = "^0.23.2"
+seaborn = "^0.11.0"
+category-encoders = "^2.2.2"
+eli5 = "^0.10.1"
+PDPbox = "^0.2.0"
+plotly = "^4.12.0"
+pycebox = "^0.0.1"
+skope-rules = "^1.0.1"
+shap = "^0.37.0"
+tqdm = "^4.52.0"
+treeinterpreter = "^0.2.2"
+statsmodels = "^0.12.1"
+xlrd = "^2.0.1"
+openpyxl = "^3.0.7"
+
+[tool.poetry.dev-dependencies]
+pylint = "^2.6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

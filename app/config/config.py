@@ -1,5 +1,5 @@
 import os
-NAME_FILE = 'second_dataset.parquet'
+NAME_FILE = '2020_HISTO.xlsx'
 FULL_PATH_DATA = os.path.os.getcwd()
 
 REPO_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
@@ -8,12 +8,6 @@ FILE_DATA = os.path.join(DATA_DIR, NAME_FILE)
 
 OUTPUTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../output'))
 SAVED_FILENAME = 'processed_data.csv'
-
-
-EQUIPMENT_COL = 'equipment'
-CITY_COL = 'city'
-DATE_COL = 'date'
-SALES_COL = 'ca'
 
 
 LIST_PRODUCTS_TO_RETRIEVE = ['ordinateur']

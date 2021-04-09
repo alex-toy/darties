@@ -15,37 +15,33 @@ class SalesData :
     cleans sales data from raw file
     """
 
-    def __init__(self, path="") :
-        self.path = path
+    def __init__(self, df) :
+        self.df = df
+
+    
+    @classmethod
+    def df_from_path(cls, path=""):
+        name, extension = os.path.splitext(path)
+        if extension == '.csv':
+            return pd.read_csv(path)
+        elif extension == '.parquet':
+            return pd.read_parquet(path)
+        elif extension == '.xlsx':
+            return pd.read_excel(path)
+        else:
+            raise FileExistsError('Extension must be parquet or csv or xlsx.')
 
 
     def clean_data(self) :
-        name, extension = os.path.splitext(self.path)
-        if extension == '.csv':
-            df = pd.read_csv(self.path)
-        elif extension == '.parquet':
-            df = pd.read_parquet(self.path)
-        else:
-            raise FileExistsError('Extension must be parquet of csv.')
-
-        df_sales = self._clean_data(df=df)
+        df_sales = self._clean_data(df=self.df)
         return df_sales
 
 
-    def _clean_data(self, df) : 
-        df_with_renamed_columns = self.__change_columns_names__(df=df)
-        df_with_formatted_date_columns = self.__change_date_to_date_type(df=df_with_renamed_columns)
-        df_with_numeric_ca_columns = self.__change_turnover_to_numeric__(df=df_with_formatted_date_columns)
-        df_with_cleaned_accents = self.__remove_accents__(df=df_with_numeric_ca_columns)
-        return df_with_cleaned_accents
-
-    
-
-    def __change_columns_names__(self, df):
-        col_names = [cf.DATE_COL, cf.EQUIPMENT_COL, cf.CITY_COL, cf.SALES_COL]
-        new_df = df.copy()
-        new_df.columns = col_names
-        return new_df
+    def _clean_data(self, df) :
+        #df = self.__change_date_to_date_type(df=df)
+        #df = self.__change_turnover_to_numeric__(df=df)
+        #df = self.__remove_accents__(df=df)
+        return df
 
 
     def __change_date_to_date_type(self, df) :
@@ -77,7 +73,8 @@ class SalesData :
 
 
 if __name__ == '__main__':
-    sd = SalesData(path=cf.FILE_DATA)
+    df = SalesData.df_from_path(path=cf.FILE_DATA)
+    sd = SalesData(df)
     print(sd.clean_data())
 
 

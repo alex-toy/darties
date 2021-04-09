@@ -54,5 +54,3 @@ if __name__ == '__main__':
     bucket_name = "darties"
     region="us-west-2"
     create_bucket(bucket_name, region)
-    file_name = cf.OUTPUTS_FILE
-    upload_file(file_name, bucket_name, object_name=None)

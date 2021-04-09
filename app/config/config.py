@@ -1,4 +1,5 @@
 import os
+config_file = '/Users/alexei/docs/dwh_P6.cfg'
 NAME_FILE = '2020_HISTO.xlsx'
 FULL_PATH_DATA = os.path.os.getcwd()
 

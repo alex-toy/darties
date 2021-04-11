@@ -73,21 +73,82 @@ Once the data has been ETLed, you are free to take full benefit from the power o
 # Project Organization 
 ----------------------
 
-    ├── README.md                           <- The top-level README for users and developers using this project.
-    ├── create_tables.py                    <- Python script allowing to create database, create / drop tables with appropriate schema.
-    ├── IaC1.py                             <- Creates new iam role, attaches policy AmazonS3ReadOnlyAccess to it and finally creates new cluster programmatically.
-    ├── IaC2.py                             <- Open an incoming TCP port to access the cluster endpoint.
-    ├── etl_staging.ipynb                   <- Loads staging tables from S3 into cluster.
-    ├── etl_tables.ipynb                    <- Creates facts and dimension tables.
-    ├── requirements.txt                    <- install psycopg2 for local use
-    ├── sql_queries_creation.py             <- SQL queries for creation of tables
-    ├── sql_queries_staging_insertion.py    <- SQL queries for insertion of data into staging tables.
-    ├── sql_queries_tables_insertion.py     <- SQL queries for insertion of data into fact and dimension tables.
-    ├── test.ipynb                          <- Unitary tests for creation, deletion, insertion steps
-    ├── release_resources.py                <- Automatically release all resources created on Redshift.
-    ├── settings.py                         <- Useful functions for project.
-    ├── get_files_from_S3.py                <- Download files form S3 to have a look at internal structure.
-    ├── dwh.cfg                             <- Config file containing credentials. Hide it!!
+├── README.md
+├── activate.sh
+├── airflow
+│   ├── dags
+│   │   ├── __pycache__
+│   │   │   └── udac_example_dag.cpython-36.pyc
+│   │   ├── create_tables.sql
+│   │   └── global_dag.py
+│   └── plugins
+│       ├── __init__.py
+│       ├── __pycache__
+│       │   └── __init__.cpython-36.pyc
+│       ├── helpers
+│       │   ├── __init__.py
+│       │   ├── __pycache__
+│       │   │   ├── __init__.cpython-36.pyc
+│       │   │   └── sql_queries.cpython-36.pyc
+│       │   └── sql_queries.py
+│       └── operators
+│           ├── __init__.py
+│           ├── __pycache__
+│           │   ├── __init__.cpython-36.pyc
+│           │   ├── data_quality.cpython-36.pyc
+│           │   ├── load_dimension.cpython-36.pyc
+│           │   ├── load_fact.cpython-36.pyc
+│           │   └── stage_redshift.cpython-36.pyc
+│           ├── data_quality.py
+│           ├── load_dimension.py
+│           ├── load_fact.py
+│           └── stage_redshift.py
+├── app
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-37.pyc
+│   │   └── __init__.cpython-38.pyc
+│   ├── application
+│   │   └── play_file.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   ├── __pycache__
+│   │   │   ├── __init__.cpython-37.pyc
+│   │   │   ├── __init__.cpython-38.pyc
+│   │   │   ├── config.cpython-37.pyc
+│   │   │   └── config.cpython-38.pyc
+│   │   └── config.py
+│   ├── domain
+│   │   ├── BusinessData.py
+│   │   └── __pycache__
+│   │       └── BusinessData.cpython-37.pyc
+│   └── infrastructure
+│       ├── SalesData.py
+│       ├── __init__.py
+│       └── __pycache__
+│           ├── SalesData.cpython-37.pyc
+│           └── __init__.cpython-37.pyc
+├── data
+│   ├── 2020_HISTO.xlsx
+│   ├── 2021_BUDGET.xlsx
+│   ├── Janvier_2021.xlsx
+│   └── README.md
+├── generals
+│   └── Pre?\201sentation\ Projet\ Darties.pdf
+├── init
+├── init.sh
+├── output
+│   ├── README.md
+│   └── processed_data.json
+├── poetry.lock
+├── pyproject.toml
+└── utils
+    ├── IaC_1.py
+    ├── IaC_2.py
+    ├── create_bucket.py
+    ├── release_resources.py
+    ├── settings.py
+    └── upload_file.py
 
 
 

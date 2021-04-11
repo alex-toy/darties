@@ -1,6 +1,6 @@
-data/
-output/
-generals/
+data/*
+output/*
+generals/*
 app/__pycache__/*
 app/config/__pycache__/*
 airflow/dags/__pycache__/*

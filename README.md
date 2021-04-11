@@ -1,4 +1,4 @@
-# Darties project 6 - Data Engineering Data Warehouse with AWS Redshift
+# Darties - Data Engineering project 6 -  Data Warehouse with AWS Redshift
 
 By Alessio Rea
 
@@ -27,13 +27,13 @@ In this project, initial dataset comes from two json files :
     song_data/A/A/B/TRAABJL12903CDCF1A.json
     ```
 
-    Here is an example of what a single song file may looks like :
+    Here is an example of what a single sale object may looks like :
 
     ```
-    {"num_songs": 1, "artist_id": "ARJIE2Y1187B994AB7", "artist_latitude": null, "artist_longitude": null, "artist_location": "", "artist_name": "Line Renaud", "song_id": "SOUPIRU12A6D4FA1E1", "title": "Der Kleine Dompfaff", "duration": 152.92036, "year": 0}
+    {"Ville":"Alencon","Enseigne":"Darty","Pub":116.2,"Region":"Nord_Ouest","Emplacement":"Centre_Ville","Nb_Caisses":15,"Population":1394451,"Taux_Ouvrier":14.7,"Taux_Cadre":2.7,"Taux_Inact":39.4,"Moins_25an":35.5,"Les_25_35a":14.6,"Plus_35ans":49.9}
     ```
 
-    Those files contain the following features : 'artist_id', 'artist_latitude', 'artist_location', 'artist_longitude', 'artist_name', 'duration', 'num_songs', 'song_id', 'title', 'year'
+    Those files contain the following features : 'Ville', 'Enseigne', 'Pub', 'Region', 'Emplacement', 'Nb_Caisses', 'Population', 'Taux_Ouvrier', 'Taux_Cadre', 'Taux_Inact', 'Moins_25an', 'Moins_25an', 'Les_25_35a', 'Plus_35ans'
 
 - Second : Log Dataset
     

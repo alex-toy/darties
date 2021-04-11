@@ -38,8 +38,8 @@ class SalesData :
 
 
     def _clean_data(self, df) :
-        df = self.__remove_accents__(df=df)
         df = self.__change_col_name(df=df)
+        df = self.__remove_accents__(df=df)
         return df
 
 
@@ -51,7 +51,7 @@ class SalesData :
 
     def __remove_accents__(self, df) :
         new_df = df.copy()
-        for col in ['Villes', 'Enseignes', 'REGION', 'Emplacemen'] :
+        for col in ['City', 'Brand', 'Region', 'Location'] :
             new_df[col] = new_df[col].str.replace('[éèê]', 'e', regex=True)
         return new_df
 

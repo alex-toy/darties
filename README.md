@@ -73,6 +73,28 @@ Once the data has been ETLed, you are free to take full benefit from the power o
 # Project Organization 
 ----------------------
 
+    ├── dags
+    │   ├── create_tables.sql     <- Create_tables in Redshift.
+    │   └── global_dag.py         <- Creates DAG and runs all tasks in sequence.
+    ├── plugins
+    │   ├── helpers               
+    │   │   └── sql_queries.py    <- For ETL purpose. 
+    │   ├── operators 
+    │   │   ├── data_quality.py   <- Run data quality checks.  
+    │   │   ├── load_dimension.py <- Populate dimension tables.  
+    │   │   ├── load_fact.py      <- Populate fact tables.               
+    │   │   └── stage_redshift.py <- Create staging tables in Redshift based on S3 data. 
+    ├── utils
+    │   ├── dwh.cfg               <- Config file containing credentials. Hide it!!
+    │   ├── Iac_1.py              <- Creates new iam role, attaches policy AmazonS3ReadOnlyAccess to it and finally creates new cluster programmatically.
+    │   ├── Iac_2.py              <- Open an incoming TCP port to access the cluster endpoint.
+    │   ├── release_resources.py  <- Automatically release all resources created on Redshift.
+    │   └── settings.py           <- Useful functions for project.  
+    ├── init.sh                   <- useful command line instructions.
+    ├── requirements.txt          <- Necessary packages for local use.
+    └── README.md                 <- The top-level README for users and developers using this project.
+
+
 ├── README.md
 ├── activate.sh
 ├── airflow

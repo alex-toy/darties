@@ -95,82 +95,82 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     └── README.md                 <- The top-level README for users and developers using this project.
 
 
-├── README.md
-├── activate.sh
-├── airflow
-│   ├── dags
-│   │   ├── __pycache__
-│   │   │   └── udac_example_dag.cpython-36.pyc
-│   │   ├── create_tables.sql
-│   │   └── global_dag.py
-│   └── plugins
-│       ├── __init__.py
-│       ├── __pycache__
-│       │   └── __init__.cpython-36.pyc
-│       ├── helpers
-│       │   ├── __init__.py
-│       │   ├── __pycache__
-│       │   │   ├── __init__.cpython-36.pyc
-│       │   │   └── sql_queries.cpython-36.pyc
-│       │   └── sql_queries.py
-│       └── operators
-│           ├── __init__.py
-│           ├── __pycache__
-│           │   ├── __init__.cpython-36.pyc
-│           │   ├── data_quality.cpython-36.pyc
-│           │   ├── load_dimension.cpython-36.pyc
-│           │   ├── load_fact.cpython-36.pyc
-│           │   └── stage_redshift.cpython-36.pyc
-│           ├── data_quality.py
-│           ├── load_dimension.py
-│           ├── load_fact.py
-│           └── stage_redshift.py
-├── app
-│   ├── __init__.py
-│   ├── __pycache__
-│   │   ├── __init__.cpython-37.pyc
-│   │   └── __init__.cpython-38.pyc
-│   ├── application
-│   │   └── play_file.py
-│   ├── config
-│   │   ├── __init__.py
-│   │   ├── __pycache__
-│   │   │   ├── __init__.cpython-37.pyc
-│   │   │   ├── __init__.cpython-38.pyc
-│   │   │   ├── config.cpython-37.pyc
-│   │   │   └── config.cpython-38.pyc
-│   │   └── config.py
-│   ├── domain
-│   │   ├── BusinessData.py
-│   │   └── __pycache__
-│   │       └── BusinessData.cpython-37.pyc
-│   └── infrastructure
-│       ├── SalesData.py
-│       ├── __init__.py
-│       └── __pycache__
-│           ├── SalesData.cpython-37.pyc
-│           └── __init__.cpython-37.pyc
-├── data
-│   ├── 2020_HISTO.xlsx
-│   ├── 2021_BUDGET.xlsx
-│   ├── Janvier_2021.xlsx
-│   └── README.md
-├── generals
-│   └── Pre?\201sentation\ Projet\ Darties.pdf
-├── init
-├── init.sh
-├── output
-│   ├── README.md
-│   └── processed_data.json
-├── poetry.lock
-├── pyproject.toml
-└── utils
-    ├── IaC_1.py
-    ├── IaC_2.py
-    ├── create_bucket.py
-    ├── release_resources.py
-    ├── settings.py
-    └── upload_file.py
+    ├── README.md
+    ├── activate.sh
+    ├── airflow
+    │   ├── dags
+    │   │   ├── __pycache__
+    │   │   │   └── udac_example_dag.cpython-36.pyc
+    │   │   ├── create_tables.sql
+    │   │   └── global_dag.py
+    │   └── plugins
+    │       ├── __init__.py
+    │       ├── __pycache__
+    │       │   └── __init__.cpython-36.pyc
+    │       ├── helpers
+    │       │   ├── __init__.py
+    │       │   ├── __pycache__
+    │       │   │   ├── __init__.cpython-36.pyc
+    │       │   │   └── sql_queries.cpython-36.pyc
+    │       │   └── sql_queries.py
+    │       └── operators
+    │           ├── __init__.py
+    │           ├── __pycache__
+    │           │   ├── __init__.cpython-36.pyc
+    │           │   ├── data_quality.cpython-36.pyc
+    │           │   ├── load_dimension.cpython-36.pyc
+    │           │   ├── load_fact.cpython-36.pyc
+    │           │   └── stage_redshift.cpython-36.pyc
+    │           ├── data_quality.py
+    │           ├── load_dimension.py
+    │           ├── load_fact.py
+    │           └── stage_redshift.py
+    ├── app
+    │   ├── __init__.py
+    │   ├── __pycache__
+    │   │   ├── __init__.cpython-37.pyc
+    │   │   └── __init__.cpython-38.pyc
+    │   ├── application
+    │   │   └── play_file.py
+    │   ├── config
+    │   │   ├── __init__.py
+    │   │   ├── __pycache__
+    │   │   │   ├── __init__.cpython-37.pyc
+    │   │   │   ├── __init__.cpython-38.pyc
+    │   │   │   ├── config.cpython-37.pyc
+    │   │   │   └── config.cpython-38.pyc
+    │   │   └── config.py
+    │   ├── domain
+    │   │   ├── BusinessData.py
+    │   │   └── __pycache__
+    │   │       └── BusinessData.cpython-37.pyc
+    │   └── infrastructure
+    │       ├── SalesData.py
+    │       ├── __init__.py
+    │       └── __pycache__
+    │           ├── SalesData.cpython-37.pyc
+    │           └── __init__.cpython-37.pyc
+    ├── data
+    │   ├── 2020_HISTO.xlsx
+    │   ├── 2021_BUDGET.xlsx
+    │   ├── Janvier_2021.xlsx
+    │   └── README.md
+    ├── generals
+    │   └── Pre?\201sentation\ Projet\ Darties.pdf
+    ├── init
+    ├── init.sh
+    ├── output
+    │   ├── README.md
+    │   └── processed_data.json
+    ├── poetry.lock
+    ├── pyproject.toml
+    └── utils
+        ├── IaC_1.py
+        ├── IaC_2.py
+        ├── create_bucket.py
+        ├── release_resources.py
+        ├── settings.py
+        └── upload_file.py
 
 
 

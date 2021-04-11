@@ -30,10 +30,10 @@ In this project, initial dataset comes from two json files :
     Here is an example of what a single sale object may looks like :
 
     ```
-    {"Ville":"Alencon","Enseigne":"Darty","Pub":116.2,"Region":"Nord_Ouest","Emplacement":"Centre_Ville","Nb_Caisses":15,"Population":1394451,"Taux_Ouvrier":14.7,"Taux_Cadre":2.7,"Taux_Inact":39.4,"Moins_25an":35.5,"Les_25_35a":14.6,"Plus_35ans":49.9}
+    {"City":"Alencon","Brand":"Darty","Ads":116.2,"Region":"Nord_Ouest","Location":"Centre_Ville","Nb_cash_register":15,"Population":1394451,"Blue_collar_rate":14.7,"White_collar_rate":2.7,"Jobless_rate":39.4,"Lt_25_yo":35.5,"25_35_yo":14.6,"gt_35_yo":49.9}
     ```
 
-    Those files contain the following features : 'Ville', 'Enseigne', 'Pub', 'Region', 'Emplacement', 'Nb_Caisses', 'Population', 'Taux_Ouvrier', 'Taux_Cadre', 'Taux_Inact', 'Moins_25an', 'Moins_25an', 'Les_25_35a', 'Plus_35ans'
+    Those files contain the following features : 'City', 'Brand', 'Ads', 'Region', 'Location', 'Nb_cash_register', 'Population', 'Blue_collar_rate', 'White_collar_rate', 'Jobless_rate', 'Lt_25_yo', '25_35_yo', 'gt_35_yo'
 
 - Second : Log Dataset
     

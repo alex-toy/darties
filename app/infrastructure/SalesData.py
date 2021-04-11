@@ -45,16 +45,9 @@ class SalesData :
 
     def __change_col_name(self, df) :
         new_df = df.copy()
-        new_df.rename(columns={
-            "Publicité": "Pub", 
-            "Emplacemen": "Emplacement", 
-            "Taux_Ouvri": "Taux_Ouvrier",
-            "REGION" : "Region",
-            "Enseignes" : "Enseigne",
-            "Villes" : "Ville"
-        }, errors="raise", inplace=True)
+        new_df.rename(columns=cf.NEW_COL_NAMES, errors="raise", inplace=True)
         return new_df
-
+							
 
     def __remove_accents__(self, df) :
         new_df = df.copy()

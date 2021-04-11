@@ -12,3 +12,18 @@ SAVED_FILENAME = 'processed_data.json'
 OUTPUTS_FILE = os.path.join(OUTPUTS_DIR, SAVED_FILENAME)
 
 
+NEW_COL_NAMES = {
+    "Villes" : "City",
+    "Enseignes" : "Brand",
+    "Publicité": "Ads", 
+    "REGION" : "Region",
+    "Emplacemen": "Location", 
+    "Nb_Caisses": "Nb_cash_register",
+    "Population": "Population",
+    "Taux_Ouvri": "Blue_collar_rate",
+    "Taux_Cadre": "White_collar_rate",
+    "Taux_Inact": "Jobless_rate",
+    "Moins_25an": "Lt_25_yo",
+    "Les_25_35a": "25_35_yo",
+    "Plus_35ans": "gt_35_yo",
+}

@@ -8,10 +8,10 @@ You need to have Python 3.8.5 installed for this project
 
 # Context of the project
 
-Darties is a french firm that sells secialized products, such as home appliances, audiovisual and computer equipment. It is composed of three brands : *Darty*, *Leroy-Merlin* and *Boulanger*. it sells three families of products : *hi-fi systems*, *ovens* and *video recorders*.
+Darties is a french firm that sells secialized products, such as home appliances, audiovisual and computer equipment. It is composed of three brands : *Darty*, *Leroy-Merlin* and *Boulanger*. It sells three families of products : *hi-fi systems*, *ovens* and *video recorders*.
 
 Currently, the situation is the following :
-- no information system,
+- No information system,
 - Excel sheets are used as decision tools,
 - data between stores is hard to compare,
 - The tree structure is the following :
@@ -27,10 +27,10 @@ The needs of the client are :
         - For the regions,
         - For the stores.
     - Facilitate :
-        - analysis of the situation,
-        - decision making,
-    - Conformity of performances with respect to the objectives,
-    - Communicate / Inform
+        - Analysis of the situation,
+        - Decision making,
+- Conformity of performances with respect to the objectives,
+- Communicate / Inform
 
 
 In order to do so we have :

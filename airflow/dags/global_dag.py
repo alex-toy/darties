@@ -16,6 +16,9 @@ S3_BUCKET_LOG_DATA = config.get('S3','LOG_DATA')
 S3_BUCKET_SONG_DATA = config.get('S3','SONG_DATA')
 LOG_JSONPATH = config.get('S3','LOG_JSONPATH')
 
+S3_BUCKET_SALES_DATA = config.get('S3','SALES_DATA')
+
+
 default_args = {
     'owner': 'udacity',
     'start_date': datetime(2018, 11, 1),
@@ -49,13 +52,25 @@ create_tables_task = PostgresOperator(
     postgres_conn_id="redshift"
 )
 
+stage_sales_to_redshift = StageToRedshiftOperator(
+    task_id='Stage_sales',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_sales",
+    S3_bucket="darties",
+    S3_key="sales_data",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
 stage_events_to_redshift = StageToRedshiftOperator(
     task_id='Stage_events',
     dag=dag,
     redshift_conn_id="redshift",
     aws_credentials_id="aws_credentials",
     table="staging_events",
-    S3_bucket="udacity-dend",
+    S3_bucket="darties",
     S3_key="log_data",
     delimiter=",",
     formatting=f"FORMAT AS json '{LOG_JSONPATH}'"
@@ -68,7 +83,7 @@ stage_songs_to_redshift = StageToRedshiftOperator(
     redshift_conn_id="redshift",
     aws_credentials_id="aws_credentials",
     table="staging_songs",
-    S3_bucket="udacity-dend",
+    S3_bucket="darties",
     S3_key="song_data",
     delimiter=",",
     formatting="JSON 'auto'"

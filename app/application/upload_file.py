@@ -13,7 +13,7 @@ aws_access_key_id = config.get('S3_USER','aws_access_key_id')
 aws_secret_access_key = config.get('S3_USER','aws_secret_access_key')
 
 
-def upload_file(file_name, year, bucket, ACL={'ACL' : 'public-read'}):
+def upload_file(file_name, S3_key, year, bucket, object_name=None, ACL={'ACL' : 'public-read'}):
     """
     Upload a file to an S3 bucket
 
@@ -24,7 +24,7 @@ def upload_file(file_name, year, bucket, ACL={'ACL' : 'public-read'}):
     """
 
     # If S3 object_name was not specified, use file_name
-    object_name = os.path.join(year, cf.SAVED_FILENAME)
+    object_name = os.path.join(S3_key, year, cf.SAVED_FILENAME)
 
     # Upload the file
     s3_client = boto3.client(
@@ -45,6 +45,6 @@ if __name__ == '__main__':
 
     S3_key="sales_data"
     year = '2020'
-    file_name = os.path.join(cf.OUTPUTS_DIR, S3_key, year, cf.SAVED_FILENAME)
+    file_name = os.path.join(cf.OUTPUTS_DIR, year, cf.SAVED_FILENAME)
 
-    upload_file(file_name, year, bucket_name)
+    upload_file(file_name, S3_key, year, bucket_name)

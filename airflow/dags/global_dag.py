@@ -4,10 +4,12 @@ from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.postgres_operator import PostgresOperator
 from airflow.operators import (StageToRedshiftOperator, LoadFactOperator,
-                                LoadDimensionOperator, DataQualityOperator)
+                                LoadDimensionOperator, DataQualityOperator, PythonOperator)
 from helpers import SqlQueries
 import configparser
 from settings import config_file
+
+from app.application.upload_file import upload_cleaned_file
 
 config = configparser.ConfigParser()
 config.read_file(open(config_file))
@@ -44,6 +46,12 @@ dag = DAG(
 
 
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
+
+initial_cleaning = PythonOperator(
+    task_id='initial_cleaning',
+    python_callable=upload_cleaned_file,
+    dag=dag,
+)
 
 create_tables_task = PostgresOperator(
     task_id="create_tables",
@@ -155,5 +163,5 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
 
-start_operator >> create_tables_task >>  end_operator
+start_operator >> initial_cleaning >>  end_operator
 

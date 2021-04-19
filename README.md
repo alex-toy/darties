@@ -32,7 +32,7 @@ Currently, the situation is the following :
 The needs of the client are :
 - To create a dashboard allowing to do the following :
     - Activity monitoring :
-        - For the contries,
+        - For the countries,
         - For the regions,
         - For the stores.
     - Facilitate :

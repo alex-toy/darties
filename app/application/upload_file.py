@@ -40,11 +40,18 @@ def upload_file(file_name, S3_key, year, bucket, object_name=None, ACL={'ACL' : 
     return True
 
 
-if __name__ == '__main__':
-    bucket_name = "darties"
 
+def upload_cleaned_file() :
+    bucket_name = "darties"
     S3_key="sales_data"
     year = '2020'
     file_name = os.path.join(cf.OUTPUTS_DIR, year, cf.SAVED_FILENAME)
-
     upload_file(file_name, S3_key, year, bucket_name)
+
+
+
+
+if __name__ == '__main__':
+
+    upload_cleaned_file()
+

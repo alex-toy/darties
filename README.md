@@ -12,6 +12,8 @@ You need to have Python 3.8.5 installed for this project
 
 The purpose of the project is to build an ETL pipeline that extracts data from S3, stages it in Redshift, and transforms data into a set of dimensional tables for analysis and insights in how and when sales are being performed. Data is modelled according to a star schema with fact and dimension tables for fast and easy analysis. Redshift gives the opportunity to execute SQL statements that create the analytics tables from these staging tables.
 
+We will also introduce automation and monitoring to a data warehouse ETL pipelines using Apache Airflow. Airflow allows to create high grade data pipelines that are dynamic and built from reusable tasks, that can be monitored, and allow easy backfills. It also allows to monitor data quality which plays a big part when analyses are executed on top the data warehouse, in that it allows to run tests against our datasets after the ETL steps have been executed to catch any discrepancies in the datasets.
+
 
 
 ## 2. Database schema design and ETL pipeline
@@ -50,7 +52,7 @@ Here is how the data is modelled according to a star schema :
 
 
 
-## 3. Example queries and results for song play analysis
+## 3. Example queries and results for sales analysis
 
 Once the data has been ETLed, you are free to take full benefit from the power of star modelling and make business driven queries like :
 

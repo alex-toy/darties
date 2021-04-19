@@ -6,6 +6,12 @@ By Alessio Rea
 
 You need to have Python 3.8.5 installed for this project
 
+# Context of the project
+
+Darties is a french firm that sales secialized products, such as 
+
+Vend des produits spécialisés (électroménager, matériels informatiques et audiovisuels
+
 # General explanation 
 
 ## 1. Purpose of the project

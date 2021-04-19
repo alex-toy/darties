@@ -10,26 +10,27 @@ You need to have Python 3.8.5 installed for this project
 
 Darties is a french firm that sells secialized products, such as home appliances, audiovisual and computer equipment. It is composed of three brands : *Darty*, *Leroy-Merlin* and *Boulanger*. it sells three families of products : *hi-fi systems*, *ovens* and video *recorders*.
 Currently, the situation is the following :
-    - no information system,
-    - Excel sheets are used as decision tools,
-    - data between stores is hard to compare,
-    - The tree structure is the following :
-        - 1 Commercial Director,
-        - 5 Regional Directors :  *Ile de France*, *Nord-est*, *Nord-Ouest*, *Sud-Est*, *Sud-Ouest*,
-        - 48 Store managers,
+- no information system,
+- Excel sheets are used as decision tools,
+- data between stores is hard to compare,
+- The tree structure is the following :
+    - 1 Commercial Director,
+    - 5 Regional Directors :  *Ile de France*, *Nord-est*, *Nord-Ouest*, *Sud-Est*, *Sud-Ouest*,
+    - 48 Store managers,
 
 
 The needs of the client are :
-• Objectif du tableau de bord :
-o Suivi de l’activité
-§ Pour les pays
-§ Pour les régions
-§ Pour les magasins
-o Faciliter
-§ L’analyse de la situation
-§ La prise de décision
-o Conformité des performances aux objectifs
-o Communiquer / Informer
+- Objectif du tableau de bord :
+    - Suivi de l’activité
+        - Suivi de l’activité
+            - Pour les pays
+            - Pour les régions
+            - Pour les magasins
+    - Faciliter
+        - L’analyse de la situation
+        - La prise de décision
+    - Conformité des performances aux objectifs
+    - Communiquer / Informer
 
 
 # Technical insights 

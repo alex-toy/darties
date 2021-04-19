@@ -1,3 +1,44 @@
+CREATE TABLE IF NOT EXISTS public.staging_sales (
+	City varchar(256),
+	Brand varchar(256),
+	
+	
+	
+	auth varchar(256),
+	firstname varchar(256),
+	gender varchar(256),
+	iteminsession int4,
+	lastname varchar(256),
+	length numeric(18,0),
+	"level" varchar(256),
+	location varchar(256),
+	"method" varchar(256),
+	page varchar(256),
+	registration numeric(18,0),
+	sessionid int4,
+	song varchar(256),
+	status int4,
+	ts int8,
+	useragent varchar(256),
+	userid int4
+);
+
+{"":"Darty","Ads":116.2,"Region":"Nord_Ouest","Location":"Centre_Ville","Nb_cash_register":15,"Population":1394451,"Blue_collar_rate":14.7,"White_collar_rate":2.7,"Jobless_rate":39.4,"Lt_25_yo":35.5,"25_35_yo":14.6,"gt_35_yo":49.9}
+
+CREATE TABLE IF NOT EXISTS public.staging_songs (
+	num_songs int4,
+	artist_id varchar(256),
+	artist_name varchar(256),
+	artist_latitude numeric(18,0),
+	artist_longitude numeric(18,0),
+	artist_location varchar(256),
+	song_id varchar(256),
+	title varchar(256),
+	duration numeric(18,0),
+	"year" int4
+);
+
+
 CREATE TABLE IF NOT EXISTS public.artists (
 	artistid varchar(256) NOT NULL,
 	name varchar(256),
@@ -28,39 +69,6 @@ CREATE TABLE IF NOT EXISTS public.songs (
 	CONSTRAINT songs_pkey PRIMARY KEY (songid)
 );
 
-CREATE TABLE IF NOT EXISTS public.staging_events (
-	artist varchar(256),
-	auth varchar(256),
-	firstname varchar(256),
-	gender varchar(256),
-	iteminsession int4,
-	lastname varchar(256),
-	length numeric(18,0),
-	"level" varchar(256),
-	location varchar(256),
-	"method" varchar(256),
-	page varchar(256),
-	registration numeric(18,0),
-	sessionid int4,
-	song varchar(256),
-	status int4,
-	ts int8,
-	useragent varchar(256),
-	userid int4
-);
-
-CREATE TABLE IF NOT EXISTS public.staging_songs (
-	num_songs int4,
-	artist_id varchar(256),
-	artist_name varchar(256),
-	artist_latitude numeric(18,0),
-	artist_longitude numeric(18,0),
-	artist_location varchar(256),
-	song_id varchar(256),
-	title varchar(256),
-	duration numeric(18,0),
-	"year" int4
-);
 
 CREATE TABLE IF NOT EXISTS public."time" (
 	start_time timestamp NOT NULL,

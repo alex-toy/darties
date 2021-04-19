@@ -20,13 +20,13 @@ In this project, initial dataset comes from two json files :
 
 -  Song Dataset
     
-    Here is a filepaths to one file that could be found in such a dataset :
+    Data is organized by category and year. Here is a filepath to one file that could be found in such a dataset :
 
     ```
     sales_data/2020/sales.json
     ```
 
-    Here is an example of what a single sale object may looks like :
+    Here is an example of what a single sale object may look like :
 
     ```
     {"City":"Alencon","Brand":"Darty","Ads":116.2,"Region":"Nord_Ouest","Location":"Centre_Ville","Nb_cash_register":15,"Population":1394451,"Blue_collar_rate":14.7,"White_collar_rate":2.7,"Jobless_rate":39.4,"Lt_25_yo":35.5,"25_35_yo":14.6,"gt_35_yo":49.9}

@@ -18,13 +18,12 @@ The purpose of the project is to build an ETL pipeline that extracts data from S
 
 In this project, initial dataset comes from two json files :
 
-- First : Song Dataset
+-  Song Dataset
     
-    Here are filepaths to two files that could be found in such a dataset :
+    Here is a filepaths to one file that could be found in such a dataset :
 
     ```
-    song_data/A/B/C/TRABCEI128F424C983.json
-    song_data/A/A/B/TRAABJL12903CDCF1A.json
+    sales_data/2020/sales.json
     ```
 
     Here is an example of what a single sale object may looks like :
@@ -35,38 +34,28 @@ In this project, initial dataset comes from two json files :
 
     Those files contain the following features : 'City', 'Brand', 'Ads', 'Region', 'Location', 'Nb_cash_register', 'Population', 'Blue_collar_rate', 'White_collar_rate', 'Jobless_rate', 'Lt_25_yo', '25_35_yo', 'gt_35_yo'
 
-- Second : Log Dataset
-    
-    Here are filepaths to two files that could be found in such a dataset :
-
-    ```
-    log_data/2018/11/2018-11-12-events.json
-    log_data/2018/11/2018-11-13-events.json
-    ```
-    
-    Those files contain the following features : 'artist', 'auth', 'firstName', 'gender', 'itemInSession', 'lastName',
-       'length', 'level', 'location', 'method', 'page', 'registration',
-       'sessionId', 'song', 'status', 'ts', 'userAgent', 'userId'
 
 
 Here is how the data is modelled according to a star schema :
 
-- Fact table : table songplays containing the following features : songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent
+- Fact table : to be done
 
 - Dimension tables : 
 
-    - users - users in the app. Features : user_id, first_name, last_name, gender, level
-    - songs - songs in music database. Features : song_id, title, artist_id, year, duration
-    - artists - artists in music database. Features : artist_id, name, location, latitude, longitude
-    - time - timestamps of records in songplays broken down into specific units. Features : start_time, hour, day, week, month, year, weekday
+    - dim1 - description to be done. Features : to be done
+    - dim2 - description to be done. Features : to be done
+    - dim3 - description to be done. Features : to be done
+    - dim4 - description to be done. Features : to be done
+    - dim5 - description to be done. Features : to be done
+
 
 
 ## 3. Example queries and results for song play analysis
 
 Once the data has been ETLed, you are free to take full benefit from the power of star modelling and make business driven queries like :
 
-    - Which song has been played by user 'Lily' on a paid level?
-    - When did user 'Lily' play song from artist 'Elena'?
+    - How many sales have been perfomed in region 1 by salesman x?
+    - How many sales have been performed between 2020 and 2021 in region 2 ?
 
 
 
@@ -109,7 +98,8 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   │   ├── __init__.cpython-37.pyc
     │   │   └── __init__.cpython-38.pyc
     │   ├── application
-    │   │   └── play_file.py
+    │   │   ├── create_output_file.py
+    │   │   └── upload_file.py
     │   ├── config
     │   │   ├── __init__.py
     │   │   ├── __pycache__
@@ -121,34 +111,39 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   ├── domain
     │   │   ├── BusinessData.py
     │   │   └── __pycache__
-    │   │       └── BusinessData.cpython-37.pyc
+    │   │       ├── BusinessData.cpython-37.pyc
+    │   │       └── BusinessData.cpython-38.pyc
     │   └── infrastructure
     │       ├── SalesData.py
     │       ├── __init__.py
     │       └── __pycache__
     │           ├── SalesData.cpython-37.pyc
-    │           └── __init__.cpython-37.pyc
+    │           ├── SalesData.cpython-38.pyc
+    │           ├── __init__.cpython-37.pyc
+    │           └── __init__.cpython-38.pyc
     ├── data
     │   ├── 2020_HISTO.xlsx
     │   ├── 2021_BUDGET.xlsx
     │   ├── Janvier_2021.xlsx
     │   └── README.md
     ├── generals
-    │   └── Présentation\Projet\Darties.pdf
+    │   └── Pre?\201sentation\ Projet\ Darties.pdf
     ├── init
     ├── init.sh
     ├── output
-    │   ├── README.md
-    │   └── processed_data.json
+    │   ├── 2020
+    │   │   └── sales.json
+    │   └── README.md
     ├── poetry.lock
     ├── pyproject.toml
-    └── utils
-        ├── IaC_1.py
-        ├── IaC_2.py
-        ├── create_bucket.py
-        ├── release_resources.py
-        ├── settings.py
-        └── upload_file.py
+    ├── utils
+    │   ├── IaC_1.py
+    │   ├── IaC_2.py
+    │   ├── create_bucket.py
+    │   ├── release_resources.py
+    │   ├── settings.py
+    │   └── upload_file.py
+    └── utils.txt
 
 
 # Getting started

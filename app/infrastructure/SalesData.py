@@ -32,9 +32,12 @@ class SalesData :
             raise FileExistsError('Extension must be parquet or csv or xlsx.')
 
 
-    def cleaned_file(self) :
+    def cleaned_file(self, year) :
         df = self._clean_data(df=self.df)
-        df.to_json (cf.OUTPUTS_FILE, orient="records")
+        outdir = os.path.join(cf.OUTPUTS_DIR, year)
+        if not os.path.exists(outdir):
+            os.mkdir(outdir)
+        df.to_json (os.path.join(cf.OUTPUTS_DIR, year, cf.SAVED_FILENAME), orient="records")
 
 
     def _clean_data(self, df) :
@@ -60,7 +63,7 @@ class SalesData :
 if __name__ == '__main__':
     df = SalesData.df_from_path(path=cf.FILE_DATA)
     sd = SalesData(df)
-    sd.cleaned_file()
+    sd.cleaned_file('2021')
 
 
 

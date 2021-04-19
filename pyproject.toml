@@ -32,6 +32,8 @@ statsmodels = "^0.12.1"
 xlrd = "^2.0.1"
 openpyxl = "^3.0.7"
 Tree = "^0.2.4"
+boto3 = "^1.17.53"
+configparser = "^5.0.2"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.6.0"

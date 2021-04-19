@@ -79,6 +79,35 @@ six = ">=1.9.0"
 webencodings = "*"
 
 [[package]]
+name = "boto3"
+version = "1.17.53"
+description = "The AWS SDK for Python"
+category = "main"
+optional = false
+python-versions = ">= 2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
+
+[package.dependencies]
+botocore = ">=1.20.53,<1.21.0"
+jmespath = ">=0.7.1,<1.0.0"
+s3transfer = ">=0.3.0,<0.4.0"
+
+[[package]]
+name = "botocore"
+version = "1.20.53"
+description = "Low-level, data-driven core of boto 3."
+category = "main"
+optional = false
+python-versions = ">= 2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
+
+[package.dependencies]
+jmespath = ">=0.7.1,<1.0.0"
+python-dateutil = ">=2.1,<3.0.0"
+urllib3 = ">=1.25.4,<1.27"
+
+[package.extras]
+crt = ["awscrt (0.10.8)"]
+
+[[package]]
 name = "category-encoders"
 version = "2.2.2"
 description = "A collection sklearn transformers to encode categorical variables as numeric"
@@ -136,6 +165,18 @@ description = "Cross-platform colored terminal text."
 category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[[package]]
+name = "configparser"
+version = "5.0.2"
+description = "Updated configparser from Python 3.8 for Python 2.6+."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
+testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pytest-cov", "pytest-enabler", "pytest-black (>=0.3.7)", "pytest-mypy"]
 
 [[package]]
 name = "confuse"
@@ -390,6 +431,14 @@ MarkupSafe = ">=0.23"
 
 [package.extras]
 i18n = ["Babel (>=0.8)"]
+
+[[package]]
+name = "jmespath"
+version = "0.10.0"
+description = "JSON Matching Expressions"
+category = "main"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "joblib"
@@ -1155,6 +1204,17 @@ python-versions = "*"
 six = ">=1.7.0"
 
 [[package]]
+name = "s3transfer"
+version = "0.3.7"
+description = "An Amazon S3 Transfer Manager"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+botocore = ">=1.12.36,<2.0a.0"
+
+[[package]]
 name = "scikit-learn"
 version = "0.23.2"
 description = "A set of python modules for machine learning and data mining"
@@ -1492,7 +1552,7 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "919990c3aa60196836b086426c686fad02fe5b6be86f28e35da3f8cb146743e2"
+content-hash = "ca568881440c65c3006153df753125e672b1b10eb5aa42f7f92e6bb43b2dccec"
 
 [metadata.files]
 appnope = [
@@ -1538,6 +1598,14 @@ backcall = [
 bleach = [
     {file = "bleach-3.3.0-py2.py3-none-any.whl", hash = "sha256:6123ddc1052673e52bab52cdc955bcb57a015264a1c57d37bea2f6b817af0125"},
     {file = "bleach-3.3.0.tar.gz", hash = "sha256:98b3170739e5e83dd9dc19633f074727ad848cbedb6026708c8ac2d3b697a433"},
+]
+boto3 = [
+    {file = "boto3-1.17.53-py2.py3-none-any.whl", hash = "sha256:3bf3305571f3c8b738a53e9e7dcff59137dffe94670046c084a17f9fa4599ff3"},
+    {file = "boto3-1.17.53.tar.gz", hash = "sha256:1d26f6e7ae3c940cb07119077ac42485dcf99164350da0ab50d0f5ad345800cd"},
+]
+botocore = [
+    {file = "botocore-1.20.53-py2.py3-none-any.whl", hash = "sha256:d5e70d17b91c9b5867be7d6de0caa7dde9ed789bed62f03ea9b60718dc9350bf"},
+    {file = "botocore-1.20.53.tar.gz", hash = "sha256:e303500c4e80f6a706602da53daa6f751cfa8f491665c99a24ee732ab6321573"},
 ]
 category-encoders = [
     {file = "category_encoders-2.2.2-py2.py3-none-any.whl", hash = "sha256:3704d140d873c1325e68051ab2dce9663fd57c77fb1c368b9dc02e82e80c176a"},
@@ -1596,6 +1664,10 @@ click = [
 ]
 colorama = [
     {file = "colorama-0.4.4-py2.py3-none-any.whl", hash = "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"},
+]
+configparser = [
+    {file = "configparser-5.0.2-py3-none-any.whl", hash = "sha256:af59f2cdd7efbdd5d111c1976ecd0b82db9066653362f0962d7bf1d3ab89a1fa"},
+    {file = "configparser-5.0.2.tar.gz", hash = "sha256:85d5de102cfe6d14a5172676f09d19c465ce63d6019cf0a4ef13385fc535e828"},
 ]
 confuse = [
     {file = "confuse-1.4.0-py2.py3-none-any.whl", hash = "sha256:2346b9c8f8c5aece8342e2eb07be9a09b78ca82c40736ec64272e5613580100c"},
@@ -1671,6 +1743,10 @@ jedi = [
 jinja2 = [
     {file = "Jinja2-2.11.3-py2.py3-none-any.whl", hash = "sha256:03e47ad063331dd6a3f04a43eddca8a966a26ba0c5b7207a9a9e4e08f1b29419"},
     {file = "Jinja2-2.11.3.tar.gz", hash = "sha256:a6d58433de0ae800347cab1fa3043cebbabe8baa9d29e668f1c768cb87a333c6"},
+]
+jmespath = [
+    {file = "jmespath-0.10.0-py2.py3-none-any.whl", hash = "sha256:cdf6525904cc597730141d61b36f2e4b8ecc257c420fa2f4549bac2c2d0cb72f"},
+    {file = "jmespath-0.10.0.tar.gz", hash = "sha256:b85d0567b8666149a93172712e68920734333c0ce7e89b78b3e987f71e5ed4f9"},
 ]
 joblib = [
     {file = "joblib-1.0.1-py3-none-any.whl", hash = "sha256:feeb1ec69c4d45129954f1b7034954241eedfd6ba39b5e9e4b6883be3332d5e5"},
@@ -2249,6 +2325,10 @@ requests = [
 ]
 retrying = [
     {file = "retrying-1.3.3.tar.gz", hash = "sha256:08c039560a6da2fe4f2c426d0766e284d3b736e355f8dd24b37367b0bb41973b"},
+]
+s3transfer = [
+    {file = "s3transfer-0.3.7-py2.py3-none-any.whl", hash = "sha256:efa5bd92a897b6a8d5c1383828dca3d52d0790e0756d49740563a3fb6ed03246"},
+    {file = "s3transfer-0.3.7.tar.gz", hash = "sha256:35627b86af8ff97e7ac27975fe0a98a312814b46c6333d8a6b889627bcd80994"},
 ]
 scikit-learn = [
     {file = "scikit-learn-0.23.2.tar.gz", hash = "sha256:20766f515e6cd6f954554387dfae705d93c7b544ec0e6c6a5d8e006f6f7ef480"},

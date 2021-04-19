@@ -3,6 +3,7 @@ output/*
 generals/*
 app/__pycache__/*
 app/config/__pycache__/*
+app/domain/__pycache__/
 airflow/dags/__pycache__/*
 airflow/plugins/__pycache__/*
 airflow/plugins/helpers/__pycache__/*

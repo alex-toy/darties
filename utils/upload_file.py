@@ -1,17 +1,19 @@
 import logging
 import boto3
+import os
 from botocore.exceptions import ClientError
+import configparser
 
 import app.config.config as cf
 
 config = configparser.ConfigParser()
 config.read_file(open(cf.config_file))
 
-aws_access_key_id = config.get('default','aws_access_key_id')
-aws_secret_access_key = config.get('default','aws_secret_access_key')
+aws_access_key_id = config.get('S3_USER','aws_access_key_id')
+aws_secret_access_key = config.get('S3_USER','aws_secret_access_key')
 
 
-def upload_file(file_name, bucket, object_name=None, ACL={'ACL' : 'public-read'}):
+def upload_file(file_name, year, bucket, object_name=None, ACL={'ACL' : 'public-read'}):
     """
     Upload a file to an S3 bucket
 
@@ -22,8 +24,7 @@ def upload_file(file_name, bucket, object_name=None, ACL={'ACL' : 'public-read'}
     """
 
     # If S3 object_name was not specified, use file_name
-    if object_name is None:
-        object_name = file_name
+    object_name = os.path.join(year, cf.SAVED_FILENAME)
 
     # Upload the file
     s3_client = boto3.client(
@@ -42,5 +43,7 @@ def upload_file(file_name, bucket, object_name=None, ACL={'ACL' : 'public-read'}
 if __name__ == '__main__':
     bucket_name = "darties"
 
-    file_name = cf.OUTPUTS_FILE
-    upload_file(file_name, bucket_name)
+    year = '2020'
+    file_name = os.path.join(cf.OUTPUTS_DIR, year, cf.SAVED_FILENAME)
+
+    upload_file(file_name, year, bucket_name, object_name)

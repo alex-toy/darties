@@ -1,14 +1,15 @@
 import logging
 import boto3
 from botocore.exceptions import ClientError
+import configparser
 
 import app.config.config as cf
 
 config = configparser.ConfigParser()
 config.read_file(open(cf.config_file))
 
-aws_access_key_id = config.get('default','aws_access_key_id')
-aws_secret_access_key = config.get('default','aws_secret_access_key')
+aws_access_key_id = config.get('AWS_ADMIN','KEY')
+aws_secret_access_key = config.get('AWS_ADMIN','SECRET')
 
 
 def create_bucket(bucket_name, region=None):

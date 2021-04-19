@@ -5,9 +5,7 @@ import os
 import re
 from datetime import datetime, timedelta, date
 import calendar
-from vacances_scolaires_france import SchoolHolidayDates
 from jours_feries_france import JoursFeries
-import holidays
 import matplotlib.pyplot as plt
 
 import app.config.config as cf
@@ -98,8 +96,9 @@ class BusinessData :
         plt.gca().set(title=title, xlabel=xlabel, ylabel=ylabel)
         plt.show()
 
-    def save_data(self) :
-        self.processed_data.to_csv(cf.OUTPUTS_DIR + '/' + cf.SAVED_FILENAME)
+
+    def save_data(self, year) :
+        self.processed_data.to_csv(cf.OUTPUTS_DIR + '/' + year + '/' + cf.SAVED_FILENAME)
 
 
 

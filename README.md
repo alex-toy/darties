@@ -1,4 +1,4 @@
-# Darties - Data Engineering project 6 -  Data Warehouse with AWS Redshift
+# Darties - Data Engineering project 6 -  Data Warehouse with AWS Redshift and Airflow
 
 By Alessio Rea
 
@@ -104,11 +104,6 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   │   └── upload_file.py
     │   ├── config
     │   │   ├── __init__.py
-    │   │   ├── __pycache__
-    │   │   │   ├── __init__.cpython-37.pyc
-    │   │   │   ├── __init__.cpython-38.pyc
-    │   │   │   ├── config.cpython-37.pyc
-    │   │   │   └── config.cpython-38.pyc
     │   │   └── config.py
     │   ├── domain
     │   │   ├── BusinessData.py
@@ -117,19 +112,14 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   │       └── BusinessData.cpython-38.pyc
     │   └── infrastructure
     │       ├── SalesData.py
-    │       ├── __init__.py
-    │       └── __pycache__
-    │           ├── SalesData.cpython-37.pyc
-    │           ├── SalesData.cpython-38.pyc
-    │           ├── __init__.cpython-37.pyc
-    │           └── __init__.cpython-38.pyc
+    │       └── __init__.py
     ├── data
     │   ├── 2020_HISTO.xlsx
     │   ├── 2021_BUDGET.xlsx
     │   ├── Janvier_2021.xlsx
     │   └── README.md
     ├── generals
-    │   └── Pre?\201sentation\ Projet\ Darties.pdf
+    │   └── Présentation\ Projet\ Darties.pdf
     ├── init
     ├── init.sh
     ├── output

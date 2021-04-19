@@ -9,6 +9,7 @@ You need to have Python 3.8.5 installed for this project
 # Context of the project
 
 Darties is a french firm that sells secialized products, such as home appliances, audiovisual and computer equipment. It is composed of three brands : *Darty*, *Leroy-Merlin* and *Boulanger*. it sells three families of products : *hi-fi systems*, *ovens* and video *recorders*.
+
 Currently, the situation is the following :
 - no information system,
 - Excel sheets are used as decision tools,
@@ -20,13 +21,12 @@ Currently, the situation is the following :
 
 
 The needs of the client are :
-- Objectif du tableau de bord :
-    - Suivi de l’activité
-        - Suivi de l’activité
-            - Pour les pays
-            - Pour les régions
-            - Pour les magasins
-    - Faciliter
+- To create a dashboard allowing to do the following :
+    - Activity monitoring :
+        - For the contries,
+        - For the regions,
+        - For the stores.
+    - Facilitate :
         - L’analyse de la situation
         - La prise de décision
     - Conformité des performances aux objectifs

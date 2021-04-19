@@ -8,11 +8,12 @@ You need to have Python 3.8.5 installed for this project
 
 # Context of the project
 
-Darties is a french firm that sales secialized products, such as 
+Darties is a french firm that sells secialized products, such as home appliances, audiovisual and computer equipment. It is composed of three brands : *Darty*, *Leroy-Merlin* and *Boulanger*. it sells three families of products : *hi-fi systems*, *ovens* and video *recorders*.
 
-Vend des produits spécialisés (électroménager, matériels informatiques et audiovisuels
 
-# General explanation 
+
+
+# Technical insights 
 
 ## 1. Purpose of the project
 

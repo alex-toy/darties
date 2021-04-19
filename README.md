@@ -8,7 +8,7 @@ You need to have Python 3.8.5 installed for this project
 
 # Context of the project
 
-Darties is a french firm that sells secialized products, such as home appliances, audiovisual and computer equipment. It is composed of three brands : *Darty*, *Leroy-Merlin* and *Boulanger*. it sells three families of products : *hi-fi systems*, *ovens* and video *recorders*.
+Darties is a french firm that sells secialized products, such as home appliances, audiovisual and computer equipment. It is composed of three brands : *Darty*, *Leroy-Merlin* and *Boulanger*. it sells three families of products : *hi-fi systems*, *ovens* and *video recorders*.
 
 Currently, the situation is the following :
 - no information system,
@@ -27,10 +27,15 @@ The needs of the client are :
         - For the regions,
         - For the stores.
     - Facilitate :
-        - L’analyse de la situation
-        - La prise de décision
-    - Conformité des performances aux objectifs
-    - Communiquer / Informer
+        - analysis of the situation,
+        - decision making,
+    - Conformity of performances with respect to the objectives,
+    - Communicate / Inform
+
+
+In order to do so we have :
+- 3 activity indicators  : Turnover, Margin rate, Number of sales,
+- 2 year visibility
 
 
 # Technical insights 

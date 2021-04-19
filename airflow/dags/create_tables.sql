@@ -1,29 +1,21 @@
 CREATE TABLE IF NOT EXISTS public.staging_sales (
 	City varchar(256),
 	Brand varchar(256),
-	
-	
-	
-	auth varchar(256),
-	firstname varchar(256),
-	gender varchar(256),
-	iteminsession int4,
-	lastname varchar(256),
-	length numeric(18,0),
-	"level" varchar(256),
-	location varchar(256),
-	"method" varchar(256),
-	page varchar(256),
-	registration numeric(18,0),
-	sessionid int4,
-	song varchar(256),
-	status int4,
-	ts int8,
-	useragent varchar(256),
-	userid int4
+	Ads numeric(18,0),
+	Region varchar(256),
+	Location varchar(256),
+	Nb_cash_register int4,
+	Population int4,
+	Blue_collar_rate numeric(18,0),
+	White_collar_rate numeric(18,0),
+	Jobless_rate numeric(18,0),
+	Lt_25_yo numeric(18,0),
+	25_35_yo numeric(18,0),
+	gt_35_yo numeric(18,0)
 );
 
-{"":"Darty","Ads":116.2,"Region":"Nord_Ouest","Location":"Centre_Ville","Nb_cash_register":15,"Population":1394451,"Blue_collar_rate":14.7,"White_collar_rate":2.7,"Jobless_rate":39.4,"Lt_25_yo":35.5,"25_35_yo":14.6,"gt_35_yo":49.9}
+
+
 
 CREATE TABLE IF NOT EXISTS public.staging_songs (
 	num_songs int4,

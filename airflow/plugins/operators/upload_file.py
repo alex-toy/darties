@@ -17,7 +17,8 @@ class UploadFileOperator(BaseOperator) :
                  S3_bucket="",
                  S3_key="",
                  year=0,
-                 file_name=""
+                 file_name="",
+                 path_to_file="",
                  *args, **kwargs):
 
         super(UploadFileOperator, self).__init__(*args, **kwargs)
@@ -26,6 +27,8 @@ class UploadFileOperator(BaseOperator) :
         self.S3_key = S3_key
         self.year = year
         self.file_name = file_name
+        self.path_to_file = path_to_file
+        
 
 
     def upload_file(self, aws_access_key_id, aws_secret_access_key, ACL={'ACL' : 'public-read'}):

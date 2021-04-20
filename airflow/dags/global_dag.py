@@ -13,6 +13,8 @@ from operators.upload_file import UploadFileOperator
 
 from helpers import SqlQueries
 
+OUTPUTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../output'))
+
 
 default_args = {
     'owner': 'udacity',
@@ -40,13 +42,19 @@ dag = DAG(
 
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
+year="2020"
+file_name="sales.json"
 upload_file = UploadFileOperator(
     task_id='upload_file',
     dag=dag,
     aws_credentials_id="aws_credentials",
     S3_bucket="darties",
     S3_key="sales_data",
-)
+    year=year,
+    file_name=file_name, 
+    path_to_file=os.path.join(OUTPUTS_DIR, year, file_name) #complete path to file
+) 
+
 
 create_tables_task = PostgresOperator(
     task_id="create_tables",

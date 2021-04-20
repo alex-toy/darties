@@ -7,7 +7,7 @@ REPO_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../'))
 DATA_DIR = os.path.join(REPO_DIR, 'data')
 FILE_DATA = os.path.join(DATA_DIR, NAME_FILE)
 
-OUTPUTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../output'))
+OUTPUTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../airflow/output'))
 SAVED_FILENAME = 'sales.json'
 OUTPUTS_FILE = os.path.join(OUTPUTS_DIR, SAVED_FILENAME)
 

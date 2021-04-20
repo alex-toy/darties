@@ -49,7 +49,7 @@ class UploadFileOperator(BaseOperator) :
             aws_secret_access_key=aws_secret_access_key,
         )
         try:
-            response = s3_client.upload_file(self.file_name, self.S3_bucket, object_name, ExtraArgs=ACL)
+            response = s3_client.upload_file(self.path_to_file, self.S3_bucket, object_name, ExtraArgs=ACL)
         except ClientError as e:
             logging.error(e)
             return False
@@ -58,7 +58,7 @@ class UploadFileOperator(BaseOperator) :
 
     def execute(self, context):
         credentials = AwsHook(self.aws_credentials_id).get_credentials()
-        self.log.info('Uploading file.')
+        self.log.info('Uploading file to S3.')
         self.upload_file(
             aws_access_key_id=credentials.access_key, 
             aws_secret_access_key=credentials.secret_key

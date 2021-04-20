@@ -15,3 +15,21 @@ python -m pip install -r requirements.txt
 docker run -d -p 8080:8080 -v /Users/alexei/docs/MIAGE/S4/D605/darties/airflow:/usr/local/airflow puckel/docker-airflow webserver
 
 
+
+
+AIRFLOW CONNECTIONS :
+
+    AWS :
+        Conn Id : aws_credentials
+        Conn Type : Amazon Web Services
+        Login : Access key ID from the IAM User credentials
+        Password : Secret access key from the IAM User credentials
+
+    REDSHIFT :
+        Conn Id : redshift
+        Conn Type : Postgres
+        Host : endpoint of your Redshift cluster, excluding the port at the end
+        Schema :  dev
+        Login : awsuser
+        Password :  password you created when launching your Redshift cluster.
+        Port : 5439

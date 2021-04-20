@@ -42,7 +42,7 @@ dag = DAG(
 
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
-year="2020"
+year="2021"
 file_name="sales.json"
 upload_file = UploadFileOperator(
     task_id='upload_file',

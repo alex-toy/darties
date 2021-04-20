@@ -1,0 +1,32 @@
+[2021-04-20 07:00:40,759] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: global_dag.Stage_events 2018-11-01T00:00:00+00:00 [queued]>
+[2021-04-20 07:00:40,791] {taskinstance.py:655} INFO - Dependencies all met for <TaskInstance: global_dag.Stage_events 2018-11-01T00:00:00+00:00 [queued]>
+[2021-04-20 07:00:40,796] {taskinstance.py:866} INFO - 
+--------------------------------------------------------------------------------
+[2021-04-20 07:00:40,798] {taskinstance.py:867} INFO - Starting attempt 1 of 4
+[2021-04-20 07:00:40,799] {taskinstance.py:868} INFO - 
+--------------------------------------------------------------------------------
+[2021-04-20 07:00:40,860] {taskinstance.py:887} INFO - Executing <Task(StageToRedshiftOperator): Stage_events> on 2018-11-01T00:00:00+00:00
+[2021-04-20 07:00:40,865] {standard_task_runner.py:53} INFO - Started process 3167 to run task
+[2021-04-20 07:00:40,982] {logging_mixin.py:112} INFO - Running %s on host %s <TaskInstance: global_dag.Stage_events 2018-11-01T00:00:00+00:00 [running]> 68b6afff5d68
+[2021-04-20 07:00:41,059] {stage_redshift.py:42} INFO - Clearing data from destination Rdeshift table.
+[2021-04-20 07:00:41,087] {taskinstance.py:1128} ERROR - The conn_id `redshift` isn't defined
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 966, in _run_raw_task
+    result = task_copy.execute(context=context)
+  File "/usr/local/airflow/plugins/operators/stage_redshift.py", line 43, in execute
+    redshift.run(f"DELETE FROM {self.table}")
+  File "/usr/local/lib/python3.7/site-packages/airflow/hooks/dbapi_hook.py", line 162, in run
+    with closing(self.get_conn()) as conn:
+  File "/usr/local/lib/python3.7/site-packages/airflow/hooks/postgres_hook.py", line 71, in get_conn
+    conn = self.get_connection(conn_id)
+  File "/usr/local/lib/python3.7/site-packages/airflow/hooks/base_hook.py", line 81, in get_connection
+    conn = random.choice(list(cls.get_connections(conn_id)))
+  File "/usr/local/lib/python3.7/site-packages/airflow/hooks/base_hook.py", line 76, in get_connections
+    conns = cls._get_connections_from_db(conn_id)
+  File "/usr/local/lib/python3.7/site-packages/airflow/utils/db.py", line 74, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.7/site-packages/airflow/hooks/base_hook.py", line 59, in _get_connections_from_db
+    "The conn_id `{0}` isn't defined".format(conn_id))
+airflow.exceptions.AirflowException: The conn_id `redshift` isn't defined
+[2021-04-20 07:00:41,094] {taskinstance.py:1151} INFO - Marking task as UP_FOR_RETRY
+[2021-04-20 07:00:50,718] {logging_mixin.py:112} INFO - [2021-04-20 07:00:50,718] {local_task_job.py:103} INFO - Task exited with return code 1

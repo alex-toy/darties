@@ -114,10 +114,6 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   ├── airflow.cfg
     │   ├── airflow.db
     │   ├── dags
-    │   │   ├── __pycache__
-    │   │   │   ├── global_dag.cpython-37.pyc
-    │   │   │   ├── initial_dag.cpython-37.pyc
-    │   │   │   └── udac_example_dag.cpython-36.pyc
     │   │   ├── create_tables.sql
     │   │   ├── global_dag.py
     │   │   └── initial_dag.py

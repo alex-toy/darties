@@ -12,6 +12,7 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 
 
+docker pull puckel/docker-airflow
 docker run -d -p 8080:8080 -v /Users/alexei/docs/MIAGE/S4/D605/darties/airflow:/usr/local/airflow puckel/docker-airflow webserver
 
 

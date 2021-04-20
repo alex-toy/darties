@@ -9,7 +9,6 @@ from operators.stage_redshift import StageToRedshiftOperator
 from operators.load_fact import LoadFactOperator
 from operators.load_dimension import LoadDimensionOperator
 from operators.data_quality import DataQualityOperator
-from operators.upload_file import UploadFileOperator
 
 from helpers import SqlQueries
 
@@ -42,18 +41,6 @@ dag = DAG(
 
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
-year="2021"
-file_name="sales.json"
-upload_file = UploadFileOperator(
-    task_id='upload_file',
-    dag=dag,
-    aws_credentials_id="aws_credentials",
-    S3_bucket="darties",
-    S3_key="sales_data",
-    year=year,
-    file_name=file_name, 
-    path_to_file=os.path.join(OUTPUTS_DIR, year, file_name) #complete path to file
-) 
 
 
 create_tables_task = PostgresOperator(
@@ -166,5 +153,5 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
 
-start_operator >> upload_file >>  end_operator
+start_operator >> create_tables_task >>  end_operator
 

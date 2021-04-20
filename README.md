@@ -4,7 +4,7 @@ By Alessio Rea
 
 ==============================
 
-You need to have Python 3.8.5 installed for this project
+You need to have Python 3.8.5 installed for this project. You also need to have docker in order to run **Airflow**.
 
 # Context of the project
 
@@ -219,6 +219,9 @@ You need to have an AWS account to run the complete analysis. You also need to c
 6. Run *etl_staging.py*, then *etl_tables.py*. In the query editor, run queries to ensure that tables *staging_events* and *staging_songs* and other fact and dimension tables are properly populated.
 7. Fill free to write queries in *test.py* to analyse the data.
 8. Once done, don't forget to *release_resources.py* !!!!
+
+
+9. Start **Docker** desktop and run the following command : *docker run -d -p 8080:8080 -v /Users/alexei/docs/MIAGE/S4/D605/darties/airflow:/usr/local/airflow puckel/docker-airflow webserver*
 
 
 --------

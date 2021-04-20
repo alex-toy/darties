@@ -35,7 +35,7 @@ class UploadFileOperator(BaseOperator) :
         """
         Upload a file to an S3 bucket
 
-        :param file_name: File to upload
+        :param path_to_file: complete path to file to upload
         :param bucket: Bucket to upload to
         :param object_name: S3 object name. If not specified then file_name is used
         :return: True if file was uploaded, else False
@@ -58,7 +58,7 @@ class UploadFileOperator(BaseOperator) :
 
     def execute(self, context):
         credentials = AwsHook(self.aws_credentials_id).get_credentials()
-        self.log.info('Uploading file to S3.')
+        self.log.info(f"Uploading file {self.path_to_file} to S3.")
         self.upload_file(
             aws_access_key_id=credentials.access_key, 
             aws_secret_access_key=credentials.secret_key

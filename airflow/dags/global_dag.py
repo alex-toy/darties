@@ -3,22 +3,15 @@ import os
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.postgres_operator import PostgresOperator
-from airflow.operators import (StageToRedshiftOperator, LoadFactOperator,
-                                LoadDimensionOperator, DataQualityOperator, PythonOperator)
+from airflow.operators.python_operator import PythonOperator
+
+from operators.stage_redshift import StageToRedshiftOperator
+from operators.load_fact import LoadFactOperator
+from operators.load_dimension import LoadDimensionOperator
+from operators.data_quality import DataQualityOperator
+from operators.upload_file import UploadFileOperator
+
 from helpers import SqlQueries
-import configparser
-from settings import config_file
-
-from app.application.upload_file import upload_cleaned_file
-
-config = configparser.ConfigParser()
-config.read_file(open(config_file))
-
-S3_BUCKET_LOG_DATA = config.get('S3','LOG_DATA')
-S3_BUCKET_SONG_DATA = config.get('S3','SONG_DATA')
-LOG_JSONPATH = config.get('S3','LOG_JSONPATH')
-
-S3_BUCKET_SALES_DATA = config.get('S3','SALES_DATA')
 
 
 default_args = {
@@ -47,10 +40,12 @@ dag = DAG(
 
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
-initial_cleaning = PythonOperator(
-    task_id='initial_cleaning',
-    python_callable=upload_cleaned_file,
+upload_file = UploadFileOperator(
+    task_id='upload_file',
     dag=dag,
+    aws_credentials_id="aws_credentials",
+    S3_bucket="darties",
+    S3_key="sales_data",
 )
 
 create_tables_task = PostgresOperator(
@@ -81,7 +76,7 @@ stage_events_to_redshift = StageToRedshiftOperator(
     S3_bucket="darties",
     S3_key="log_data",
     delimiter=",",
-    formatting=f"FORMAT AS json '{LOG_JSONPATH}'"
+    formatting="JSON 'auto'"
 )
 
 
@@ -163,5 +158,5 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
 
-start_operator >> initial_cleaning >>  end_operator
+start_operator >> upload_file >>  end_operator
 

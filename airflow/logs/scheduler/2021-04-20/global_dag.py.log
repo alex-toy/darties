@@ -33311,3 +33311,228 @@ TypeError: join() argument must be str or bytes, not 'int'
 [2021-04-20 07:21:47,542] {logging_mixin.py:112} INFO - [2021-04-20 07:21:47,542] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
 [2021-04-20 07:21:47,563] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
 [2021-04-20 07:21:47,636] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.100 seconds
+[2021-04-20 07:21:51,548] {scheduler_job.py:153} INFO - Started process (PID=528) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:21:51,553] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:21:51,554] {logging_mixin.py:112} INFO - [2021-04-20 07:21:51,554] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:21:51,575] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:21:51,636] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.088 seconds
+[2021-04-20 07:21:55,537] {scheduler_job.py:153} INFO - Started process (PID=530) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:21:55,541] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:21:55,543] {logging_mixin.py:112} INFO - [2021-04-20 07:21:55,542] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:21:55,561] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:21:55,632] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.095 seconds
+[2021-04-20 07:21:59,536] {scheduler_job.py:153} INFO - Started process (PID=532) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:21:59,541] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:21:59,542] {logging_mixin.py:112} INFO - [2021-04-20 07:21:59,542] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:21:59,569] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:21:59,645] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.109 seconds
+[2021-04-20 07:22:03,545] {scheduler_job.py:153} INFO - Started process (PID=534) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:03,549] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:03,551] {logging_mixin.py:112} INFO - [2021-04-20 07:22:03,551] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:03,570] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:03,636] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.091 seconds
+[2021-04-20 07:22:07,553] {scheduler_job.py:153} INFO - Started process (PID=540) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:07,559] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:07,561] {logging_mixin.py:112} INFO - [2021-04-20 07:22:07,561] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:07,586] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:07,648] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.095 seconds
+[2021-04-20 07:22:11,567] {scheduler_job.py:153} INFO - Started process (PID=542) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:11,574] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:11,576] {logging_mixin.py:112} INFO - [2021-04-20 07:22:11,576] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:11,601] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:11,677] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.110 seconds
+[2021-04-20 07:22:15,577] {scheduler_job.py:153} INFO - Started process (PID=544) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:15,582] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:15,583] {logging_mixin.py:112} INFO - [2021-04-20 07:22:15,583] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:15,602] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:15,670] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.094 seconds
+[2021-04-20 07:22:19,585] {scheduler_job.py:153} INFO - Started process (PID=546) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:19,590] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:19,591] {logging_mixin.py:112} INFO - [2021-04-20 07:22:19,591] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:19,612] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:19,682] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.098 seconds
+[2021-04-20 07:22:23,567] {scheduler_job.py:153} INFO - Started process (PID=548) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:23,572] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:23,574] {logging_mixin.py:112} INFO - [2021-04-20 07:22:23,573] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:23,600] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:23,668] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.100 seconds
+[2021-04-20 07:22:27,590] {scheduler_job.py:153} INFO - Started process (PID=550) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:27,594] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:27,596] {logging_mixin.py:112} INFO - [2021-04-20 07:22:27,595] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:27,615] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:27,686] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.096 seconds
+[2021-04-20 07:22:31,603] {scheduler_job.py:153} INFO - Started process (PID=552) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:31,607] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:31,609] {logging_mixin.py:112} INFO - [2021-04-20 07:22:31,609] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:31,627] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:31,686] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.083 seconds
+[2021-04-20 07:22:35,620] {scheduler_job.py:153} INFO - Started process (PID=554) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:35,624] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:35,626] {logging_mixin.py:112} INFO - [2021-04-20 07:22:35,626] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:35,651] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:35,723] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.104 seconds
+[2021-04-20 07:22:39,646] {scheduler_job.py:153} INFO - Started process (PID=560) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:39,650] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:39,652] {logging_mixin.py:112} INFO - [2021-04-20 07:22:39,652] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:39,673] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:39,742] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.097 seconds
+[2021-04-20 07:22:43,637] {scheduler_job.py:153} INFO - Started process (PID=562) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:43,642] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:43,643] {logging_mixin.py:112} INFO - [2021-04-20 07:22:43,643] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:43,666] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:43,734] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.097 seconds
+[2021-04-20 07:22:47,651] {scheduler_job.py:153} INFO - Started process (PID=564) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:47,656] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:47,657] {logging_mixin.py:112} INFO - [2021-04-20 07:22:47,657] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:47,686] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:47,764] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.113 seconds
+[2021-04-20 07:22:51,658] {scheduler_job.py:153} INFO - Started process (PID=566) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:51,663] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:51,664] {logging_mixin.py:112} INFO - [2021-04-20 07:22:51,664] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:51,686] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:51,746] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.088 seconds
+[2021-04-20 07:22:55,636] {scheduler_job.py:153} INFO - Started process (PID=568) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:55,641] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:55,642] {logging_mixin.py:112} INFO - [2021-04-20 07:22:55,642] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:55,662] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:55,726] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.090 seconds
+[2021-04-20 07:22:59,645] {scheduler_job.py:153} INFO - Started process (PID=570) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:59,650] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:22:59,651] {logging_mixin.py:112} INFO - [2021-04-20 07:22:59,651] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:59,690] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:22:59,766] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.121 seconds
+[2021-04-20 07:23:03,658] {scheduler_job.py:153} INFO - Started process (PID=572) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:03,663] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:03,664] {logging_mixin.py:112} INFO - [2021-04-20 07:23:03,664] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:03,685] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:03,755] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.097 seconds
+[2021-04-20 07:23:07,664] {scheduler_job.py:153} INFO - Started process (PID=574) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:07,668] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:07,669] {logging_mixin.py:112} INFO - [2021-04-20 07:23:07,669] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:07,688] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:07,761] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.098 seconds
+[2021-04-20 07:23:11,697] {scheduler_job.py:153} INFO - Started process (PID=580) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:11,703] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:11,706] {logging_mixin.py:112} INFO - [2021-04-20 07:23:11,706] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:11,727] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:11,795] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.098 seconds
+[2021-04-20 07:23:15,681] {scheduler_job.py:153} INFO - Started process (PID=582) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:15,686] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:15,687] {logging_mixin.py:112} INFO - [2021-04-20 07:23:15,687] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:15,706] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:15,774] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.093 seconds
+[2021-04-20 07:23:19,696] {scheduler_job.py:153} INFO - Started process (PID=584) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:19,700] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:19,702] {logging_mixin.py:112} INFO - [2021-04-20 07:23:19,702] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:19,720] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:19,783] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.087 seconds
+[2021-04-20 07:23:23,675] {scheduler_job.py:153} INFO - Started process (PID=586) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:23,683] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:23,685] {logging_mixin.py:112} INFO - [2021-04-20 07:23:23,685] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:23,714] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:23,786] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.112 seconds
+[2021-04-20 07:23:27,679] {scheduler_job.py:153} INFO - Started process (PID=588) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:27,684] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:27,686] {logging_mixin.py:112} INFO - [2021-04-20 07:23:27,686] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:27,705] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:27,775] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.095 seconds
+[2021-04-20 07:23:31,693] {scheduler_job.py:153} INFO - Started process (PID=590) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:31,697] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:31,699] {logging_mixin.py:112} INFO - [2021-04-20 07:23:31,699] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:31,718] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:31,783] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.091 seconds
+[2021-04-20 07:23:35,708] {scheduler_job.py:153} INFO - Started process (PID=592) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:35,713] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:35,715] {logging_mixin.py:112} INFO - [2021-04-20 07:23:35,715] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:35,739] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:35,802] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.094 seconds
+[2021-04-20 07:23:39,718] {scheduler_job.py:153} INFO - Started process (PID=594) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:39,722] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:39,724] {logging_mixin.py:112} INFO - [2021-04-20 07:23:39,723] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:39,746] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:39,810] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.092 seconds
+[2021-04-20 07:23:43,743] {scheduler_job.py:153} INFO - Started process (PID=600) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:43,749] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:43,751] {logging_mixin.py:112} INFO - [2021-04-20 07:23:43,750] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:43,773] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:43,850] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.108 seconds
+[2021-04-20 07:23:47,744] {scheduler_job.py:153} INFO - Started process (PID=602) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:47,753] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:47,755] {logging_mixin.py:112} INFO - [2021-04-20 07:23:47,754] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:47,783] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:47,865] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.122 seconds
+[2021-04-20 07:23:51,754] {scheduler_job.py:153} INFO - Started process (PID=604) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:51,758] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:51,760] {logging_mixin.py:112} INFO - [2021-04-20 07:23:51,759] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:51,778] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:51,837] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.083 seconds
+[2021-04-20 07:23:55,743] {scheduler_job.py:153} INFO - Started process (PID=606) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:55,748] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:55,750] {logging_mixin.py:112} INFO - [2021-04-20 07:23:55,749] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:55,770] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:55,842] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.099 seconds
+[2021-04-20 07:23:59,802] {scheduler_job.py:153} INFO - Started process (PID=608) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:59,806] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:23:59,807] {logging_mixin.py:112} INFO - [2021-04-20 07:23:59,806] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:59,825] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:23:59,894] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.093 seconds
+[2021-04-20 07:24:03,750] {scheduler_job.py:153} INFO - Started process (PID=610) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:03,754] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:03,756] {logging_mixin.py:112} INFO - [2021-04-20 07:24:03,756] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:03,774] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:03,837] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.087 seconds
+[2021-04-20 07:24:07,763] {scheduler_job.py:153} INFO - Started process (PID=612) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:07,768] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:07,769] {logging_mixin.py:112} INFO - [2021-04-20 07:24:07,769] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:07,795] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:07,872] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.109 seconds
+[2021-04-20 07:24:11,768] {scheduler_job.py:153} INFO - Started process (PID=614) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:11,773] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:11,774] {logging_mixin.py:112} INFO - [2021-04-20 07:24:11,774] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:11,806] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:11,867] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.099 seconds
+[2021-04-20 07:24:15,798] {scheduler_job.py:153} INFO - Started process (PID=620) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:15,805] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:15,807] {logging_mixin.py:112} INFO - [2021-04-20 07:24:15,806] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:15,835] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:15,925] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.127 seconds
+[2021-04-20 07:24:19,791] {scheduler_job.py:153} INFO - Started process (PID=622) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:19,799] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:19,801] {logging_mixin.py:112} INFO - [2021-04-20 07:24:19,801] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:19,833] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:19,921] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.130 seconds
+[2021-04-20 07:24:23,759] {scheduler_job.py:153} INFO - Started process (PID=624) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:23,769] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:23,771] {logging_mixin.py:112} INFO - [2021-04-20 07:24:23,771] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:23,796] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:23,863] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.104 seconds
+[2021-04-20 07:24:27,786] {scheduler_job.py:153} INFO - Started process (PID=626) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:27,790] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:27,795] {logging_mixin.py:112} INFO - [2021-04-20 07:24:27,794] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:27,818] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:27,884] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.098 seconds
+[2021-04-20 07:24:31,778] {scheduler_job.py:153} INFO - Started process (PID=628) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:31,783] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:31,785] {logging_mixin.py:112} INFO - [2021-04-20 07:24:31,785] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:31,807] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:31,883] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.105 seconds
+[2021-04-20 07:24:35,787] {scheduler_job.py:153} INFO - Started process (PID=630) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:35,793] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:35,795] {logging_mixin.py:112} INFO - [2021-04-20 07:24:35,795] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:35,820] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:35,885] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.098 seconds
+[2021-04-20 07:24:39,789] {scheduler_job.py:153} INFO - Started process (PID=632) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:39,793] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:39,795] {logging_mixin.py:112} INFO - [2021-04-20 07:24:39,794] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:39,814] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:39,876] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.087 seconds
+[2021-04-20 07:24:43,792] {scheduler_job.py:153} INFO - Started process (PID=635) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:43,797] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:43,798] {logging_mixin.py:112} INFO - [2021-04-20 07:24:43,798] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:43,818] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:43,899] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.107 seconds
+[2021-04-20 07:24:47,809] {scheduler_job.py:153} INFO - Started process (PID=640) to work on /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:47,822] {scheduler_job.py:1560} INFO - Processing file /usr/local/airflow/dags/global_dag.py for tasks to queue
+[2021-04-20 07:24:47,825] {logging_mixin.py:112} INFO - [2021-04-20 07:24:47,824] {dagbag.py:403} INFO - Filling up the DagBag from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:47,846] {scheduler_job.py:1572} INFO - DAG(s) dict_keys(['global_dag']) retrieved from /usr/local/airflow/dags/global_dag.py
+[2021-04-20 07:24:47,916] {scheduler_job.py:161} INFO - Processing /usr/local/airflow/dags/global_dag.py took 0.107 seconds

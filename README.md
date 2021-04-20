@@ -105,36 +105,105 @@ Once the data has been ETLed, you are free to take full benefit from the power o
 # Project Organization 
 ----------------------
 
+    ├── Dockerfile
     ├── README.md
     ├── activate.sh
     ├── airflow
+    │   ├── __init__.py
+    │   ├── airflow-webserver.pid
+    │   ├── airflow.cfg
+    │   ├── airflow.db
     │   ├── dags
     │   │   ├── __pycache__
+    │   │   │   ├── global_dag.cpython-37.pyc
+    │   │   │   ├── initial_dag.cpython-37.pyc
     │   │   │   └── udac_example_dag.cpython-36.pyc
     │   │   ├── create_tables.sql
-    │   │   └── global_dag.py
-    │   └── plugins
-    │       ├── __init__.py
-    │       ├── __pycache__
-    │       │   └── __init__.cpython-36.pyc
-    │       ├── helpers
-    │       │   ├── __init__.py
-    │       │   ├── __pycache__
-    │       │   │   ├── __init__.cpython-36.pyc
-    │       │   │   └── sql_queries.cpython-36.pyc
-    │       │   └── sql_queries.py
-    │       └── operators
-    │           ├── __init__.py
-    │           ├── __pycache__
-    │           │   ├── __init__.cpython-36.pyc
-    │           │   ├── data_quality.cpython-36.pyc
-    │           │   ├── load_dimension.cpython-36.pyc
-    │           │   ├── load_fact.cpython-36.pyc
-    │           │   └── stage_redshift.cpython-36.pyc
-    │           ├── data_quality.py
-    │           ├── load_dimension.py
-    │           ├── load_fact.py
-    │           └── stage_redshift.py
+    │   │   ├── global_dag.py
+    │   │   └── initial_dag.py
+    │   ├── logs
+    │   │   ├── dag_processor_manager
+    │   │   │   └── dag_processor_manager.log
+    │   │   ├── global_dag
+    │   │   │   ├── Begin_execution
+    │   │   │   │   └── 2018-11-01T00:00:00+00:00
+    │   │   │   │       └── 1.log
+    │   │   │   ├── Load_artist_dim_table
+    │   │   │   │   └── 2018-11-01T00:00:00+00:00
+    │   │   │   │       ├── 1.log
+    │   │   │   │       └── 2.log
+    │   │   │   ├── Load_song_dim_table
+    │   │   │   │   └── 2018-11-01T00:00:00+00:00
+    │   │   │   │       ├── 1.log
+    │   │   │   │       └── 2.log
+    │   │   │   ├── Load_songplays_fact_table
+    │   │   │   │   └── 2018-11-01T00:00:00+00:00
+    │   │   │   │       ├── 1.log
+    │   │   │   │       └── 2.log
+    │   │   │   ├── Load_time_dim_table
+    │   │   │   │   └── 2018-11-01T00:00:00+00:00
+    │   │   │   │       ├── 1.log
+    │   │   │   │       └── 2.log
+    │   │   │   ├── Load_user_dim_table
+    │   │   │   │   └── 2018-11-01T00:00:00+00:00
+    │   │   │   │       ├── 1.log
+    │   │   │   │       └── 2.log
+    │   │   │   ├── Stage_events
+    │   │   │   │   └── 2018-11-01T00:00:00+00:00
+    │   │   │   │       ├── 1.log
+    │   │   │   │       └── 2.log
+    │   │   │   ├── Stage_sales
+    │   │   │   │   └── 2018-11-01T00:00:00+00:00
+    │   │   │   │       ├── 1.log
+    │   │   │   │       └── 2.log
+    │   │   │   ├── Stage_songs
+    │   │   │   │   └── 2018-11-01T00:00:00+00:00
+    │   │   │   │       ├── 1.log
+    │   │   │   │       └── 2.log
+    │   │   │   ├── create_tables
+    │   │   │   │   └── 2018-11-01T00:00:00+00:00
+    │   │   │   │       ├── 1.log
+    │   │   │   │       └── 2.log
+    │   │   │   ├── run_quality_checks
+    │   │   │   │   └── 2018-11-01T00:00:00+00:00
+    │   │   │   │       ├── 1.log
+    │   │   │   │       └── 2.log
+    │   │   │   └── upload_file
+    │   │   │       └── 2018-11-01T00:00:00+00:00
+    │   │   │           ├── 1.log
+    │   │   │           └── 2.log
+    │   │   └── scheduler
+    │   │       ├── 2021-04-19
+    │   │       │   └── global_dag.py.log
+    │   │       ├── 2021-04-20
+    │   │       │   ├── global_dag.py.log
+    │   │       │   └── initial_dag.py.log
+    │   │       └── latest -> /usr/local/airflow/logs/scheduler/2021-04-20
+    │   ├── output
+    │   │   ├── 2021
+    │   │   │   └── sales.json
+    │   │   └── README.md
+    │   ├── plugins
+    │   │   ├── __init__.py
+    │   │   ├── __pycache__
+    │   │   │   ├── __init__.cpython-36.pyc
+    │   │   │   └── __init__.cpython-37.pyc
+    │   │   ├── helpers
+    │   │   │   ├── __init__.py
+    │   │   │   ├── __pycache__
+    │   │   │   │   ├── __init__.cpython-36.pyc
+    │   │   │   │   ├── __init__.cpython-37.pyc
+    │   │   │   │   ├── sql_queries.cpython-36.pyc
+    │   │   │   │   └── sql_queries.cpython-37.pyc
+    │   │   │   └── sql_queries.py
+    │   │   └── operators
+    │   │       ├── __init__.py
+    │   │       ├── data_quality.py
+    │   │       ├── load_dimension.py
+    │   │       ├── load_fact.py
+    │   │       ├── stage_redshift.py
+    │   │       └── upload_file.py
+    │   └── unittests.cfg
     ├── app
     │   ├── __init__.py
     │   ├── __pycache__
@@ -144,7 +213,6 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   │   ├── create_output_file.py
     │   │   └── upload_file.py
     │   ├── config
-    │   │   ├── __init__.py
     │   │   └── config.py
     │   ├── domain
     │   │   ├── BusinessData.py
@@ -153,14 +221,14 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   │       └── BusinessData.cpython-38.pyc
     │   └── infrastructure
     │       ├── SalesData.py
-    │       └── __init__.py
+    │       ├── __init__.py
     ├── data
     │   ├── 2020_HISTO.xlsx
     │   ├── 2021_BUDGET.xlsx
     │   ├── Janvier_2021.xlsx
     │   └── README.md
     ├── generals
-    │   └── Présentation\ Projet\ Darties.pdf
+    │   └── Pre?\201sentation\ Projet\ Darties.pdf
     ├── init
     ├── init.sh
     ├── output
@@ -169,6 +237,7 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   └── README.md
     ├── poetry.lock
     ├── pyproject.toml
+    ├── requirements.txt
     ├── utils
     │   ├── IaC_1.py
     │   ├── IaC_2.py

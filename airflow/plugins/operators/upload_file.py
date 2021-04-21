@@ -35,7 +35,6 @@ class UploadFileOperator(BaseOperator) :
     def upload_file(self, aws_access_key_id, aws_secret_access_key, ACL={'ACL' : 'public-read'}):
         """
         Upload a file to an S3 bucket
-
         :param path_to_file: complete path to file to upload
         :param bucket: Bucket to upload to
         :param object_name: S3 object name. If not specified then file_name is used
@@ -64,7 +63,3 @@ class UploadFileOperator(BaseOperator) :
             aws_access_key_id=credentials.access_key, 
             aws_secret_access_key=credentials.secret_key
         )
-
-
-
-

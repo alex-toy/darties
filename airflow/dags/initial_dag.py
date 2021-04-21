@@ -10,7 +10,7 @@ from operators.load_fact import LoadFactOperator
 from operators.load_dimension import LoadDimensionOperator
 from operators.data_quality import DataQualityOperator
 from operators.clean_file import CleanFileOperator
-#from operators.upload_file import UploadFileOperator
+from operators.upload_file import UploadFileOperator
 
 from helpers import SqlQueries
 
@@ -29,11 +29,11 @@ default_args = {
     'email_on_retry': False,
 }
 
-# DAG
+DAG
 dag = DAG(
     'initial_dag',
     default_args=default_args,
-    description='Load and transform data in Redshift with Airflow',
+    description='Clean data from original file and produces cleaned files before upload to S3.',
     schedule_interval='0 * * * *',
     catchup=True,
     max_active_runs=1
@@ -41,6 +41,7 @@ dag = DAG(
 
 
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
+
 
 
 repo_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data'))
@@ -51,30 +52,28 @@ clean_file = CleanFileOperator(
     dag=dag,
     repo_dir=repo_dir,
     file_name=file_name,
+    year=year
+)
+
+
+
+year = "2021"
+file_name = 'sales.json'
+output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../output'))
+upload_file = UploadFileOperator(
+    task_id='upload_file',
+    dag=dag,
+    aws_credentials_id="aws_credentials",
+    S3_bucket="darties",
+    S3_key="sales_data",
     year=year,
-    output_dir=output_dir
-) 
-
-
-# year="2021"
-# upload_file = UploadFileOperator(
-#     task_id='upload_file',
-#     dag=dag,
-#     aws_credentials_id="aws_credentials",
-#     S3_bucket="darties",
-#     S3_key="sales_data",
-#     year=year,
-#     file_name=file_name, 
-#     path_to_file=os.path.join(OUTPUTS_DIR, year, file_name) #complete path to file
-# ) 
+    file_name=file_name, 
+    path_to_file=os.path.join(output_dir, year, file_name) #complete path to file
+)
 
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-
-
-#start_operator >> clean_file  >> upload_file >>  end_operator
-
-start_operator >> clean_file  >>  end_operator
+start_operator >> clean_file  >> upload_file >>  end_operator
 

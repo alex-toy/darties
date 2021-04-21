@@ -13,8 +13,7 @@ class UdacityPlugin(AirflowPlugin):
         operators.LoadFactOperator,
         operators.LoadDimensionOperator,
         operators.DataQualityOperator,
-        operators.CleanFileOperator,
-        #operators.UploadFileOperator
+        operators.CleanFileOperator
     ]
     helpers = [
         helpers.SqlQueries

@@ -25,7 +25,7 @@ class SalesData :
         elif extension == '.parquet':
             return pd.read_parquet(path)
         elif extension == '.xlsx':
-            return pd.read_excel(path)
+            return pd.read_excel(path, engine='openpyxl')
         else:
             raise FileExistsError('Extension must be parquet or csv or xlsx.')
 

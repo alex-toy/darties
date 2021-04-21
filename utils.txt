@@ -15,6 +15,12 @@ python -m pip install -r requirements.txt
 docker pull puckel/docker-airflow
 docker run -d -p 8080:8080 -v /Users/alexei/docs/MIAGE/S4/D605/darties/airflow:/usr/local/airflow puckel/docker-airflow webserver
 
+inside docker container, run
+pip install xlrd>=1.0.0
+pip install openpyxl
+
+
+
 curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/test_dag
 
 

@@ -4,6 +4,7 @@ from airflow.utils.decorators import apply_defaults
 import os
 
 from infrastructure.SalesData import SalesData
+import config.config as cf
 
 
 class CleanFileOperator(BaseOperator) :
@@ -21,17 +22,18 @@ class CleanFileOperator(BaseOperator) :
         self.year = year
 
         self.output_dir = os.path.join(os.path.dirname(__file__), '../output', self.year)
-        self.cleaned_file_name = 'cleaned_' + self.file_name
-        self.path_to_data = os.path.join(self.repo_dir, self.year, self.cleaned_file_name)
+        self.path_to_data = os.path.join(self.repo_dir, self.file_name)
 
 
     def execute(self, context):
+        self.log.info(f"Retrieving file at  : {self.path_to_data}.")
         df = SalesData.df_from_path(path=self.path_to_data)
         sd = SalesData(df)
         
-        self.log.info(f"Creating file {self.cleaned_file_name} before upload to S3.")
+        cleaned_file_name = 'cleaned_' + self.file_name
+        self.log.info(f"Creating file {cleaned_file_name} before upload to S3.")
         self.log.info(f"Year : {self.year}.")
-        sd.cleaned_file(self.year, self.output_dir, self.cleaned_file_name)
+        sd.cleaned_file(self.year, self.output_dir, cleaned_file_name)
         
         
         

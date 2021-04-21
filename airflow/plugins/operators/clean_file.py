@@ -4,7 +4,7 @@ from airflow.utils.decorators import apply_defaults
 import os
 
 from infrastructure.SalesData import SalesData
-import config.config as cf
+
 
 
 class CleanFileOperator(BaseOperator) :
@@ -33,7 +33,7 @@ class CleanFileOperator(BaseOperator) :
         cleaned_file_name = 'cleaned_' + self.file_name
         self.log.info(f"Creating file {cleaned_file_name} before upload to S3.")
         self.log.info(f"Year : {self.year}.")
-        sd.cleaned_file(self.year, self.output_dir, cleaned_file_name)
+        sd.cleaned_file(self.year, cleaned_file_name)
         
         
         

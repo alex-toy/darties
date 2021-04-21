@@ -5,7 +5,7 @@ import os
 import re
 from datetime import datetime, timedelta, date
 
-
+import config.config as cf
 
 class SalesData :
     """
@@ -30,12 +30,13 @@ class SalesData :
             raise FileExistsError('Extension must be parquet or csv or xlsx.')
 
 
-    def cleaned_file(self, year, output_dir, saved_filename) :
+    def cleaned_file(self, year, saved_filename) :
         df = self._clean_data(df=self.df)
         outdir = os.path.join(cf.OUTPUTS_DIR, year)
         if not os.path.exists(outdir):
             os.mkdir(outdir)
-        df.to_json (os.path.join(output_dir, year, saved_filename), orient="records")
+
+        df.to_json (os.path.join(outdir, saved_filename), orient="records")
 
 
     def _clean_data(self, df) :
@@ -48,7 +49,7 @@ class SalesData :
         new_df = df.copy()
         new_df.rename(columns=cf.NEW_COL_NAMES, errors="raise", inplace=True)
         return new_df
-							
+			
 
     def __remove_accents__(self, df) :
         new_df = df.copy()

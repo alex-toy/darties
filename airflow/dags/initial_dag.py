@@ -58,7 +58,7 @@ clean_file = CleanFileOperator(
 
 
 year = "2021"
-file_name = 'sales.json'
+file_name = 'cleaned_2021_sales.json'
 output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../output'))
 upload_file = UploadFileOperator(
     task_id='upload_file',
@@ -75,5 +75,5 @@ upload_file = UploadFileOperator(
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> clean_file  >> upload_file >>  end_operator
+start_operator >> clean_file >> upload_file >> end_operator
 

@@ -36,7 +36,7 @@ class SalesData :
         if not os.path.exists(outdir):
             os.mkdir(outdir)
 
-        df.to_json (os.path.join(outdir, saved_filename), orient="records")
+        df.to_json(os.path.join(outdir, saved_filename), orient="records")
 
 
     def _clean_data(self, df) :

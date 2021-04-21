@@ -30,7 +30,7 @@ class CleanFileOperator(BaseOperator) :
         df = SalesData.df_from_path(path=self.path_to_data)
         sd = SalesData(df)
         
-        cleaned_file_name = 'cleaned_' + self.file_name
+        cleaned_file_name = 'cleaned_' + str(self.year) + '_sales.json'
         self.log.info(f"Creating file {cleaned_file_name} before upload to S3.")
         self.log.info(f"Year : {self.year}.")
         sd.cleaned_file(self.year, cleaned_file_name)

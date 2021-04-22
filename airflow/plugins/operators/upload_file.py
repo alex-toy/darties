@@ -16,6 +16,7 @@ class UploadFileOperator(BaseOperator) :
     def __init__(self,
                  aws_credentials_id="",
                  S3_bucket="",
+                 output_dir=None,
                  S3_key="",
                  year=0,
                  file_name="",
@@ -25,6 +26,7 @@ class UploadFileOperator(BaseOperator) :
         super(UploadFileOperator, self).__init__(*args, **kwargs)
         self.aws_credentials_id = aws_credentials_id
         self.S3_bucket = S3_bucket
+        self.output_dir = output_dir
         self.S3_key = S3_key
         self.year = year
         self.file_name = file_name
@@ -40,6 +42,8 @@ class UploadFileOperator(BaseOperator) :
         :param object_name: S3 object name. If not specified then file_name is used
         :return: True if file was uploaded, else False
         """
+        self.log.info(f"output_dir : {self.output_dir}")
+
         object_name = os.path.join(self.S3_key, self.year, self.file_name)
 
         # Upload the file
@@ -59,6 +63,10 @@ class UploadFileOperator(BaseOperator) :
     def execute(self, context):
         credentials = AwsHook(self.aws_credentials_id).get_credentials()
         self.log.info(f"Uploading file {self.path_to_file} to S3.")
+        
+        
+        
+        
         self.upload_file(
             aws_access_key_id=credentials.access_key, 
             aws_secret_access_key=credentials.secret_key

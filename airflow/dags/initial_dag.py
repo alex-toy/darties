@@ -43,18 +43,12 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-
-repo_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data'))
-file_name = '2020_HISTO.xlsx'
 year="2021"
 clean_file = CleanFileOperator(
     task_id='clean_file',
     dag=dag,
-    repo_dir=repo_dir,
-    file_name=file_name,
     year=year
 )
-
 
 
 year = "2021"
@@ -65,10 +59,11 @@ upload_file = UploadFileOperator(
     dag=dag,
     aws_credentials_id="aws_credentials",
     S3_bucket="darties",
+    output_dir=output_dir,
     S3_key="sales_data",
     year=year,
     file_name=file_name, 
-    path_to_file=os.path.join(output_dir, year, file_name) #complete path to file
+    path_to_file=os.path.join(output_dir, year, file_name)
 )
 
 

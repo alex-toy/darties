@@ -32,7 +32,7 @@ class SalesData :
             raise FileExistsError('Extension must be parquet or csv or xlsx.')
 
 
-    def cleaned_file(self, year, saved_filename) :
+    def cleaned_file(self, year) :
         df = self._clean_data()
         for sheet_name in self.sheet_names :
             outdir = os.path.join(cf.OUTPUTS_DIR, sheet_name, year)
@@ -66,7 +66,7 @@ class SalesData :
 if __name__ == '__main__':
     
     sd = SalesData(path=cf.FILE_DATA)
-    sd.cleaned_file(year='2021', saved_filename='sales.json')
+    sd.cleaned_file(year='2021')
 
 
 

@@ -4,6 +4,7 @@ import pandas as pd
 import os
 import re
 from datetime import datetime, timedelta, date
+from pathlib import Path
 
 import config.config as cf
 
@@ -12,36 +13,39 @@ class SalesData :
     cleans sales data from raw file
     """
 
-    def __init__(self, df) :
-        self.df = df
-
+    def __init__(self, path, sheet_name='darties') :
+        self.path = path
+        self.sheet_names = []
 
     
-    @classmethod
-    def df_from_path(cls, path=""):
-        name, extension = os.path.splitext(path)
+    def df_from_path(self):
+        name, extension = os.path.splitext(self.path)
         if extension == '.csv':
             return pd.read_csv(path)
         elif extension == '.parquet':
             return pd.read_parquet(path)
         elif extension == '.xlsx':
-            return pd.read_excel(path, engine='openpyxl')
+            df = pd.read_excel(self.path, sheet_name=None, engine='openpyxl')
+            self.sheet_names = df.keys()
+            return df
         else:
             raise FileExistsError('Extension must be parquet or csv or xlsx.')
 
 
-    def cleaned_file(self, year, saved_filename) :
-        df = self._clean_data(df=self.df)
-        outdir = os.path.join(cf.OUTPUTS_DIR, year)
-        if not os.path.exists(outdir):
-            os.mkdir(outdir)
+    def cleaned_file(self, year) :
+        df = self._clean_data()
+        for sheet_name in self.sheet_names :
+            outdir = os.path.join(cf.OUTPUTS_DIR, sheet_name, year)
+            path = Path(outdir)
+            path.mkdir(parents=True, exist_ok=True)
+            saved_filename = f"{sheet_name}_{year}_sales.json"
+            df[sheet_name].to_json(os.path.join(outdir, saved_filename), orient="records")
 
-        df.to_json(os.path.join(outdir, saved_filename), orient="records")
 
-
-    def _clean_data(self, df) :
-        df = self.__change_col_name(df=df)
-        df = self.__remove_accents__(df=df)
+    def _clean_data(self) :
+        df = self.df_from_path()
+        #df = self.__change_col_name(df=df)
+        #df = self.__remove_accents__(df=df)
         return df
 
 
@@ -49,7 +53,7 @@ class SalesData :
         new_df = df.copy()
         new_df.rename(columns=cf.NEW_COL_NAMES, errors="raise", inplace=True)
         return new_df
-			
+							
 
     def __remove_accents__(self, df) :
         new_df = df.copy()
@@ -60,9 +64,9 @@ class SalesData :
 
 
 if __name__ == '__main__':
-    df = SalesData.df_from_path(path=cf.FILE_DATA)
-    sd = SalesData(df)
-    sd.cleaned_file('2021')
+    
+    sd = SalesData(path=cf.FILE_DATA)
+    sd.cleaned_file(year='2021')
 
 
 

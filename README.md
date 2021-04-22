@@ -92,7 +92,7 @@ Here is how the data is modelled according to a star schema :
     - dim5 - description to be done. Features : to be done
 
 
-<img src="star_schema" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+<img src="star_schema.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 
 

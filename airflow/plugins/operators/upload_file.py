@@ -6,6 +6,7 @@ from airflow.utils.decorators import apply_defaults
 import logging
 import boto3
 import os
+import glob
 from botocore.exceptions import ClientError
 
 
@@ -46,7 +47,6 @@ class UploadFileOperator(BaseOperator) :
 
         object_name = os.path.join(self.S3_key, self.year, self.file_name)
 
-        # Upload the file
         s3_client = boto3.client(
             's3',
             aws_access_key_id=aws_access_key_id,
@@ -60,14 +60,16 @@ class UploadFileOperator(BaseOperator) :
         return True
 
 
+
     def execute(self, context):
-        credentials = AwsHook(self.aws_credentials_id).get_credentials()
-        self.log.info(f"Uploading file {self.path_to_file} to S3.")
+        #credentials = AwsHook(self.aws_credentials_id).get_credentials()
         
+        self.log.info(f"output_dir : {self.output_dir}")
+        for name in glob.glob(self.output_dir + '/**/*.json', recursive=True):
+            self.log.info(f"name : {name}")
         
-        
-        
-        self.upload_file(
-            aws_access_key_id=credentials.access_key, 
-            aws_secret_access_key=credentials.secret_key
-        )
+        # self.log.info(f"Uploading file {self.path_to_file} to S3.")
+        # self.upload_file(
+        #     aws_access_key_id=credentials.access_key, 
+        #     aws_secret_access_key=credentials.secret_key
+        # )

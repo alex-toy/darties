@@ -50,17 +50,22 @@ create_tables = PostgresOperator(
     postgres_conn_id="redshift"
 )
 
-stage_sales_to_redshift = StageToRedshiftOperator(
-    task_id='Stage_sales',
+stage_CA_Fours_to_redshift = StageToRedshiftOperator(
+    task_id='stage_sales_to_redshift',
     dag=dag,
     redshift_conn_id="redshift",
     aws_credentials_id="aws_credentials",
-    table="staging_sales",
+    table="staging_CA_Fours",
     S3_bucket="darties",
-    S3_key="sales_data",
+    S3_key="CA_Fours",
     delimiter=",",
     formatting="JSON 'auto'"
 )
+
+
+
+
+
 
 stage_events_to_redshift = StageToRedshiftOperator(
     task_id='Stage_events',
@@ -153,5 +158,5 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
 
-start_operator >> create_tables >>  end_operator
+start_operator >> stage_sales_to_redshift >>  end_operator
 

@@ -56,14 +56,17 @@ The purpose of the project is to build an **ETL pipeline** that extracts data fr
 We will also introduce automation and monitoring to a data warehouse ETL pipelines using **Apache Airflow**. **Airflow** allows to create high grade data pipelines that are dynamic and built from reusable tasks, that can be monitored, and allow easy backfills. It also allows to monitor data quality which plays a big part when analyses are executed on top the data warehouse, in that it allows to run tests against our datasets after the ETL steps have been executed to catch any discrepancies in the datasets.
 
 
+## 2. Initial data
+The initial data is in excel files.
 
-## 2. Database schema design and ETL pipeline
 
-In this project, initial dataset comes from one json file :
+## 3. Database schema design and ETL pipeline
+
+In this project, the initial data is first cleaned and then pushed to a AWS S3 bucket before processing. Following is the structure of the data you will find in the S3 bucket.
 
 -  Sales Dataset
     
-    Data is organized by category and year. Here is a filepath to one file that could be found in such a dataset :
+    Sales data is organized by category and year. Here is a filepath to three files that could be found in such a dataset :
 
     - Turnover (CA) for ovens (Fours) in 2020
 
@@ -127,7 +130,7 @@ Here is how the data is modelled according to a star schema :
 
 
 
-## 3. Example queries and results for sales analysis
+## 4. Example queries and results for sales analysis
 
 Once the data has been ETLed, you are free to take full benefit from the power of star modelling and make business driven queries like :
 

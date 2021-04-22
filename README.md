@@ -65,6 +65,37 @@ In this project, initial dataset comes from one json file :
     
     Data is organized by category and year. Here is a filepath to one file that could be found in such a dataset :
 
+    - Turnover (CA) for ovens (Fours) in 2020
+
+    ```
+    CA_Fours/2020/CA_Fours_2020_sales.json
+    ```
+    
+    - Gross Margin (MB) for Hifi in 2020
+
+    ```
+    MB_Hifi/2020/MB_Hifi_2020_sales.json
+    ```
+    
+    - Sales (V) for recorders (Magneto) in 2020
+
+    ```
+    V_Magneto/2020/V_Magneto_2020_sales.json
+    ```
+
+    Here is an example of what a single sale object may look like :
+
+    ```
+    {"Villes":"Alencon","O_Janvier":20.3,"R_Janvier":33.8,"O_Fevrier":33.8,"R_Fevrier":40.5,"O_Mars":40.5,"R_Mars":27.0,"O_Avril":13.5,"R_Avril":33.8,"O_Mai":418.6,"R_Mai":499.7,"O_Juin":276.8,"R_Juin":472.7,"O_Juillet":189.1,"R_Juillet":222.8,"O_Aout":276.8,"R_Aout":182.3,"O_Septembre":182.3,"R_Septembre":114.8,"O_Octobre":216.1,"R_Octobre":384.9,"O_Novembre":270.1,"R_Novembre":168.8,"O_Decembre":445.7,"R_Decembre":465.9}
+    ```
+
+    Those files contain the following features : 'City', and then for every month, previsional and real sales.
+
+
+-  General information Dataset
+    
+    Data is organized by category and year. Here is a filepath to one file that could be found in such a dataset :
+
     ```
     sales_data/2020/sales.json
     ```

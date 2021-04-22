@@ -337,3 +337,59 @@ CREATE TABLE IF NOT EXISTS public.magasin (
 	id_enseigne int4,
 	CONSTRAINT magasin_pkey PRIMARY KEY (id_magasin)
 );
+
+
+
+CREATE TABLE IF NOT EXISTS public.enseigne (
+	id_enseigne int4 NOT NULL,
+	lib_enseigne varchar(30),
+	CONSTRAINT enseigne_pkey PRIMARY KEY (id_enseigne)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS public.parametre (
+	cpt_mois int4,
+	cpt_erreur int4
+);
+
+
+
+CREATE TABLE IF NOT EXISTS public.cours (
+	id_devise int4 NOT NULL,
+	mois varchar(2),
+	annee int4,
+	cours numeric(18,0),
+	CONSTRAINT cours_pkey PRIMARY KEY (id_devise)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS public.devise (
+	id_devise int4 NOT NULL,
+	lib_devise varchar(20),
+	CONSTRAINT devise_pkey PRIMARY KEY (id_devise)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS public.utilisateur (
+	id_utilisateur int4 NOT NULL,
+	nom varchar(15),
+	prenom varchar(15),
+	_login varchar(15),
+	mdp varchar(25),
+	mail varchar(30),
+	id_profil int4 NOT NULL,
+	CONSTRAINT utilisateur_pkey PRIMARY KEY (id_utilisateur)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS public.profil (
+	id_profil int4 NOT NULL,
+	lib_profil varchar(20),
+	type_zone int4,
+	id_zone int4,
+	CONSTRAINT profil_pkey PRIMARY KEY (id_profil)
+);

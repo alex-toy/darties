@@ -306,7 +306,34 @@ CREATE TABLE IF NOT EXISTS public.ville (
 	lib_reg_anc varchar(30),
 	lib_reg_nouv varchar(30),
 	lib_reg_com varchar(30)
-	CONSTRAINT sales_ville PRIMARY KEY (id_ville)
+	CONSTRAINT ville_pkey PRIMARY KEY (id_ville)
 );
 
 
+
+CREATE TABLE IF NOT EXISTS public.famille_produit (
+	id_famille_produit int4 NOT NULL,
+	lib_famille_produit varchar(30),
+	CONSTRAINT famille_produit_pkey PRIMARY KEY (id_famille_produit)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS public.temps (
+	id_temps int4 NOT NULL,
+	annee int4,
+	semestre int4,
+	trimestre int4,
+	mois varchar(2),
+	lib_mois varchar(9),
+	CONSTRAINT temps_pkey PRIMARY KEY (id_temps)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS public.magasin (
+	id_magasin int4 NOT NULL,
+	lib_id_magasin varchar(30),
+	id_enseigne int4,
+	CONSTRAINT magasin_pkey PRIMARY KEY (id_magasin)
+);

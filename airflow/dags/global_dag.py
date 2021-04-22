@@ -12,7 +12,7 @@ from operators.data_quality import DataQualityOperator
 
 from helpers import SqlQueries
 
-OUTPUTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../output'))
+#OUTPUTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../output'))
 
 
 default_args = {
@@ -43,7 +43,7 @@ start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
 
-create_tables_task = PostgresOperator(
+create_tables = PostgresOperator(
     task_id="create_tables",
     dag=dag,
     sql='create_tables.sql',
@@ -153,5 +153,5 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
 
-start_operator >> create_tables_task >>  end_operator
+start_operator >> create_tables >>  end_operator
 

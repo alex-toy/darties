@@ -1,88 +1,279 @@
-CREATE TABLE IF NOT EXISTS public.staging_sales (
-	City varchar(256),
-	Brand varchar(256),
-	Ads numeric(18,0),
-	Region varchar(256),
-	Location varchar(256),
-	Nb_cash_register int4,
+CREATE TABLE IF NOT EXISTS public.staging_darties (
+	Villes varchar(256),
+	Enseignes varchar(256),
+	Publicité numeric(18,0),
+	REGION varchar(256),
+	Emplacemen varchar(256),
+	Nb_Caisses int4,
 	Population int4,
-	Blue_collar_rate numeric(18,0),
-	White_collar_rate numeric(18,0),
-	Jobless_rate numeric(18,0),
-	Lt_25_yo numeric(18,0),
-	25_35_yo numeric(18,0),
-	gt_35_yo numeric(18,0)
+	Taux_Ouvri numeric(18,0),
+	Taux_Cadre numeric(18,0),
+	Taux_Inact numeric(18,0),
+	Moins_25an numeric(18,0),
+	Les_25_35a numeric(18,0),
+	Plus_35ans numeric(18,0)
 );
 
 
-
-
-CREATE TABLE IF NOT EXISTS public.staging_songs (
-	num_songs int4,
-	artist_id varchar(256),
-	artist_name varchar(256),
-	artist_latitude numeric(18,0),
-	artist_longitude numeric(18,0),
-	artist_location varchar(256),
-	song_id varchar(256),
-	title varchar(256),
-	duration numeric(18,0),
-	"year" int4
+CREATE TABLE IF NOT EXISTS public.staging_V_Fours (
+	Villes varchar(256),
+	O_Janvier numeric(18,0),
+	R_Janvier numeric(18,0),
+	O_Fevrier numeric(18,0),
+	R_Fevrier numeric(18,0),
+	O_Mars numeric(18,0),
+	R_Mars numeric(18,0),
+	O_Avril numeric(18,0),
+	R_Avril numeric(18,0),
+	O_Mai numeric(18,0),
+	R_Mai numeric(18,0),
+	O_Juin numeric(18,0),
+	R_Juin numeric(18,0),
+	O_Juillet numeric(18,0),
+	R_Juillet numeric(18,0),
+	O_Aout numeric(18,0),
+	R_Aout numeric(18,0),
+	O_Septembre numeric(18,0),
+	R_Septembre numeric(18,0),
+	O_Octobre numeric(18,0),
+	R_Octobre numeric(18,0),
+	O_Novembre numeric(18,0),
+	R_Novembre numeric(18,0),
+	O_Decembre numeric(18,0),
+	R_Decembre numeric(18,0)
 );
 
 
-CREATE TABLE IF NOT EXISTS public.artists (
-	artistid varchar(256) NOT NULL,
-	name varchar(256),
-	location varchar(256),
-	lattitude numeric(18,0),
-	longitude numeric(18,0)
-);
-
-CREATE TABLE IF NOT EXISTS public.songplays (
-	playid varchar(32) NOT NULL,
-	start_time timestamp NOT NULL,
-	userid int4 NOT NULL,
-	"level" varchar(256),
-	songid varchar(256),
-	artistid varchar(256),
-	sessionid int4,
-	location varchar(256),
-	user_agent varchar(256),
-	CONSTRAINT songplays_pkey PRIMARY KEY (playid)
-);
-
-CREATE TABLE IF NOT EXISTS public.songs (
-	songid varchar(256) NOT NULL,
-	title varchar(256),
-	artistid varchar(256),
-	"year" int4,
-	duration numeric(18,0),
-	CONSTRAINT songs_pkey PRIMARY KEY (songid)
-);
-
-
-CREATE TABLE IF NOT EXISTS public."time" (
-	start_time timestamp NOT NULL,
-	"hour" int4,
-	"day" int4,
-	week int4,
-	"month" varchar(256),
-	"year" int4,
-	weekday varchar(256),
-	CONSTRAINT time_pkey PRIMARY KEY (start_time)
-);
-
-CREATE TABLE IF NOT EXISTS public.users (
-	userid int4 NOT NULL,
-	first_name varchar(256),
-	last_name varchar(256),
-	gender varchar(256),
-	"level" varchar(256),
-	CONSTRAINT users_pkey PRIMARY KEY (userid)
+CREATE TABLE IF NOT EXISTS public.staging_V_Hifi (
+	Villes varchar(256),
+	O_Janvier numeric(18,0),
+	R_Janvier numeric(18,0),
+	O_Fevrier numeric(18,0),
+	R_Fevrier numeric(18,0),
+	O_Mars numeric(18,0),
+	R_Mars numeric(18,0),
+	O_Avril numeric(18,0),
+	R_Avril numeric(18,0),
+	O_Mai numeric(18,0),
+	R_Mai numeric(18,0),
+	O_Juin numeric(18,0),
+	R_Juin numeric(18,0),
+	O_Juillet numeric(18,0),
+	R_Juillet numeric(18,0),
+	O_Aout numeric(18,0),
+	R_Aout numeric(18,0),
+	O_Septembre numeric(18,0),
+	R_Septembre numeric(18,0),
+	O_Octobre numeric(18,0),
+	R_Octobre numeric(18,0),
+	O_Novembre numeric(18,0),
+	R_Novembre numeric(18,0),
+	O_Decembre numeric(18,0),
+	R_Decembre numeric(18,0)
 );
 
 
+CREATE TABLE IF NOT EXISTS public.staging_V_Magneto (
+	Villes varchar(256),
+	O_Janvier numeric(18,0),
+	R_Janvier numeric(18,0),
+	O_Fevrier numeric(18,0),
+	R_Fevrier numeric(18,0),
+	O_Mars numeric(18,0),
+	R_Mars numeric(18,0),
+	O_Avril numeric(18,0),
+	R_Avril numeric(18,0),
+	O_Mai numeric(18,0),
+	R_Mai numeric(18,0),
+	O_Juin numeric(18,0),
+	R_Juin numeric(18,0),
+	O_Juillet numeric(18,0),
+	R_Juillet numeric(18,0),
+	O_Aout numeric(18,0),
+	R_Aout numeric(18,0),
+	O_Septembre numeric(18,0),
+	R_Septembre numeric(18,0),
+	O_Octobre numeric(18,0),
+	R_Octobre numeric(18,0),
+	O_Novembre numeric(18,0),
+	R_Novembre numeric(18,0),
+	O_Decembre numeric(18,0),
+	R_Decembre numeric(18,0)
+);
+
+
+CREATE TABLE IF NOT EXISTS public.staging_CA_Fours (
+	Villes varchar(256),
+	O_Janvier numeric(18,0),
+	R_Janvier numeric(18,0),
+	O_Fevrier numeric(18,0),
+	R_Fevrier numeric(18,0),
+	O_Mars numeric(18,0),
+	R_Mars numeric(18,0),
+	O_Avril numeric(18,0),
+	R_Avril numeric(18,0),
+	O_Mai numeric(18,0),
+	R_Mai numeric(18,0),
+	O_Juin numeric(18,0),
+	R_Juin numeric(18,0),
+	O_Juillet numeric(18,0),
+	R_Juillet numeric(18,0),
+	O_Aout numeric(18,0),
+	R_Aout numeric(18,0),
+	O_Septembre numeric(18,0),
+	R_Septembre numeric(18,0),
+	O_Octobre numeric(18,0),
+	R_Octobre numeric(18,0),
+	O_Novembre numeric(18,0),
+	R_Novembre numeric(18,0),
+	O_Decembre numeric(18,0),
+	R_Decembre numeric(18,0)
+);
+
+
+CREATE TABLE IF NOT EXISTS public.staging_CA_Hifi (
+	Villes varchar(256),
+	O_Janvier numeric(18,0),
+	R_Janvier numeric(18,0),
+	O_Fevrier numeric(18,0),
+	R_Fevrier numeric(18,0),
+	O_Mars numeric(18,0),
+	R_Mars numeric(18,0),
+	O_Avril numeric(18,0),
+	R_Avril numeric(18,0),
+	O_Mai numeric(18,0),
+	R_Mai numeric(18,0),
+	O_Juin numeric(18,0),
+	R_Juin numeric(18,0),
+	O_Juillet numeric(18,0),
+	R_Juillet numeric(18,0),
+	O_Aout numeric(18,0),
+	R_Aout numeric(18,0),
+	O_Septembre numeric(18,0),
+	R_Septembre numeric(18,0),
+	O_Octobre numeric(18,0),
+	R_Octobre numeric(18,0),
+	O_Novembre numeric(18,0),
+	R_Novembre numeric(18,0),
+	O_Decembre numeric(18,0),
+	R_Decembre numeric(18,0)
+);
+
+
+CREATE TABLE IF NOT EXISTS public.staging_CA_Magneto (
+	Villes varchar(256),
+	O_Janvier numeric(18,0),
+	R_Janvier numeric(18,0),
+	O_Fevrier numeric(18,0),
+	R_Fevrier numeric(18,0),
+	O_Mars numeric(18,0),
+	R_Mars numeric(18,0),
+	O_Avril numeric(18,0),
+	R_Avril numeric(18,0),
+	O_Mai numeric(18,0),
+	R_Mai numeric(18,0),
+	O_Juin numeric(18,0),
+	R_Juin numeric(18,0),
+	O_Juillet numeric(18,0),
+	R_Juillet numeric(18,0),
+	O_Aout numeric(18,0),
+	R_Aout numeric(18,0),
+	O_Septembre numeric(18,0),
+	R_Septembre numeric(18,0),
+	O_Octobre numeric(18,0),
+	R_Octobre numeric(18,0),
+	O_Novembre numeric(18,0),
+	R_Novembre numeric(18,0),
+	O_Decembre numeric(18,0),
+	R_Decembre numeric(18,0)
+);
+
+
+CREATE TABLE IF NOT EXISTS public.staging_MB_Fours (
+	Villes varchar(256),
+	O_Janvier numeric(18,0),
+	R_Janvier numeric(18,0),
+	O_Fevrier numeric(18,0),
+	R_Fevrier numeric(18,0),
+	O_Mars numeric(18,0),
+	R_Mars numeric(18,0),
+	O_Avril numeric(18,0),
+	R_Avril numeric(18,0),
+	O_Mai numeric(18,0),
+	R_Mai numeric(18,0),
+	O_Juin numeric(18,0),
+	R_Juin numeric(18,0),
+	O_Juillet numeric(18,0),
+	R_Juillet numeric(18,0),
+	O_Aout numeric(18,0),
+	R_Aout numeric(18,0),
+	O_Septembre numeric(18,0),
+	R_Septembre numeric(18,0),
+	O_Octobre numeric(18,0),
+	R_Octobre numeric(18,0),
+	O_Novembre numeric(18,0),
+	R_Novembre numeric(18,0),
+	O_Decembre numeric(18,0),
+	R_Decembre numeric(18,0)
+);
+
+
+CREATE TABLE IF NOT EXISTS public.staging_MB_Hifi (
+	Villes varchar(256),
+	O_Janvier numeric(18,0),
+	R_Janvier numeric(18,0),
+	O_Fevrier numeric(18,0),
+	R_Fevrier numeric(18,0),
+	O_Mars numeric(18,0),
+	R_Mars numeric(18,0),
+	O_Avril numeric(18,0),
+	R_Avril numeric(18,0),
+	O_Mai numeric(18,0),
+	R_Mai numeric(18,0),
+	O_Juin numeric(18,0),
+	R_Juin numeric(18,0),
+	O_Juillet numeric(18,0),
+	R_Juillet numeric(18,0),
+	O_Aout numeric(18,0),
+	R_Aout numeric(18,0),
+	O_Septembre numeric(18,0),
+	R_Septembre numeric(18,0),
+	O_Octobre numeric(18,0),
+	R_Octobre numeric(18,0),
+	O_Novembre numeric(18,0),
+	R_Novembre numeric(18,0),
+	O_Decembre numeric(18,0),
+	R_Decembre numeric(18,0)
+);
+
+
+CREATE TABLE IF NOT EXISTS public.staging_MB_Magneto (
+	Villes varchar(256),
+	O_Janvier numeric(18,0),
+	R_Janvier numeric(18,0),
+	O_Fevrier numeric(18,0),
+	R_Fevrier numeric(18,0),
+	O_Mars numeric(18,0),
+	R_Mars numeric(18,0),
+	O_Avril numeric(18,0),
+	R_Avril numeric(18,0),
+	O_Mai numeric(18,0),
+	R_Mai numeric(18,0),
+	O_Juin numeric(18,0),
+	R_Juin numeric(18,0),
+	O_Juillet numeric(18,0),
+	R_Juillet numeric(18,0),
+	O_Aout numeric(18,0),
+	R_Aout numeric(18,0),
+	O_Septembre numeric(18,0),
+	R_Septembre numeric(18,0),
+	O_Octobre numeric(18,0),
+	R_Octobre numeric(18,0),
+	O_Novembre numeric(18,0),
+	R_Novembre numeric(18,0),
+	O_Decembre numeric(18,0),
+	R_Decembre numeric(18,0)
+);
 
 
 

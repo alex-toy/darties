@@ -869,6 +869,14 @@ qa = ["flake8 (3.8.3)", "mypy (0.782)"]
 testing = ["docopt", "pytest (<6.0.0)"]
 
 [[package]]
+name = "pathlib"
+version = "1.0.1"
+description = "Object-oriented filesystem paths"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "patsy"
 version = "0.5.1"
 description = "A Python package for describing statistical models and for building design matrices."
@@ -1552,7 +1560,7 @@ test = ["pytest", "pytest-cov"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "ca568881440c65c3006153df753125e672b1b10eb5aa42f7f92e6bb43b2dccec"
+content-hash = "e5498258d306a9835dba1275474013143d65fcd0c9bbee480257d511caf9e584"
 
 [metadata.files]
 appnope = [
@@ -2028,6 +2036,9 @@ pandocfilters = [
 parso = [
     {file = "parso-0.8.2-py2.py3-none-any.whl", hash = "sha256:a8c4922db71e4fdb90e0d0bc6e50f9b273d3397925e5e60a717e719201778d22"},
     {file = "parso-0.8.2.tar.gz", hash = "sha256:12b83492c6239ce32ff5eed6d3639d6a536170723c6f3f1506869f1ace413398"},
+]
+pathlib = [
+    {file = "pathlib-1.0.1.tar.gz", hash = "sha256:6940718dfc3eff4258203ad5021090933e5c04707d5ca8cc9e73c94a7894ea9f"},
 ]
 patsy = [
     {file = "patsy-0.5.1-py2.py3-none-any.whl", hash = "sha256:5465be1c0e670c3a965355ec09e9a502bf2c4cbe4875e8528b0221190a8a5d40"},

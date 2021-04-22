@@ -15,9 +15,12 @@ python -m pip install -r requirements.txt
 docker pull puckel/docker-airflow
 docker run -d -p 8080:8080 -v /Users/alexei/docs/MIAGE/S4/D605/darties/airflow:/usr/local/airflow puckel/docker-airflow webserver
 
-inside docker container, run
+#inside docker container, run :
 pip install xlrd>=1.0.0
 pip install openpyxl
+
+docker build -t webserver .
+docker run -d webserver
 
 
 

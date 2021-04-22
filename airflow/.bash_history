@@ -7,3 +7,4 @@ pip list
 pip install xlrd>=1.0.0
 pip list
 pip list
+pip install openpyxl

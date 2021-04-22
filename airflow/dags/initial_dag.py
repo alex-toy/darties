@@ -13,10 +13,9 @@ from operators.clean_file import CleanFileOperator
 from operators.upload_file import UploadFileOperator
 
 from helpers import SqlQueries
+import config.config as cf
 
-output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../output'))
-file_name = "sales.json"
-
+temp = cf.NAME_FILE
 
 default_args = {
     'owner': 'udacity',
@@ -43,17 +42,13 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-year="2021"
 clean_file = CleanFileOperator(
     task_id='clean_file',
     dag=dag,
-    year=year
+    year=cf.YEAR
 )
 
 
-year = "2021"
-file_name = 'cleaned_2021_sales.json'
-output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '../output'))
 upload_file = UploadFileOperator(
     task_id='upload_file',
     dag=dag,

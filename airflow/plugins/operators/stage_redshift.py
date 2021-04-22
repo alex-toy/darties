@@ -22,7 +22,6 @@ class StageToRedshiftOperator(BaseOperator):
                  S3_bucket="",
                  S3_key="",
                  delimiter=",",
-                 create_query="",
                  formatting="",
                  *args, **kwargs):
 
@@ -45,6 +44,12 @@ class StageToRedshiftOperator(BaseOperator):
         self.log.info('Copying data from S3 into redshift.')
         rendered_key = self.S3_key.format(**context)
         s3_path = f"s3://{self.S3_bucket}/{rendered_key}"
+        
+        
+        self.log.info(f"rendered_key : {rendered_key}") # get rendered_key
+        self.log.info(f"s3_path : {s3_path}") # get year from s3_path
+        
+        
         formatted_sql = StageToRedshiftOperator.copy_sql.format(
             self.table,
             s3_path,

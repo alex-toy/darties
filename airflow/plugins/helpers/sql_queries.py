@@ -42,6 +42,18 @@ class SqlQueries:
                extract(month from start_time), extract(year from start_time), extract(dayofweek from start_time)
         FROM songplays
     """)
+
+
+
+
+
+
+
+
+    turnover_oven_insert = ("""
+        SELECT distinct song_id, title, artist_id, year, duration
+        FROM staging_songs
+    """)
     
     
 

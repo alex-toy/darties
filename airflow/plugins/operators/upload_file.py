@@ -19,21 +19,11 @@ class UploadFileOperator(BaseOperator) :
     def __init__(self,
                  aws_credentials_id="",
                  S3_bucket="",
-                 output_dir=None,
-                 S3_key="",
-                 year=0,
-                 file_name="",
-                 path_to_file="",
                  *args, **kwargs):
 
         super(UploadFileOperator, self).__init__(*args, **kwargs)
         self.aws_credentials_id = aws_credentials_id
         self.S3_bucket = S3_bucket
-        self.output_dir = output_dir
-        self.S3_key = S3_key
-        self.year = year
-        self.file_name = file_name
-        self.path_to_file = path_to_file
         
 
 
@@ -64,7 +54,7 @@ class UploadFileOperator(BaseOperator) :
         
         self.log.info(f"output_dir : {cf.OUTPUTS_DIR}")
 
-        all_files = glob.glob(self.output_dir + '/**/*.json', recursive=True)
+        all_files = glob.glob(cf.OUTPUTS_DIR + '/**/*.json', recursive=True)
 
         for path_to_file in all_files :
             
@@ -73,13 +63,13 @@ class UploadFileOperator(BaseOperator) :
             year = re.search(r'(\d{4})', short_path_to_file).group(1)
             filename = re.search(r'\/(\w*\.json)', short_path_to_file).group(1)
             
-            object_name = os.path.join(self.S3_key, self.year, self.filename)
+            object_name = os.path.join(S3_key, year, filename)
             self.log.info(f"object_name : {object_name}")
 
             self.log.info(f"Uploading file {object_name} to S3.")
             self.upload_file(
                 aws_access_key_id=credentials.access_key, 
-                ws_secret_access_key=credentials.secret_key,
+                aws_secret_access_key=credentials.secret_key,
                 object_name=object_name,
                 path_to_file=path_to_file
             )

@@ -58,12 +58,7 @@ upload_file = UploadFileOperator(
     task_id='upload_file',
     dag=dag,
     aws_credentials_id="aws_credentials",
-    S3_bucket="darties",
-    output_dir=output_dir,
-    S3_key="sales_data",
-    year=year,
-    file_name=file_name, 
-    path_to_file=os.path.join(output_dir, year, file_name)
+    S3_bucket="darties"
 )
 
 

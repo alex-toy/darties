@@ -276,4 +276,37 @@ CREATE TABLE IF NOT EXISTS public.staging_MB_Magneto (
 );
 
 
+CREATE TABLE IF NOT EXISTS public.sales (
+	id_ville int4 NOT NULL,
+	id_temps int4 NOT NULL,
+	id_famille_produit int4 NOT NULL,
+	id_magasin int4 NOT NULL,
+	vente_objectif int4,
+	vente_reel int4,
+	CA_reel int4,
+	CA_objectif int4,
+	marge_reel numeric(18,0),
+	marge_objectif numeric(18,0),
+	CONSTRAINT sales_pkey PRIMARY KEY (id_ville, id_temps, id_famille_produit, id_magasin)
+);
+
+
+CREATE TABLE IF NOT EXISTS public.ville (
+	id_ville int4 NOT NULL,
+	id_continent int4 NOT NULL,
+	id_pays int4 NOT NULL,
+
+
+	
+	id_famille_produit int4 NOT NULL,
+	id_magasin int4 NOT NULL,
+	vente_objectif int4,
+	vente_reel int4,
+	CA_reel int4,
+	CA_objectif int4,
+	marge_reel numeric(18,0),
+	marge_objectif numeric(18,0),
+	CONSTRAINT sales_pkey PRIMARY KEY (id_ville, id_temps, id_famille_produit, id_magasin)
+);
+
 

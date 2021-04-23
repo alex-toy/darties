@@ -41,7 +41,7 @@ class SalesData :
             path = Path(outdir)
             path.mkdir(parents=True, exist_ok=True)
             saved_filename = f"{sheet_name}_{year}_sales.json"
-            df_sheet_name['year'] = year
+            df_sheet_name['annee'] = year
             df_sheet_name.to_json(os.path.join(outdir, saved_filename), orient="records")
 
 

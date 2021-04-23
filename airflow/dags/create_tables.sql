@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS public.staging_darties (
 	Villes varchar(256),
+	annee int4,
 	Enseignes varchar(256),
 	Publicité numeric(18,0),
 	REGION varchar(256),
@@ -17,6 +18,7 @@ CREATE TABLE IF NOT EXISTS public.staging_darties (
 
 CREATE TABLE IF NOT EXISTS public.staging_V_Fours (
 	Villes varchar(256),
+	annee int4,
 	O_Janvier numeric(18,0),
 	R_Janvier numeric(18,0),
 	O_Fevrier numeric(18,0),
@@ -46,6 +48,7 @@ CREATE TABLE IF NOT EXISTS public.staging_V_Fours (
 
 CREATE TABLE IF NOT EXISTS public.staging_V_Hifi (
 	Villes varchar(256),
+	annee int4,
 	O_Janvier numeric(18,0),
 	R_Janvier numeric(18,0),
 	O_Fevrier numeric(18,0),
@@ -75,6 +78,7 @@ CREATE TABLE IF NOT EXISTS public.staging_V_Hifi (
 
 CREATE TABLE IF NOT EXISTS public.staging_V_Magneto (
 	Villes varchar(256),
+	annee int4,
 	O_Janvier numeric(18,0),
 	R_Janvier numeric(18,0),
 	O_Fevrier numeric(18,0),
@@ -104,6 +108,7 @@ CREATE TABLE IF NOT EXISTS public.staging_V_Magneto (
 
 CREATE TABLE IF NOT EXISTS public.staging_CA_Fours (
 	Villes varchar(256),
+	annee int4,
 	O_Janvier numeric(18,0),
 	R_Janvier numeric(18,0),
 	O_Fevrier numeric(18,0),
@@ -133,6 +138,7 @@ CREATE TABLE IF NOT EXISTS public.staging_CA_Fours (
 
 CREATE TABLE IF NOT EXISTS public.staging_CA_Hifi (
 	Villes varchar(256),
+	annee int4,
 	O_Janvier numeric(18,0),
 	R_Janvier numeric(18,0),
 	O_Fevrier numeric(18,0),
@@ -162,6 +168,7 @@ CREATE TABLE IF NOT EXISTS public.staging_CA_Hifi (
 
 CREATE TABLE IF NOT EXISTS public.staging_CA_Magneto (
 	Villes varchar(256),
+	annee int4,
 	O_Janvier numeric(18,0),
 	R_Janvier numeric(18,0),
 	O_Fevrier numeric(18,0),
@@ -191,6 +198,7 @@ CREATE TABLE IF NOT EXISTS public.staging_CA_Magneto (
 
 CREATE TABLE IF NOT EXISTS public.staging_MB_Fours (
 	Villes varchar(256),
+	annee int4,
 	O_Janvier numeric(18,0),
 	R_Janvier numeric(18,0),
 	O_Fevrier numeric(18,0),
@@ -220,6 +228,7 @@ CREATE TABLE IF NOT EXISTS public.staging_MB_Fours (
 
 CREATE TABLE IF NOT EXISTS public.staging_MB_Hifi (
 	Villes varchar(256),
+	annee int4,
 	O_Janvier numeric(18,0),
 	R_Janvier numeric(18,0),
 	O_Fevrier numeric(18,0),
@@ -249,6 +258,7 @@ CREATE TABLE IF NOT EXISTS public.staging_MB_Hifi (
 
 CREATE TABLE IF NOT EXISTS public.staging_MB_Magneto (
 	Villes varchar(256),
+	annee int4,
 	O_Janvier numeric(18,0),
 	R_Janvier numeric(18,0),
 	O_Fevrier numeric(18,0),

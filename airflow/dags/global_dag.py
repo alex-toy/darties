@@ -86,6 +86,8 @@ stage_V_Fours_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
+milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
+
 stage_CA_Hifi_to_redshift = StageToRedshiftOperator(
     task_id='stage_CA_Hifi_to_redshift',
     dag=dag,
@@ -121,6 +123,8 @@ stage_V_Hifi_to_redshift = StageToRedshiftOperator(
     delimiter=",",
     formatting="JSON 'auto'"
 )
+
+milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
 
 stage_CA_Magneto_to_redshift = StageToRedshiftOperator(
     task_id='stage_CA_Magneto_to_redshift',
@@ -232,7 +236,9 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 start_operator >> create_tables >> \
 [ stage_CA_Fours_to_redshift, stage_MB_Fours_to_redshift, stage_V_Fours_to_redshift ] >> \
+milestone_1 >> \
 [ stage_CA_Hifi_to_redshift, stage_MB_Hifi_to_redshift, stage_V_Hifi_to_redshift ] >> \
+milestone_2 >> \
 [ stage_CA_Magneto_to_redshift, stage_MB_Magneto_to_redshift, stage_V_Magneto_to_redshift ] >> \
 end_operator
 

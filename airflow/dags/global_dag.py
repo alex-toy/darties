@@ -163,20 +163,18 @@ stage_V_Magneto_to_redshift = StageToRedshiftOperator(
 )
 
 
+Load_sales_fact_table = LoadFactOperator(
+    task_id='Load_sales_fact_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="sales",
+    query=SqlQueries.sales_table_insert
+)
 
 
 
 
 
-
-
-# load_songplays_table = LoadFactOperator(
-#     task_id='Load_songplays_fact_table',
-#     dag=dag,
-#     redshift_conn_id="redshift",
-#     table="songplays",
-#     query=SqlQueries.songplay_table_insert
-# )
 
 # load_user_dimension_table = LoadDimensionOperator(
 #     task_id='Load_user_dim_table',

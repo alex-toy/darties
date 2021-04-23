@@ -59,10 +59,10 @@ class SqlQueries:
             staging_ca_{0}.r_Janvier AS ca_{0}_janvier_reel, 
             staging_mb_{0}.o_Janvier AS mb_{0}_janvier_prev, 
             staging_mb_{0}.r_Janvier AS mb_{0}_janvier_reel,
-            id_ville,
-            id_temps,
-            id_famille_produit,
-            id_magasin
+            ville.id_ville,
+            temps.id_temps,
+            famille_produit.id_famille_produit,
+            magasin.id_magasin
         FROM staging_v_{0} 
         JOIN staging_mb_{0} 
             ON staging_v_{0}.villes = staging_mb_{0}.villes 
@@ -74,11 +74,13 @@ class SqlQueries:
         JOIN temps 
             ON staging_v_{0}.annee = temps.annee
             AND temps.mois = '{1}'
-    """)
+        JOIN famille_produit
+        JOIN magasin
+    """) # to be finished!!!
 
     sales_table_insert.format('fours', 'janvier')
     sales_table_insert.format('hifi', 'fevrier')
-    sales_table_insert.format('magneto', 'fevrier')
+    sales_table_insert.format('magneto', 'mars')
 
 
 	

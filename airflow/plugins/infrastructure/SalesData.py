@@ -32,34 +32,27 @@ class SalesData :
             raise FileExistsError('Extension must be parquet or csv or xlsx.')
 
 
+
     def cleaned_file(self, year) :
-        df = self._clean_data()
+        df = self.df_from_path()
         for sheet_name in self.sheet_names :
+            df = df[sheet_name]
             outdir = os.path.join(cf.OUTPUTS_DIR, sheet_name, year)
             path = Path(outdir)
             path.mkdir(parents=True, exist_ok=True)
             saved_filename = f"{sheet_name}_{year}_sales.json"
-            df[sheet_name].to_json(os.path.join(outdir, saved_filename), orient="records")
+            df = self.__add_year_col(df], year)
+            df].to_json(os.path.join(outdir, saved_filename), orient="records")
 
 
-    def _clean_data(self) :
-        df = self.df_from_path()
-        #df = self.__change_col_name(df=df)
-        #df = self.__remove_accents__(df=df)
-        return df
 
-
-    def __change_col_name(self, df) :
+    def __add_year_col(self, df, year) :
         new_df = df.copy()
-        new_df.rename(columns=cf.NEW_COL_NAMES, errors="raise", inplace=True)
+        new_df['year'] = year
         return new_df
-							
 
-    def __remove_accents__(self, df) :
-        new_df = df.copy()
-        for col in ['City', 'Brand', 'Region', 'Location'] :
-            new_df[col] = new_df[col].str.replace('[éèê]', 'e', regex=True)
-        return new_df
+
+
 
 
 

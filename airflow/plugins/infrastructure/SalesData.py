@@ -36,22 +36,13 @@ class SalesData :
     def cleaned_file(self, year) :
         df = self.df_from_path()
         for sheet_name in self.sheet_names :
-            df = df[sheet_name]
+            df_sheet_name = df[sheet_name]
             outdir = os.path.join(cf.OUTPUTS_DIR, sheet_name, year)
             path = Path(outdir)
             path.mkdir(parents=True, exist_ok=True)
             saved_filename = f"{sheet_name}_{year}_sales.json"
-            df = self.__add_year_col(df], year)
-            df].to_json(os.path.join(outdir, saved_filename), orient="records")
-
-
-
-    def __add_year_col(self, df, year) :
-        new_df = df.copy()
-        new_df['year'] = year
-        return new_df
-
-
+            df_sheet_name['year'] = year
+            df_sheet_name.to_json(os.path.join(outdir, saved_filename), orient="records")
 
 
 
@@ -59,7 +50,7 @@ class SalesData :
 if __name__ == '__main__':
     
     sd = SalesData(path=cf.FILE_DATA)
-    sd.cleaned_file(year='2021')
+    sd.cleaned_file(year=cf.YEAR)
 
 
 

@@ -86,6 +86,82 @@ stage_V_Fours_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
+stage_CA_Hifi_to_redshift = StageToRedshiftOperator(
+    task_id='stage_CA_Hifi_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_CA_Hifi",
+    S3_bucket="darties",
+    S3_key="CA_Hifi",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
+stage_MB_Hifi_to_redshift = StageToRedshiftOperator(
+    task_id='stage_MB_Hifi_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_MB_Hifi",
+    S3_bucket="darties",
+    S3_key="MB_Hifi",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
+stage_V_Hifi_to_redshift = StageToRedshiftOperator(
+    task_id='stage_V_Hifi_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_V_Hifi",
+    S3_bucket="darties",
+    S3_key="V_Hifi",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
+stage_CA_Magneto_to_redshift = StageToRedshiftOperator(
+    task_id='stage_CA_Magneto_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_CA_Magneto",
+    S3_bucket="darties",
+    S3_key="CA_Magneto",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
+stage_MB_Magneto_to_redshift = StageToRedshiftOperator(
+    task_id='stage_MB_Magneto_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_MB_Magneto",
+    S3_bucket="darties",
+    S3_key="MB_Magneto",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
+stage_V_Magneto_to_redshift = StageToRedshiftOperator(
+    task_id='stage_V_Magneto_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_V_Magneto",
+    S3_bucket="darties",
+    S3_key="V_Magneto",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
+
+
+
+
 
 
 
@@ -156,5 +232,7 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 start_operator >> create_tables >> \
 [ stage_CA_Fours_to_redshift, stage_MB_Fours_to_redshift, stage_V_Fours_to_redshift ] >> \
+[ stage_CA_Hifi_to_redshift, stage_MB_Hifi_to_redshift, stage_V_Hifi_to_redshift ] >> \
+[ stage_CA_Magneto_to_redshift, stage_MB_Magneto_to_redshift, stage_V_Magneto_to_redshift ] >> \
 end_operator
 

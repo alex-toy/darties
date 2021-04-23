@@ -6,6 +6,7 @@ import re
 from datetime import datetime, timedelta, date
 from pathlib import Path
 
+
 import config.config as cf
 
 class SalesData :
@@ -42,7 +43,8 @@ class SalesData :
             path.mkdir(parents=True, exist_ok=True)
             saved_filename = f"{sheet_name}_{year}_sales.json"
             df_sheet_name['annee'] = year
-            df_sheet_name.to_json(os.path.join(outdir, saved_filename), orient="records")
+            df_sheet_name.to_json(os.path.join(outdir, saved_filename), orient="records", lines=True)
+
 
 
 

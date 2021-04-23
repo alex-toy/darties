@@ -43,12 +43,12 @@ start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
 
-# create_tables = PostgresOperator(
-#     task_id="create_tables",
-#     dag=dag,
-#     sql='create_tables.sql',
-#     postgres_conn_id="redshift"
-# )
+create_tables = PostgresOperator(
+    task_id="create_tables",
+    dag=dag,
+    sql='create_tables.sql',
+    postgres_conn_id="redshift"
+)
 
 stage_CA_Fours_to_redshift = StageToRedshiftOperator(
     task_id='stage_CA_Fours_to_redshift',
@@ -158,5 +158,7 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
 
-start_operator >> stage_CA_Fours_to_redshift >>  end_operator
+start_operator >> create_tables >> \
+[ stage_CA_Fours_to_redshift ] >> \
+end_operator
 

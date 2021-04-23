@@ -35,6 +35,7 @@ Tree = "^0.2.4"
 boto3 = "^1.17.53"
 configparser = "^5.0.2"
 pathlib = "^1.0.1"
+psycopg2-binary = "^2.8.6"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.6.0"

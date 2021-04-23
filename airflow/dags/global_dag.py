@@ -155,6 +155,6 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
 start_operator >> create_tables >> \
-[ stage_CA_Fours_to_redshift ] >> \
+[ stage_CA_Fours_to_redshift, stage_MB_Fours_to_redshift, stage_V_Fours_to_redshift ] >> \
 end_operator
 

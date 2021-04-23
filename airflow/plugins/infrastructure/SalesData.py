@@ -38,6 +38,7 @@ class SalesData :
         df = self.df_from_path()
         for sheet_name in self.sheet_names :
             df_sheet_name = df[sheet_name]
+            df_sheet_name.columns = [x.lower() for x in df_sheet_name.columns]
             outdir = os.path.join(cf.OUTPUTS_DIR, sheet_name, year)
             path = Path(outdir)
             path.mkdir(parents=True, exist_ok=True)

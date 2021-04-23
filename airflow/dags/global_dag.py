@@ -62,35 +62,31 @@ stage_CA_Fours_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
+stage_MB_Fours_to_redshift = StageToRedshiftOperator(
+    task_id='stage_MB_Fours_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_MB_Fours",
+    S3_bucket="darties",
+    S3_key="MB_Fours",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
+stage_V_Fours_to_redshift = StageToRedshiftOperator(
+    task_id='stage_V_Fours_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_V_Fours",
+    S3_bucket="darties",
+    S3_key="V_Fours",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
 
 
-
-
-
-# stage_events_to_redshift = StageToRedshiftOperator(
-#     task_id='Stage_events',
-#     dag=dag,
-#     redshift_conn_id="redshift",
-#     aws_credentials_id="aws_credentials",
-#     table="staging_events",
-#     S3_bucket="darties",
-#     S3_key="log_data",
-#     delimiter=",",
-#     formatting="JSON 'auto'"
-# )
-
-
-# stage_songs_to_redshift = StageToRedshiftOperator(
-#     task_id='Stage_songs',
-#     dag=dag,
-#     redshift_conn_id="redshift",
-#     aws_credentials_id="aws_credentials",
-#     table="staging_songs",
-#     S3_bucket="darties",
-#     S3_key="song_data",
-#     delimiter=",",
-#     formatting="JSON 'auto'"
-# )
 
 
 

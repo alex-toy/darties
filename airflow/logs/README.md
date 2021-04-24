@@ -1,0 +1,1 @@
+You will see your Aiflow logs inside this folder. Make sure to check them in case of non working task.

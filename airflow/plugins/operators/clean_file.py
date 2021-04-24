@@ -30,7 +30,7 @@ class CleanFileOperator(BaseOperator) :
             if file != 'README.md' :
                 file_abspath = os.path.abspath(os.path.join(cf.DATA_DIR, file))
                 year = re.search(r'(\d{4})', file).group(1)
-                self.log.info(f"file_abspath : {file_abspath} year : {year}")
+                self.log.info(f"Create cleaned file : {file} for year {year}")
                 sd = SalesData(path=file_abspath)
                 sd.cleaned_file(year=year)
             

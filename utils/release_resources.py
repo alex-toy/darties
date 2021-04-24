@@ -5,8 +5,8 @@ from settings import config_file
 config = configparser.ConfigParser()
 config.read_file(open(config_file))
 
-KEY                    = config.get('AWS','KEY')
-SECRET                 = config.get('AWS','SECRET')
+KEY                    = config.get('AWS_ADMIN','KEY')
+SECRET                 = config.get('AWS_ADMIN','SECRET')
 
 DWH_CLUSTER_IDENTIFIER = config.get("DWH","DWH_CLUSTER_IDENTIFIER")
 

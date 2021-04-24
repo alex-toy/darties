@@ -3,10 +3,10 @@ import boto3
 from botocore.exceptions import ClientError
 import configparser
 
-import app.config.config as cf
+from settings import config_file
 
 config = configparser.ConfigParser()
-config.read_file(open(cf.config_file))
+config.read_file(open(config_file))
 
 aws_access_key_id = config.get('AWS_ADMIN','KEY')
 aws_secret_access_key = config.get('AWS_ADMIN','SECRET')

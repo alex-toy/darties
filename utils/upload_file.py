@@ -5,9 +5,10 @@ from botocore.exceptions import ClientError
 import configparser
 
 import app.config.config as cf
+from settings import config_file
 
 config = configparser.ConfigParser()
-config.read_file(open(cf.config_file))
+config.read_file(open(config_file))
 
 aws_access_key_id = config.get('S3_USER','aws_access_key_id')
 aws_secret_access_key = config.get('S3_USER','aws_secret_access_key')

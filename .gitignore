@@ -5,8 +5,10 @@ app/__pycache__/*
 app/config/__pycache__/*
 app/domain/__pycache__/
 airflow/logs/*
-airflow/app/__pycache__/*
+airflow/data/*
 airflow/output/*
+!airflow/output/README.md
+airflow/app/__pycache__/*
 airflow/dags/__pycache__/*
 airflow/plugins/__pycache__/*
 airflow/plugins/helpers/__pycache__/*

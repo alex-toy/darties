@@ -1,1 +1,0 @@
-Put inside this file your .xlsx data.

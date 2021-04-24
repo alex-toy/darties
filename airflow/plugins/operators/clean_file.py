@@ -15,11 +15,9 @@ class CleanFileOperator(BaseOperator) :
 
     @apply_defaults
     def __init__(self,
-                 year="",
                  *args, **kwargs):
 
         super(CleanFileOperator, self).__init__(*args, **kwargs)
-        self.year = year
 
 
 

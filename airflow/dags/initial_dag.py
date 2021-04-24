@@ -44,8 +44,7 @@ start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 clean_file = CleanFileOperator(
     task_id='clean_file',
-    dag=dag,
-    year=cf.YEAR
+    dag=dag
 )
 
 

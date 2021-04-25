@@ -137,8 +137,9 @@ Here is how the data is modelled according to a star schema :
 
 Once the data has been ETLed, you are free to take full benefit from the power of star modelling and make business driven queries like :
 
-    - How many sales have been perfomed in region 1 by salesman x?
-    - How many sales have been performed between 2020 and 2021 in region 2 ?
+    - What was the turnover for recorders in the first semester of 2020 in Paris ?
+    - What was the amount of sales for hifi in the march 2021 in Lyon ?
+    - What was the gross margin for ovens in the second trimester in Bordeaux ?
 
 
 

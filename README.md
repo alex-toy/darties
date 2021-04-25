@@ -167,10 +167,6 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   │       ├── __init__.py
     │   │       └── __pycache__
     │   ├── dags
-    │   │   ├── __pycache__
-    │   │   │   ├── global_dag.cpython-37.pyc
-    │   │   │   ├── initial_dag.cpython-37.pyc
-    │   │   │   └── test_dag.cpython-37.pyc
     │   │   ├── create_tables.sql
     │   │   ├── global_dag.py
     │   │   └── initial_dag.py
@@ -271,10 +267,6 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   ├── config
     │   │   ├── __init__.py
     │   │   ├── __pycache__
-    │   │   │   ├── __init__.cpython-37.pyc
-    │   │   │   ├── __init__.cpython-38.pyc
-    │   │   │   ├── config.cpython-37.pyc
-    │   │   │   └── config.cpython-38.pyc
     │   │   └── config.py
     │   ├── domain
     │   │   ├── BusinessData.py
@@ -298,8 +290,6 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     ├── utils
     │   ├── IaC_1.py
     │   ├── IaC_2.py
-    │   ├── __pycache__
-    │   │   └── settings.cpython-38.pyc
     │   ├── create_bucket.py
     │   ├── release_resources.py
     │   ├── settings.py

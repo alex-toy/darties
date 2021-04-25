@@ -115,16 +115,16 @@ In this project, the initial data is first cleaned and then pushed to a AWS S3 b
 
 Here is how the data is modelled according to a star schema :
 
-- Fact table : Sales. For a given city, at a given time, for a given product family (ovens, hi-fi systems or video recorders) and in a given store, what were the previsional and real sales, what were the previsional and real turnover and what were the previsional and real groos margin. 
+- **Sales** : Fact table. For a given city, at a given time, for a given product family (ovens, hi-fi systems or video recorders) and in a given store, what were the previsional and real sales, what were the previsional and real turnover and what were the previsional and real groos margin. 
 
 
 - Dimension tables : 
 
-    - dim1 - description to be done. Features : to be done
-    - dim2 - description to be done. Features : to be done
-    - dim3 - description to be done. Features : to be done
-    - dim4 - description to be done. Features : to be done
-    - dim5 - description to be done. Features : to be done
+    - **product_family** - ovens, hi-fi systems or video recorders.
+    - **ville** - city. Features : description of the city.
+    - **magasin** - store. Features : description of the store.
+    - **temps** - time. Features : description of the time.
+    - **enseigne** - brand. Features : description of the brand.
 
 
 <img src="star_schema.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />

@@ -92,7 +92,7 @@ In this project, the initial data is first cleaned and then pushed to a AWS S3 b
     {"Villes":"Alencon","O_Janvier":20.3,"R_Janvier":33.8,"O_Fevrier":33.8,"R_Fevrier":40.5,"O_Mars":40.5,"R_Mars":27.0,"O_Avril":13.5,"R_Avril":33.8,"O_Mai":418.6,"R_Mai":499.7,"O_Juin":276.8,"R_Juin":472.7,"O_Juillet":189.1,"R_Juillet":222.8,"O_Aout":276.8,"R_Aout":182.3,"O_Septembre":182.3,"R_Septembre":114.8,"O_Octobre":216.1,"R_Octobre":384.9,"O_Novembre":270.1,"R_Novembre":168.8,"O_Decembre":445.7,"R_Decembre":465.9}
     ```
 
-    Those files contain the following features : 'City', and then for every month, previsional and real sales.
+    Those files contain the following features : 'City', and then for every month, previsional and real sales. For example, in the above json object found in *V_Magneto/2020/V_Magneto_2020_sales.json*, we know that for the french city of Alencon in 2020, the previsional sales of recorders (Magneto) in january (O_Janvier) were 20.3 and the real sales  of recorders in january were 33.8.
 
 
 -  General information Dataset

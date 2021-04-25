@@ -122,7 +122,7 @@ Here is how the data is modelled according to a star schema :
 
 - Dimension tables : 
 
-    - **product_family** - ovens, hi-fi systems or video recorders.
+    - **famille_produit** - category of product (ovens, hi-fi systems or video recorders). Features : description of the product.
     - **ville** - city. Features : description of the city.
     - **magasin** - store. Features : description of the store.
     - **temps** - time. Features : description of the time.

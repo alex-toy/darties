@@ -115,7 +115,8 @@ In this project, the initial data is first cleaned and then pushed to a AWS S3 b
 
 Here is how the data is modelled according to a star schema :
 
-- Fact table : to be done
+- Fact table : Sales. For a given city, at a given time, for a given product family (ovens, hi-fi systems or video recorders) and in a given store, what were the previsional and real sales, what were the previsional and real turnover and what were the previsional and real groos margin. 
+
 
 - Dimension tables : 
 

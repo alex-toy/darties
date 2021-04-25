@@ -139,7 +139,7 @@ Once the data has been ETLed, you are free to take full benefit from the power o
 
     - What was the turnover for recorders in the first semester of 2020 in Paris ?
     - What was the amount of sales for hifi in the march 2021 in Lyon ?
-    - What was the gross margin for ovens in the second trimester in Bordeaux ?
+    - What was the gross margin for ovens in the department (french administrative division) of Rhône in the second trimester of 2020 ?
 
 
 

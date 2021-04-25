@@ -149,97 +149,117 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     ├── README.md
     ├── activate.sh
     ├── airflow
+    │   ├── =1.0.0
     │   ├── __init__.py
-    │   ├── airflow-webserver.pid
+    │   ├── __init__.pyc
     │   ├── airflow.cfg
     │   ├── airflow.db
+    │   ├── app
+    │   │   ├── __init__.py
+    │   │   ├── __pycache__
+    │   │   │   └── __init__.cpython-37.pyc
+    │   │   ├── config
+    │   │   │   ├── __init__.py
+    │   │   │   ├── __pycache__
+    │   │   │   └── config.py
+    │   │   └── infrastructure
+    │   │       ├── SalesData.py
+    │   │       ├── __init__.py
+    │   │       └── __pycache__
     │   ├── dags
+    │   │   ├── __pycache__
+    │   │   │   ├── global_dag.cpython-37.pyc
+    │   │   │   ├── initial_dag.cpython-37.pyc
+    │   │   │   └── test_dag.cpython-37.pyc
     │   │   ├── create_tables.sql
     │   │   ├── global_dag.py
     │   │   └── initial_dag.py
-    │   ├── logs
-    │   │   ├── dag_processor_manager
-    │   │   │   └── dag_processor_manager.log
-    │   │   ├── global_dag
-    │   │   │   ├── Begin_execution
-    │   │   │   │   └── 2018-11-01T00:00:00+00:00
-    │   │   │   │       └── 1.log
-    │   │   │   ├── Load_artist_dim_table
-    │   │   │   │   └── 2018-11-01T00:00:00+00:00
-    │   │   │   │       ├── 1.log
-    │   │   │   │       └── 2.log
-    │   │   │   ├── Load_song_dim_table
-    │   │   │   │   └── 2018-11-01T00:00:00+00:00
-    │   │   │   │       ├── 1.log
-    │   │   │   │       └── 2.log
-    │   │   │   ├── Load_songplays_fact_table
-    │   │   │   │   └── 2018-11-01T00:00:00+00:00
-    │   │   │   │       ├── 1.log
-    │   │   │   │       └── 2.log
-    │   │   │   ├── Load_time_dim_table
-    │   │   │   │   └── 2018-11-01T00:00:00+00:00
-    │   │   │   │       ├── 1.log
-    │   │   │   │       └── 2.log
-    │   │   │   ├── Load_user_dim_table
-    │   │   │   │   └── 2018-11-01T00:00:00+00:00
-    │   │   │   │       ├── 1.log
-    │   │   │   │       └── 2.log
-    │   │   │   ├── Stage_events
-    │   │   │   │   └── 2018-11-01T00:00:00+00:00
-    │   │   │   │       ├── 1.log
-    │   │   │   │       └── 2.log
-    │   │   │   ├── Stage_sales
-    │   │   │   │   └── 2018-11-01T00:00:00+00:00
-    │   │   │   │       ├── 1.log
-    │   │   │   │       └── 2.log
-    │   │   │   ├── Stage_songs
-    │   │   │   │   └── 2018-11-01T00:00:00+00:00
-    │   │   │   │       ├── 1.log
-    │   │   │   │       └── 2.log
-    │   │   │   ├── create_tables
-    │   │   │   │   └── 2018-11-01T00:00:00+00:00
-    │   │   │   │       ├── 1.log
-    │   │   │   │       └── 2.log
-    │   │   │   ├── run_quality_checks
-    │   │   │   │   └── 2018-11-01T00:00:00+00:00
-    │   │   │   │       ├── 1.log
-    │   │   │   │       └── 2.log
-    │   │   │   └── upload_file
-    │   │   │       └── 2018-11-01T00:00:00+00:00
-    │   │   │           ├── 1.log
-    │   │   │           └── 2.log
-    │   │   └── scheduler
-    │   │       ├── 2021-04-19
-    │   │       │   └── global_dag.py.log
-    │   │       ├── 2021-04-20
-    │   │       │   ├── global_dag.py.log
-    │   │       │   └── initial_dag.py.log
-    │   │       └── latest -> /usr/local/airflow/logs/scheduler/2021-04-20
-    │   ├── output
-    │   │   ├── 2021
-    │   │   │   └── sales.json
+    │   ├── data
+    │   │   ├── 2020_HISTO.xlsx
+    │   │   ├── 2021_BUDGET.xlsx
     │   │   └── README.md
+    │   ├── logs
+    │   │   └── README.md
+    │   ├── output
+    │   │   ├── CA_Fours
+    │   │   │   ├── 2020
+    │   │   │   │   └── CA_Fours_2020_sales.json
+    │   │   │   └── 2021
+    │   │   │       └── CA_Fours_2021_sales.json
+    │   │   ├── CA_Hifi
+    │   │   │   ├── 2020
+    │   │   │   │   └── CA_Hifi_2020_sales.json
+    │   │   │   └── 2021
+    │   │   │       └── CA_Hifi_2021_sales.json
+    │   │   ├── CA_Magneto
+    │   │   │   ├── 2020
+    │   │   │   │   └── CA_Magneto_2020_sales.json
+    │   │   │   └── 2021
+    │   │   │       └── CA_Magneto_2021_sales.json
+    │   │   ├── MB_Fours
+    │   │   │   ├── 2020
+    │   │   │   │   └── MB_Fours_2020_sales.json
+    │   │   │   └── 2021
+    │   │   │       └── MB_Fours_2021_sales.json
+    │   │   ├── MB_Hifi
+    │   │   │   ├── 2020
+    │   │   │   │   └── MB_Hifi_2020_sales.json
+    │   │   │   └── 2021
+    │   │   │       └── MB_Hifi_2021_sales.json
+    │   │   ├── MB_Magneto
+    │   │   │   ├── 2020
+    │   │   │   │   └── MB_Magneto_2020_sales.json
+    │   │   │   └── 2021
+    │   │   │       └── MB_Magneto_2021_sales.json
+    │   │   ├── README.md
+    │   │   ├── V_Fours
+    │   │   │   ├── 2020
+    │   │   │   │   └── V_Fours_2020_sales.json
+    │   │   │   └── 2021
+    │   │   │       └── V_Fours_2021_sales.json
+    │   │   ├── V_Hifi
+    │   │   │   ├── 2020
+    │   │   │   │   └── V_Hifi_2020_sales.json
+    │   │   │   └── 2021
+    │   │   │       └── V_Hifi_2021_sales.json
+    │   │   ├── V_Magneto
+    │   │   │   ├── 2020
+    │   │   │   │   └── V_Magneto_2020_sales.json
+    │   │   │   └── 2021
+    │   │   │       └── V_Magneto_2021_sales.json
+    │   │   └── darties
+    │   │       ├── 2020
+    │   │       │   └── darties_2020_sales.json
+    │   │       └── 2021
+    │   │           └── darties_2021_sales.json
     │   ├── plugins
     │   │   ├── __init__.py
     │   │   ├── __pycache__
-    │   │   │   ├── __init__.cpython-36.pyc
     │   │   │   └── __init__.cpython-37.pyc
+    │   │   ├── config
+    │   │   │   ├── __init__.py
+    │   │   │   ├── __pycache__
+    │   │   │   └── config.py
     │   │   ├── helpers
     │   │   │   ├── __init__.py
     │   │   │   ├── __pycache__
-    │   │   │   │   ├── __init__.cpython-36.pyc
-    │   │   │   │   ├── __init__.cpython-37.pyc
-    │   │   │   │   ├── sql_queries.cpython-36.pyc
-    │   │   │   │   └── sql_queries.cpython-37.pyc
     │   │   │   └── sql_queries.py
+    │   │   ├── infrastructure
+    │   │   │   ├── SalesData.py
+    │   │   │   ├── __init__.py
+    │   │   │   └── __pycache__
     │   │   └── operators
     │   │       ├── __init__.py
+    │   │       ├── __pycache__
+    │   │       ├── clean_file.py
     │   │       ├── data_quality.py
     │   │       ├── load_dimension.py
     │   │       ├── load_fact.py
     │   │       ├── stage_redshift.py
     │   │       └── upload_file.py
     │   └── unittests.cfg
+    ├── airflow.cfg
+    ├── airflow.db
     ├── app
     │   ├── __init__.py
     │   ├── __pycache__
@@ -249,6 +269,12 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   │   ├── create_output_file.py
     │   │   └── upload_file.py
     │   ├── config
+    │   │   ├── __init__.py
+    │   │   ├── __pycache__
+    │   │   │   ├── __init__.cpython-37.pyc
+    │   │   │   ├── __init__.cpython-38.pyc
+    │   │   │   ├── config.cpython-37.pyc
+    │   │   │   └── config.cpython-38.pyc
     │   │   └── config.py
     │   ├── domain
     │   │   ├── BusinessData.py
@@ -258,25 +284,22 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   └── infrastructure
     │       ├── SalesData.py
     │       ├── __init__.py
-    ├── data
-    │   ├── 2020_HISTO.xlsx
-    │   ├── 2021_BUDGET.xlsx
-    │   ├── Janvier_2021.xlsx
-    │   └── README.md
+    │       └── __pycache__
+    ├── dwh_P6.cfg
     ├── generals
-    │   └── Pre?\201sentation\ Projet\ Darties.pdf
+    │   └── Présentation\ Projet\ Darties.pdf
     ├── init
     ├── init.sh
-    ├── output
-    │   ├── 2020
-    │   │   └── sales.json
-    │   └── README.md
     ├── poetry.lock
     ├── pyproject.toml
     ├── requirements.txt
+    ├── star_schema.png
+    ├── unittests.cfg
     ├── utils
     │   ├── IaC_1.py
     │   ├── IaC_2.py
+    │   ├── __pycache__
+    │   │   └── settings.cpython-38.pyc
     │   ├── create_bucket.py
     │   ├── release_resources.py
     │   ├── settings.py

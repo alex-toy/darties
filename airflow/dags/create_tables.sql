@@ -330,7 +330,7 @@ CREATE TABLE IF NOT EXISTS public.famille_produit (
 
 
 CREATE TABLE IF NOT EXISTS public.temps (
-	id_temps int4 NOT NULL,
+	id_temps bigint identity(1, 1),
 	annee int4,
 	semestre int4,
 	trimestre int4,

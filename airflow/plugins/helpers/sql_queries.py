@@ -34,12 +34,12 @@ class SqlQueries:
     # 0 = v_fours ; 1 = janvier
     sales_table_insert = ("""
         SELECT  
-            staging_v_{0}.o_Janvier AS v_{0}_janvier_prev, 
-            staging_v_{0}.r_Janvier AS v_{0}_janvier_reel,
-            staging_ca_{0}.o_Janvier AS ca_{0}_janvier_prev, 
-            staging_ca_{0}.r_Janvier AS ca_{0}_janvier_reel, 
-            staging_mb_{0}.o_Janvier AS mb_{0}_janvier_prev, 
-            staging_mb_{0}.r_Janvier AS mb_{0}_janvier_reel,
+            staging_v_{0}.o_janvier AS v_{0}_janvier_prev, 
+            staging_v_{0}.r_janvier AS v_{0}_janvier_reel,
+            staging_ca_{0}.o_janvier AS ca_{0}_janvier_prev, 
+            staging_ca_{0}.r_janvier AS ca_{0}_janvier_reel, 
+            staging_mb_{0}.o_janvier AS mb_{0}_janvier_prev, 
+            staging_mb_{0}.r_janvier AS mb_{0}_janvier_reel,
             ville.id_ville,
             temps.id_temps,
             famille_produit.id_famille_produit,
@@ -65,18 +65,18 @@ class SqlQueries:
 
 
 	
-	
 
-
-
-    turnover_oven_insert = ("""
-        SELECT distinct song_id, title, artist_id, year, duration
-        FROM staging_songs
+    time_table_insert = ("""
+              (annee, semestre, trimestre, mois, lib_mois)
+        VALUES(2020,         1,         1,    1, 'janvier'),
+        VALUES(annee, semestre, trimestre, mois, lib_mois),
+        VALUES(annee, semestre, trimestre, mois, lib_mois);
     """)
     
     
 
-    
+
+
 
     
     

@@ -182,36 +182,6 @@ load_time_dimension_table = LoadDimensionOperator(
 )
 
 
-
-
-
-# load_song_dimension_table = LoadDimensionOperator(
-#     task_id='Load_song_dim_table',
-#     dag=dag,
-#     redshift_conn_id="redshift",
-#     table="songs",
-#     query=SqlQueries.song_table_insert,
-#     append=False
-# )
-
-# load_artist_dimension_table = LoadDimensionOperator(
-#     task_id='Load_artist_dim_table',
-#     dag=dag,
-#     redshift_conn_id="redshift",
-#     table="artists",
-#     query=SqlQueries.artist_table_insert,
-#     append=False
-# )
-
-# load_time_dimension_table = LoadDimensionOperator(
-#     task_id='Load_time_dim_table',
-#     dag=dag,
-#     redshift_conn_id="redshift",
-#     table="time",
-#     query=SqlQueries.time_table_insert,
-#     append=False
-# )
-
 # run_quality_checks = DataQualityOperator(
 #     task_id='run_quality_checks',
 #     dag=dag,
@@ -233,10 +203,11 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
 start_operator >> create_tables >> \
-[ stage_CA_Fours_to_redshift, stage_MB_Fours_to_redshift, stage_V_Fours_to_redshift ] >> \
-milestone_1 >> \
-[ stage_CA_Hifi_to_redshift, stage_MB_Hifi_to_redshift, stage_V_Hifi_to_redshift ] >> \
-milestone_2 >> \
-[ stage_CA_Magneto_to_redshift, stage_MB_Magneto_to_redshift, stage_V_Magneto_to_redshift ] >> \
+[ 
+    stage_CA_Fours_to_redshift, stage_MB_Fours_to_redshift, stage_V_Fours_to_redshift,
+    stage_CA_Hifi_to_redshift, stage_MB_Hifi_to_redshift, stage_V_Hifi_to_redshift, 
+    stage_CA_Magneto_to_redshift, stage_MB_Magneto_to_redshift, stage_V_Magneto_to_redshift 
+] >> \
+
 end_operator
 

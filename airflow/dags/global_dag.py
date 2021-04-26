@@ -162,6 +162,14 @@ stage_V_Magneto_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
+load_time_dimension_table = LoadDimensionOperator(
+    task_id='load_time_dimension_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="temps",
+    query=SqlQueries.time_table_insert,
+    append=False
+)
 
 Load_sales_fact_table = LoadFactOperator(
     task_id='Load_sales_fact_table',
@@ -172,14 +180,7 @@ Load_sales_fact_table = LoadFactOperator(
 )
 
 
-load_time_dimension_table = LoadDimensionOperator(
-    task_id='load_time_dimension_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    table="temps",
-    query=SqlQueries.time_table_insert,
-    append=False
-)
+
 
 
 # run_quality_checks = DataQualityOperator(
@@ -208,6 +209,8 @@ start_operator >> create_tables >> \
     stage_CA_Hifi_to_redshift, stage_MB_Hifi_to_redshift, stage_V_Hifi_to_redshift, 
     stage_CA_Magneto_to_redshift, stage_MB_Magneto_to_redshift, stage_V_Magneto_to_redshift 
 ] >> \
+
+load_time_dimension_table >> \
 
 end_operator
 

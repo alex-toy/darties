@@ -286,13 +286,13 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │       └── __pycache__
     ├── dwh_P6.cfg
     ├── generals
+    │   ├── star_schema.png
     │   └── Présentation\ Projet\ Darties.pdf
     ├── init
     ├── init.sh
     ├── poetry.lock
     ├── pyproject.toml
     ├── requirements.txt
-    ├── star_schema.png
     ├── unittests.cfg
     ├── utils
     │   ├── IaC_1.py

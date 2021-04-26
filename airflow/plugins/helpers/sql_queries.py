@@ -51,7 +51,8 @@ class SqlQueries:
         JOIN staging_ca_{0} 
             ON staging_v_{0}.villes = staging_ca_{0}.villes 
             AND staging_v_{0}.annee = staging_ca_{0}.annee
-        JOIN ville ON staging_v_{0}.villes = ville.lib_ville
+        JOIN ville 
+            ON staging_v_{0}.villes = ville.lib_ville
         JOIN temps 
             ON staging_v_{0}.annee = temps.annee
             AND temps.mois = '{1}'

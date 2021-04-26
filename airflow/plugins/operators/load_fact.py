@@ -21,6 +21,7 @@ class LoadFactOperator(BaseOperator):
         self.table = table
         self.query = query
 
+
     def execute(self, context):
         redshift = PostgresHook(self.redshift_conn_id)
 

@@ -183,7 +183,7 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   │   └── README.md
     │   ├── logs
     │   │   └── README.md
-    │   ├── output
+    │   ├── output ```diff ! text in orange ```
     │   │   ├── CA_Fours
     │   │   │   ├── 2020
     │   │   │   │   └── CA_Fours_2020_sales.json

@@ -127,6 +127,12 @@ Here is how the data is modelled according to a star schema :
     - **magasin** - store. Features : description of the store.
     - **temps** - time. Features : description of the time.
     - **enseigne** - brand. Features : description of the brand.
+    - **utilisateur** - user. Features : description of the user.
+    - **profil** - profile. Features : description of the profile.
+    - **cours** - currency rate. Features : description of the currency rate.
+    - **currency** - currency. Features : description of the currency.
+    - **parametre** - parameter. Features : description of the parameters.
+
 
 
 <img src="generals/star_schema.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />

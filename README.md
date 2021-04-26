@@ -129,7 +129,7 @@ Here is how the data is modelled according to a star schema :
     - **enseigne** - brand. Features : description of the brand.
 
 
-<img src="star_schema.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+<img src="generals/star_schema.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 
 

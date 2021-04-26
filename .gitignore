@@ -1,6 +1,5 @@
 data/*
 output/*
-generals/*
 app/__pycache__/*
 app/config/__pycache__/*
 app/domain/__pycache__/

@@ -334,7 +334,7 @@ CREATE TABLE IF NOT EXISTS public.temps (
 	annee int4,
 	semestre int4,
 	trimestre int4,
-	mois varchar(2),
+	mois int4,
 	lib_mois varchar(9),
 	CONSTRAINT temps_pkey PRIMARY KEY (id_temps)
 );

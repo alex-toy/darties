@@ -34,6 +34,11 @@ dag = DAG(
 
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
+load_currency = LoadCurrencyOperator(
+    task_id='load_currency',
+    dag=dag
+)
+
 
 clean_file = CleanFileOperator(
     task_id='clean_file',
@@ -48,16 +53,11 @@ upload_file = UploadFileOperator(
     S3_bucket="darties"
 )
 
-load_currency = LoadCurrencyOperator(
-    task_id='load_currency',
-    dag=dag
-)
-
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> clean_file >> upload_file >> load_currency >> end_operator
+start_operator >> load_currency >> clean_file >> upload_file >> end_operator
 
 
 

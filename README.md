@@ -55,14 +55,19 @@ The purpose of the project is to build an **ETL pipeline** that extracts data fr
 
 We will also introduce automation and monitoring to a data warehouse ETL pipelines using **Apache Airflow**. **Airflow** allows to create high grade data pipelines that are dynamic and built from reusable tasks, that can be monitored, and allow easy backfills. It also allows to monitor data quality which plays a big part when analyses are executed on top the data warehouse, in that it allows to run tests against our datasets after the ETL steps have been executed to catch any discrepancies in the datasets.
 
-<img src="generals/initial_dag.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+<img src="generals/intial_dag.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 Lastly, we will add a data visualization layer with **AWS Quicksight**.
 
 
 
 ## 2. Initial data
-The initial data is in excel files.
+Part of the initial data is provided through in excel files. For each item and each families of products, those files look like this :
+
+<img src="generals/initial_data.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+
+We will also need to webscrap some missing parts :
+- The currencies and their rate change we need to convert from one currency to another will be retrieved from the following url : "https://www.capital.fr/bourse/devises/cours-devises"
 
 
 ## 3. Database schema design and ETL pipeline

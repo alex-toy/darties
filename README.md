@@ -63,11 +63,13 @@ Lastly, we will add a data visualization layer with **AWS Quicksight**.
 
 ## 2. Initial data
 Part of the initial data is provided through in excel files. For each item and each families of products, those files look like this :
-
 <img src="generals/initial_data.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
+We also have some information about cities in an excel file that looks like this :
+<img src="generals/initial_data_cities.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+
 We will also need to webscrap some missing parts :
-- The currencies and their rate change we need to convert from one currency to another will be retrieved from the following url : "https://www.capital.fr/bourse/devises/cours-devises"
+- The currencies and their rate change we need to convert from one currency to another will be retrieved from the following url : https://www.capital.fr/bourse/devises/cours-devises
 
 
 ## 3. Database schema design and ETL pipeline

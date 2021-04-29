@@ -37,7 +37,9 @@ class LoadCurrencyOperator(BaseOperator) :
         for li in soup.find_all('li', class_="currencylist-item") :
             country_name = li.find('span')
             currency_name = li.find('a')
-            currency_value = li.find('strong', recursive=False)
+            #currency_value = li.find('strong', {'class': 'text'}, recursive=False)
+            currency_value = li.findChildren("strong" , recursive=False)[0]
+
             country_names.append(country_name.text)
             currency_names.append(currency_name.text)
             currency_values.append(currency_value.text)
@@ -51,8 +53,9 @@ class LoadCurrencyOperator(BaseOperator) :
         for col in new_df.columns :
             if is_string_dtype(new_df[col]) :
                 new_df[col] = new_df[col].str.lower()
-                new_df[col] = new_df[col].str.replace('[éèê]', 'e', regex=True)
-                new_df[col] = new_df[col].str.replace('[ûù]', 'u', regex=True)
+                new_df[col] = new_df[col].str.replace('[éèêë]', 'e', regex=True)
+                new_df[col] = new_df[col].str.replace('[äà]', 'a', regex=True)
+                new_df[col] = new_df[col].str.replace('[ûùü]', 'u', regex=True)
                 new_df[col] = new_df[col].str.replace('[ïî]', 'i', regex=True)
         return new_df
 

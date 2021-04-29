@@ -54,8 +54,9 @@ class SalesData :
         new_df = df.copy()
         for col in new_df.columns :
             if is_string_dtype(new_df[col]) :
-                new_df[col] = new_df[col].str.replace('[éèê]', 'e', regex=True)
-                new_df[col] = new_df[col].str.replace('[ûù]', 'u', regex=True)
+                new_df[col] = new_df[col].str.replace('[éèêë]', 'e', regex=True)
+                new_df[col] = new_df[col].str.replace('[äà]', 'a', regex=True)
+                new_df[col] = new_df[col].str.replace('[ûùü]', 'u', regex=True)
                 new_df[col] = new_df[col].str.replace('[ïî]', 'i', regex=True)
         return new_df
 

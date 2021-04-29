@@ -3,3 +3,5 @@ boto3
 xlrd>=1.0.0
 openpyxl
 pathlib
+beautifulsoup4
+lxml

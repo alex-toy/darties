@@ -1,9 +1,11 @@
 FROM puckel/docker-airflow
 
-VOLUME /Users/alexei/docs/MIAGE/S4/D605/darties/airflow /usr/local/airflow
+VOLUME ${PWD}/airflow /usr/local/airflow
 
-WORKDIR /airflow
-COPY requirements.txt /airflow
+WORKDIR /usr/local/airflow
+
+COPY requirements.txt .
+
 RUN pip install -U pip && pip install -r requirements.txt
 
 EXPOSE 8080

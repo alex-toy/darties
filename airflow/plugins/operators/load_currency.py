@@ -37,7 +37,7 @@ class LoadCurrencyOperator(BaseOperator) :
         for li in soup.find_all('li', class_="currencylist-item") :
             country_name = li.find('span')
             currency_name = li.find('a')
-            currency_value = li.find('strong')
+            currency_value = li.find('strong', recursive=False)
             country_names.append(country_name.text)
             currency_names.append(currency_name.text)
             currency_values.append(currency_value.text)

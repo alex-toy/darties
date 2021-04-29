@@ -39,11 +39,19 @@ class BuildDimensionOperator(BaseOperator):
                 trimestre = num_month // 3
                 semestre = num_month // 6
                 month = calendar.month_name[num_month].replace("û", "u")
-                time_table_insert += f"VALUES({year}, {semestre}, {trimestre}, {num_month}, {month}),"
+                time_table_insert += f" VALUES({year}, {semestre}, {trimestre}, {num_month}, {month}),"
 
         time_table_insert[-1] = ';'
 
         return time_table_insert
+
+
+    def build_enseigne_query(self) :
+        enseigne_table_insert = ("""(id_enseigne, lib_enseigne)""")
+    	time_table_insert += " VALUES(1, lib_enseigne),"
+
+        
+
 
 
 

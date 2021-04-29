@@ -53,9 +53,13 @@ In order to do so we have :
 
 The purpose of the project is to build an **ETL pipeline** that extracts data from S3, stages it in **Redshift**, and transforms data into a set of dimensional tables for analysis and insights in how and when sales are being performed. Data is modelled according to a star schema with fact and dimension tables for fast and easy analysis. **Redshift** gives the opportunity to execute SQL statements that create the analytics tables from these staging tables.
 
-We will also introduce automation and monitoring to a data warehouse ETL pipelines using **Apache Airflow**. **Airflow** allows to create high grade data pipelines that are dynamic and built from reusable tasks, that can be monitored, and allow easy backfills. It also allows to monitor data quality which plays a big part when analyses are executed on top the data warehouse, in that it allows to run tests against our datasets after the ETL steps have been executed to catch any discrepancies in the datasets.
+We will also introduce automation and monitoring to a data warehouse ETL pipelines using **Apache Airflow**. **Airflow** allows to create high grade data pipelines that are dynamic and built from reusable tasks, that can be monitored, and allow easy backfills. It also allows to monitor data quality which plays a big part when analyses are executed on top the data warehouse, in that it allows to run tests against our datasets after the ETL steps have been executed to catch any discrepancies in the datasets. We will have two dags in this project. The intial dag for gathering and precleaning data, and the global dag to process data in Redshift.
 
-<img src="generals/initial_dag.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+- Initial dag :
+    <img src="generals/initial_dag.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+
+- Global dag :
+    <img src="generals/initial_dag.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 Lastly, we will add a data visualization layer with **AWS Quicksight**.
 

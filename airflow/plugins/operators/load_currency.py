@@ -22,6 +22,7 @@ class LoadCurrencyOperator(BaseOperator) :
         super(LoadCurrencyOperator, self).__init__(*args, **kwargs)
 
 
+
     def get_data_from(self, url):
         r = requests.get(url)
         soup = BeautifulSoup(r.text, 'lxml')
@@ -41,12 +42,22 @@ class LoadCurrencyOperator(BaseOperator) :
 
         return country_names, currency_names, currency_values
 
+    
+
+    def create_currency_csv(self, country_names, currency_names, currency_values) :
+        data = list(zip(country_names, currency_names, currency_values))
+        df = pd.DataFrame(data, columns =['country_names', 'currency_names', currency_values])
+        df.to_csv(cf.OUTPUTS_DIR)
+
+
 
     def execute(self, context):
-        self.log.info(f"load currencies form  : {cf.CURRENCY_URL}")
+        self.log.info(f"load currencies from  : {cf.CURRENCY_URL}")
         country_names, currency_names, currency_values = self.get_data_from(cf.CURRENCY_URL)
-        self.log.info(f"country_name  : {country_names[0]} - currency_name  : {currency_names[0]} - currency_value  : {currency_values[0]}")
         
+        #self.log.info(f"country_name  : {country_names[0]} - currency_name  : {currency_names[0]} - currency_value  : {currency_values[0]}")
+        self.log.info(f"create csv file from currencies.")
+        self.create_currency_csv(country_names, currency_names, currency_values)
         
         
     

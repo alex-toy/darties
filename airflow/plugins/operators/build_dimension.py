@@ -48,7 +48,11 @@ class BuildDimensionOperator(BaseOperator):
 
     def build_enseigne_query(self) :
         enseigne_table_insert = ("""(id_enseigne, lib_enseigne)""")
-    	time_table_insert += " VALUES(1, lib_enseigne),"
+    	enseigne_table_insert += " VALUES(1, 'Darty'),"
+        enseigne_table_insert += " VALUES(2, 'Leroy-Merlin'),"
+        enseigne_table_insert += " VALUES(3, 'Boulanger');"
+
+        return enseigne_table_insert
 
         
 
@@ -58,6 +62,8 @@ class BuildDimensionOperator(BaseOperator):
     def execute(self, context):
         if self.table == 'temps' :
             query = self.build_time_query()
+        elif self.table == 'enseigne' :
+            query = self.build_enseigne_query()
         
         redshift = PostgresHook(self.redshift_conn_id)
         if self.append == False :

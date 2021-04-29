@@ -171,6 +171,14 @@ load_time_dimension_table = BuildDimensionOperator(
     append=False
 )
 
+load_enseigne_dimension_table = BuildDimensionOperator(
+    task_id='load_enseigne_dimension_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="enseigne",
+    append=False
+)
+
 Load_sales_fact_table = LoadFactOperator(
     task_id='Load_sales_fact_table',
     dag=dag,
@@ -212,7 +220,11 @@ start_operator >> create_tables >> \
 
 milestone_1 >> \
 
-[load_time_dimension_table] >> \
+[load_time_dimension_table, load_enseigne_dimension_table] >> \
+
+milestone_2 >> \
+
+Load_sales_fact_table >> \
 
 end_operator
 

@@ -1,3 +1,6 @@
+import locale
+locale.setlocale(locale.LC_ALL, 'fr_FR')
+
 from airflow.hooks.postgres_hook import PostgresHook
 from airflow.models import BaseOperator
 from airflow.utils.decorators import apply_defaults
@@ -28,30 +31,31 @@ class BuildDimensionOperator(BaseOperator):
         self.query = query
         self.append = append
 
-    def build_time_query() :
+    def build_time_query(self) :
         time_table_insert = ("""(annee, semestre, trimestre, mois, lib_mois)""")
 
-
         for year in range(2015, 2025) :
-            for month in cf.MONTHS :
-            time_table_insert += """VALUES(2020,         1,         1,    1, 'janvier'),"""
+            for num_month in range(1,13):
+                month = calendar.month_name[num_month].replace("û", "u")
+                time_table_insert += f"VALUES({year}, 1, 1, {num_month}, {month}'),"
+
+        time_table_insert[-1] = ';'
+
+        return time_table_insert
 
 
-            time_table_insert = ("""
-                    (annee, semestre, trimestre, mois, lib_mois)
-                VALUES(2020,         1,         1,    1, 'janvier'),
-                VALUES(annee, semestre, trimestre, mois, lib_mois),
-                VALUES(annee, semestre, trimestre, mois, lib_mois);
-            """)
 
     def execute(self, context):
+        if self.table == 'temps' :
+            query = self.build_time_query()
+        
         redshift = PostgresHook(self.redshift_conn_id)
         if self.append == False :
             sql_statement = BuildDimensionOperator.truncate_sql.format(self.table)
-            sql_statement += BuildDimensionOperator.table_insert.format(self.table, self.query)
+            sql_statement += BuildDimensionOperator.table_insert.format(self.table, query)
             operation = 'truncate'
         else:
-            sql_statement = BuildDimensionOperator.table_insert.format(self.table, self.query)
+            sql_statement = BuildDimensionOperator.table_insert.format(self.table, query)
             operation = 'append'
             
         redshift.run(sql_statement)

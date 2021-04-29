@@ -10,5 +10,6 @@ OUTPUTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../out
 
 
 
-MONTHS = []
+MONTHS = ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'aout', 'septembre', 'octobre', 'novembre', 'decembre']
+
 

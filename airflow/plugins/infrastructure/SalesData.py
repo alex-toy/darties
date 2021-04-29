@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 import numpy as np 
 import pandas as pd
+from pandas.api.types import is_string_dtype
 import os
 import re
 from datetime import datetime, timedelta, date
@@ -39,12 +40,23 @@ class SalesData :
         for sheet_name in self.sheet_names :
             df_sheet_name = df[sheet_name]
             df_sheet_name.columns = [x.lower() for x in df_sheet_name.columns]
+            df_sheet_name = self.__remove_accents__(df=df_sheet_name)
             outdir = os.path.join(cf.OUTPUTS_DIR, sheet_name, year)
             path = Path(outdir)
             path.mkdir(parents=True, exist_ok=True)
             saved_filename = f"{sheet_name}_{year}_sales.json"
             df_sheet_name['annee'] = year
             df_sheet_name.to_json(os.path.join(outdir, saved_filename), orient="records", lines=True)
+
+
+
+    def __remove_accents__(self, df) :
+        new_df = df.copy()
+        for col in new_df.columns :
+            if is_string_dtype(new_df[col]) :
+                new_df[col] = new_df[col].str.replace('[éèê]', 'e', regex=True)
+                new_df[col] = new_df[col].str.replace('[ûù]', 'u', regex=True)
+        return new_df
 
 
 

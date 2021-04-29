@@ -61,9 +61,9 @@ class BuildDimensionOperator(BaseOperator):
 
     def build_famille_produit_query(self) :
         famille_produit_table_insert = "(id_famille_produit, lib_famille_produit)"
-    	famille_produit_table_insert += " VALUES(1, 'hifi'),"
-        famille_produit_table_insert += " VALUES(2, 'magneto'),"
-        famille_produit_table_insert += " VALUES(3, 'fours');"
+        famille_produit_table_insert.join(" VALUES(1, 'hifi'),")
+        famille_produit_table_insert.join(" VALUES(2, 'magneto'),")
+        famille_produit_table_insert.join(" VALUES(3, 'fours');")
         return famille_produit_table_insert
 
 

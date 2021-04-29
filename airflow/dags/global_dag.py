@@ -228,14 +228,9 @@ start_operator >> create_tables >> \
     stage_CA_Hifi_to_redshift, stage_MB_Hifi_to_redshift, stage_V_Hifi_to_redshift, 
     stage_CA_Magneto_to_redshift, stage_MB_Magneto_to_redshift, stage_V_Magneto_to_redshift 
 ] >> \
-
 milestone_1 >> \
-
 [load_time_dimension_table, load_enseigne_dimension_table, load_famille_produit_dimension_table] >> \
-
 milestone_2 >> \
-
 Load_sales_fact_table >> \
-
 end_operator
 

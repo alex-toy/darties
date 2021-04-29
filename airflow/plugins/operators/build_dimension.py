@@ -51,16 +51,16 @@ class BuildDimensionOperator(BaseOperator):
 
 
     def build_enseigne_query(self) :
-        enseigne_table_insert = ("""(id_enseigne, lib_enseigne)""")
-    	enseigne_table_insert += " VALUES(1, 'Darty'),"
-        enseigne_table_insert += " VALUES(2, 'Leroy-Merlin'),"
-        enseigne_table_insert += " VALUES(3, 'Boulanger');"
+        enseigne_table_insert = "(id_enseigne, lib_enseigne)"
+        enseigne_table_insert.join(" VALUES(1, 'Darty'),")
+        enseigne_table_insert.join(" VALUES(2, 'Leroy-Merlin'),")
+        enseigne_table_insert.join(" VALUES(3, 'Boulanger');")
         return enseigne_table_insert
 
         
 
     def build_famille_produit_query(self) :
-        famille_produit_table_insert = ("""(id_famille_produit, lib_famille_produit)""")
+        famille_produit_table_insert = "(id_famille_produit, lib_famille_produit)"
     	famille_produit_table_insert += " VALUES(1, 'hifi'),"
         famille_produit_table_insert += " VALUES(2, 'magneto'),"
         famille_produit_table_insert += " VALUES(3, 'fours');"

@@ -26,7 +26,7 @@ class LoadFactOperator(BaseOperator):
         redshift = PostgresHook(self.redshift_conn_id)
 
         for item in ['fours', 'hifi', 'magneto'] :
-            for month in ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'aout', 'septembre', 'octobre', 'novembre', 'decembre']
+            for month in ['janvier', 'fevrier', 'mars', 'avril', 'mai', 'juin', 'juillet', 'aout', 'septembre', 'octobre', 'novembre', 'decembre'] :
                 query = self.query.format(item, month)
                 sql_statement = LoadFactOperator.table_insert.format(self.table, query)
                 redshift.run(sql_statement)

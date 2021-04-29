@@ -8,6 +8,9 @@ from os.path import isfile, join
 import re
 import requests
 from bs4 import BeautifulSoup
+import datetime
+from datetime import datetime, timedelta, date
+from pathlib import Path
 
 
 from webscraping.getcurrencies import getcurrencies
@@ -42,12 +45,21 @@ class LoadCurrencyOperator(BaseOperator) :
 
         return country_names, currency_names, currency_values
 
-    
+
+
 
     def create_currency_csv(self, country_names, currency_names, currency_values) :
         data = list(zip(country_names, currency_names, currency_values))
-        df = pd.DataFrame(data, columns =['country_names', 'currency_names', currency_values])
-        df.to_csv(cf.OUTPUTS_DIR)
+        df = pd.DataFrame(data, columns =['country_names', 'currency_names', 'currency_values'])
+        now = datetime.datetime.now()
+        df['annee'] = now.year
+        df['mois'] = now.month
+        outdir = os.path.join(cf.OUTPUTS_DIR, 'currency', year)
+        path = Path(outdir)
+        path.mkdir(parents=True, exist_ok=True)
+        saved_filename = f"currencies_{year}.json"
+        df_sheet_name.to_json(os.path.join(outdir, saved_filename), orient="records", lines=True)
+
 
 
 

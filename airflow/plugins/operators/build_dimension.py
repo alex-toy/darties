@@ -1,5 +1,3 @@
-import locale
-locale.setlocale(locale.LC_ALL, 'fr_FR')
 import math
 import calendar
 
@@ -29,7 +27,6 @@ class BuildDimensionOperator(BaseOperator):
         super(BuildDimensionOperator, self).__init__(*args, **kwargs)
         self.redshift_conn_id = redshift_conn_id
         self.table = table
-        self.query = query
         self.append = append
 
 
@@ -41,7 +38,7 @@ class BuildDimensionOperator(BaseOperator):
             for num_month in range(1,13):
                 trimestre = 1 + num_month // 3
                 semestre = 1 + num_month // 6
-                month = calendar.month_name[num_month].replace("û", "u")
+                month = cf.NUM_TO_NAME_MONTH[num_month]
                 time_table_insert += f" VALUES({year}, {semestre}, {trimestre}, {num_month}, {month}),"
 
         time_table_insert[-1] = ';'

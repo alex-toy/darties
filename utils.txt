@@ -21,10 +21,16 @@ airflow will run at : http://localhost:8080
 pip install xlrd>=1.0.0
 pip install openpyxl
 
+#not working!!
+export LC_ALL=fr_FR.UTF-8
+export LC_CTYPE=fr_FR.UTF-8
+sudo dpkg-reconfigure locales
+
+
 docker build -t webserver .
 docker run -d webserver
 
-
+docker exec -u root -it <container_id> bash
 
 curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/test_dag
 

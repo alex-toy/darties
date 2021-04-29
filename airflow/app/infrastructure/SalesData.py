@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 import numpy as np 
 import pandas as pd
+from pandas.api.types import is_string_dtype
 import os
 import re
 from datetime import datetime, timedelta, date
@@ -44,8 +45,8 @@ class SalesData :
 
     def _clean_data(self) :
         df = self.df_from_path()
+        df = self.__remove_accents__(df=df)
         #df = self.__change_col_name(df=df)
-        #df = self.__remove_accents__(df=df)
         return df
 
 
@@ -57,8 +58,10 @@ class SalesData :
 
     def __remove_accents__(self, df) :
         new_df = df.copy()
-        for col in ['City', 'Brand', 'Region', 'Location'] :
-            new_df[col] = new_df[col].str.replace('[éèê]', 'e', regex=True)
+        for col in new_df.columns :
+            if is_string_dtype(new_df[col]) :
+                new_df[col] = new_df[col].str.replace('[éèê]', 'e', regex=True)
+                new_df[col] = new_df[col].str.replace('[ûù]', 'u', regex=True)
         return new_df
 
 

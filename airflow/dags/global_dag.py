@@ -179,6 +179,14 @@ load_enseigne_dimension_table = BuildDimensionOperator(
     append=False
 )
 
+load_famille_produit_dimension_table = BuildDimensionOperator(
+    task_id='load_famille_produit_dimension_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="famille_produit",
+    append=False
+)
+
 Load_sales_fact_table = LoadFactOperator(
     task_id='Load_sales_fact_table',
     dag=dag,
@@ -204,6 +212,9 @@ Load_sales_fact_table = LoadFactOperator(
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
+
+
+
 #start_operator >> create_tables_task >> \
 #[stage_events_to_redshift, stage_songs_to_redshift] >> load_songplays_table >> \
 #[load_song_dimension_table, load_user_dimension_table, load_artist_dimension_table, load_time_dimension_table] >> \
@@ -220,7 +231,7 @@ start_operator >> create_tables >> \
 
 milestone_1 >> \
 
-[load_time_dimension_table, load_enseigne_dimension_table] >> \
+[load_time_dimension_table, load_enseigne_dimension_table, load_famille_produit_dimension_table] >> \
 
 milestone_2 >> \
 

@@ -32,6 +32,8 @@ class BuildDimensionOperator(BaseOperator):
         self.query = query
         self.append = append
 
+
+
     def build_time_query(self) :
         time_table_insert = ("""(annee, semestre, trimestre, mois, lib_mois)""")
 

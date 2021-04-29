@@ -18,12 +18,11 @@ airflow will run at : http://localhost:8080
 
 
 #inside docker container, run :
+docker exec -u root -it <container_id> bash
 pip install xlrd>=1.0.0
 pip install openpyxl
-pip install urllib2
-
-docker exec -u root -it <container_id> bash
-
+pip install urllib
+pip install requests
 
 
 # from Dockerfile :

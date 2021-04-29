@@ -286,6 +286,15 @@ CREATE TABLE IF NOT EXISTS public.staging_MB_Magneto (
 );
 
 
+CREATE TABLE IF NOT EXISTS public.staging_currency (
+	country_names varchar(30),
+	currency_names varchar(30),
+	currency_values decimal(16,8),
+	annee int4,
+	mois int4,
+);
+
+
 CREATE TABLE IF NOT EXISTS public.sales (
 	id_ville int4 NOT NULL,
 	id_temps int4 NOT NULL,

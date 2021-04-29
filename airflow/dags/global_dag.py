@@ -125,6 +125,18 @@ stage_V_Hifi_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
+stage_currency_to_redshift = StageToRedshiftOperator(
+    task_id='stage_currency_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_currency",
+    S3_bucket="darties",
+    S3_key="currency",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
 milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
 
 stage_CA_Magneto_to_redshift = StageToRedshiftOperator(
@@ -226,7 +238,8 @@ start_operator >> create_tables >> \
 [ 
     stage_CA_Fours_to_redshift, stage_MB_Fours_to_redshift, stage_V_Fours_to_redshift,
     stage_CA_Hifi_to_redshift, stage_MB_Hifi_to_redshift, stage_V_Hifi_to_redshift, 
-    stage_CA_Magneto_to_redshift, stage_MB_Magneto_to_redshift, stage_V_Magneto_to_redshift 
+    stage_CA_Magneto_to_redshift, stage_MB_Magneto_to_redshift, stage_V_Magneto_to_redshift,
+    stage_currency_to_redshift
 ] >> \
 milestone_1 >> \
 [load_time_dimension_table, load_enseigne_dimension_table, load_famille_produit_dimension_table] >> \

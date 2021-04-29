@@ -8,6 +8,7 @@ from airflow.operators.python_operator import PythonOperator
 from operators.stage_redshift import StageToRedshiftOperator
 from operators.load_fact import LoadFactOperator
 from operators.load_dimension import LoadDimensionOperator
+from operators.build_dimension import BuildDimensionOperator
 from operators.data_quality import DataQualityOperator
 
 from helpers import SqlQueries
@@ -162,12 +163,11 @@ stage_V_Magneto_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
-load_time_dimension_table = LoadDimensionOperator(
+load_time_dimension_table = BuildDimensionOperator(
     task_id='load_time_dimension_table',
     dag=dag,
     redshift_conn_id="redshift",
     table="temps",
-    query=SqlQueries.time_table_insert,
     append=False
 )
 

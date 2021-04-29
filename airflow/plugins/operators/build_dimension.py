@@ -22,7 +22,6 @@ class BuildDimensionOperator(BaseOperator):
     def __init__(self,
                  redshift_conn_id="",
                  table="",
-                 query="",
                  append=False,
                  *args, **kwargs):
 

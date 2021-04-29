@@ -2,15 +2,10 @@ from datetime import datetime, timedelta
 import os
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
-from airflow.operators.postgres_operator import PostgresOperator
-from airflow.operators.python_operator import PythonOperator
 
-from operators.stage_redshift import StageToRedshiftOperator
-from operators.load_fact import LoadFactOperator
-from operators.load_dimension import LoadDimensionOperator
-from operators.data_quality import DataQualityOperator
 from operators.clean_file import CleanFileOperator
 from operators.upload_file import UploadFileOperator
+from operators.load_currency import LoadCurrencyOperator
 
 from helpers import SqlQueries
 
@@ -53,11 +48,16 @@ upload_file = UploadFileOperator(
     S3_bucket="darties"
 )
 
+load_currency = LoadCurrencyOperator(
+    task_id='load_currency',
+    dag=dag
+)
+
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> clean_file >> upload_file >> end_operator
+start_operator >> clean_file >> upload_file >> load_currency >> end_operator
 
 
 

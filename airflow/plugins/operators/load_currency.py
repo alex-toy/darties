@@ -12,9 +12,7 @@ import datetime
 from datetime import datetime, timedelta, date
 from pathlib import Path
 import pandas as pd
-
-
-from webscraping.getcurrencies import getcurrencies
+from pandas.api.types import is_string_dtype
 
 
 
@@ -48,10 +46,23 @@ class LoadCurrencyOperator(BaseOperator) :
 
 
 
+    def __remove_accents__(self, df) :
+        new_df = df.copy()
+        for col in new_df.columns :
+            if is_string_dtype(new_df[col]) :
+                new_df[col] = new_df[col].str.lower()
+                new_df[col] = new_df[col].str.replace('[éèê]', 'e', regex=True)
+                new_df[col] = new_df[col].str.replace('[ûù]', 'u', regex=True)
+                new_df[col] = new_df[col].str.replace('[ïî]', 'i', regex=True)
+        return new_df
+
+
+
 
     def create_currency_csv(self, country_names, currency_names, currency_values) :
         data = list(zip(country_names, currency_names, currency_values))
         df = pd.DataFrame(data, columns =['country_names', 'currency_names', 'currency_values'])
+        df = self.__remove_accents__(df=df)
         now = datetime.now()
         df['annee'] = now.year
         df['mois'] = now.month
@@ -68,7 +79,6 @@ class LoadCurrencyOperator(BaseOperator) :
         self.log.info(f"load currencies from  : {cf.CURRENCY_URL}")
         country_names, currency_names, currency_values = self.get_data_from(cf.CURRENCY_URL)
         
-        #self.log.info(f"country_name  : {country_names[0]} - currency_name  : {currency_names[0]} - currency_value  : {currency_values[0]}")
         self.log.info(f"create csv file from currencies.")
         self.create_currency_csv(country_names, currency_names, currency_values)
         

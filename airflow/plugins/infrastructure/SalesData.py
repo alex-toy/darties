@@ -56,6 +56,7 @@ class SalesData :
             if is_string_dtype(new_df[col]) :
                 new_df[col] = new_df[col].str.replace('[éèê]', 'e', regex=True)
                 new_df[col] = new_df[col].str.replace('[ûù]', 'u', regex=True)
+                new_df[col] = new_df[col].str.replace('[ïî]', 'i', regex=True)
         return new_df
 
 

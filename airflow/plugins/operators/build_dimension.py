@@ -1,5 +1,6 @@
 import locale
 locale.setlocale(locale.LC_ALL, 'fr_FR')
+import math
 
 from airflow.hooks.postgres_hook import PostgresHook
 from airflow.models import BaseOperator
@@ -36,8 +37,10 @@ class BuildDimensionOperator(BaseOperator):
 
         for year in range(2015, 2025) :
             for num_month in range(1,13):
+                trimestre = num_month // 3
+                semestre = num_month // 6
                 month = calendar.month_name[num_month].replace("û", "u")
-                time_table_insert += f"VALUES({year}, 1, 1, {num_month}, {month}'),"
+                time_table_insert += f"VALUES({year}, {semestre}, {trimestre}, {num_month}, {month}),"
 
         time_table_insert[-1] = ';'
 

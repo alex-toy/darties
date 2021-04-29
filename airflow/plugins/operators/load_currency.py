@@ -7,6 +7,7 @@ from os import listdir
 from os.path import isfile, join
 import re
 import requests
+from bs4 import BeautifulSoup
 
 
 from webscraping.getcurrencies import getcurrencies
@@ -23,7 +24,8 @@ class LoadCurrencyOperator(BaseOperator) :
 
     def get_data_from(self, url):
         r = requests.get(url)
-        return r.text
+        soup = BeautifulSoup(r.text, 'lxml')
+        return soup.prettify()
 
 
     def execute(self, context):

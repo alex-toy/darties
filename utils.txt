@@ -21,7 +21,6 @@ airflow will run at : http://localhost:8080
 docker exec -u root -it <container_id> bash
 pip install xlrd>=1.0.0
 pip install openpyxl
-pip install urllib
 pip install requests
 
 

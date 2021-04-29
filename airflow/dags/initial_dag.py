@@ -21,7 +21,7 @@ default_args = {
     'email_on_retry': False,
 }
 
-DAG
+
 dag = DAG(
     'initial_dag',
     default_args=default_args,

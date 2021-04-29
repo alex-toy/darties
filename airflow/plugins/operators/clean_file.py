@@ -24,8 +24,9 @@ class CleanFileOperator(BaseOperator) :
         self.log.info(f"Create cleaned files in : {cf.DATA_DIR}")
         files = [f for f in listdir(cf.DATA_DIR) if isfile(join(cf.DATA_DIR, f))]
         for file in files :
-            if file != 'README.md' :
+            if file != 'README.md' and not file.startswith('.') :
                 file_abspath = os.path.abspath(os.path.join(cf.DATA_DIR, file))
+                self.log.info(f"Name of files : {file}")
                 year = re.search(r'(\d{4})', file).group(1)
                 self.log.info(f"Create cleaned file : {file} for year {year}")
                 sd = SalesData(path=file_abspath)

@@ -40,13 +40,16 @@ class LoadCitiesOperator(BaseOperator) :
             if len(tds) == 14 :
                 city = tds[2].text
                 city = re.search(r'[^[\n\r]+', city).group(0)
-                city = city.replace("\n", "")
                 departement = tds[3].find('a').text
                 region = tds[5].text
             else :
                 city = tds[1].text
                 departement = tds[2].text
                 region = tds[4].text
+
+            city = city.replace("\n", "")
+            departement = departement.replace("\n", "")
+            region = region.replace("\n", "")
 
             cities.append(city)
             departements.append(departement)
@@ -61,7 +64,7 @@ class LoadCitiesOperator(BaseOperator) :
 
 
 
-    def create_currency_csv(self, cities, departements, regions) :
+    def create_cities_csv(self, cities, departements, regions) :
         data = list(zip(cities, departements, regions))
         df = pd.DataFrame(data, columns =['cities', 'departements', 'regions'])
         df = cf.remove_accents(df=df)
@@ -79,8 +82,8 @@ class LoadCitiesOperator(BaseOperator) :
         self.log.info(f"load currencies from  : {cf.CITY_URL}")
         cities, departements, regions = self.get_data_from(cf.CITY_URL)
         
-        #self.log.info(f"create csv file from currencies.")
-        #self.create_currency_csv(country_names, currency_names, currency_values)
+        self.log.info(f"create csv file from cities.")
+        self.create_cities_csv(country_names, currency_names, currency_values)
         
         
     

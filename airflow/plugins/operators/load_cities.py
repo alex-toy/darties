@@ -67,11 +67,10 @@ class LoadCitiesOperator(BaseOperator) :
         data = list(zip(cities, departements, regions))
         df = pd.DataFrame(data, columns =['cities', 'departements', 'regions'])
         df = cf.remove_accents(df=df)
-
+        now = datetime.now()
         outdir = os.path.join(cf.OUTPUTS_DIR, 'ville', str(now.year))
         path = Path(outdir)
         path.mkdir(parents=True, exist_ok=True)
-        now = datetime.now()
         saved_filename = f"villes_{str(now.year)}.json"
         df.to_json(os.path.join(outdir, saved_filename), orient="records", lines=True)
 

@@ -59,7 +59,7 @@ We will also introduce automation and monitoring to a data warehouse ETL pipelin
     <img src="generals/initial_dag.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 - Global dag :
-    <img src="generals/initial_dag.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+    <img src="generals/global_dag.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 Lastly, we will add a data visualization layer with **AWS Quicksight**.
 

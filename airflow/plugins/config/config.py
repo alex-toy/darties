@@ -34,7 +34,7 @@ def remove_accents(df) :
         if is_string_dtype(new_df[col]) :
             new_df[col] = new_df[col].str.lower()
             new_df[col] = new_df[col].str.replace('[éèêë]', 'e', regex=True)
-            new_df[col] = new_df[col].str.replace('[äà]', 'a', regex=True)
+            new_df[col] = new_df[col].str.replace('[äàâ]', 'a', regex=True)
             new_df[col] = new_df[col].str.replace('[ûùü]', 'u', regex=True)
             new_df[col] = new_df[col].str.replace('[ïî]', 'i', regex=True)
             new_df[col] = new_df[col].str.replace('[ô]', 'o', regex=True)
@@ -47,4 +47,4 @@ def remove_accents(df) :
 CURRENCY_URL = "https://www.capital.fr/bourse/devises/cours-devises"
 
 
-CITY_URL = "https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peuplées"
+CITY_URL_EUR = "https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peuplées"

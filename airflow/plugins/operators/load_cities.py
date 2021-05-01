@@ -78,8 +78,8 @@ class LoadCitiesOperator(BaseOperator) :
 
 
     def execute(self, context):
-        self.log.info(f"load currencies from  : {cf.CITY_URL}")
-        cities, departements, regions = self.get_data_from(cf.CITY_URL)
+        self.log.info(f"load currencies from  : {cf.CITY_URL_EUR}")
+        cities, departements, regions = self.get_data_from(cf.CITY_URL_EUR)
         
         self.log.info(f"create csv file from cities.")
         self.create_cities_csv(cities, departements, regions)

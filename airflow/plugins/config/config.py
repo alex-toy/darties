@@ -37,8 +37,9 @@ def remove_accents(df) :
             new_df[col] = new_df[col].str.replace('[äà]', 'a', regex=True)
             new_df[col] = new_df[col].str.replace('[ûùü]', 'u', regex=True)
             new_df[col] = new_df[col].str.replace('[ïî]', 'i', regex=True)
-
-            #ÿ
+            new_df[col] = new_df[col].str.replace('[ô]', 'o', regex=True)
+            new_df[col] = new_df[col].str.replace('[ÿ]', 'y', regex=True)
+            new_df[col] = new_df[col].str.replace('[ç]', 'c', regex=True)
 
     return new_df
 

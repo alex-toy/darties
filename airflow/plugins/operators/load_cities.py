@@ -68,7 +68,7 @@ class LoadCitiesOperator(BaseOperator) :
         df = pd.DataFrame(data, columns =['cities', 'departements', 'regions'])
         df = cf.remove_accents(df=df)
 
-        outdir = os.path.join(cf.OUTPUTS_DIR, 'ville')
+        outdir = os.path.join(cf.OUTPUTS_DIR, 'ville', str(now.year))
         path = Path(outdir)
         path.mkdir(parents=True, exist_ok=True)
         now = datetime.now()

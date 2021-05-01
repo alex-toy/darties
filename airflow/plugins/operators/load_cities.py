@@ -38,7 +38,15 @@ class LoadCitiesOperator(BaseOperator) :
 
         for tr in filtered_trs :
             tds = tr.find_all('td')
-            self.log.info(f"tds  : {tds[:2]} / len tr  : {len(tds)} ")
+            if len(tds) == 14 :
+                city = tds[2].text
+                departement = tds[3]
+            else :
+                city = tds[1].text
+                departement = tds[2].text
+            
+            self.log.info(f"city  : {city} / len tr  : {len(tds)} ")
+            self.log.info(f"departement  : {departement} / len tr  : {len(tds)} ")
             
             #self.log.info(f"tr  : {tr}")
         #     currency_name = li.find('a')

@@ -29,7 +29,6 @@ class LoadCitiesOperator(BaseOperator) :
         r = requests.get(url)
         bs = BeautifulSoup(r.text, 'lxml')
         trs = bs.find_all('tr')
-        
         filtered_trs = [ tr for tr in trs if len(tr.find_all('td'))>=14 ]
 
         cities = []
@@ -40,6 +39,7 @@ class LoadCitiesOperator(BaseOperator) :
             tds = tr.find_all('td')
             if len(tds) == 14 :
                 city = tds[2].text
+                city = re.search(r'[^[\n\r]+', city).group(0) 
                 departement = tds[3].find('a').text
                 region = tds[5].text
             else :
@@ -54,11 +54,6 @@ class LoadCitiesOperator(BaseOperator) :
         self.log.info(f"cities  : {cities}")
         self.log.info(f"departements  : {departements} ")
         self.log.info(f"regions  : {regions} ")
-
-        self.log.info(f"len cities  : {cities} ")
-        self.log.info(f"len departements  : {departements} ")
-        self.log.info(f"len regions  : {regions} ")
-            
 
         return cities, departements, regions
 

@@ -28,17 +28,16 @@ class LoadCitiesOperator(BaseOperator) :
     def get_data_from(self, url):
         r = requests.get(url)
         bs = BeautifulSoup(r.text, 'lxml')
-        tr = bs.find_all('tr')
+        tbody = bs.find_all('tbody')
+        self.log.info(f"tbody  : {tbody} / len tbody  : {len(tbody)} ")
 
         cities = []
         departements = []
         regions = []
 
-        #for td in tr.find_all('td')[2] :
-        for item in tr :
-            self.log.info(f"item  :")
-            td = tr.find_all('td')
-            self.log.info(f"td  : {td}")
+        #for tr in trs :
+            #td = tr.find_all('td')
+            #self.log.info(f"tr  : {tr}")
         #     currency_name = li.find('a')
         #     currency_value = li.find('strong').findAll(text=True, recursive=False)[0]
         #     currency_value = re.search(r'(\d+,\d{3,4})', currency_value).group(1)

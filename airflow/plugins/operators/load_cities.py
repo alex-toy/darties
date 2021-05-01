@@ -41,38 +41,35 @@ class LoadCitiesOperator(BaseOperator) :
             if len(tds) == 14 :
                 city = tds[2].text
                 departement = tds[3].find('a').text
+                region = tds[5].text
             else :
                 city = tds[1].text
                 departement = tds[2].text
+                region = tds[4].text
+
+            cities.append(city)
+            departements.append(departement)
+            regions.append(region)
             
-            self.log.info(f"city  : {city} / len tr  : {len(tds)} ")
-            self.log.info(f"departement  : {departement} / len tr  : {len(tds)} ")
+            self.log.info(f"cities  : {cities}")
+            self.log.info(f"departements  : {departements} ")
+            self.log.info(f"regions  : {regions} ")
             
-            #self.log.info(f"tr  : {tr}")
-        #     currency_name = li.find('a')
-        #     currency_value = li.find('strong').findAll(text=True, recursive=False)[0]
-        #     currency_value = re.search(r'(\d+,\d{3,4})', currency_value).group(1)
-        #     currency_value = currency_value.replace(",", ".")
-        #     country_names.append(country_name.text)
-        #     currency_names.append(currency_name.text)
-        #     currency_values.append(float(currency_value))
 
         return cities, departements, regions
 
 
 
 
-    def create_currency_csv(self, country_names, currency_names, currency_values) :
-        data = list(zip(country_names, currency_names, currency_values))
-        df = pd.DataFrame(data, columns =['country_names', 'currency_names', 'currency_values'])
+    def create_currency_csv(self, cities, departements, regions) :
+        data = list(zip(cities, departements, regions))
+        df = pd.DataFrame(data, columns =['cities', 'departements', 'regions'])
         df = cf.remove_accents(df=df)
-        now = datetime.now()
-        df['annee'] = now.year
-        df['mois'] = now.month
-        outdir = os.path.join(cf.OUTPUTS_DIR, 'currency', str(now.year))
+
+        outdir = os.path.join(cf.OUTPUTS_DIR, 'ville')
         path = Path(outdir)
         path.mkdir(parents=True, exist_ok=True)
-        saved_filename = f"currencies_{str(now.year)}.json"
+        saved_filename = f"villes_{str(now.year)}.json"
         df.to_json(os.path.join(outdir, saved_filename), orient="records", lines=True)
 
 

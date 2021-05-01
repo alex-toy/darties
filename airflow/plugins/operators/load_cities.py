@@ -30,16 +30,15 @@ class LoadCitiesOperator(BaseOperator) :
         bs = BeautifulSoup(r.text, 'lxml')
         trs = bs.find_all('tr')
         
-        #filtered_trs = [tr for tr in trs if len(tr.find_all('td'))>=30]
-        len_filtered_trs = [ len(tr.find_all('td')) for tr in trs ]
-        self.log.info(f"len_filtered_trs  : {len_filtered_trs} ")
+        filtered_trs = [ tr for tr in trs if len(tr.find_all('td'))>=14 ]
 
         cities = []
         departements = []
         regions = []
 
-        #for tr in filtered_trs :
-            #self.log.info(f"tr  : {tr} / len tr  : {len(tr)} ")
+        for tr in filtered_trs :
+            tds = tr.find_all('td')
+            self.log.info(f"tds  : {tds[:2]} / len tr  : {len(tds)} ")
             
             #self.log.info(f"tr  : {tr}")
         #     currency_name = li.find('a')

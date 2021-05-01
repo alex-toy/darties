@@ -53,10 +53,6 @@ class LoadCitiesOperator(BaseOperator) :
             cities.append(city)
             departements.append(departement)
             regions.append(region)
-            
-        self.log.info(f"cities  : {cities}")
-        self.log.info(f"departements  : {departements} ")
-        self.log.info(f"regions  : {regions} ")
 
         return cities, departements, regions
 

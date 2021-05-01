@@ -71,6 +71,7 @@ class LoadCitiesOperator(BaseOperator) :
         outdir = os.path.join(cf.OUTPUTS_DIR, 'ville')
         path = Path(outdir)
         path.mkdir(parents=True, exist_ok=True)
+        now = datetime.now()
         saved_filename = f"villes_{str(now.year)}.json"
         df.to_json(os.path.join(outdir, saved_filename), orient="records", lines=True)
 

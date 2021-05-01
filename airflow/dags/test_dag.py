@@ -5,7 +5,8 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.postgres_operator import PostgresOperator
 from airflow.operators.python_operator import PythonOperator
 
-from operators.load_currency import LoadCurrencyOperator
+from operators.load_cities import LoadCitiesOperator
+
 
 from helpers import SqlQueries
 
@@ -35,8 +36,8 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-load_currency = LoadCurrencyOperator(
-    task_id='load_currency',
+load_cities = LoadCitiesOperator(
+    task_id='load_cities',
     dag=dag
 )
 
@@ -44,7 +45,7 @@ load_currency = LoadCurrencyOperator(
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> load_currency >> end_operator
+start_operator >> load_cities >> end_operator
 
 
 

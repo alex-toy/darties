@@ -17,3 +17,20 @@ dpkg-reconfigure locales
 su dpkg-reconfigure locales
 user roor
 su root
+ls
+pwd
+pip list
+ls
+cd ~
+ls
+pwd
+ls
+pip list
+pwd
+ls
+ls
+pip list | grep b
+pip list | grep ^b
+pip install beautifulsoup4
+pip list | grep ^b
+curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/test_dag

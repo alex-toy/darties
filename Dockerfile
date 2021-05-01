@@ -1,10 +1,8 @@
 FROM puckel/docker-airflow
 
-VOLUME ${PWD}/airflow /usr/local/airflow
-
 WORKDIR /usr/local/airflow
 
-COPY requirements.txt .
+COPY requirements.txt /usr/local/airflow
 
 RUN pip install -U pip && pip install -r requirements.txt
 

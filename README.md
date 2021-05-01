@@ -72,7 +72,7 @@ Part of the initial data is provided through in excel files. For each item and e
 We also have some information about cities in an excel file that looks like this :
 <img src="generals/initial_data_cities.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
-We will also need to webscrap some missing parts. In order to do so, we will use the python library beautifulsoup :
+We will also need to webscrap some missing parts. In order to do so, we will use the python library **beautifulsoup** :
 
 - The currencies and their rate change we need to convert from one currency to another will be retrieved from the following url : https://www.capital.fr/bourse/devises/cours-devises
 

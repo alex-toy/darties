@@ -39,7 +39,8 @@ class LoadCitiesOperator(BaseOperator) :
             tds = tr.find_all('td')
             if len(tds) == 14 :
                 city = tds[2].text
-                city = re.search(r'[^[\n\r]+', city).group(0) 
+                city = re.search(r'[^[\n\r]+', city).group(0)
+                city = city.replace("\n", "")
                 departement = tds[3].find('a').text
                 region = tds[5].text
             else :

@@ -40,7 +40,7 @@ class LoadCitiesOperator(BaseOperator) :
             tds = tr.find_all('td')
             if len(tds) == 14 :
                 city = tds[2].text
-                departement = tds[3]
+                departement = tds[3].find('a').text
             else :
                 city = tds[1].text
                 departement = tds[2].text

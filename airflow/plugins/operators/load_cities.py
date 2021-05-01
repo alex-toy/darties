@@ -27,22 +27,25 @@ class LoadCitiesOperator(BaseOperator) :
 
     def get_data_from(self, url):
         r = requests.get(url)
-        soup = BeautifulSoup(r.text, 'lxml')
-        li = soup.find_all('li', class_="currencylist-item")
+        bs = BeautifulSoup(r.text, 'lxml')
+        td = bs.find_all('td', attrs={'style': "text-align:left"})
+        b = td.find("b" , recursive=False)
+        
+        self.log.info(f"b  : {b}")
 
-        country_names = []
-        currency_names = []
-        currency_values = []
+        cities = []
+        departements = []
+        regions = []
 
-        for li in soup.find_all('li', class_="currencylist-item") :
-            country_name = li.find('span')
-            currency_name = li.find('a')
-            currency_value = li.find('strong').findAll(text=True, recursive=False)[0]
-            currency_value = re.search(r'(\d+,\d{3,4})', currency_value).group(1)
-            currency_value = currency_value.replace(",", ".")
-            country_names.append(country_name.text)
-            currency_names.append(currency_name.text)
-            currency_values.append(float(currency_value))
+        # for li in bs.find_all('li', class_="currencylist-item") :
+        #     country_name = li.find('span')
+        #     currency_name = li.find('a')
+        #     currency_value = li.find('strong').findAll(text=True, recursive=False)[0]
+        #     currency_value = re.search(r'(\d+,\d{3,4})', currency_value).group(1)
+        #     currency_value = currency_value.replace(",", ".")
+        #     country_names.append(country_name.text)
+        #     currency_names.append(currency_name.text)
+        #     currency_values.append(float(currency_value))
 
         return cities, departements, regions
 
@@ -67,10 +70,10 @@ class LoadCitiesOperator(BaseOperator) :
 
     def execute(self, context):
         self.log.info(f"load currencies from  : {cf.CITY_URL}")
-        country_names, currency_names, currency_values = self.get_data_from(cf.CITY_URL)
+        cities, departements, regions = self.get_data_from(cf.CITY_URL)
         
-        self.log.info(f"create csv file from currencies.")
-        self.create_currency_csv(country_names, currency_names, currency_values)
+        #self.log.info(f"create csv file from currencies.")
+        #self.create_currency_csv(country_names, currency_names, currency_values)
         
         
     

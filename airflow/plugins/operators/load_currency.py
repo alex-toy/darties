@@ -48,24 +48,11 @@ class LoadCurrencyOperator(BaseOperator) :
 
 
 
-    def __remove_accents__(self, df) :
-        new_df = df.copy()
-        for col in new_df.columns :
-            if is_string_dtype(new_df[col]) :
-                new_df[col] = new_df[col].str.lower()
-                new_df[col] = new_df[col].str.replace('[éèêë]', 'e', regex=True)
-                new_df[col] = new_df[col].str.replace('[äà]', 'a', regex=True)
-                new_df[col] = new_df[col].str.replace('[ûùü]', 'u', regex=True)
-                new_df[col] = new_df[col].str.replace('[ïî]', 'i', regex=True)
-        return new_df
-
-
-
 
     def create_currency_csv(self, country_names, currency_names, currency_values) :
         data = list(zip(country_names, currency_names, currency_values))
         df = pd.DataFrame(data, columns =['country_names', 'currency_names', 'currency_values'])
-        df = self.__remove_accents__(df=df)
+        df = cf.remove_accents(df=df)
         now = datetime.now()
         df['annee'] = now.year
         df['mois'] = now.month

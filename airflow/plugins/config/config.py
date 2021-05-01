@@ -27,6 +27,7 @@ NUM_TO_NAME_MONTH = {
     12 : 'decembre',
 }
 
+from pandas.api.types import is_string_dtype
 def remove_accents(df) :
     new_df = df.copy()
     for col in new_df.columns :

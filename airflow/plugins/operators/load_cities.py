@@ -63,8 +63,8 @@ class LoadCitiesOperator(BaseOperator) :
         data = list(zip(cities, departements, regions))
         df = pd.DataFrame(data, columns =['lib_ville', 'lib_departement', 'lib_reg_nouv'])
         df = cf.remove_accents(df=df)
-        df['pays'] = 'france'
-        df['continent'] = 'europe'
+        df['lib_pays'] = 'france'
+        df['lib_continent'] = 'europe'
         now = datetime.now()
         outdir = os.path.join(cf.OUTPUTS_DIR, 'ville', str(now.year))
         path = Path(outdir)

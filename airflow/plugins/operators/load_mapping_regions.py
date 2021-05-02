@@ -56,14 +56,17 @@ class LoadMappingOperator(BaseOperator) :
         #self.log.info(f"trs : {trs}")
         filtered_trs = [ tr for tr in trs if len(tr)==9 ]
 
-        for tr in filtered_trs :
-            departement = tr.find_all("td")[1].text
-            region = tr.find_all("td")[3].text
-            self.log.info(f"departement : {departement}")
-            self.log.info(f"region : {region}")
-
         departements = []
         regions = []
+
+        for tr in filtered_trs[1:] :
+            departement = tr.find_all("td")[1].text
+            region = tr.find_all("td")[3].text
+            departements.append(departement)
+            regions.append(region)
+            
+        self.log.info(f"departements : {departements}")
+        self.log.info(f"regions : {regions}")
 
         return departements, regions
 

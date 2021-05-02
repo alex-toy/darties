@@ -53,7 +53,12 @@ class LoadMappingOperator(BaseOperator) :
         r = requests.get(url)
         bs = BeautifulSoup(r.text, 'lxml')
         trs = bs.find_all("tr")
-        self.log.info(f"trs : {trs}")
+        #self.log.info(f"trs : {trs}")
+        filtered_trs = [ tr for tr in trs if len(tr)==9 ]
+
+        for tr in filtered_trs :
+            self.log.info(f"len tr : {len(tr)}")
+            self.log.info(f"tr : {tr}")
 
         departements = []
         regions = []
@@ -87,7 +92,7 @@ class LoadMappingOperator(BaseOperator) :
         # self.create_mapping_file(previous_names, new_names)
 
         self.log.info(f"load mapping from  : {cf.MAPPING_DEP_PREV_REG}")
-        departements, regions = self.get_data_with_previous_names(cf.MAPPING_PREV_NEW_REG)
+        departements, regions = self.get_data_with_previous_names(cf.MAPPING_DEP_PREV_REG)
         
         #self.log.info(f"create csv file from cities.")
         #self.create_mapping_file(previous_names, new_names)

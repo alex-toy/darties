@@ -87,7 +87,7 @@ class LoadMappingOperator(BaseOperator) :
 
 
     def create_mapping_dep_reg_file(self, departements, regions) :
-        data = list(zip(previous_names, new_names))
+        data = list(zip(departements, regionss))
         df = pd.DataFrame(data, columns =['departements', 'regions'])
         df = cf.remove_accents(df=df)
 

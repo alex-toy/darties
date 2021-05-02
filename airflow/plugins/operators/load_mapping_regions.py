@@ -31,10 +31,9 @@ class LoadMappingOperator(BaseOperator) :
     def get_data_from(self, url):
         r = requests.get(url)
         bs = BeautifulSoup(r.text, 'lxml')
-        trs = bs.find_all('tr', class_="odswidget-table__internal-table-row record-1")
-        self.log.info(f"bs  : {trs}")
+        trs = bs.find_all("tr")[1:20]
+        self.log.info(f"trs  : {trs}")
 
-        # filtered_trs = [ tr for tr in trs if len(tr.find_all('td'))>=14 ]
 
         previous_names = []
         new_names = []

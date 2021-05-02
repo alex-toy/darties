@@ -24,42 +24,48 @@ class LoadMappingOperator(BaseOperator) :
 
 
 
+#<tr class="odswidget-table__internal-table-row record-1"><td class="odswidget-table__cell"><div class="odswidget-table__cell-container">2</div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="02">02</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="Martinique">Martinique</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="02">02</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="Martinique">Martinique</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="martinique">martinique</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="martinique">martinique</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container odswidget-table__cell-container__right-aligned"><span title="239&nbsp;720&nbsp;014">239&nbsp;720&nbsp;014</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="MARTINIQUE">MARTINIQUE</span></div></td></tr>
+
+
+
     def get_data_from(self, url):
         r = requests.get(url)
         bs = BeautifulSoup(r.text, 'lxml')
-        trs = bs.find_all('tr')
-        filtered_trs = [ tr for tr in trs if len(tr.find_all('td'))>=14 ]
+        trs = bs.find_all('tr', class_="odswidget-table__internal-table-row record-1")
+        self.log.info(f"bs  : {trs}")
 
-        cities = []
-        departements = []
-        regions = []
+        # filtered_trs = [ tr for tr in trs if len(tr.find_all('td'))>=14 ]
 
-        for tr in filtered_trs :
-            tds = tr.find_all('td')
-            if len(tds) == 14 :
-                city = tds[2].text
-                city = re.search(r'[^[\n\r]+', city).group(0)
-                departement = tds[3].find('a').text
-                region = tds[5].text
-            else :
-                city = tds[1].text
-                departement = tds[2].text
-                region = tds[4].text
+        # cities = []
+        # departements = []
+        # regions = []
 
-            city = city.replace("\n", "")
-            departement = departement.replace("\n", "")
-            region = region.replace("\n", "")
+        # for tr in filtered_trs :
+        #     tds = tr.find_all('td')
+        #     if len(tds) == 14 :
+        #         city = tds[2].text
+        #         city = re.search(r'[^[\n\r]+', city).group(0)
+        #         departement = tds[3].find('a').text
+        #         region = tds[5].text
+        #     else :
+        #         city = tds[1].text
+        #         departement = tds[2].text
+        #         region = tds[4].text
 
-            cities.append(city)
-            departements.append(departement)
-            regions.append(region)
+        #     city = city.replace("\n", "")
+        #     departement = departement.replace("\n", "")
+        #     region = region.replace("\n", "")
+
+        #     cities.append(city)
+        #     departements.append(departement)
+        #     regions.append(region)
 
         return cities, departements, regions
 
 
 
 
-    def create_cities_csv(self, cities, departements, regions) :
+    def create_mapping_file(self, cities, departements, regions) :
         data = list(zip(cities, departements, regions))
         df = pd.DataFrame(data, columns =['lib_ville', 'lib_departement', 'lib_reg_nouv'])
         df = cf.remove_accents(df=df)
@@ -77,11 +83,11 @@ class LoadMappingOperator(BaseOperator) :
 
 
     def execute(self, context):
-        self.log.info(f"load currencies from  : {cf.CITY_URL_EUR}")
-        cities, departements, regions = self.get_data_from(cf.CITY_URL_EUR)
+        self.log.info(f"load mapping from  : {cf.MAPPING_PREV_NEW_REG}")
+        cities, departements, regions = self.get_data_from(cf.MAPPING_PREV_NEW_REG)
         
-        self.log.info(f"create csv file from cities.")
-        self.create_cities_csv(cities, departements, regions)
+        #self.log.info(f"create csv file from cities.")
+        #self.create_mapping_file(cities, departements, regions)
         
         
     

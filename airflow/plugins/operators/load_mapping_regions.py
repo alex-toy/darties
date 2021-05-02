@@ -49,6 +49,14 @@ class LoadMappingOperator(BaseOperator) :
 
 
 
+    def get_data_with_previous_names(self, url):
+        r = requests.get(url)
+        bs = BeautifulSoup(r.text, 'lxml')
+        trs = bs.find_all("tr")
+        self.log.info(f"trs : {trs}")
+
+
+
 
     def create_mapping_file(self, previous_names, new_names) :
         data = list(zip(previous_names, new_names))
@@ -67,13 +75,18 @@ class LoadMappingOperator(BaseOperator) :
 
 
     def execute(self, context):
-        self.log.info(f"load mapping from  : {cf.MAPPING_PREV_NEW_REG}")
-        previous_names, new_names = self.get_data_from(cf.MAPPING_PREV_NEW_REG)
+        # self.log.info(f"load mapping from  : {cf.MAPPING_PREV_NEW_REG}")
+        # previous_names, new_names = self.get_data_from(cf.MAPPING_PREV_NEW_REG)
         
-        self.log.info(f"create csv file from cities.")
-        self.create_mapping_file(previous_names, new_names)
+        # self.log.info(f"create csv file from cities.")
+        # self.create_mapping_file(previous_names, new_names)
+
+        self.log.info(f"load mapping from  : {cf.MAPPING_DEP_PREV_REG}")
+        departements, regions = self.get_data_with_previous_names(cf.MAPPING_PREV_NEW_REG)
+        
+        #self.log.info(f"create csv file from cities.")
+        #self.create_mapping_file(previous_names, new_names)
         
         
-    
     
     

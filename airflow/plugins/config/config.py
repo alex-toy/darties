@@ -52,3 +52,6 @@ CITY_URL_EUR = "https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_p
 
 
 MAPPING_PREV_NEW_REG = "https://www.regions-et-departements.fr/regions-francaises"
+
+
+MAPPING_DEP_PREV_REG = "https://www.axl.cefan.ulaval.ca/europe/france_departements.htm"

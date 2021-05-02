@@ -209,6 +209,7 @@ stage_mapping_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
+#Build dimensions
 milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
 
 
@@ -245,6 +246,8 @@ load_ville_dimension_table = LoadDimensionOperator(
     append=False
 )
 
+
+#Build fact table
 milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
 
 Load_sales_fact_table = LoadFactOperator(
@@ -287,7 +290,7 @@ start_operator >> create_tables >> \
     stage_CA_Fours_to_redshift, stage_MB_Fours_to_redshift, stage_V_Fours_to_redshift,
     stage_CA_Hifi_to_redshift, stage_MB_Hifi_to_redshift, stage_V_Hifi_to_redshift, 
     stage_CA_Magneto_to_redshift, stage_MB_Magneto_to_redshift, stage_V_Magneto_to_redshift,
-    stage_currency_to_redshift, stage_cities_to_redshift
+    stage_currency_to_redshift, stage_cities_to_redshift, stage_mapping_to_redshift
 ] >> \
 milestone_1 >> \
 [

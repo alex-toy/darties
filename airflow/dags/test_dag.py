@@ -5,7 +5,7 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.postgres_operator import PostgresOperator
 from airflow.operators.python_operator import PythonOperator
 
-from operators.load_cities import LoadCitiesOperator
+from operators.load_mapping_regions import LoadMappingOperator
 
 
 from helpers import SqlQueries
@@ -26,7 +26,7 @@ DAG
 dag = DAG(
     'test_dag',
     default_args=default_args,
-    description='Clean data from original file and produces cleaned files before upload to S3.',
+    description='test dags for debugging purpose.',
     schedule_interval='0 * * * *',
     catchup=True,
     max_active_runs=1
@@ -36,8 +36,8 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-load_cities = LoadCitiesOperator(
-    task_id='load_cities',
+load_mapping_regions = LoadMappingOperator(
+    task_id='load_mapping_regions',
     dag=dag
 )
 
@@ -45,7 +45,7 @@ load_cities = LoadCitiesOperator(
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> load_cities >> end_operator
+start_operator >> load_mapping_regions >> end_operator
 
 
 

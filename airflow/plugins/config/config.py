@@ -49,3 +49,6 @@ CURRENCY_URL = "https://www.capital.fr/bourse/devises/cours-devises"
 
 
 CITY_URL_EUR = "https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peuplées"
+
+
+MAPPING_PREV_NEW_REG = "https://public.opendatasoft.com/explore/dataset/anciennes-nouvelles-regions/table/?flg=fr"

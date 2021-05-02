@@ -278,7 +278,10 @@ start_operator >> create_tables >> \
     stage_currency_to_redshift, stage_cities_to_redshift
 ] >> \
 milestone_1 >> \
-[load_time_dimension_table, load_enseigne_dimension_table, load_famille_produit_dimension_table] >> \
+[
+    load_time_dimension_table, load_enseigne_dimension_table, load_famille_produit_dimension_table,
+    load_ville_dimension_table
+] >> \
 milestone_2 >> \
 Load_sales_fact_table >> \
 end_operator

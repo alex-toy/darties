@@ -36,9 +36,8 @@ class LoadMappingOperator(BaseOperator) :
 
         # filtered_trs = [ tr for tr in trs if len(tr.find_all('td'))>=14 ]
 
-        # cities = []
-        # departements = []
-        # regions = []
+        previous_names = []
+        new_names = []
 
         # for tr in filtered_trs :
         #     tds = tr.find_all('td')
@@ -60,7 +59,7 @@ class LoadMappingOperator(BaseOperator) :
         #     departements.append(departement)
         #     regions.append(region)
 
-        return cities, departements, regions
+        return previous_names, new_names
 
 
 
@@ -84,7 +83,7 @@ class LoadMappingOperator(BaseOperator) :
 
     def execute(self, context):
         self.log.info(f"load mapping from  : {cf.MAPPING_PREV_NEW_REG}")
-        cities, departements, regions = self.get_data_from(cf.MAPPING_PREV_NEW_REG)
+        previous_names, new_names = self.get_data_from(cf.MAPPING_PREV_NEW_REG)
         
         #self.log.info(f"create csv file from cities.")
         #self.create_mapping_file(cities, departements, regions)

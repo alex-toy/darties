@@ -304,6 +304,12 @@ CREATE TABLE IF NOT EXISTS public.staging_cities (
 );
 
 
+CREATE TABLE IF NOT EXISTS public.staging_mapping (
+	previous_names varchar(30),
+	new_names varchar(30)
+);
+
+
 CREATE TABLE IF NOT EXISTS public.sales (
 	id_ville int4 NOT NULL,
 	id_temps int4 NOT NULL,

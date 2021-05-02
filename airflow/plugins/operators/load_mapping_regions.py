@@ -24,16 +24,11 @@ class LoadMappingOperator(BaseOperator) :
 
 
 
-#<tr class="odswidget-table__internal-table-row record-1"><td class="odswidget-table__cell"><div class="odswidget-table__cell-container">2</div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="02">02</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="Martinique">Martinique</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="02">02</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="Martinique">Martinique</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="martinique">martinique</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="martinique">martinique</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container odswidget-table__cell-container__right-aligned"><span title="239&nbsp;720&nbsp;014">239&nbsp;720&nbsp;014</span></div></td><td class="odswidget-table__cell"><div class="odswidget-table__cell-container" dir="ltr"><span title="MARTINIQUE">MARTINIQUE</span></div></td></tr>
-
-
 
     def get_data_from(self, url):
         r = requests.get(url)
         bs = BeautifulSoup(r.text, 'lxml')
         trs = bs.find_all("tr")[1:23]
-        self.log.info(f"trs  : {trs}")
-
 
         previous_names = []
         new_names = []
@@ -49,9 +44,6 @@ class LoadMappingOperator(BaseOperator) :
 
             new_names.append(new_name)
             previous_names.append(prev_name)
-
-        #self.log.info(f"previous_names  : {previous_names}")
-        #self.log.info(f"new_names  : {new_names}")
             
         return previous_names, new_names
 
@@ -64,7 +56,7 @@ class LoadMappingOperator(BaseOperator) :
         df = cf.remove_accents(df=df)
 
         now = datetime.now()
-        outdir = os.path.join(cf.OUTPUTS_DIR, 'ville', str(now.year))
+        outdir = os.path.join(cf.OUTPUTS_DIR, 'mapping', str(now.year))
         path = Path(outdir)
         path.mkdir(parents=True, exist_ok=True)
         saved_filename = f"mapping_{str(now.year)}.json"

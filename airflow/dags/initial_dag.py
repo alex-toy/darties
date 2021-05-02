@@ -7,6 +7,7 @@ from operators.clean_file import CleanFileOperator
 from operators.upload_file import UploadFileOperator
 from operators.load_currency import LoadCurrencyOperator
 from operators.load_cities import LoadCitiesOperator
+from operators.load_mapping_regions import LoadMappingOperator
 
 from helpers import SqlQueries
 
@@ -34,6 +35,12 @@ dag = DAG(
 
 
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
+
+
+load_mapping_regions = LoadMappingOperator(
+    task_id='load_mapping_regions',
+    dag=dag
+)
 
 
 load_cities = LoadCitiesOperator(
@@ -65,7 +72,7 @@ upload_file = UploadFileOperator(
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> load_cities >> load_currency >> clean_file >> upload_file >> end_operator
+start_operator >> load_mapping_regions >> load_cities >> load_currency >> clean_file >> upload_file >> end_operator
 
 
 

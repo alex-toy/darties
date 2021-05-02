@@ -178,9 +178,9 @@ stage_cities_to_redshift = StageToRedshiftOperator(
     dag=dag,
     redshift_conn_id="redshift",
     aws_credentials_id="aws_credentials",
-    table="staging_V_Magneto",
+    table="staging_cities",
     S3_bucket="darties",
-    S3_key="staging_cities",
+    S3_key="ville",
     delimiter=",",
     formatting="JSON 'auto'"
 )
@@ -190,9 +190,21 @@ stage_currency_to_redshift = StageToRedshiftOperator(
     dag=dag,
     redshift_conn_id="redshift",
     aws_credentials_id="aws_credentials",
-    table="staging_V_Magneto",
+    table="staging_currency",
     S3_bucket="darties",
-    S3_key="staging_currency",
+    S3_key="currency",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
+stage_mapping_to_redshift = StageToRedshiftOperator(
+    task_id='stage_mapping_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_mapping",
+    S3_bucket="darties",
+    S3_key="mapping",
     delimiter=",",
     formatting="JSON 'auto'"
 )

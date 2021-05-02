@@ -60,8 +60,8 @@ class LoadMappingOperator(BaseOperator) :
         regions = []
 
         for tr in filtered_trs[1:] :
-            departement = tr.find_all("td")[1].text.replace('\n', '')
-            region = tr.find_all("td")[3].text.replace('\n', '')
+            departement = tr.find_all("td")[1].text.replace('\n', '').strip()
+            region = tr.find_all("td")[3].text.replace('\n', '').strip()
             departements.append(departement)
             regions.append(region)
             

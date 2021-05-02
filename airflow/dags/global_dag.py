@@ -224,6 +224,17 @@ load_famille_produit_dimension_table = BuildDimensionOperator(
     append=False
 )
 
+load_ville_dimension_table = LoadDimensionOperator(
+    task_id='load_ville_dimension_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="ville",
+    query=SqlQueries.ville_table_insert,
+    append=False
+)
+
+milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
+
 Load_sales_fact_table = LoadFactOperator(
     task_id='Load_sales_fact_table',
     dag=dag,
@@ -232,7 +243,7 @@ Load_sales_fact_table = LoadFactOperator(
     query=SqlQueries.sales_table_insert
 )
 
-milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
+
 
 
 

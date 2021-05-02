@@ -31,12 +31,22 @@ class SqlQueries:
         JOIN magasin ON magasin.???
     """) # to be finished!!!
 
-    sales_table_insert.format('fours', 'janvier')
-    sales_table_insert.format('hifi', 'fevrier')
-    sales_table_insert.format('magneto', 'mars')
+    #sales_table_insert.format('fours', 'janvier')
+    #sales_table_insert.format('hifi', 'fevrier')
+    #sales_table_insert.format('magneto', 'mars')
 
 
-	
+    ville_table_insert = ("""
+        SELECT  
+            lib_ville,
+            lib_departement,
+            lib_reg_nouv,
+            lib_continent,
+            lib_pays,
+        FROM staging_cities;
+    """)
+
+
 
 
     

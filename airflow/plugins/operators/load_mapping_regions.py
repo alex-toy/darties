@@ -50,25 +50,24 @@ class LoadMappingOperator(BaseOperator) :
             new_names.append(new_name)
             previous_names.append(prev_name)
 
-        self.log.info(f"previous_names  : {previous_names}")
-        self.log.info(f"new_names  : {new_names}")
+        #self.log.info(f"previous_names  : {previous_names}")
+        #self.log.info(f"new_names  : {new_names}")
             
         return previous_names, new_names
 
 
 
 
-    def create_mapping_file(self, cities, departements, regions) :
-        data = list(zip(cities, departements, regions))
-        df = pd.DataFrame(data, columns =['lib_ville', 'lib_departement', 'lib_reg_nouv'])
+    def create_mapping_file(self, previous_names, new_names) :
+        data = list(zip(previous_names, new_names))
+        df = pd.DataFrame(data, columns =['previous_names', 'new_names'])
         df = cf.remove_accents(df=df)
-        df['lib_pays'] = 'france'
-        df['lib_continent'] = 'europe'
+
         now = datetime.now()
         outdir = os.path.join(cf.OUTPUTS_DIR, 'ville', str(now.year))
         path = Path(outdir)
         path.mkdir(parents=True, exist_ok=True)
-        saved_filename = f"villes_{str(now.year)}.json"
+        saved_filename = f"mapping_{str(now.year)}.json"
         df.to_json(os.path.join(outdir, saved_filename), orient="records", lines=True)
 
 
@@ -79,8 +78,8 @@ class LoadMappingOperator(BaseOperator) :
         self.log.info(f"load mapping from  : {cf.MAPPING_PREV_NEW_REG}")
         previous_names, new_names = self.get_data_from(cf.MAPPING_PREV_NEW_REG)
         
-        #self.log.info(f"create csv file from cities.")
-        #self.create_mapping_file(cities, departements, regions)
+        self.log.info(f"create csv file from cities.")
+        self.create_mapping_file(previous_names, new_names)
         
         
     

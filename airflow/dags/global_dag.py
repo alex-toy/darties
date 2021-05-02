@@ -87,7 +87,6 @@ stage_V_Fours_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
-milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
 
 stage_CA_Hifi_to_redshift = StageToRedshiftOperator(
     task_id='stage_CA_Hifi_to_redshift',
@@ -137,7 +136,6 @@ stage_currency_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
-milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
 
 stage_CA_Magneto_to_redshift = StageToRedshiftOperator(
     task_id='stage_CA_Magneto_to_redshift',
@@ -199,6 +197,9 @@ stage_currency_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
+milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
+
+
 load_time_dimension_table = BuildDimensionOperator(
     task_id='load_time_dimension_table',
     dag=dag,
@@ -231,7 +232,7 @@ Load_sales_fact_table = LoadFactOperator(
     query=SqlQueries.sales_table_insert
 )
 
-
+milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
 
 
 

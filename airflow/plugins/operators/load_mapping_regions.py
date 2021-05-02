@@ -31,33 +31,28 @@ class LoadMappingOperator(BaseOperator) :
     def get_data_from(self, url):
         r = requests.get(url)
         bs = BeautifulSoup(r.text, 'lxml')
-        trs = bs.find_all("tr")[1:20]
+        trs = bs.find_all("tr")[1:23]
         self.log.info(f"trs  : {trs}")
 
 
         previous_names = []
         new_names = []
 
-        # for tr in filtered_trs :
-        #     tds = tr.find_all('td')
-        #     if len(tds) == 14 :
-        #         city = tds[2].text
-        #         city = re.search(r'[^[\n\r]+', city).group(0)
-        #         departement = tds[3].find('a').text
-        #         region = tds[5].text
-        #     else :
-        #         city = tds[1].text
-        #         departement = tds[2].text
-        #         region = tds[4].text
+        for tr in trs :
+            tds = tr.find_all('td')
+            if len(tds) == 2 :
+                new_name = tds[0].text
+                prev_name = tds[1].text
+            else :
+                new_name = new_names[-1]
+                prev_name = tds[0].text
 
-        #     city = city.replace("\n", "")
-        #     departement = departement.replace("\n", "")
-        #     region = region.replace("\n", "")
+            new_names.append(new_name)
+            previous_names.append(prev_name)
 
-        #     cities.append(city)
-        #     departements.append(departement)
-        #     regions.append(region)
-
+        self.log.info(f"previous_names  : {previous_names}")
+        self.log.info(f"new_names  : {new_names}")
+            
         return previous_names, new_names
 
 

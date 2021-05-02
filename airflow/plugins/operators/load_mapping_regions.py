@@ -60,8 +60,8 @@ class LoadMappingOperator(BaseOperator) :
         regions = []
 
         for tr in filtered_trs[1:] :
-            departement = tr.find_all("td")[1].text
-            region = tr.find_all("td")[3].text
+            departement = tr.find_all("td")[1].text.replace('\n', '')
+            region = tr.find_all("td")[3].text.replace('\n', '')
             departements.append(departement)
             regions.append(region)
             
@@ -72,10 +72,23 @@ class LoadMappingOperator(BaseOperator) :
 
 
 
-
     def create_mapping_file(self, previous_names, new_names) :
         data = list(zip(previous_names, new_names))
         df = pd.DataFrame(data, columns =['previous_names', 'new_names'])
+        df = cf.remove_accents(df=df)
+
+        now = datetime.now()
+        outdir = os.path.join(cf.OUTPUTS_DIR, 'mapping', str(now.year))
+        path = Path(outdir)
+        path.mkdir(parents=True, exist_ok=True)
+        saved_filename = f"mapping_{str(now.year)}.json"
+        df.to_json(os.path.join(outdir, saved_filename), orient="records", lines=True)
+
+
+
+    def create_mapping_dep_reg_file(self, departements, regions) :
+        data = list(zip(previous_names, new_names))
+        df = pd.DataFrame(data, columns =['departements', 'regions'])
         df = cf.remove_accents(df=df)
 
         now = datetime.now()
@@ -99,8 +112,8 @@ class LoadMappingOperator(BaseOperator) :
         self.log.info(f"load mapping from  : {cf.MAPPING_DEP_PREV_REG}")
         departements, regions = self.get_data_with_previous_names(cf.MAPPING_DEP_PREV_REG)
         
-        #self.log.info(f"create csv file from cities.")
-        #self.create_mapping_file(previous_names, new_names)
+        self.log.info(f"create csv file from cities.")
+        self.create_mapping_dep_reg_file(departements, regions)
         
         
     

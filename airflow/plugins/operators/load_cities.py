@@ -61,7 +61,7 @@ class LoadCitiesOperator(BaseOperator) :
 
     def create_cities_csv(self, cities, departements, regions) :
         data = list(zip(cities, departements, regions))
-        df = pd.DataFrame(data, columns =['cities', 'departements', 'regions'])
+        df = pd.DataFrame(data, columns =['lib_ville', 'lib_departement', 'lib_reg_nouv'])
         df = cf.remove_accents(df=df)
         df['pays'] = 'france'
         df['continent'] = 'europe'
@@ -71,6 +71,7 @@ class LoadCitiesOperator(BaseOperator) :
         path.mkdir(parents=True, exist_ok=True)
         saved_filename = f"villes_{str(now.year)}.json"
         df.to_json(os.path.join(outdir, saved_filename), orient="records", lines=True)
+
 
 
 

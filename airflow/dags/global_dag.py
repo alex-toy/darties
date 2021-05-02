@@ -175,6 +175,30 @@ stage_V_Magneto_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
+stage_cities_to_redshift = StageToRedshiftOperator(
+    task_id='stage_cities_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_V_Magneto",
+    S3_bucket="darties",
+    S3_key="staging_cities",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
+stage_currency_to_redshift = StageToRedshiftOperator(
+    task_id='stage_currency_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_V_Magneto",
+    S3_bucket="darties",
+    S3_key="staging_currency",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
 load_time_dimension_table = BuildDimensionOperator(
     task_id='load_time_dimension_table',
     dag=dag,

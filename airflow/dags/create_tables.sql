@@ -295,6 +295,17 @@ CREATE TABLE IF NOT EXISTS public.staging_currency (
 );
 
 
+CREATE TABLE IF NOT EXISTS public.staging_cities (
+	id_ville int4 NOT NULL,
+	lib_ville varchar(30),
+	lib_continent varchar(30),
+	lib_pays varchar(30),
+	lib_departement varchar(30),
+	lib_reg_nouv varchar(30),
+	CONSTRAINT ville_pkey PRIMARY KEY (id_ville)
+);
+
+
 CREATE TABLE IF NOT EXISTS public.sales (
 	id_ville int4 NOT NULL,
 	id_temps int4 NOT NULL,

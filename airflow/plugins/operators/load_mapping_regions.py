@@ -55,6 +55,11 @@ class LoadMappingOperator(BaseOperator) :
         trs = bs.find_all("tr")
         self.log.info(f"trs : {trs}")
 
+        departements = []
+        regions = []
+
+        return departements, regions
+
 
 
 

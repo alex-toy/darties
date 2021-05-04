@@ -50,12 +50,11 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-
-load_famille_produit_dimension_table = BuildDimensionOperator(
-    task_id='load_famille_produit_dimension_table',
+load_time_dimension_table = BuildDimensionOperator(
+    task_id='load_time_dimension_table',
     dag=dag,
     redshift_conn_id="redshift",
-    table="famille_produit",
+    table="temps",
     append=False
 )
 
@@ -63,7 +62,7 @@ load_famille_produit_dimension_table = BuildDimensionOperator(
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> load_famille_produit_dimension_table >> end_operator
+start_operator >> load_time_dimension_table >> end_operator
 
 
 

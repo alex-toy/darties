@@ -32,19 +32,17 @@ class BuildDimensionOperator(BaseOperator):
 
 
     def build_time_query(self) :
-        time_table_insert = ("""(annee, semestre, trimestre, mois, lib_mois)""")
+        time_table_insert = ("""(annee, semestre, trimestre, mois, lib_mois) VALUES""")
 
         for year in range(2015, 2025) :
             for num_month in range(1,13):
                 trimestre = 1 + num_month // 3
                 semestre = 1 + num_month // 6
                 month = cf.NUM_TO_NAME_MONTH[num_month]
-                time_table_insert += f" VALUES({year}, {semestre}, {trimestre}, {num_month}, {month}),"
+                time_table_insert += f" ({year}, {semestre}, {trimestre}, {num_month}, {month}),"
 
-        time_table_insert[-1] = ';'
-
+        time_table_insert = time_table_insert[:-1] + ';'
         return time_table_insert
-
 
         
 
@@ -65,8 +63,8 @@ class BuildDimensionOperator(BaseOperator):
         elif self.table == 'famille_produit' :
             query = self.build_famille_produit_query()
 
-        self.log.info(f"query {query}")
-        
+        self.log.info(f"query : {query}")
+
         redshift = PostgresHook(self.redshift_conn_id)
         if self.append == False :
             sql_statement = BuildDimensionOperator.truncate_sql.format(self.table)

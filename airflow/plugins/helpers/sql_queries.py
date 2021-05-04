@@ -28,7 +28,7 @@ class SqlQueries:
             AND temps.mois = '{1}'
         JOIN famille_produit 
             ON famille_produit.lib_famille_produit = '{0}'
-        JOIN magasin ON magasin.???
+        JOIN staging_magasin ON staging_magasin.villes = ville.lib_ville
     """) # to be finished!!!
 
     #sales_table_insert.format('fours', 'janvier')
@@ -42,7 +42,7 @@ class SqlQueries:
             lib_departement,
             lib_reg_nouv,
             lib_continent,
-            lib_pays,
+            lib_pays
         FROM staging_cities;
     """)
 

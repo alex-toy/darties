@@ -344,8 +344,7 @@ CREATE TABLE IF NOT EXISTS public.staging_magasin (
 	lib_magasin varchar(30),
 	id_enseigne int4,
 	annee int4,
-	villes varchar(30),
-	annee int4
+	villes varchar(30)
 );
 
 

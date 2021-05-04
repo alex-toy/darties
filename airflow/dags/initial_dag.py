@@ -59,6 +59,9 @@ load_currency = LoadCurrencyOperator(
 )
 
 
+milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
+
+
 sales_clean_file = CleanFileOperator(
     task_id='sales_clean_file',
     dag=dag,
@@ -83,6 +86,9 @@ store_clean_file = CleanFileOperator(
 )
 
 
+milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
+
+
 upload_file = UploadFileOperator(
     task_id='upload_file',
     dag=dag,
@@ -94,9 +100,18 @@ upload_file = UploadFileOperator(
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> load_mapping_regions >> load_cities >> load_currency >> \
-\
-sales_clean_file >> user_clean_file >> upload_file >> end_operator 
 
 
+
+
+start_operator >> \
+[ 
+    load_mapping_regions, load_cities, load_currency
+] >> \
+milestone_1 >> \
+[
+    sales_clean_file, user_clean_file
+] >> \
+upload_file >> \
+end_operator
 

@@ -319,7 +319,20 @@ CREATE TABLE IF NOT EXISTS public.staging_profil (
 );
 
 
+CREATE TABLE IF NOT EXISTS public.staging_utilisateur (
+	reg_com varchar(30),
+	Villes varchar(30),
+	nom varchar(15),
+	prenom varchar(15),
+	"login" varchar(15),
+	mdp varchar(25),
+	mail varchar(30),
+	id_profil int4 NOT NULL,
+	CONSTRAINT utilisateur_pkey PRIMARY KEY (id_utilisateur)
+);
 
+
+		
 
 -- Dimension and fact tables
 

@@ -305,8 +305,8 @@ CREATE TABLE IF NOT EXISTS public.staging_cities (
 
 
 CREATE TABLE IF NOT EXISTS public.staging_mapping (
-	previous_names varchar(30),
-	new_names varchar(30)
+	departements varchar(30),
+	regions varchar(30)
 );
 
 
@@ -315,20 +315,30 @@ CREATE TABLE IF NOT EXISTS public.staging_profil (
 	lib_profil varchar(20),
 	type_zone int4,
 	id_zone int4,
+	annee int4,
 	CONSTRAINT profil_pkey PRIMARY KEY (id_profil)
 );
 
 
 CREATE TABLE IF NOT EXISTS public.staging_utilisateur (
 	reg_com varchar(30),
-	Villes varchar(30),
+	villes varchar(30),
 	nom varchar(15),
 	prenom varchar(15),
 	"login" varchar(15),
-	mdp varchar(25),
+	pwd varchar(25),
 	mail varchar(30),
 	id_profil int4 NOT NULL,
+	annee int4,
 	CONSTRAINT utilisateur_pkey PRIMARY KEY (id_utilisateur)
+);
+
+
+
+CREATE TABLE IF NOT EXISTS public.staging_enseigne (
+	id_enseigne int4 NOT NULL,
+	lib_enseigne varchar(30),
+	CONSTRAINT enseigne_pkey PRIMARY KEY (id_enseigne)
 );
 
 
@@ -396,14 +406,6 @@ CREATE TABLE IF NOT EXISTS public.magasin (
 	lib_id_magasin varchar(30),
 	id_enseigne int4,
 	CONSTRAINT magasin_pkey PRIMARY KEY (id_magasin)
-);
-
-
-
-CREATE TABLE IF NOT EXISTS public.enseigne (
-	id_enseigne int4 NOT NULL,
-	lib_enseigne varchar(30),
-	CONSTRAINT enseigne_pkey PRIMARY KEY (id_enseigne)
 );
 
 

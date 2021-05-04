@@ -233,6 +233,20 @@ stage_profil_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
+stage_enseigne_to_redshift = StageToRedshiftOperator(
+    task_id='stage_enseigne_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_enseigne",
+    S3_bucket="darties",
+    S3_key="enseignes",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
+
+
 #Build dimensions
 milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
 
@@ -316,7 +330,7 @@ start_operator >> create_tables >> \
     stage_CA_Hifi_to_redshift, stage_MB_Hifi_to_redshift, stage_V_Hifi_to_redshift, 
     stage_CA_Magneto_to_redshift, stage_MB_Magneto_to_redshift, stage_V_Magneto_to_redshift,
     stage_currency_to_redshift, stage_cities_to_redshift, stage_mapping_to_redshift,
-    stage_utilisateur_to_redshift, stage_profil_to_redshift
+    stage_utilisateur_to_redshift, stage_profil_to_redshift, stage_enseigne_to_redshift
 ] >> \
 milestone_1 >> \
 [

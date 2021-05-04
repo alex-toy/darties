@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 import os
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, isdir, abspath
 
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
@@ -92,11 +92,35 @@ store_clean_file = CleanFileOperator(
 )
 
 
-def check_no_null(ds, **kwargs):
-    """Print the Airflow context and ds variable from the context."""
-    pprint(kwargs)
-    print(ds)
-    return 'Whatever you return gets printed in the logs'
+def check_action(folder, year, file) :
+    path = join(cf.OUTPUTS_DIR, folder, year, file)
+    data = []
+    for line in open(path, 'r'):
+        d = json.loads(line)
+        if folder == 'users' :
+            id_p = d['id_profil']
+            if id_p == None :
+                print(f"path : {path} - file : {file}")
+                raise Exception("id_profil cannot be None")
+
+        data.append(json.loads(line))
+        
+
+
+
+def check_no_null():
+    
+    folders = [f for f in listdir(cf.OUTPUTS_DIR) if isdir(join(cf.OUTPUTS_DIR, f))]
+    for folder in folders :
+        inner_folder = Path(join(cf.OUTPUTS_DIR, folder))
+        year_folders = [f for f in listdir(inner_folder) if isdir(join(cf.OUTPUTS_DIR, folder, f))]
+        for year_folder in year_folders :
+            file_path = join(cf.OUTPUTS_DIR, folder, year_folder)
+            files = [f for f in listdir(file_path) if isfile(join(file_path, f)) and not f.startswith('.')]
+            for file in files :
+                check_action(folder, year_folder, file)
+
+
 
 check_no_null_values = PythonOperator(
     task_id='check_no_null_values',

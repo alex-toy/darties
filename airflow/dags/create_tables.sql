@@ -341,14 +341,15 @@ CREATE TABLE IF NOT EXISTS public.staging_enseigne (
 
 
 CREATE TABLE IF NOT EXISTS public.staging_magasin (
-	id_magasin int4 NOT NULL,
 	lib_magasin varchar(30),
 	id_enseigne int4,
 	annee int4,
-	CONSTRAINT staging_magasin_pkey PRIMARY KEY (id_magasin)
+	villes varchar(30),
+	annee int4
 );
 
-		
+
+
 
 -- Dimension and fact tables
 

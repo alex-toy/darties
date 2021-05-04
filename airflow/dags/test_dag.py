@@ -51,10 +51,17 @@ start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 def check_action(folder, year, file) :
     path = join(cf.OUTPUTS_DIR, folder, year, file)
-    print(f"path : {path} - file : {file}")
-    with open(path) as json_file:
-        data = json.load(json_file)
-        print(data)
+    data = []
+    for line in open(path, 'r'):
+        d = json.loads(line)
+        if folder == 'users' :
+            id_p = d['id_profil']
+            if id_p == None :
+                print(f"path : {path} - file : {file}")
+                raise Exception("id_profil cannot be None")
+
+        data.append(json.loads(line))
+        
 
 
 

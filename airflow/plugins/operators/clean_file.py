@@ -23,11 +23,11 @@ class CleanFileOperator(BaseOperator) :
 
     def execute(self, context):
         self.log.info(f"Create cleaned files in : {cf.DATA_DIR}")
-        type_path = os.path.abspath(os.path.join(cf.DATA_DIR, 'type'))
+        type_path = os.path.abspath(os.path.join(cf.DATA_DIR, type))
         files = [f for f in listdir(type_path) if isfile(join(type_path, f))]
         for file in files :
             if file != 'README.md' and not file.startswith('.') :
-                file_abspath = os.path.abspath(os.path.join(cf.DATA_DIR, 'type', file))
+                file_abspath = os.path.abspath(os.path.join(cf.DATA_DIR, type, file))
                 self.log.info(f"Name of files : {file}")
                 year = re.search(r'(\d{4})', file).group(1)
                 self.log.info(f"Create cleaned file : {file} for year {year}")

@@ -270,14 +270,6 @@ load_ville_dimension_table = LoadDimensionOperator(
     append=False
 )
 
-load_profil_dimension_table = LoadDimensionOperator(
-    task_id='load_profil_dimension_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    table="profil",
-    query=SqlQueries.profil_table_insert,
-    append=False
-)
 
 
 #Build fact table

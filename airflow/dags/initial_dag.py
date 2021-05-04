@@ -103,14 +103,13 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
 
-
 start_operator >> \
 [ 
     load_mapping_regions, load_cities, load_currency
 ] >> \
 milestone_1 >> \
 [
-    sales_clean_file, user_clean_file
+    sales_clean_file, user_clean_file, store_clean_file
 ] >> \
 upload_file >> \
 end_operator

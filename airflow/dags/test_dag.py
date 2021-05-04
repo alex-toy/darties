@@ -48,11 +48,18 @@ store_clean_file = CleanFileOperator(
     UtilityClass=StoreData,
 )
 
+user_clean_file = CleanFileOperator(
+    task_id='user_clean_file',
+    dag=dag,
+    item='users',
+    UtilityClass=UserData,
+)
+
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> store_clean_file >> end_operator
+start_operator >> store_clean_file >> user_clean_file >> end_operator
 
 
 

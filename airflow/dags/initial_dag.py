@@ -86,9 +86,6 @@ store_clean_file = CleanFileOperator(
 )
 
 
-milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
-
-
 upload_file = UploadFileOperator(
     task_id='upload_file',
     dag=dag,

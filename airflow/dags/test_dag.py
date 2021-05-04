@@ -10,6 +10,7 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.postgres_operator import PostgresOperator
 from airflow.operators.python_operator import PythonOperator
 
+from operators.stage_redshift import StageToRedshiftOperator
 from operators.load_mapping_regions import LoadMappingOperator
 from operators.build_dimension import BuildDimensionOperator
 from operators.clean_file import CleanFileOperator
@@ -50,6 +51,14 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
+create_tables = PostgresOperator(
+    task_id="create_tables",
+    dag=dag,
+    sql='create_tables.sql',
+    postgres_conn_id="redshift"
+)
+
+
 stage_magasin_to_redshift = StageToRedshiftOperator(
     task_id='stage_magasin_to_redshift',
     dag=dag,
@@ -66,7 +75,7 @@ stage_magasin_to_redshift = StageToRedshiftOperator(
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> stage_magasin_to_redshift >> end_operator
+start_operator >> create_tables >> stage_magasin_to_redshift >> end_operator
 
 
 

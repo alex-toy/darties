@@ -340,6 +340,14 @@ CREATE TABLE IF NOT EXISTS public.staging_enseigne (
 );
 
 
+CREATE TABLE IF NOT EXISTS public.staging_magasin (
+	id_magasin int4 NOT NULL,
+	lib_magasin varchar(30),
+	id_enseigne int4,
+	annee int4,
+	CONSTRAINT magasin_pkey PRIMARY KEY (id_magasin)
+);
+
 		
 
 -- Dimension and fact tables
@@ -395,15 +403,6 @@ CREATE TABLE IF NOT EXISTS public.temps (
 	mois int4,
 	lib_mois varchar(9),
 	CONSTRAINT temps_pkey PRIMARY KEY (id_temps)
-);
-
-
-
-CREATE TABLE IF NOT EXISTS public.magasin (
-	id_magasin int4 NOT NULL,
-	lib_id_magasin varchar(30),
-	id_enseigne int4,
-	CONSTRAINT magasin_pkey PRIMARY KEY (id_magasin)
 );
 
 

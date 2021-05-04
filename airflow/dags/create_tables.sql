@@ -291,7 +291,7 @@ CREATE TABLE IF NOT EXISTS public.staging_currency (
 	currency_names varchar(30),
 	currency_values decimal(16,8),
 	annee int4,
-	mois int4,
+	mois int4
 );
 
 
@@ -329,10 +329,8 @@ CREATE TABLE IF NOT EXISTS public.staging_utilisateur (
 	pwd varchar(25),
 	mail varchar(30),
 	id_profil int4 NOT NULL,
-	annee int4,
-	CONSTRAINT utilisateur_pkey PRIMARY KEY (id_utilisateur)
+	annee int4
 );
-
 
 
 CREATE TABLE IF NOT EXISTS public.staging_enseigne (

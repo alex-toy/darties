@@ -124,18 +124,6 @@ stage_V_Hifi_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
-stage_currency_to_redshift = StageToRedshiftOperator(
-    task_id='stage_currency_to_redshift',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    table="staging_currency",
-    S3_bucket="darties",
-    S3_key="currency",
-    delimiter=",",
-    formatting="JSON 'auto'"
-)
-
 
 stage_CA_Magneto_to_redshift = StageToRedshiftOperator(
     task_id='stage_CA_Magneto_to_redshift',
@@ -216,7 +204,7 @@ stage_utilisateur_to_redshift = StageToRedshiftOperator(
     aws_credentials_id="aws_credentials",
     table="staging_utilisateur",
     S3_bucket="darties",
-    S3_key="user",
+    S3_key="users",
     delimiter=",",
     formatting="JSON 'auto'"
 )

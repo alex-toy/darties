@@ -1,5 +1,8 @@
 from datetime import datetime, timedelta
 import os
+from os import listdir
+from os.path import isfile, join
+
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.postgres_operator import PostgresOperator
@@ -11,6 +14,9 @@ from operators.clean_file import CleanFileOperator
 from infrastructure.SalesData import SalesData
 from infrastructure.UserData import UserData
 from infrastructure.StoreData import StoreData
+
+
+import config.config as cf
 
 
 from helpers import SqlQueries
@@ -41,25 +47,26 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-store_clean_file = CleanFileOperator(
-    task_id='store_clean_file',
-    dag=dag,
-    item='store',
-    UtilityClass=StoreData,
-)
+def check_no_null():
+    
+    files = [f for f in listdir(cf.OUTPUTS_DIR) if isfile(join(cf.OUTPUTS_DIR, f))]
+    for file in files :
+        print(file)
 
-user_clean_file = CleanFileOperator(
-    task_id='user_clean_file',
+
+
+
+check_no_null_values = PythonOperator(
+    task_id='check_no_null_values',
     dag=dag,
-    item='users',
-    UtilityClass=UserData,
+    python_callable=check_no_null,
 )
 
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> store_clean_file >> user_clean_file >> end_operator
+start_operator >> check_no_null_values >> end_operator
 
 
 

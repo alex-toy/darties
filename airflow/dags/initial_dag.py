@@ -1,7 +1,11 @@
 from datetime import datetime, timedelta
 import os
+from os import listdir
+from os.path import isfile, join
+
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
+from airflow.operators.python_operator import PythonOperator
 
 from operators.clean_file import CleanFileOperator
 from operators.upload_file import UploadFileOperator
@@ -14,6 +18,8 @@ from infrastructure.UserData import UserData
 from infrastructure.StoreData import StoreData
 
 from helpers import SqlQueries
+
+import config.config as cf
 
 
 default_args = {
@@ -86,6 +92,19 @@ store_clean_file = CleanFileOperator(
 )
 
 
+def check_no_null(ds, **kwargs):
+    """Print the Airflow context and ds variable from the context."""
+    pprint(kwargs)
+    print(ds)
+    return 'Whatever you return gets printed in the logs'
+
+check_no_null_values = PythonOperator(
+    task_id='check_no_null_values',
+    dag=dag,
+    python_callable=check_no_null,
+)
+
+
 upload_file = UploadFileOperator(
     task_id='upload_file',
     dag=dag,
@@ -108,6 +127,7 @@ milestone_1 >> \
 [
     sales_clean_file, user_clean_file, store_clean_file
 ] >> \
+check_no_null_values >> \
 upload_file >> \
 end_operator
 

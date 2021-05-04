@@ -95,14 +95,14 @@ def main() :
 
 if __name__ == "__main__":
 
-    #main()
-
     config = configparser.ConfigParser()
     config.read_file(open(config_file))
     print(config_file)
-    KEY                    = config.get('AWS_ADMIN','KEY') #AWS_ADMIN
+    KEY                    = config.get('AWS_ADMIN','KEY')
     SECRET                 = config.get('AWS_ADMIN','SECRET')
     print(KEY)
     print(SECRET)
+
+    main()
 
     

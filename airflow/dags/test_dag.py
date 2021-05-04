@@ -48,21 +48,23 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
+def check_action(folder, file) :
+    print(f"folder : {folder} - file : {file}")
+
+
+
 def check_no_null():
     
     folders = [f for f in listdir(cf.OUTPUTS_DIR) if isdir(join(cf.OUTPUTS_DIR, f))]
     for folder in folders :
         inner_folder = Path(join(cf.OUTPUTS_DIR, folder))
-        print(inner_folder)
-        #year_folders = [f for f in inner_folder if isdir(join(cf.OUTPUTS_DIR, folder, f))]
-        year_folders = [f for f in inner_folder]
-        print(f"year_folders : {year_folders}")
+        year_folders = [f for f in listdir(inner_folder) if isdir(join(cf.OUTPUTS_DIR, folder, f))]
         for year_folder in year_folders :
-            print(year_folder)
-            files = [f for f in listdir(year_folder) if isfile(join(year_folder, f))]
+            file_path = join(cf.OUTPUTS_DIR, folder, year_folder)
+            files = [f for f in listdir(file_path) if isfile(join(file_path, f))]
             for file in files :
-                print(file)
-
+                check_action(folder, file)
+                
 
 
 

@@ -11,6 +11,7 @@ from airflow.operators.postgres_operator import PostgresOperator
 from airflow.operators.python_operator import PythonOperator
 
 from operators.load_mapping_regions import LoadMappingOperator
+from operators.build_dimension import BuildDimensionOperator
 from operators.clean_file import CleanFileOperator
 
 from infrastructure.SalesData import SalesData
@@ -49,48 +50,20 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-def check_action(folder, year, file) :
-    path = join(cf.OUTPUTS_DIR, folder, year, file)
-    data = []
-    for line in open(path, 'r'):
-        d = json.loads(line)
-        if folder == 'users' :
-            id_p = d['id_profil']
-            if id_p == None :
-                print(f"path : {path} - file : {file}")
-                raise Exception("id_profil cannot be None")
 
-        data.append(json.loads(line))
-        
-
-
-
-def check_no_null():
-    
-    folders = [f for f in listdir(cf.OUTPUTS_DIR) if isdir(join(cf.OUTPUTS_DIR, f))]
-    for folder in folders :
-        inner_folder = Path(join(cf.OUTPUTS_DIR, folder))
-        year_folders = [f for f in listdir(inner_folder) if isdir(join(cf.OUTPUTS_DIR, folder, f))]
-        for year_folder in year_folders :
-            file_path = join(cf.OUTPUTS_DIR, folder, year_folder)
-            files = [f for f in listdir(file_path) if isfile(join(file_path, f)) and not f.startswith('.')]
-            for file in files :
-                check_action(folder, year_folder, file)
-                
-
-
-
-check_no_null_values = PythonOperator(
-    task_id='check_no_null_values',
+load_famille_produit_dimension_table = BuildDimensionOperator(
+    task_id='load_famille_produit_dimension_table',
     dag=dag,
-    python_callable=check_no_null,
+    redshift_conn_id="redshift",
+    table="famille_produit",
+    append=False
 )
 
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> check_no_null_values >> end_operator
+start_operator >> load_famille_produit_dimension_table >> end_operator
 
 
 

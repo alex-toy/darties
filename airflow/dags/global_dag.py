@@ -247,13 +247,6 @@ load_time_dimension_table = BuildDimensionOperator(
     append=False
 )
 
-load_enseigne_dimension_table = BuildDimensionOperator(
-    task_id='load_enseigne_dimension_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    table="enseigne",
-    append=False
-)
 
 load_famille_produit_dimension_table = BuildDimensionOperator(
     task_id='load_famille_produit_dimension_table',
@@ -262,6 +255,7 @@ load_famille_produit_dimension_table = BuildDimensionOperator(
     table="famille_produit",
     append=False
 )
+
 
 load_ville_dimension_table = LoadDimensionOperator(
     task_id='load_ville_dimension_table',
@@ -322,7 +316,7 @@ start_operator >> create_tables >> \
 ] >> \
 milestone_1 >> \
 [
-    load_time_dimension_table, load_enseigne_dimension_table, load_famille_produit_dimension_table,
+    load_time_dimension_table, load_famille_produit_dimension_table,
     load_ville_dimension_table
 ] >> \
 milestone_2 >> \

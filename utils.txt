@@ -39,8 +39,8 @@ AIRFLOW CONNECTIONS :
     AWS :
         Conn Id : aws_credentials
         Conn Type : Amazon Web Services
-        Login : Access key ID from the IAM User credentials
-        Password : Secret access key from the IAM User credentials
+        Login : Access key ID from the S3_USER User credentials
+        Password : Secret access key from the S3_USER User credentials
 
     REDSHIFT :
         Conn Id : redshift

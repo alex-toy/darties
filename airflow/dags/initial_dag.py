@@ -11,6 +11,7 @@ from operators.load_mapping_regions import LoadMappingOperator
 
 from infrastructure.SalesData import SalesData
 from infrastructure.UserData import UserData
+from infrastructure.StoreData import StoreData
 
 from helpers import SqlQueries
 
@@ -71,6 +72,14 @@ user_clean_file = CleanFileOperator(
     dag=dag,
     type='users',
     UtilityClass=UserData,
+)
+
+
+store_clean_file = CleanFileOperator(
+    task_id='store_clean_file',
+    dag=dag,
+    type='store',
+    UtilityClass=StoreData,
 )
 
 

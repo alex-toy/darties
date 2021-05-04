@@ -1,7 +1,8 @@
 from datetime import datetime, timedelta
 import os
 from os import listdir
-from os.path import isfile, join, isdir
+from os.path import isfile, join, isdir, abspath
+from pathlib import Path
 
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
@@ -50,9 +51,11 @@ start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 def check_no_null():
     
     folders = [f for f in listdir(cf.OUTPUTS_DIR) if isdir(join(cf.OUTPUTS_DIR, f))]
-    for inner_folder in folders :
+    for folder in folders :
+        inner_folder = Path(join(cf.OUTPUTS_DIR, folder))
         print(inner_folder)
-        year_folders = [f for f in inner_folder if isdir(join(inner_folder, f))]
+        #year_folders = [f for f in inner_folder if isdir(join(cf.OUTPUTS_DIR, folder, f))]
+        year_folders = [f for f in inner_folder]
         print(f"year_folders : {year_folders}")
         for year_folder in year_folders :
             print(year_folder)

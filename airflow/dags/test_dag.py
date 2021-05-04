@@ -50,19 +50,23 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-load_time_dimension_table = BuildDimensionOperator(
-    task_id='load_time_dimension_table',
+stage_magasin_to_redshift = StageToRedshiftOperator(
+    task_id='stage_magasin_to_redshift',
     dag=dag,
     redshift_conn_id="redshift",
-    table="temps",
-    append=False
+    aws_credentials_id="aws_credentials",
+    table="staging_magasin",
+    S3_bucket="darties",
+    S3_key="magasin",
+    delimiter=",",
+    formatting="JSON 'auto'"
 )
 
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> load_time_dimension_table >> end_operator
+start_operator >> stage_magasin_to_redshift >> end_operator
 
 
 

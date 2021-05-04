@@ -37,9 +37,9 @@ class BuildDimensionOperator(BaseOperator):
         for year in range(2015, 2025) :
             for num_month in range(1,13):
                 trimestre = 1 + num_month // 3
-                semestre = 1 + num_month // 6
+                semestre = 1 + num_month // 2
                 month = cf.NUM_TO_NAME_MONTH[num_month]
-                time_table_insert += f" ({year}, {semestre}, {trimestre}, {num_month}, {month}),"
+                time_table_insert += f" ({year}, {semestre}, {trimestre}, {num_month}, '{month}'),"
 
         time_table_insert = time_table_insert[:-1] + ';'
         return time_table_insert

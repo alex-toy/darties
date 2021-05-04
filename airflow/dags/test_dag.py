@@ -6,13 +6,18 @@ from airflow.operators.postgres_operator import PostgresOperator
 from airflow.operators.python_operator import PythonOperator
 
 from operators.load_mapping_regions import LoadMappingOperator
+from operators.clean_file import CleanFileOperator
+
+from infrastructure.SalesData import SalesData
+from infrastructure.UserData import UserData
+from infrastructure.StoreData import StoreData
 
 
 from helpers import SqlQueries
 
 
 default_args = {
-    'owner': 'udacity',
+    'owner': 'alex-toy',
     'start_date': datetime(2018, 11, 1),
     'end_date': datetime(2019, 12, 1),
     'depends_on_past': False,
@@ -36,16 +41,18 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-load_mapping_regions = LoadMappingOperator(
-    task_id='load_mapping_regions',
-    dag=dag
+store_clean_file = CleanFileOperator(
+    task_id='store_clean_file',
+    dag=dag,
+    item='store',
+    UtilityClass=StoreData,
 )
 
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> load_mapping_regions >> end_operator
+start_operator >> store_clean_file >> end_operator
 
 
 

@@ -39,6 +39,7 @@ class StoreData :
         df = self.df_from_path()
         for sheet_name in self.sheet_names :
             df_sheet_name = df[sheet_name]
+            print(f"df_sheet_name.columns : {df_sheet_name.columns}")
             df_sheet_name.columns = [x.lower() for x in df_sheet_name.columns]
             df_sheet_name = cf.remove_accents(df=df_sheet_name)
             outdir = os.path.join(cf.OUTPUTS_DIR, sheet_name, year)

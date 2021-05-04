@@ -17,7 +17,7 @@ from helpers import SqlQueries
 
 
 default_args = {
-    'owner': 'udacity',
+    'owner': 'alex-toy',
     'start_date': datetime(2018, 11, 1),
     'end_date': datetime(2019, 12, 1),
     'depends_on_past': False,

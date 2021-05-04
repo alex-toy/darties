@@ -51,8 +51,11 @@ def check_no_null():
     
     folders = [f for f in listdir(cf.OUTPUTS_DIR) if isdir(join(cf.OUTPUTS_DIR, f))]
     for inner_folder in folders :
+        print(inner_folder)
         year_folders = [f for f in inner_folder if isdir(join(inner_folder, f))]
+        print(f"year_folders : {year_folders}")
         for year_folder in year_folders :
+            print(year_folder)
             files = [f for f in listdir(year_folder) if isfile(join(year_folder, f))]
             for file in files :
                 print(file)

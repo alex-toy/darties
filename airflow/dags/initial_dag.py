@@ -9,6 +9,9 @@ from operators.load_currency import LoadCurrencyOperator
 from operators.load_cities import LoadCitiesOperator
 from operators.load_mapping_regions import LoadMappingOperator
 
+from infrastructure.SalesData import SalesData
+from infrastructure.UserData import UserData
+
 from helpers import SqlQueries
 
 
@@ -55,9 +58,19 @@ load_currency = LoadCurrencyOperator(
 )
 
 
-clean_file = CleanFileOperator(
-    task_id='clean_file',
-    dag=dag
+sales_clean_file = CleanFileOperator(
+    task_id='sales_clean_file',
+    dag=dag,
+    type='sales',
+    UtilityClass=SalesData,
+)
+
+
+user_clean_file = CleanFileOperator(
+    task_id='user_clean_file',
+    dag=dag,
+    type='users',
+    UtilityClass=UserData,
 )
 
 
@@ -72,7 +85,9 @@ upload_file = UploadFileOperator(
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> load_mapping_regions >> load_cities >> load_currency >> clean_file >> upload_file >> end_operator
+start_operator >> load_mapping_regions >> load_cities >> load_currency >> \
+\
+sales_clean_file >> user_clean_file >> upload_file >> end_operator 
 
 
 

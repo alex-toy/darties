@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 import os
 from os import listdir
-from os.path import isfile, join
+from os.path import isfile, join, isdir
 
 from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
@@ -49,8 +49,10 @@ start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 def check_no_null():
     
-    files = [f for f in listdir(cf.OUTPUTS_DIR) if isfile(join(cf.OUTPUTS_DIR, f))]
-    for file in files :
+    folders = [f for f in listdir(cf.OUTPUTS_DIR) if isdir(join(cf.OUTPUTS_DIR, f))]
+    for inner_folder in folders :
+        files = [f for f in listdir(cf.OUTPUTS_DIR) if isfile(join(cf.OUTPUTS_DIR, f))]
+        for file in files :
         print(file)
 
 

@@ -7,8 +7,12 @@ app/domain/__pycache__/
 airflow/logs/*
 !airflow/logs/README.md
 
-airflow/data/*
-!airflow/data/README.md
+airflow/data/sales/*
+!airflow/data/sales/README.md
+airflow/data/store/*
+!airflow/data/store/README.md
+airflow/data/users/*
+!airflow/data/users/README.md
 
 airflow/output/*
 !airflow/output/README.md

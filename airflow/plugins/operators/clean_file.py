@@ -18,6 +18,8 @@ class CleanFileOperator(BaseOperator) :
                 UtilityClass=None,
                  *args, **kwargs):
         super(CleanFileOperator, self).__init__(*args, **kwargs)
+        self.item = item
+        self.UtilityClass = UtilityClass
 
 
 

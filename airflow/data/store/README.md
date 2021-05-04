@@ -1,0 +1,1 @@
+Put inside this file your .xlsx data for stores beginning with the year.

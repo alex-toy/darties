@@ -65,7 +65,7 @@ milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
 sales_clean_file = CleanFileOperator(
     task_id='sales_clean_file',
     dag=dag,
-    type='sales',
+    item='sales',
     UtilityClass=SalesData,
 )
 
@@ -73,7 +73,7 @@ sales_clean_file = CleanFileOperator(
 user_clean_file = CleanFileOperator(
     task_id='user_clean_file',
     dag=dag,
-    type='users',
+    item='users',
     UtilityClass=UserData,
 )
 
@@ -81,7 +81,7 @@ user_clean_file = CleanFileOperator(
 store_clean_file = CleanFileOperator(
     task_id='store_clean_file',
     dag=dag,
-    type='store',
+    item='store',
     UtilityClass=StoreData,
 )
 

@@ -310,6 +310,19 @@ CREATE TABLE IF NOT EXISTS public.staging_mapping (
 );
 
 
+CREATE TABLE IF NOT EXISTS public.staging_profil (
+	id_profil int4 NOT NULL,
+	lib_profil varchar(20),
+	type_zone int4,
+	id_zone int4,
+	CONSTRAINT profil_pkey PRIMARY KEY (id_profil)
+);
+
+
+
+
+-- Dimension and fact tables
+
 CREATE TABLE IF NOT EXISTS public.sales (
 	id_ville int4 NOT NULL,
 	id_temps int4 NOT NULL,
@@ -420,10 +433,3 @@ CREATE TABLE IF NOT EXISTS public.utilisateur (
 
 
 
-CREATE TABLE IF NOT EXISTS public.profil (
-	id_profil int4 NOT NULL,
-	lib_profil varchar(20),
-	type_zone int4,
-	id_zone int4,
-	CONSTRAINT profil_pkey PRIMARY KEY (id_profil)
-);

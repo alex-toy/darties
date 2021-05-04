@@ -209,6 +209,18 @@ stage_mapping_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
+stage_profil_to_redshift = StageToRedshiftOperator(
+    task_id='stage_profil_to_redshift',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    table="staging_mapping",
+    S3_bucket="darties",
+    S3_key="profil",
+    delimiter=",",
+    formatting="JSON 'auto'"
+)
+
 #Build dimensions
 milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
 
@@ -242,6 +254,15 @@ load_ville_dimension_table = LoadDimensionOperator(
     dag=dag,
     redshift_conn_id="redshift",
     table="ville",
+    query=SqlQueries.ville_table_insert,
+    append=False
+)
+
+load_profil_dimension_table = LoadDimensionOperator(
+    task_id='load_profil_dimension_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="profil",
     query=SqlQueries.ville_table_insert,
     append=False
 )

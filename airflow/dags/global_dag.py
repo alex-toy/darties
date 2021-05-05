@@ -318,7 +318,7 @@ Load_sales_fact_table = LoadFactOperator(
     query=SqlQueries.sales_table_insert
 )
 
-tables = ['sales', 'sales', 'sales', 'sales', 'sales', 'magasin', 'utilisateur', 'cours'],
+tables = ['sales', 'sales', 'sales', 'sales', 'magasin', 'utilisateur', 'cours']
 columns = ['id_ville', 'id_temps', 'id_famille_produit', 'id_magasin', 'id_enseigne', 'id_profil', 'id_devise']
 
 null_quality_checks = CheckNullOperator(

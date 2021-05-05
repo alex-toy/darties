@@ -52,7 +52,7 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-tables = ['sales', 'sales', 'sales', 'sales', 'sales', 'magasin', 'utilisateur', 'cours'],
+tables = ['sales', 'sales', 'sales', 'sales', 'magasin', 'utilisateur', 'cours']
 columns = ['id_ville', 'id_temps', 'id_famille_produit', 'id_magasin', 'id_enseigne', 'id_profil', 'id_devise']
 
 null_quality_checks = CheckNullOperator(

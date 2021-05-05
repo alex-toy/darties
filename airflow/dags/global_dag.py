@@ -10,6 +10,7 @@ from operators.load_fact import LoadFactOperator
 from operators.load_dimension import LoadDimensionOperator
 from operators.build_dimension import BuildDimensionOperator
 from operators.check_null import CheckNullOperator
+from operators.check_positive import CheckPositiveOperator
 
 from helpers import SqlQueries
 
@@ -329,6 +330,17 @@ null_quality_checks = CheckNullOperator(
     columns=columns
 )
 
+tables = ['sales', 'sales']
+columns = ['vente_objectif', 'vente_reel']
+
+positive_quality_checks = CheckPositiveOperator(
+    task_id='positive_quality_checks',
+    dag=dag,
+    redshift_conn_id="redshift",
+    tables=tables,
+    columns=columns
+)
+
 
 milestone_3 = DummyOperator(task_id='milestone_3',  dag=dag)
 
@@ -355,7 +367,7 @@ milestone_1 >> \
 ] >> \
 milestone_2 >> \
 Load_sales_fact_table >> \
-[null_quality_checks] >>\
+[null_quality_checks, positive_quality_checks] >>\
 milestone_3 >> \
 end_operator
 

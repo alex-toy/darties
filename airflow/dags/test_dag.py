@@ -15,6 +15,7 @@ from operators.load_mapping_regions import LoadMappingOperator
 from operators.build_dimension import BuildDimensionOperator
 from operators.clean_file import CleanFileOperator
 from operators.check_null import CheckNullOperator
+from operators.check_positive import CheckPositiveOperator
 
 from infrastructure.SalesData import SalesData
 from infrastructure.UserData import UserData
@@ -52,11 +53,11 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-tables = ['sales', 'sales', 'sales', 'sales', 'magasin', 'utilisateur', 'cours']
-columns = ['id_ville', 'id_temps', 'id_famille_produit', 'id_magasin', 'id_enseigne', 'id_profil', 'id_devise']
+tables = ['sales']
+columns = ['vente_objectif']
 
-null_quality_checks = CheckNullOperator(
-    task_id='null_quality_checks',
+positive_quality_checks = CheckPositiveOperator(
+    task_id='positive_quality_checks',
     dag=dag,
     redshift_conn_id="redshift",
     tables=tables,
@@ -69,7 +70,7 @@ null_quality_checks = CheckNullOperator(
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> null_quality_checks >> end_operator
+start_operator >> positive_quality_checks >> end_operator
 
 
 

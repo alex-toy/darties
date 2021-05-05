@@ -342,9 +342,6 @@ positive_quality_checks = CheckPositiveOperator(
 )
 
 
-milestone_3 = DummyOperator(task_id='milestone_3',  dag=dag)
-
-
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
@@ -367,7 +364,6 @@ milestone_1 >> \
 ] >> \
 milestone_2 >> \
 Load_sales_fact_table >> \
-[null_quality_checks, positive_quality_checks] >>\
-milestone_3 >> \
+[null_quality_checks, positive_quality_checks] >> \
 end_operator
 

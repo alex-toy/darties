@@ -14,22 +14,30 @@ class SqlQueries:
             temps.id_temps,
             famille_produit.id_famille_produit,
             magasin.id_magasin
+        
         FROM staging_v_{0}
+        
         JOIN staging_mb_{0} 
             ON staging_v_{0}.villes = staging_mb_{0}.villes 
             AND staging_v_{0}.annee = staging_mb_{0}.annee
+        
         JOIN staging_ca_{0} 
             ON staging_v_{0}.villes = staging_ca_{0}.villes 
             AND staging_v_{0}.annee = staging_ca_{0}.annee
+        
         JOIN ville 
             ON staging_v_{0}.villes = ville.lib_ville
+        
         JOIN temps 
             ON staging_v_{0}.annee = temps.annee
             AND temps.mois = '{1}'
+        
         JOIN famille_produit 
             ON famille_produit.lib_famille_produit = '{0}'
-        JOIN staging_magasin ON staging_magasin.villes = ville.lib_ville
-    """) # to be finished!!!
+        
+        JOIN staging_magasin 
+            ON staging_magasin.villes = ville.lib_ville
+    """) 
 
     #sales_table_insert.format('fours', 'janvier')
     #sales_table_insert.format('hifi', 'fevrier')
@@ -38,13 +46,19 @@ class SqlQueries:
 
     ville_table_insert = ("""
         SELECT  
-            lib_ville,
-            lib_departement,
-            lib_reg_nouv,
-            lib_continent,
-            lib_pays
-        FROM staging_cities;
+            staging_cities.lib_ville,
+            staging_cities.lib_departement,
+            staging_cities.lib_reg_nouv,
+            staging_cities.lib_continent,
+            staging_cities.lib_pays
+            staging_mapping.regions
+        FROM staging_cities 
+        JOIN staging_mapping
+            ON staging_cities.lib_departement = staging_mapping.departements;
     """)
+
+
+
 
 
 

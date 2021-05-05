@@ -368,13 +368,7 @@ CREATE TABLE IF NOT EXISTS public.sales (
 
 
 CREATE TABLE IF NOT EXISTS public.ville (
-	id_ville int4 NOT NULL,
-	id_continent int4,
-	id_pays int4,
-	id_departement int4,
-	id_reg_anc int4,
-	id_reg_nouv int4,
-	id_reg_com int4,
+	id_ville bigint identity(1, 1),
 	lib_ville varchar(30),
 	lib_continent varchar(30),
 	lib_pays varchar(30),

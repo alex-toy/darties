@@ -44,14 +44,16 @@ class SqlQueries:
     #sales_table_insert.format('magneto', 'mars')
 
 
+
     ville_table_insert = ("""
+        (lib_ville, lib_continent, lib_pays, lib_departement, lib_reg_anc, lib_reg_nouv) 
         SELECT  
             staging_cities.lib_ville,
             staging_cities.lib_continent,
             staging_cities.lib_pays,
             staging_cities.lib_departement,
             staging_mapping.regions,
-            staging_cities.lib_reg_nouv,
+            staging_cities.lib_reg_nouv
         
         FROM staging_cities 
         
@@ -61,14 +63,16 @@ class SqlQueries:
 
 
     devise_table_insert = ("""
+        (lib_devise) 
         SELECT  
-            DISTINCT staging_currency.currency_names,
+            DISTINCT staging_currency.currency_names
         
         FROM staging_currency;
     """)
 
 
     cours_table_insert = ("""
+        (mois, annee, cours) 
         SELECT  
             devise.id_devise,
             staging_currency.mois,
@@ -83,7 +87,7 @@ class SqlQueries:
 
 
     
-    
+	
     
     
     

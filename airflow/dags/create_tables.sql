@@ -419,7 +419,7 @@ CREATE TABLE IF NOT EXISTS public.cours (
 
 
 CREATE TABLE IF NOT EXISTS public.devise (
-	id_devise int4 NOT NULL,
+	id_devise bigint identity(1, 1),
 	lib_devise varchar(20),
 	CONSTRAINT devise_pkey PRIMARY KEY (id_devise)
 );

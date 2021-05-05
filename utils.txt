@@ -50,3 +50,25 @@ AIRFLOW CONNECTIONS :
         Login : awsuser
         Password :  password you created when launching your Redshift cluster.
         Port : 5439
+
+
+
+### SQL de vérification :
+
+## Dans le modèle étoile 
+SELECT famille_produit.lib_famille_produit, temps.lib_mois, temps.annee, ville.lib_ville, sales.vente_objectif
+FROM sales 
+JOIN temps ON temps.id_temps = sales.id_temps
+JOIN ville ON sales.id_ville = ville.id_ville
+JOIN famille_produit ON famille_produit.id_famille_produit = sales.id_famille_produit
+
+WHERE famille_produit.lib_famille_produit = 'hifi' AND temps.annee = 2020 AND temps.lib_mois = 'avril'
+
+limit 10;
+
+
+## Dans les staging :
+SELECT o_avril
+FROM staging_v_hifi 
+WHERE annee = 2020  AND villes = 'strasbourg'
+LIMIT 10;

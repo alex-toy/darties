@@ -1,7 +1,5 @@
 class SqlQueries:
 
-    # item = v_fours ; mois = janvier
-    # 0 = v_fours ; 1 = janvier
 
     sales_table_insert = ("""
         (id_ville, id_temps, id_famille_produit, id_magasin, vente_objectif, vente_reel, CA_reel, CA_objectif, marge_reel, marge_objectif) 
@@ -41,9 +39,6 @@ class SqlQueries:
             ON magasin.lib_magasin = ville.lib_ville
     """) 
 
-    #sales_table_insert.format('fours', 'janvier')
-    #sales_table_insert.format('hifi', 'fevrier')
-    #sales_table_insert.format('magneto', 'mars')
 
 
 

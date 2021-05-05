@@ -375,7 +375,7 @@ CREATE TABLE IF NOT EXISTS public.ville (
 	lib_departement varchar(30),
 	lib_reg_anc varchar(30),
 	lib_reg_nouv varchar(30),
-	lib_reg_com varchar(30),
+	--lib_reg_com varchar(30),
 	CONSTRAINT ville_pkey PRIMARY KEY (id_ville)
 );
 

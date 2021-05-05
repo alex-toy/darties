@@ -279,6 +279,26 @@ load_ville_dimension_table = LoadDimensionOperator(
 )
 
 
+load_devise_dimension_table = LoadDimensionOperator(
+    task_id='load_devise_dimension_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="devise",
+    query=SqlQueries.devise_table_insert,
+    append=False
+)
+
+
+load_cours_dimension_table = LoadDimensionOperator(
+    task_id='load_cours_dimension_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="cours",
+    query=SqlQueries.cours_table_insert,
+    append=False
+)
+
+
 
 #Build fact table
 milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
@@ -329,8 +349,8 @@ start_operator >> create_tables >> \
 ] >> \
 milestone_1 >> \
 [
-    load_time_dimension_table, load_famille_produit_dimension_table,
-    load_ville_dimension_table
+    load_time_dimension_table, load_famille_produit_dimension_table, load_ville_dimension_table, 
+    load_devise_dimension_table, load_cours_dimension_table
 ] >> \
 milestone_2 >> \
 Load_sales_fact_table >> \

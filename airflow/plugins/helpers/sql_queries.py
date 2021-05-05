@@ -4,17 +4,17 @@ class SqlQueries:
     # 0 = v_fours ; 1 = janvier
     sales_table_insert = ("""
         SELECT  
-            staging_v_{0}.o_janvier AS v_{0}_janvier_prev,
-            staging_v_{0}.r_janvier AS v_{0}_janvier_reel,
-            staging_ca_{0}.o_janvier AS ca_{0}_janvier_prev,
-            staging_ca_{0}.r_janvier AS ca_{0}_janvier_reel,
-            staging_mb_{0}.o_janvier AS mb_{0}_janvier_prev,
-            staging_mb_{0}.r_janvier AS mb_{0}_janvier_reel,
             ville.id_ville,
             temps.id_temps,
             famille_produit.id_famille_produit,
             magasin.id_magasin
-        
+            staging_v_{0}.o_janvier,
+            staging_v_{0}.r_janvier,
+            staging_ca_{0}.o_janvier,
+            staging_ca_{0}.r_janvier,
+            staging_mb_{0}.o_janvier,
+            staging_mb_{0}.r_janvier,
+            
         FROM staging_v_{0}
         
         JOIN staging_mb_{0} 
@@ -47,24 +47,39 @@ class SqlQueries:
     ville_table_insert = ("""
         SELECT  
             staging_cities.lib_ville,
-            staging_cities.lib_departement,
-            staging_cities.lib_reg_nouv,
             staging_cities.lib_continent,
-            staging_cities.lib_pays
-            staging_mapping.regions
+            staging_cities.lib_pays,
+            staging_cities.lib_departement,
+            staging_mapping.regions,
+            staging_cities.lib_reg_nouv,
+        
         FROM staging_cities 
+        
         JOIN staging_mapping
             ON staging_cities.lib_departement = staging_mapping.departements;
     """)
 
 
+    devise_table_insert = ("""
+        SELECT  
+            DISTINCT staging_currency.currency_names,
+        
+        FROM staging_currency;
+    """)
 
 
-
-
-    
-
-
+    cours_table_insert = ("""
+        SELECT  
+            devise.id_devise,
+            staging_currency.mois,
+            staging_currency.annee,
+            staging_currency.currency_values
+        
+        FROM staging_currency 
+        
+        JOIN devise
+            ON devise.lib_devise = staging_currency.currency_names;
+    """)
 
 
     

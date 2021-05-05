@@ -13,7 +13,6 @@ from operators.check_null import CheckNullOperator
 
 from helpers import SqlQueries
 
-#OUTPUTS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../output'))
 
 
 default_args = {
@@ -319,13 +318,15 @@ Load_sales_fact_table = LoadFactOperator(
     query=SqlQueries.sales_table_insert
 )
 
+tables = ['sales', 'sales', 'sales', 'sales', 'sales', 'magasin', 'utilisateur', 'cours'],
+columns = ['id_ville', 'id_temps', 'id_famille_produit', 'id_magasin', 'id_enseigne', 'id_profil', 'id_devise']
 
 null_quality_checks = CheckNullOperator(
-    task_id='run_null_count_quality_checks',
+    task_id='null_quality_checks',
     dag=dag,
     redshift_conn_id="redshift",
-    tables=['songplays', 'songs', 'users', 'artists', 'time'],
-    columns=['playid', 'songid', 'userid', 'artistid', 'start_time']
+    tables=tables,
+    columns=columns
 )
 
 

@@ -5,7 +5,7 @@ from airflow.utils.decorators import apply_defaults
 class CheckNullOperator(BaseOperator):
 
     ui_color = '#89DA59'
-    check_null_sql = """SELECT COUNT(*) FROM {} WHERE {} IS NULL;""",
+    check_null_sql = """SELECT COUNT(*) FROM {} WHERE {} IS NULL;"""
 
     @apply_defaults
     def __init__(self,

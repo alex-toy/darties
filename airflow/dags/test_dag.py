@@ -52,12 +52,15 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
+tables = ['sales', 'sales', 'sales', 'sales', 'sales', 'magasin', 'utilisateur', 'cours'],
+columns = ['id_ville', 'id_temps', 'id_famille_produit', 'id_magasin', 'id_enseigne', 'id_profil', 'id_devise']
+
 null_quality_checks = CheckNullOperator(
-    task_id='run_null_count_quality_checks',
+    task_id='null_quality_checks',
     dag=dag,
     redshift_conn_id="redshift",
-    tables=['sales', 'sales', 'sales', 'sales', 'sales'],
-    columns=['id_ville', 'id_temps', 'id_famille_produit', 'id_magasin']
+    tables=tables,
+    columns=columns
 )
 
 

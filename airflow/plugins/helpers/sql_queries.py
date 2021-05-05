@@ -37,8 +37,8 @@ class SqlQueries:
         JOIN famille_produit 
             ON famille_produit.lib_famille_produit = '{0}'
         
-        JOIN staging_magasin 
-            ON staging_magasin.villes = ville.lib_ville
+        JOIN magasin 
+            ON magasin.lib_magasin = ville.lib_ville
     """) 
 
     #sales_table_insert.format('fours', 'janvier')

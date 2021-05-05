@@ -357,10 +357,10 @@ CREATE TABLE IF NOT EXISTS public.sales (
 	id_temps int4 NOT NULL,
 	id_famille_produit int4 NOT NULL,
 	id_magasin int4 NOT NULL,
-	vente_objectif int4,
-	vente_reel int4,
-	CA_reel int4,
-	CA_objectif int4,
+	vente_objectif decimal(16,8),
+	vente_reel decimal(16,8),
+	CA_reel decimal(16,8),
+	CA_objectif decimal(16,8),
 	marge_reel decimal(16,8),
 	marge_objectif decimal(16,8),
 	CONSTRAINT sales_pkey PRIMARY KEY (id_ville, id_temps, id_famille_produit, id_magasin)
@@ -438,5 +438,12 @@ CREATE TABLE IF NOT EXISTS public.utilisateur (
 	CONSTRAINT utilisateur_pkey PRIMARY KEY (id_utilisateur)
 );
 
+
+
+CREATE TABLE IF NOT EXISTS public.magasin (
+	id_magasin bigint identity(1, 1),
+	lib_magasin varchar(30),
+	id_enseigne int4
+);
 
 

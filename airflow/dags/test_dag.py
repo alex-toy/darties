@@ -14,6 +14,7 @@ from operators.stage_redshift import StageToRedshiftOperator
 from operators.load_mapping_regions import LoadMappingOperator
 from operators.build_dimension import BuildDimensionOperator
 from operators.clean_file import CleanFileOperator
+from operators.check_null import CheckNullOperator
 
 from infrastructure.SalesData import SalesData
 from infrastructure.UserData import UserData
@@ -51,31 +52,21 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-create_tables = PostgresOperator(
-    task_id="create_tables",
-    dag=dag,
-    sql='create_tables.sql',
-    postgres_conn_id="redshift"
-)
-
-
-stage_magasin_to_redshift = StageToRedshiftOperator(
-    task_id='stage_magasin_to_redshift',
+null_quality_checks = CheckNullOperator(
+    task_id='run_null_count_quality_checks',
     dag=dag,
     redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    table="staging_magasin",
-    S3_bucket="darties",
-    S3_key="magasin",
-    delimiter=",",
-    formatting="JSON 'auto'"
+    tables=['sales', 'sales', 'sales', 'sales', 'sales'],
+    columns=['id_ville', 'id_temps', 'id_famille_produit', 'id_magasin']
 )
+
+
 
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> create_tables >> stage_magasin_to_redshift >> end_operator
+start_operator >> null_quality_checks >> end_operator
 
 
 

@@ -9,7 +9,7 @@ from operators.stage_redshift import StageToRedshiftOperator
 from operators.load_fact import LoadFactOperator
 from operators.load_dimension import LoadDimensionOperator
 from operators.build_dimension import BuildDimensionOperator
-from operators.data_quality import DataQualityOperator
+from operators.check_null import CheckNullOperator
 
 from helpers import SqlQueries
 
@@ -25,7 +25,6 @@ default_args = {
     'retry_delay': timedelta(minutes=5),
     'catchup': False,
     'email_on_retry': False,
-    'check_null_sql' : """SELECT COUNT(*) FROM {} WHERE {} IS NULL;""",
     'check_count_sql' : """SELECT COUNT(*) FROM {};"""
 }
 
@@ -321,29 +320,21 @@ Load_sales_fact_table = LoadFactOperator(
 )
 
 
+null_quality_checks = CheckNullOperator(
+    task_id='run_null_count_quality_checks',
+    dag=dag,
+    redshift_conn_id="redshift",
+    tables=['songplays', 'songs', 'users', 'artists', 'time'],
+    columns=['playid', 'songid', 'userid', 'artistid', 'start_time']
+)
 
 
+milestone_3 = DummyOperator(task_id='milestone_3',  dag=dag)
 
-# run_quality_checks = DataQualityOperator(
-#     task_id='run_quality_checks',
-#     dag=dag,
-#     redshift_conn_id="redshift",
-#     check_null_sql=default_args['check_null_sql'],
-#     check_count_sql=default_args['check_count_sql'],
-#     tables=['songplays', 'songs', 'users', 'artists', 'time'],
-#     columns=['playid', 'songid', 'userid', 'artistid', 'start_time']
-# )
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-
-
-
-#start_operator >> create_tables_task >> \
-#[stage_events_to_redshift, stage_songs_to_redshift] >> load_songplays_table >> \
-#[load_song_dimension_table, load_user_dimension_table, load_artist_dimension_table, load_time_dimension_table] >> \
-#run_quality_checks >> end_operator
 
 
 
@@ -363,5 +354,7 @@ milestone_1 >> \
 ] >> \
 milestone_2 >> \
 Load_sales_fact_table >> \
+[null_quality_checks] >>\
+milestone_3 >> \
 end_operator
 

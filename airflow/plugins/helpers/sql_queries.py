@@ -72,7 +72,7 @@ class SqlQueries:
 
 
     cours_table_insert = ("""
-        (mois, annee, cours) 
+        (id_devise, mois, annee, cours) 
         SELECT  
             devise.id_devise,
             staging_currency.mois,

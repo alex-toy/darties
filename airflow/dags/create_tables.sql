@@ -313,7 +313,7 @@ CREATE TABLE IF NOT EXISTS public.staging_mapping (
 CREATE TABLE IF NOT EXISTS public.staging_profil (
 	id_profil int4 NOT NULL,
 	lib_profil varchar(20),
-	type_zone int4,
+	type_zone varchar(20),
 	id_zone int4,
 	annee int4,
 	CONSTRAINT profil_pkey PRIMARY KEY (id_profil)

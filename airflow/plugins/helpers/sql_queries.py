@@ -63,9 +63,10 @@ class SqlQueries:
 
 
     devise_table_insert = ("""
-        (lib_devise) 
+        (lib_devise, lib_pays) 
         SELECT  
-            DISTINCT staging_currency.currency_names
+            DISTINCT staging_currency.currency_names,
+            staging_currency.country_names
         
         FROM staging_currency;
     """)

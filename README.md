@@ -172,9 +172,6 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     ├── README.md
     ├── activate.sh
     ├── airflow
-    │   ├── =1.0.0
-    │   ├── __init__.py
-    │   ├── __init__.pyc
     │   ├── airflow-webserver.pid
     │   ├── airflow.cfg
     │   ├── airflow.db
@@ -204,13 +201,8 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   │   ├── README.md
     │   ├── plugins
     │   │   ├── __init__.py
-    │   │   ├── __pycache__
-    │   │   │   └── __init__.cpython-37.pyc
     │   │   ├── config
     │   │   │   ├── __init__.py
-    │   │   │   ├── __pycache__
-    │   │   │   │   ├── __init__.cpython-37.pyc
-    │   │   │   │   └── config.cpython-37.pyc
     │   │   │   └── config.py
     │   │   ├── helpers
     │   │   │   ├── __init__.py

@@ -340,29 +340,28 @@ $ pip install -r requirements.txt
 
 ## 2. Configuration of project
 
-You need to have an AWS account to run the complete analysis. You also need to create a user that has AmazonRedshiftFullAccess as well as AmazonS3ReadOnlyAccess policies. Make sure to keep its KEY and SECRET credentials in a safe place.
+You need to have an AWS account to run the complete analysis. You also need to create a user that has AmazonRedshiftFullAccess as well as AmazonS3ReadOnlyAccess policies. Make sure to keep its KEY and SECRET credentials in a safe place. You also need to have 
 
 1. Copy the *dwh.cfg* into a safe place.
 2. Fill in all fields except *LOG_DATA*, *LOG_JSONPATH*, *SONG_DATA* which are already filled and *DWH_ENDPOINT*, *DWH_ROLE_ARN* which will be automatically filled for you. 
 3. In file *airflow/plugins/config/config.py*, give the path to *dwh.cfg* to variable *config_file*.
-4. Run *IaC_1.py* and wait untill you see the cluster available in your console.
-4. Run *IaC_2.py* to create an endpoint.
-5. In a terminal, run the following command to create the airflow image :
+4. Run *utils/IaC_1.py* and wait untill you see the cluster available in your console.
+4. Run *utils/IaC_2.py* to create an endpoint. You can now go to reshift, but no tables have been created so far.
+5. Run *utils/create_bucket.py* to create an S3 bucket which will be called **darties**.
+6. In a terminal, run the following command to create the airflow image :
 ```
 docker build -t webserver .
 ```
-6. Then run the command :
+7. Start **Docker** desktop and run the following command :
 ```
 docker run -d -p 8080:8080 -v /path/to/project/darties/airflow:/usr/local/airflow puckel/docker-airflow webserver
 ```
 in order to run the container based off of the webserver image. **Airflow** will be running at : http://localhost:8080. You should be seeing the following screen :
 <img src="generals/airflow_screen.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
-7. Fill free to write queries in *test.py* to analyse the data.
-8. Once done, don't forget to *release_resources.py* !!!!
-
-
-9. Start **Docker** desktop and run the following command : *docker run -d -p 8080:8080 -v /Users/alexei/docs/MIAGE/S4/D605/darties/airflow:/usr/local/airflow puckel/docker-airflow webserver*
+8. Trigger initial_dag. In your AWS console, you will see many files uploaded inside your *S3/::darties* bucket.
+9. Trigger global_dag. In your AWS Redshift console, you will see the staging tables and the star model created as described up above.
+10. Once done, don't forget to *release_resources.py* !!!!
 
 
 --------

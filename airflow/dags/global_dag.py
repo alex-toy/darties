@@ -433,7 +433,7 @@ unstage_profil_to_S3 = UnstageFromRedshiftOperator(
     redshift_conn_id="redshift",
     aws_credentials_id="aws_credentials",
     S3_bucket="darties",
-    table="profil"
+    table="staging_profil"
 )
 
 

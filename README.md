@@ -353,9 +353,10 @@ docker build -t webserver .
 ```
 6. Then run the command :
 ```
-docker run -d -p 8080:8080 -v /Users/alexei/docs/MIAGE/S4/D605/darties/airflow:/usr/local/airflow puckel/docker-airflow webserver
+docker run -d -p 8080:8080 -v /path/to/project/darties/airflow:/usr/local/airflow puckel/docker-airflow webserver
 ```
-in order to run the container based off of the webserver image. **Airflow** will be running at : http://localhost:8080
+in order to run the container based off of the webserver image. **Airflow** will be running at : http://localhost:8080. You should be seeing the following screen :
+<img src="generals/airflow_screen.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 7. Fill free to write queries in *test.py* to analyse the data.
 8. Once done, don't forget to *release_resources.py* !!!!

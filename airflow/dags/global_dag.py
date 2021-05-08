@@ -20,14 +20,13 @@ from helpers import SqlQueries
 
 default_args = {
     'owner': 'alex-toy',
-    'start_date': datetime(2018, 11, 1),
-    'end_date': datetime(2019, 12, 1),
+    'start_date': datetime(2020, 1, 1),
+    'end_date': datetime(2021, 12, 31),
     'depends_on_past': False,
     'retries': 3,
     'retry_delay': timedelta(minutes=5),
     'catchup': False,
     'email_on_retry': False,
-    'check_count_sql' : """SELECT COUNT(*) FROM {};"""
 }
 
 # DAG

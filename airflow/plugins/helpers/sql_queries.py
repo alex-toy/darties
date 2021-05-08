@@ -41,44 +41,6 @@ class SqlQueries:
 
 
 
-
-    sales_table_insert_test = ("""
-        (id_ville, id_temps, id_famille_produit, id_magasin, vente_objectif, vente_reel, CA_reel, CA_objectif, marge_reel, marge_objectif) 
-        SELECT  
-            ville.id_ville,
-            (SELECT id_temps FROM temps WHERE temps.annee = staging_v_{0}.annee AND temps.mois = '{1}') AS id_temps,
-            famille_produit.id_famille_produit,
-            magasin.id_magasin,
-            staging_v_{0}.o_{1},
-            staging_v_{0}.r_{1},
-            staging_ca_{0}.o_{1},
-            staging_ca_{0}.r_{1},
-            staging_mb_{0}.o_{1},
-            staging_mb_{0}.r_{1}
-            
-        FROM staging_v_{0}
-        
-        JOIN staging_mb_{0} 
-            ON staging_v_{0}.villes = staging_mb_{0}.villes 
-            AND staging_v_{0}.annee = staging_mb_{0}.annee
-        
-        JOIN staging_ca_{0} 
-            ON staging_v_{0}.villes = staging_ca_{0}.villes 
-            AND staging_v_{0}.annee = staging_ca_{0}.annee
-        
-        JOIN ville 
-            ON staging_v_{0}.villes = ville.lib_ville
-        
-        
-        JOIN famille_produit 
-            ON famille_produit.lib_famille_produit = '{0}'
-        
-        JOIN staging_magasin 
-            ON staging_magasin.villes = ville.lib_ville
-    """) 
-
-
-
     ville_table_insert = ("""
         (lib_ville, lib_continent, lib_pays, lib_departement, lib_reg_anc, lib_reg_nouv) 
         SELECT  

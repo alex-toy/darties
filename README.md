@@ -175,82 +175,33 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   ├── =1.0.0
     │   ├── __init__.py
     │   ├── __init__.pyc
+    │   ├── airflow-webserver.pid
     │   ├── airflow.cfg
     │   ├── airflow.db
-    │   ├── app
-    │   │   ├── __init__.py
-    │   │   ├── __pycache__
-    │   │   │   └── __init__.cpython-37.pyc
-    │   │   ├── config
-    │   │   │   ├── __init__.py
-    │   │   │   ├── __pycache__
-    │   │   │   └── config.py
-    │   │   └── infrastructure
-    │   │       ├── SalesData.py
-    │   │       ├── __init__.py
-    │   │       └── __pycache__
     │   ├── dags
     │   │   ├── create_tables.sql
     │   │   ├── global_dag.py
-    │   │   └── initial_dag.py
+    │   │   ├── initial_dag.py
+    │   │   └── test_dag.py
     │   ├── data
-    │   │   ├── 2020_HISTO.xlsx
-    │   │   ├── 2021_BUDGET.xlsx
-    │   │   └── README.md
-    │   ├── logs
-    │   │   └── README.md
-    │   ├── output
-    │   │   ├── CA_Fours
-    │   │   │   ├── 2020
-    │   │   │   │   └── CA_Fours_2020_sales.json
-    │   │   │   └── 2021
-    │   │   │       └── CA_Fours_2021_sales.json
-    │   │   ├── CA_Hifi
-    │   │   │   ├── 2020
-    │   │   │   │   └── CA_Hifi_2020_sales.json
-    │   │   │   └── 2021
-    │   │   │       └── CA_Hifi_2021_sales.json
-    │   │   ├── CA_Magneto
-    │   │   │   ├── 2020
-    │   │   │   │   └── CA_Magneto_2020_sales.json
-    │   │   │   └── 2021
-    │   │   │       └── CA_Magneto_2021_sales.json
-    │   │   ├── MB_Fours
-    │   │   │   ├── 2020
-    │   │   │   │   └── MB_Fours_2020_sales.json
-    │   │   │   └── 2021
-    │   │   │       └── MB_Fours_2021_sales.json
-    │   │   ├── MB_Hifi
-    │   │   │   ├── 2020
-    │   │   │   │   └── MB_Hifi_2020_sales.json
-    │   │   │   └── 2021
-    │   │   │       └── MB_Hifi_2021_sales.json
-    │   │   ├── MB_Magneto
-    │   │   │   ├── 2020
-    │   │   │   │   └── MB_Magneto_2020_sales.json
-    │   │   │   └── 2021
-    │   │   │       └── MB_Magneto_2021_sales.json
     │   │   ├── README.md
-    │   │   ├── V_Fours
-    │   │   │   ├── 2020
-    │   │   │   │   └── V_Fours_2020_sales.json
-    │   │   │   └── 2021
-    │   │   │       └── V_Fours_2021_sales.json
-    │   │   ├── V_Hifi
-    │   │   │   ├── 2020
-    │   │   │   │   └── V_Hifi_2020_sales.json
-    │   │   │   └── 2021
-    │   │   │       └── V_Hifi_2021_sales.json
-    │   │   ├── V_Magneto
-    │   │   │   ├── 2020
-    │   │   │   │   └── V_Magneto_2020_sales.json
-    │   │   │   └── 2021
-    │   │   │       └── V_Magneto_2021_sales.json
-    │   │   └── darties
-    │   │       ├── 2020
-    │   │       │   └── darties_2020_sales.json
-    │   │       └── 2021
-    │   │           └── darties_2021_sales.json
+    │   │   ├── sales
+    │   │   │   ├── 2020_HISTO.xlsx
+    │   │   │   ├── 2021_BUDGET.xlsx
+    │   │   │   └── README.md
+    │   │   ├── store
+    │   │   │   ├── 2021_magasin.xlsx
+    │   │   │   └── README.md
+    │   │   └── users
+    │   │       ├── 2021_utilisateurs.xlsx
+    │   │       └── README.md
+    │   ├── logs
+    │   │   ├── README.md
+    │   │   ├── dag_processor_manager
+    │   │   ├── global_dag
+    │   │   └── scheduler
+    │   ├── output
+    │   │   ├── README.md
     │   ├── plugins
     │   │   ├── __init__.py
     │   │   ├── __pycache__
@@ -258,52 +209,44 @@ Once the data has been ETLed, you are free to take full benefit from the power o
     │   │   ├── config
     │   │   │   ├── __init__.py
     │   │   │   ├── __pycache__
+    │   │   │   │   ├── __init__.cpython-37.pyc
+    │   │   │   │   └── config.cpython-37.pyc
     │   │   │   └── config.py
     │   │   ├── helpers
     │   │   │   ├── __init__.py
-    │   │   │   ├── __pycache__
     │   │   │   └── sql_queries.py
     │   │   ├── infrastructure
     │   │   │   ├── SalesData.py
+    │   │   │   ├── StoreData.py
+    │   │   │   ├── UserData.py
     │   │   │   ├── __init__.py
-    │   │   │   └── __pycache__
     │   │   └── operators
     │   │       ├── __init__.py
-    │   │       ├── __pycache__
+    │   │       ├── build_dimension.py
+    │   │       ├── check_null.py
+    │   │       ├── check_positive.py
     │   │       ├── clean_file.py
     │   │       ├── data_quality.py
+    │   │       ├── load_cities.py
+    │   │       ├── load_currency.py
     │   │       ├── load_dimension.py
     │   │       ├── load_fact.py
+    │   │       ├── load_mapping_regions.py
     │   │       ├── stage_redshift.py
+    │   │       ├── unstage_from_redshift.py
     │   │       └── upload_file.py
     │   └── unittests.cfg
     ├── airflow.cfg
     ├── airflow.db
-    ├── app
-    │   ├── __init__.py
-    │   ├── __pycache__
-    │   │   ├── __init__.cpython-37.pyc
-    │   │   └── __init__.cpython-38.pyc
-    │   ├── application
-    │   │   ├── create_output_file.py
-    │   │   └── upload_file.py
-    │   ├── config
-    │   │   ├── __init__.py
-    │   │   ├── __pycache__
-    │   │   └── config.py
-    │   ├── domain
-    │   │   ├── BusinessData.py
-    │   │   └── __pycache__
-    │   │       ├── BusinessData.cpython-37.pyc
-    │   │       └── BusinessData.cpython-38.pyc
-    │   └── infrastructure
-    │       ├── SalesData.py
-    │       ├── __init__.py
-    │       └── __pycache__
     ├── dwh_P6.cfg
     ├── generals
-    │   ├── star_schema.png
-    │   └── Présentation\ Projet\ Darties.pdf
+    │   ├── Présentation\ Projet\ Darties.pdf
+    │   ├── airflow_screen.png
+    │   ├── global_dag.png
+    │   ├── initial_dag.png
+    │   ├── initial_data.png
+    │   ├── initial_data_cities.png
+    │   └── star_schema.png
     ├── init
     ├── init.sh
     ├── poetry.lock
@@ -359,8 +302,8 @@ docker run -d -p 8080:8080 -v /path/to/project/darties/airflow:/usr/local/airflo
 in order to run the container based off of the webserver image. **Airflow** will be running at : http://localhost:8080. You should be seeing the following screen :
 <img src="generals/airflow_screen.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
-8. Trigger initial_dag. In your AWS console, you will see many files uploaded inside your *S3/::darties* bucket.
-9. Trigger global_dag. In your AWS Redshift console, you will see the staging tables and the star model created as described up above.
+8. Trigger *initial_dag*. In your AWS console, you will see many files uploaded inside your *S3/::darties* bucket.
+9. Trigger *global_dag*. In your AWS Redshift console, you will see the staging tables and the star model created as described up above.
 10. Once done, don't forget to *release_resources.py* !!!!
 
 

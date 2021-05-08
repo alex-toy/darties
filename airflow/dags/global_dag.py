@@ -6,6 +6,8 @@ from airflow.operators.postgres_operator import PostgresOperator
 from airflow.operators.python_operator import PythonOperator
 
 from operators.stage_redshift import StageToRedshiftOperator
+from operators.unstage_from_redshift import UnstageFromRedshiftOperator
+
 from operators.load_fact import LoadFactOperator
 from operators.load_dimension import LoadDimensionOperator
 from operators.build_dimension import BuildDimensionOperator

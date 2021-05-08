@@ -20,10 +20,10 @@ class UnstageFromRedshiftOperator(BaseOperator):
                  redshift_conn_id="",
                  aws_credentials_id="",
                  table="",
-                 S3_bucket=""
+                 S3_bucket="",
                  *args, **kwargs):
 
-        super(StageToRedshiftOperator, self).__init__(*args, **kwargs)
+        super(UnstageFromRedshiftOperator, self).__init__(*args, **kwargs)
         self.redshift_conn_id = redshift_conn_id
         self.aws_credentials_id = aws_credentials_id
         self.table = table

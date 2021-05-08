@@ -415,7 +415,7 @@ unstage_enseigne_to_S3 = UnstageFromRedshiftOperator(
     redshift_conn_id="redshift",
     aws_credentials_id="aws_credentials",
     S3_bucket="darties",
-    table="enseigne"
+    table="staging_enseigne"
 )
 
 unstage_utilisateur_to_S3 = UnstageFromRedshiftOperator(

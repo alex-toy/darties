@@ -5,7 +5,6 @@ from airflow.utils.decorators import apply_defaults
 
 class UnstageFromRedshiftOperator(BaseOperator):
     ui_color = '#358140'
-    template_fields = ("S3_key", )
 
     unload_sql = """
         UNLOAD ('SELECT * FROM {}')

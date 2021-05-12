@@ -1,0 +1,16 @@
+{
+    "fileLocations": [
+        {
+            "URIs": [
+                "https://darties.s3-us-west-2.amazonaws.com"
+            ]
+        }
+    ],
+    "globalUploadSettings": {
+        "delimiter": "|",
+        "containsHeader": "false"
+    }
+}
+
+
+

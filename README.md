@@ -63,6 +63,7 @@ We will also introduce automation and monitoring to a data warehouse ETL pipelin
 
 Lastly, we will add a data visualization layer with **AWS Quicksight**.
 <img src="generals/dataviz.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+<img src="generals/dataviz2.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 
 ## 2. Initial data

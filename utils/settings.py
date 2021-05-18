@@ -2,7 +2,7 @@ import configparser
 import psycopg2
 
 #config_file = "path/to/dwh.cfg"
-config_file = "/Users/alexei/docs/dwh_P6.cfg"
+config_file = "/Users/alexei/docs150521/dwh_P6.cfg"
 
 
 def get_connection() :

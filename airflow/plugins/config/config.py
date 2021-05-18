@@ -1,5 +1,5 @@
 import os
-config_file = '/Users/alexei/docs/dwh_P6.cfg'
+config_file = '/Users/alexei/docs150521/dwh_P6.cfg'
 
 FULL_PATH_DATA = os.path.os.getcwd()
 

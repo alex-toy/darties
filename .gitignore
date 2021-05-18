@@ -34,3 +34,6 @@ airflow/.cache/*
 airflow/.local/*
 airflow/airflow-webserver.pid
 airflow/.bash_history/*
+
+
+utils/__pycache__/*

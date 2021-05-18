@@ -10,7 +10,7 @@ from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 
 from operators.clean_monthly_file import CleanMonthlyFileOperator
-from operators.upload_file import UploadFileOperator
+from operators.upload_monthly_file import UploadMonthlyFileOperator
 from operators.load_currency import LoadCurrencyOperator
 from operators.load_cities import LoadCitiesOperator
 from operators.load_mapping_regions import LoadMappingOperator
@@ -62,7 +62,7 @@ sales_clean_file = CleanMonthlyFileOperator(
 
 
 
-upload_file = UploadFileOperator(
+upload_file = UploadMonthlyFileOperator(
     task_id='upload_file',
     dag=dag,
     aws_credentials_id="aws_credentials",

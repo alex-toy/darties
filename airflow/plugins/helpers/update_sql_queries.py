@@ -1,7 +1,7 @@
 class UpdateSqlQueries:
 
 
-    magasin_table_insert = ("""
+    update_ca_fours_query = ("""
         (lib_magasin, id_enseigne) 
         SELECT  
             staging_magasin.lib_magasin,
@@ -11,9 +11,26 @@ class UpdateSqlQueries:
     """)
 
 
+    update_v_fours_table = ("""
+        (lib_magasin, id_enseigne) 
+        SELECT  
+            staging_magasin.lib_magasin,
+            staging_magasin.id_enseigne
+        
+        FROM staging_magasin;
+    """)
 
 
     
+
+
+
+    
+
+
+
+
+
 
 
     sales_table_insert = ("""

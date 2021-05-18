@@ -159,30 +159,26 @@ stage_monthly_mb_magneto_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
-#Build dimensions
-#milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
+#Update dimensions
+milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
 
 
-# load_devise_dimension_table = LoadDimensionOperator(
-#     task_id='load_devise_dimension_table',
-#     dag=dag,
-#     redshift_conn_id="redshift",
-#     table="devise",
-#     query=SqlQueries.devise_table_insert,
-#     append=False
-# )
+update_ca_fours_table = UpdateDimensionOperator(
+    task_id='update_ca_fours_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="staging_monthly_ca_fours",
+    query=UpdateSqlQueries.update_ca_fours_query
+)
 
+update_v_fours_table = UpdateDimensionOperator(
+    task_id='update_v_fours_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    table="staging_monthly_v_fours",
+    query=UpdateSqlQueries.update_v_fours_query
+)
 
-#Build fact table
-#milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
-
-# Load_sales_fact_table = LoadFactOperator(
-#     task_id='Load_sales_fact_table',
-#     dag=dag,
-#     redshift_conn_id="redshift",
-#     table="sales",
-#     query=SqlQueries.sales_table_insert
-# )
 
 ## Unstage to S3
 
@@ -205,6 +201,10 @@ start_operator >> create_tables >> \
     stage_monthly_ca_fours_to_redshift, stage_monthly_v_fours_to_redshift, stage_monthly_mb_fours_to_redshift,
     stage_monthly_ca_hifi_to_redshift, stage_monthly_v_hifi_to_redshift, stage_monthly_mb_hifi_to_redshift,
     stage_monthly_ca_magneto_to_redshift, stage_monthly_v_magneto_to_redshift, stage_monthly_mb_magneto_to_redshift
+] >> \
+milestone_1 >> \
+[
+    update_ca_fours_table, update_v_fours_table
 ] >> \
 end_operator
 

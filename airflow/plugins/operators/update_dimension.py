@@ -5,11 +5,8 @@ from airflow.utils.decorators import apply_defaults
 class UpdateDimensionOperator(BaseOperator):
 
     ui_color = '#80BD9E'
-    table_insert = """
+    update_query = """
         INSERT INTO {} {}
-    """
-    truncate_sql = """
-        TRUNCATE TABLE {};
     """
 
     @apply_defaults
@@ -23,12 +20,11 @@ class UpdateDimensionOperator(BaseOperator):
         self.redshift_conn_id = redshift_conn_id
         self.table = table
         self.query = query
-        self.append = append
 
     def execute(self, context):
         redshift = PostgresHook(self.redshift_conn_id)
         
-        sql_statement = UpdateDimensionOperator.table_insert.format(self.table, self.query)
+        sql_statement = UpdateDimensionOperator.update_query.format(self.table, self.query)
         redshift.run(sql_statement)
         
         self.log.info(f"Ending UpdateDimensionOperator {self.table} with a Success on Operation  {operation}")

@@ -28,7 +28,7 @@ class UpdateDimensionOperator(BaseOperator):
                             #update_query.format('CA_reel', 'staging_monthly_ca_fours')
 
 
-        self.log.info(f"sql_statement : {self.sql_statement}")
+        self.log.info(f"sql_statement : {sql_statement}")
 
     
 

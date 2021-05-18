@@ -39,7 +39,7 @@ docker stop airflowserver
 
 curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/test_dag
 curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/monthly_initial_dag
-curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/global_monthly_dag
+curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/monthly_global_dag
 
 
 AIRFLOW CONNECTIONS :

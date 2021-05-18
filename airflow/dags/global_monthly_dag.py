@@ -162,22 +162,91 @@ stage_monthly_mb_magneto_to_redshift = StageToRedshiftOperator(
 #Update dimensions
 milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
 
-
 update_ca_fours_table = UpdateDimensionOperator(
     task_id='update_ca_fours_table',
     dag=dag,
     redshift_conn_id="redshift",
-    table="staging_monthly_ca_fours",
-    query=UpdateSqlQueries.update_ca_fours_query
+    update_query=UpdateSqlQueries.update_ca_fours_query,
+    kpi="CA_reel",
+    staging_monthly_table="staging_monthly_ca_fours"
 )
 
 update_v_fours_table = UpdateDimensionOperator(
     task_id='update_v_fours_table',
     dag=dag,
     redshift_conn_id="redshift",
-    table="staging_monthly_v_fours",
-    query=UpdateSqlQueries.update_v_fours_query
+    update_query=UpdateSqlQueries.update_query,
+    kpi="vente_reel",
+    staging_monthly_table="staging_monthly_v_fours"
 )
+
+update_mb_fours_table = UpdateDimensionOperator(
+    task_id='update_mb_fours_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    update_query=UpdateSqlQueries.update_query,
+    kpi="marge_reel",
+    staging_monthly_table="staging_monthly_mb_fours"
+)
+
+
+update_ca_hifi_table = UpdateDimensionOperator(
+    task_id='update_ca_hifi_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    update_query=UpdateSqlQueries.update_ca_fours_query,
+    kpi="CA_reel",
+    staging_monthly_table="staging_monthly_ca_hifi"
+)
+
+update_v_hifi_table = UpdateDimensionOperator(
+    task_id='update_v_hifi_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    update_query=UpdateSqlQueries.update_query,
+    kpi="vente_reel",
+    staging_monthly_table="staging_monthly_v_hifi"
+)
+
+update_mb_hifi_table = UpdateDimensionOperator(
+    task_id='update_mb_hifi_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    update_query=UpdateSqlQueries.update_query,
+    kpi="marge_reel",
+    staging_monthly_table="staging_monthly_mb_hifi"
+)
+
+
+update_ca_magneto_table = UpdateDimensionOperator(
+    task_id='update_ca_magneto_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    update_query=UpdateSqlQueries.update_ca_fours_query,
+    kpi="CA_reel",
+    staging_monthly_table="staging_monthly_ca_magneto"
+)
+
+update_v_magneto_table = UpdateDimensionOperator(
+    task_id='update_v_magneto_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    update_query=UpdateSqlQueries.update_query,
+    kpi="vente_reel",
+    staging_monthly_table="staging_monthly_v_magneto"
+)
+
+update_mb_magneto_table = UpdateDimensionOperator(
+    task_id='update_mb_magneto_table',
+    dag=dag,
+    redshift_conn_id="redshift",
+    update_query=UpdateSqlQueries.update_query,
+    kpi="marge_reel",
+    staging_monthly_table="staging_monthly_mb_magneto"
+)
+
+
+
 
 
 ## Unstage to S3
@@ -204,7 +273,9 @@ start_operator >> create_tables >> \
 ] >> \
 milestone_1 >> \
 [
-    update_ca_fours_table, update_v_fours_table
+    update_ca_fours_table, update_v_fours_table, update_mb_fours_table,
+    update_ca_hifi_table, update_v_hifi_table, update_mb_hifi_table,
+    update_ca_magneto_table, update_v_magneto_table, update_mb_magneto_table
 ] >> \
 end_operator
 

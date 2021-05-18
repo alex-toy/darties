@@ -5,29 +5,35 @@ from airflow.utils.decorators import apply_defaults
 class UpdateDimensionOperator(BaseOperator):
 
     ui_color = '#80BD9E'
-    update_query = """
-        INSERT INTO {} {}
-    """
 
     @apply_defaults
     def __init__(self,
                  redshift_conn_id="",
+                 update_query="",
                  table="",
-                 query="",
                  *args, **kwargs):
 
         super(UpdateDimensionOperator, self).__init__(*args, **kwargs)
         self.redshift_conn_id = redshift_conn_id
-        self.table = table
-        self.query = query
+        self.update_query = update_query
+        self.kpi = kpi
+        self.staging_monthly_table = staging_monthly_table
+        
 
     def execute(self, context):
         redshift = PostgresHook(self.redshift_conn_id)
         
-        sql_statement = UpdateDimensionOperator.update_query.format(self.table, self.query)
+        sql_statement = self.update_query.format(self.kpi, self.staging_monthly_table)
+                            #update_query.format('CA_reel', 'staging_monthly_ca_fours')
+
+
+        self.log.info(f"sql_statement : {self.sql_statement}")
+
+    
+
         redshift.run(sql_statement)
         
-        self.log.info(f"Ending UpdateDimensionOperator {self.table} with a Success on Operation  {operation}")
+        self.log.info(f"Ending UpdateDimensionOperator {self.table} with update_query : {self.update_query}")
 
         
         

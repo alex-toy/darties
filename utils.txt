@@ -5,8 +5,11 @@ git push
 
 
 python3 -m venv .venv
+
+
+cd /Users/alexei/docs150521/MIAGE/S4/D605/darties
 source .venv/bin/activate
-deactivate
+conda deactivate
 
 
 python -m pip install -r requirements.txt
@@ -14,22 +17,24 @@ python -m pip install -r requirements.txt
 
 docker pull puckel/docker-airflow
 
-# from cli :
-docker run -d -p 8080:8080 -v /Users/alexei/docs/MIAGE/S4/D605/darties/airflow:/usr/local/airflow puckel/docker-airflow webserver
-#inside docker container, run :
-docker exec -u root -it <container_id> bash
+docker kill $(docker ps -q)
+docker rm $(docker ps --filter=status=exited --filter=status=created -q)
+docker rmi $(docker images -a -q)
+docker builder prune
+docker system prune -a
+
+
+# from Dockerfile :
+docker build -t webserver .
+docker run -d --rm -p 8080:8080 -v $(pwd)/airflow:/usr/local/airflow --name airflowserver webserver
+
+airflow will run at : http://localhost:8080
+docker exec -it airflowserver bash
 pip install xlrd>=1.0.0
 pip install openpyxl
 pip install requests
 pip install beautifulsoup4
 pip install lxml
-
-# from Dockerfile :
-docker build -t webserver .
-docker run -d --rm -p 8080:8080 -v /Users/alexei/docs/MIAGE/S4/D605/darties/airflow:/usr/local/airflow --name airflowserver webserver
-
-airflow will run at : http://localhost:8080
-docker exec -it airflowserver bash
 docker stop airflowserver
 
 curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/test_dag

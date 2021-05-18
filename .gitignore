@@ -5,6 +5,8 @@ app/config/__pycache__/*
 app/domain/__pycache__/
 
 airflow/__pycache__/*
+airflow/airflow.db
+airflow/airflow.db-journal
 
 airflow/logs/*
 !airflow/logs/README.md

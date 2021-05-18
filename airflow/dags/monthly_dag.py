@@ -16,6 +16,7 @@ from operators.load_cities import LoadCitiesOperator
 from operators.load_mapping_regions import LoadMappingOperator
 
 from infrastructure.SalesData import SalesData
+from infrastructure.MonthlySalesData import MonthlySalesData
 from infrastructure.UserData import UserData
 from infrastructure.StoreData import StoreData
 

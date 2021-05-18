@@ -62,12 +62,12 @@ sales_clean_file = CleanMonthlyFileOperator(
 
 
 
-# upload_file = UploadFileOperator(
-#     task_id='upload_file',
-#     dag=dag,
-#     aws_credentials_id="aws_credentials",
-#     S3_bucket="darties"
-# )
+upload_file = UploadFileOperator(
+    task_id='upload_file',
+    dag=dag,
+    aws_credentials_id="aws_credentials",
+    S3_bucket="darties"
+)
 
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
@@ -91,5 +91,5 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
 start_operator >> \
-sales_clean_file >> \
+sales_clean_file >> upload_file >> \
 end_operator

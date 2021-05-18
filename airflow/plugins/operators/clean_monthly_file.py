@@ -32,9 +32,10 @@ class CleanMonthlyFileOperator(BaseOperator) :
                 file_abspath = os.path.abspath(os.path.join(cf.DATA_DIR, self.item, file))
                 self.log.info(f"Name of files : {file}")
                 year = re.search(r'(\d{4})', file).group(1)
-                self.log.info(f"Create cleaned file : {file} for year {year}")
+                month = re.search(r'(\w+)_', file).group(1).lower()
+                self.log.info(f"Create cleaned file : {file} for year {year} and month {month}")
                 sd = self.UtilityClass(path=file_abspath)
-                sd.cleaned_file(year=year)
+                sd.cleaned_file(year=year, month=month)
             
         
         

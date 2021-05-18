@@ -35,19 +35,18 @@ class MonthlySalesData :
 
 
 
-    def cleaned_file(self, year) :
+    def cleaned_file(self, year, month) :
         df = self.df_from_path()
         for sheet_name in self.sheet_names :
             df_sheet_name = df[sheet_name]
             df_sheet_name.columns = [x.lower() for x in df_sheet_name.columns]
             df_sheet_name = cf.remove_accents(df=df_sheet_name)
-            outdir = os.path.join(cf.OUTPUTS_DIR, sheet_name, year)
+            outdir = os.path.join(cf.OUTPUTS_DIR, f"monthly_{sheet_name}", year)
             path = Path(outdir)
             path.mkdir(parents=True, exist_ok=True)
-            print(sheet_name)
-            print(year)
-            saved_filename = f"{sheet_name}_{year}_sales.json"
-            df_sheet_name['annee'] = year
+            saved_filename = f"{sheet_name}_{month}_{year}_sales.json"
+            df_sheet_name['annee'] = int(year)
+            df_sheet_name['lib_mois'] = month
             df_sheet_name.to_json(os.path.join(outdir, saved_filename), orient="records", lines=True)
 
 

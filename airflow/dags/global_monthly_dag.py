@@ -67,7 +67,7 @@ stage_monthly_v_fours_to_redshift = StageToRedshiftOperator(
     dag=dag,
     redshift_conn_id="redshift",
     aws_credentials_id="aws_credentials",
-    table="staging_monthly_ca_fours",
+    table="staging_monthly_v_fours",
     S3_bucket="darties",
     S3_key="monthly_V_Fours",
     delimiter=",",
@@ -105,7 +105,7 @@ stage_monthly_v_hifi_to_redshift = StageToRedshiftOperator(
     dag=dag,
     redshift_conn_id="redshift",
     aws_credentials_id="aws_credentials",
-    table="staging_monthly_ca_hifi",
+    table="staging_monthly_v_hifi",
     S3_bucket="darties",
     S3_key="monthly_V_Hifi",
     delimiter=",",
@@ -138,12 +138,12 @@ stage_monthly_ca_magneto_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
-stage_monthly_v_hifi_to_redshift = StageToRedshiftOperator(
+stage_monthly_v_magneto_to_redshift = StageToRedshiftOperator(
     task_id='stage_monthly_v_magneto_to_redshift',
     dag=dag,
     redshift_conn_id="redshift",
     aws_credentials_id="aws_credentials",
-    table="staging_monthly_ca_magneto",
+    table="staging_monthly_v_magneto",
     S3_bucket="darties",
     S3_key="monthly_V_Magneto",
     delimiter=",",
@@ -207,7 +207,7 @@ start_operator >> create_tables >> \
 [ 
     stage_monthly_ca_fours_to_redshift, stage_monthly_v_fours_to_redshift, stage_monthly_mb_fours_to_redshift,
     stage_monthly_ca_hifi_to_redshift, stage_monthly_v_hifi_to_redshift, stage_monthly_mb_hifi_to_redshift,
-    stage_monthly_ca_magneto_to_redshift, stage_monthly_v_hifi_to_redshift, stage_monthly_mb_magneto_to_redshift
+    stage_monthly_ca_magneto_to_redshift, stage_monthly_v_magneto_to_redshift, stage_monthly_mb_magneto_to_redshift
 ] >> \
 end_operator
 

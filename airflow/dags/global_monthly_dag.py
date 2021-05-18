@@ -11,6 +11,7 @@ from operators.unstage_from_redshift import UnstageFromRedshiftOperator
 from operators.load_fact import LoadFactOperator
 from operators.update_dimension import UpdateDimensionOperator
 
+from helpers import SqlQueries
 from helpers import UpdateSqlQueries
 
 

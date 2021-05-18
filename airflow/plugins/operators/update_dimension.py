@@ -10,7 +10,8 @@ class UpdateDimensionOperator(BaseOperator):
     def __init__(self,
                  redshift_conn_id="",
                  update_query="",
-                 table="",
+                 kpi="",
+                 staging_monthly_table="",
                  *args, **kwargs):
 
         super(UpdateDimensionOperator, self).__init__(*args, **kwargs)

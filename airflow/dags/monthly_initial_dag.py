@@ -9,7 +9,7 @@ from airflow import DAG
 from airflow.operators.dummy_operator import DummyOperator
 from airflow.operators.python_operator import PythonOperator
 
-from operators.clean_file import CleanFileOperator
+from operators.clean_monthly_file import CleanMonthlyFileOperator
 from operators.upload_file import UploadFileOperator
 from operators.load_currency import LoadCurrencyOperator
 from operators.load_cities import LoadCitiesOperator
@@ -38,7 +38,7 @@ default_args = {
 
 
 dag = DAG(
-    'monthly_dag',
+    'monthly_initial_dag',
     default_args=default_args,
     description='Clean data from original monthly file and produces cleaned files before upload to S3.',
     schedule_interval='0 * * * *',
@@ -53,10 +53,10 @@ start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 #milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
 
 
-sales_clean_file = CleanFileOperator(
+sales_clean_file = CleanMonthlyFileOperator(
     task_id='sales_clean_file',
     dag=dag,
-    item='sales',
+    item='monthly_sales',
     UtilityClass=MonthlySalesData,
 )
 

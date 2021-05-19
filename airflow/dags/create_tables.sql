@@ -428,7 +428,8 @@ CREATE TABLE IF NOT EXISTS public.utilisateur (
 CREATE TABLE IF NOT EXISTS public.magasin (
 	id_magasin bigint identity(1, 1),
 	lib_magasin varchar(30),
-	id_enseigne int4
+	id_enseigne int4,
+	CONSTRAINT magasin_pkey PRIMARY KEY (id_magasin)
 );
 
 
@@ -445,9 +446,11 @@ CREATE TABLE IF NOT EXISTS public.sales (
 	marge_reel decimal(16,8),
 	marge_objectif decimal(16,8),
 	CONSTRAINT sales_pkey PRIMARY KEY (id_ville, id_temps, id_famille_produit, id_magasin),
-	CONSTRAINT fk_id_ville FOREIGN KEY REFERENCES ville ( id_ville ),
-	CONSTRAINT fk_id_temps FOREIGN KEY REFERENCES temps ( id_temps ),
-	CONSTRAINT fk_id_famille_produit FOREIGN KEY REFERENCES famille_produit ( id_famille_produit ),
-	CONSTRAINT fk_id_magasin FOREIGN KEY REFERENCES magasin ( id_magasin )
+	
+	CONSTRAINT fk_id_ville FOREIGN KEY (id_ville) REFERENCES  ville(id_ville),
+	CONSTRAINT fk_id_temps FOREIGN KEY (id_temps) REFERENCES  temps(id_temps),
+	CONSTRAINT fk_id_famille_produit FOREIGN KEY (id_famille_produit) REFERENCES  famille_produit(id_famille_produit),
+	CONSTRAINT fk_id_magasin FOREIGN KEY (id_magasin) REFERENCES magasin(id_magasin)
 );
 
+ 

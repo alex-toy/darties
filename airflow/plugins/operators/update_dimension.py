@@ -12,6 +12,7 @@ class UpdateDimensionOperator(BaseOperator):
                  update_query="",
                  kpi="",
                  staging_monthly_table="",
+                 item="",
                  *args, **kwargs):
 
         super(UpdateDimensionOperator, self).__init__(*args, **kwargs)
@@ -19,14 +20,13 @@ class UpdateDimensionOperator(BaseOperator):
         self.update_query = update_query
         self.kpi = kpi
         self.staging_monthly_table = staging_monthly_table
+        self.item = item
         
 
     def execute(self, context):
         redshift = PostgresHook(self.redshift_conn_id)
         
-        sql_statement = self.update_query.format(self.kpi, self.staging_monthly_table)
-                            #update_query.format('CA_reel', 'staging_monthly_ca_fours')
-
+        sql_statement = self.update_query.format(self.kpi, self.staging_monthly_table, self.item)
 
         self.log.info(f"sql_statement : {sql_statement}")
 
@@ -34,7 +34,7 @@ class UpdateDimensionOperator(BaseOperator):
 
         redshift.run(sql_statement)
         
-        self.log.info(f"Ending UpdateDimensionOperator {self.table} with update_query : {self.update_query}")
+        self.log.info(f"Ending UpdateDimensionOperator {self.kpi} with update_query : {self.update_query}")
 
         
         

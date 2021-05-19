@@ -40,7 +40,8 @@ docker stop airflowserver
 curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/test_dag
 curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/monthly_initial_dag
 curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/monthly_global_dag
-
+curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/initial_dag
+curl -X "DELETE" http://127.0.0.1:8080/api/experimental/dags/global_dag
 
 AIRFLOW CONNECTIONS :
 
@@ -80,3 +81,22 @@ SELECT o_avril
 FROM staging_v_hifi 
 WHERE annee = 2020  AND villes = 'strasbourg'
 LIMIT 10;
+
+
+
+
+
+### Vérifier que pour une ville, une famille de produits donnnée, à une date donnée, 
+### il n'y a bien qu'une seule mesure :
+select * 
+from sales 
+join temps on sales.id_temps = temps.id_temps
+join ville on sales.id_ville = ville.id_ville
+join famille_produit on sales.id_famille_produit = famille_produit.id_famille_produit
+
+where 
+	temps.annee = 2020 AND temps.lib_mois = 'janvier' AND
+	ville.lib_ville = 'marseille' AND
+    famille_produit.id_famille_produit = 1
+
+limit 5;

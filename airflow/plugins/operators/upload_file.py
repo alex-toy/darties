@@ -66,10 +66,11 @@ class UploadFileOperator(BaseOperator) :
             object_name = os.path.join(S3_key, year, filename)
             self.log.info(f"object_name : {object_name}")
 
-            self.log.info(f"Uploading file {object_name} to S3.")
-            self.upload_file(
-                aws_access_key_id=credentials.access_key, 
-                aws_secret_access_key=credentials.secret_key,
-                object_name=object_name,
-                path_to_file=path_to_file
-            )
+            if not object_name.startswith('monthly') :
+                self.log.info(f"Uploading file {object_name} to S3.")
+                self.upload_file(
+                    aws_access_key_id=credentials.access_key, 
+                    aws_secret_access_key=credentials.secret_key,
+                    object_name=object_name,
+                    path_to_file=path_to_file
+                )

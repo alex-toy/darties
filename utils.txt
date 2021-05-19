@@ -153,3 +153,12 @@ WHERE
 	staging_monthly_mb_magneto.villes = 'marseille' AND 
     staging_monthly_mb_magneto.lib_mois = 'janvier' AND 
     staging_monthly_mb_magneto.annee = 2021;
+
+
+### Vérifier s'il y a des valeurs nulles après que l'update mensuelle a été réalisé
+SELECT * 
+FROM sales 
+WHERE 
+	marge_reel IS NULL OR
+    vente_reel IS NULL OR
+    ca_reel IS NULL;

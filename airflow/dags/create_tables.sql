@@ -352,21 +352,6 @@ CREATE TABLE IF NOT EXISTS public.staging_magasin (
 
 -- Dimension and fact tables
 
-CREATE TABLE IF NOT EXISTS public.sales (
-	id_ville int4 NOT NULL,
-	id_temps int4 NOT NULL,
-	id_famille_produit int4 NOT NULL,
-	id_magasin int4 NOT NULL,
-	vente_objectif decimal(16,8),
-	vente_reel decimal(16,8),
-	CA_reel decimal(16,8),
-	CA_objectif decimal(16,8),
-	marge_reel decimal(16,8),
-	marge_objectif decimal(16,8),
-	CONSTRAINT sales_pkey PRIMARY KEY (id_ville, id_temps, id_famille_produit, id_magasin)
-);
-
-
 CREATE TABLE IF NOT EXISTS public.ville (
 	id_ville bigint identity(1, 1),
 	lib_ville varchar(30),
@@ -446,4 +431,23 @@ CREATE TABLE IF NOT EXISTS public.magasin (
 	id_enseigne int4
 );
 
+
+
+CREATE TABLE IF NOT EXISTS public.sales (
+	id_ville int4 NOT NULL,
+	id_temps int4 NOT NULL,
+	id_famille_produit int4 NOT NULL,
+	id_magasin int4 NOT NULL,
+	vente_objectif decimal(16,8),
+	vente_reel decimal(16,8),
+	CA_reel decimal(16,8),
+	CA_objectif decimal(16,8),
+	marge_reel decimal(16,8),
+	marge_objectif decimal(16,8),
+	CONSTRAINT sales_pkey PRIMARY KEY (id_ville, id_temps, id_famille_produit, id_magasin),
+	CONSTRAINT fk_id_ville FOREIGN KEY REFERENCES ville ( id_ville ),
+	CONSTRAINT fk_id_temps FOREIGN KEY REFERENCES temps ( id_temps ),
+	CONSTRAINT fk_id_famille_produit FOREIGN KEY REFERENCES famille_produit ( id_famille_produit ),
+	CONSTRAINT fk_id_magasin FOREIGN KEY REFERENCES magasin ( id_magasin )
+);
 

@@ -28,12 +28,16 @@ class UpdateDimensionOperator(BaseOperator):
     def execute(self, context):
         redshift = PostgresHook(self.redshift_conn_id)
 
-        id_famille_produit = f"""
+        id_famille_produit_query = f"""
             SELECT sales.id_famille_produit
             FROM sales
             JOIN famille_produit ON sales.id_famille_produit = famille_produit.id_famille_produit
             WHERE famille_produit.lib_famille_produit = '{self.kpi}'
         """
+        
+        id_famille_produit = redshift.run(id_famille_produit_query)
+
+
         self.log.info(f"id_famille_produit : {id_famille_produit}")
         
         sql_statement = self.update_query.format(

@@ -345,15 +345,6 @@ positive_quality_checks = CheckPositiveOperator(
 
 ## Unstage to S3
 
-unstage_sales_to_S3 = UnstageFromRedshiftOperator(
-    task_id='unstage_sales_to_S3',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    S3_bucket="darties",
-    table="sales"
-)
-
 unstage_ville_to_S3 = UnstageFromRedshiftOperator(
     task_id='unstage_ville_to_S3',
     dag=dag,
@@ -459,11 +450,13 @@ milestone_1 >> \
     load_devise_dimension_table, load_cours_dimension_table, load_magasin_dimension_table
 ] >> \
 Load_sales_fact_table >> \
-[null_quality_checks, positive_quality_checks] >> \
+[
+    null_quality_checks, positive_quality_checks
+] >> \
 milestone_2 >> \
 [
-    unstage_sales_to_S3, unstage_temps_to_S3, unstage_ville_to_S3, unstage_magasin_to_S3, 
-    unstage_cours_to_S3, unstage_devise_to_S3, unstage_famille_produit_to_S3, unstage_enseigne_to_S3, 
+    unstage_temps_to_S3, unstage_ville_to_S3, unstage_magasin_to_S3, unstage_cours_to_S3, 
+    unstage_devise_to_S3, unstage_famille_produit_to_S3, unstage_enseigne_to_S3, 
     unstage_utilisateur_to_S3, unstage_profil_to_S3
 ] >> \
 end_operator

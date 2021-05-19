@@ -8,6 +8,8 @@ from airflow.operators.python_operator import PythonOperator
 from operators.stage_redshift import StageToRedshiftOperator
 from operators.unstage_from_redshift import UnstageFromRedshiftOperator
 
+from operators.check_monthly_null import CheckMonthlyNullOperator
+
 from operators.load_fact import LoadFactOperator
 from operators.update_dimension import UpdateDimensionOperator
 
@@ -160,7 +162,9 @@ stage_monthly_mb_magneto_to_redshift = StageToRedshiftOperator(
     formatting="JSON 'auto'"
 )
 
-#Update sales table
+
+
+### Update sales table
 milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
 
 update_ca_fours_table = UpdateDimensionOperator(
@@ -265,19 +269,27 @@ update_mb_magneto_table = UpdateDimensionOperator(
 )
 
 
+## Quality checks
+columns = ['ca_reel', 'vente_reel', 'marge_reel']
+
+null_quality_checks = CheckMonthlyNullOperator(
+    task_id='null_quality_checks',
+    dag=dag,
+    redshift_conn_id="redshift",
+    columns=columns
+)
 
 
 
 ## Unstage to S3
-
-# unstage_sales_to_S3 = UnstageFromRedshiftOperator(
-#     task_id='unstage_sales_to_S3',
-#     dag=dag,
-#     redshift_conn_id="redshift",
-#     aws_credentials_id="aws_credentials",
-#     S3_bucket="darties",
-#     table="sales"
-# )
+unstage_sales_to_S3 = UnstageFromRedshiftOperator(
+    task_id='unstage_sales_to_S3',
+    dag=dag,
+    redshift_conn_id="redshift",
+    aws_credentials_id="aws_credentials",
+    S3_bucket="darties",
+    table="sales"
+)
 
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
@@ -296,31 +308,9 @@ milestone_1 >> \
     update_ca_hifi_table, update_v_hifi_table, update_mb_hifi_table,
     update_ca_magneto_table, update_v_magneto_table, update_mb_magneto_table
 ] >> \
+null_quality_checks >> \
+unstage_sales_to_S3 >> \
 end_operator
 
 
 
-
-# start_operator >> create_tables >> \
-# [ 
-#     stage_CA_Fours_to_redshift, stage_MB_Fours_to_redshift, stage_V_Fours_to_redshift,
-#     stage_CA_Hifi_to_redshift, stage_MB_Hifi_to_redshift, stage_V_Hifi_to_redshift, 
-#     stage_CA_Magneto_to_redshift, stage_MB_Magneto_to_redshift, stage_V_Magneto_to_redshift,
-#     stage_currency_to_redshift, stage_cities_to_redshift, stage_mapping_to_redshift,
-#     stage_utilisateur_to_redshift, stage_profil_to_redshift, stage_enseigne_to_redshift,
-#     stage_magasin_to_redshift
-# ] >> \
-# milestone_1 >> \
-# [
-#     load_time_dimension_table, load_famille_produit_dimension_table, load_ville_dimension_table, 
-#     load_devise_dimension_table, load_cours_dimension_table, load_magasin_dimension_table
-# ] >> \
-# Load_sales_fact_table >> \
-# [null_quality_checks, positive_quality_checks] >> \
-# milestone_2 >> \
-# [
-#     unstage_sales_to_S3, unstage_temps_to_S3, unstage_ville_to_S3, unstage_magasin_to_S3, 
-#     unstage_cours_to_S3, unstage_devise_to_S3, unstage_famille_produit_to_S3, unstage_enseigne_to_S3, 
-#     unstage_utilisateur_to_S3, unstage_profil_to_S3
-# ] >> \
-# end_operator

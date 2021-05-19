@@ -109,7 +109,7 @@ limit 5;
 ### Vérifier que les update mensuels sont corrects :
 
 ## dans le modèle étoile :
-select ca_reel, famille_produit.lib_famille_produit, temps.annee, temps.lib_mois
+select ca_reel, vente_reel, marge_reel, famille_produit.lib_famille_produit, temps.annee, temps.lib_mois
 from sales 
 join temps on sales.id_temps = temps.id_temps
 join ville on sales.id_ville = ville.id_ville
@@ -117,13 +117,39 @@ join famille_produit on sales.id_famille_produit = famille_produit.id_famille_pr
 
 where 
 	temps.annee = 2021 AND temps.lib_mois = 'janvier' AND
-	ville.lib_ville = 'marseille' AND
-    famille_produit.lib_famille_produit = 'hifi'
+	ville.lib_ville = 'marseille';
 
 limit 5;
 
-## dans 
-SELECT * les staging mensuels :
-FROM staging_monthly_ca_hifi
-WHERE  villes = 'marseille' AND lib_mois = 'janvier' AND annee = 2021 
-LIMIT 5;
+## dans les staging mensuels :
+SELECT 
+	staging_monthly_mb_magneto.villes AS villes, 
+    staging_monthly_mb_magneto.annee AS annee, 
+    staging_monthly_mb_magneto.lib_mois AS lib_mois, 
+    
+    staging_monthly_mb_magneto.r_mois AS reel_mb_magneto,
+    staging_monthly_v_magneto.r_mois AS reel_v_magneto,
+    staging_monthly_ca_magneto.r_mois AS reel_ca_magneto,
+    
+    staging_monthly_mb_hifi.r_mois AS reel_mb_hifi,
+    staging_monthly_v_hifi.r_mois AS reel_v_hifi,
+    staging_monthly_ca_hifi.r_mois AS reel_ca_hifi,
+    
+    staging_monthly_mb_fours.r_mois AS reel_mb_fours,
+    staging_monthly_v_fours.r_mois AS reel_v_fours,
+    staging_monthly_ca_fours.r_mois AS reel_ca_fours
+
+FROM staging_monthly_mb_magneto
+JOIN staging_monthly_v_magneto ON staging_monthly_v_magneto.villes =  staging_monthly_mb_magneto.villes
+JOIN staging_monthly_ca_magneto ON staging_monthly_ca_magneto.villes =  staging_monthly_mb_magneto.villes
+JOIN staging_monthly_ca_hifi ON staging_monthly_ca_hifi.villes =  staging_monthly_mb_magneto.villes
+JOIN staging_monthly_v_hifi ON staging_monthly_v_hifi.villes =  staging_monthly_mb_magneto.villes
+JOIN staging_monthly_mb_hifi ON staging_monthly_mb_hifi.villes =  staging_monthly_mb_magneto.villes
+JOIN staging_monthly_ca_fours ON staging_monthly_ca_fours.villes =  staging_monthly_mb_magneto.villes
+JOIN staging_monthly_v_fours ON staging_monthly_v_fours.villes =  staging_monthly_mb_magneto.villes
+JOIN staging_monthly_mb_fours ON staging_monthly_mb_fours.villes =  staging_monthly_mb_magneto.villes
+
+WHERE  
+	staging_monthly_mb_magneto.villes = 'marseille' AND 
+    staging_monthly_mb_magneto.lib_mois = 'janvier' AND 
+    staging_monthly_mb_magneto.annee = 2021;

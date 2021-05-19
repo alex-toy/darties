@@ -170,6 +170,7 @@ update_ca_fours_table = UpdateDimensionOperator(
     update_query=UpdateSqlQueries.update_ca_fours_query,
     kpi="CA_reel",
     item="fours",
+    id_famille_produit=3,
     staging_monthly_table="staging_monthly_ca_fours"
 )
 
@@ -180,6 +181,7 @@ update_v_fours_table = UpdateDimensionOperator(
     update_query=UpdateSqlQueries.update_query,
     kpi="vente_reel",
     item="fours",
+    id_famille_produit=3,
     staging_monthly_table="staging_monthly_v_fours"
 )
 
@@ -190,6 +192,7 @@ update_mb_fours_table = UpdateDimensionOperator(
     update_query=UpdateSqlQueries.update_query,
     kpi="marge_reel",
     item="fours",
+    id_famille_produit=3,
     staging_monthly_table="staging_monthly_mb_fours"
 )
 
@@ -201,6 +204,7 @@ update_ca_hifi_table = UpdateDimensionOperator(
     update_query=UpdateSqlQueries.update_ca_fours_query,
     kpi="CA_reel",
     item="hifi",
+    id_famille_produit=1,
     staging_monthly_table="staging_monthly_ca_hifi"
 )
 
@@ -211,6 +215,7 @@ update_v_hifi_table = UpdateDimensionOperator(
     update_query=UpdateSqlQueries.update_query,
     kpi="vente_reel",
     item="hifi",
+    id_famille_produit=1,
     staging_monthly_table="staging_monthly_v_hifi"
 )
 
@@ -221,6 +226,7 @@ update_mb_hifi_table = UpdateDimensionOperator(
     update_query=UpdateSqlQueries.update_query,
     kpi="marge_reel",
     item="hifi",
+    id_famille_produit=1,
     staging_monthly_table="staging_monthly_mb_hifi"
 )
 
@@ -232,6 +238,7 @@ update_ca_magneto_table = UpdateDimensionOperator(
     update_query=UpdateSqlQueries.update_ca_fours_query,
     kpi="CA_reel",
     item="magneto",
+    id_famille_produit=2,
     staging_monthly_table="staging_monthly_ca_magneto"
 )
 
@@ -242,6 +249,7 @@ update_v_magneto_table = UpdateDimensionOperator(
     update_query=UpdateSqlQueries.update_query,
     kpi="vente_reel",
     item="magneto",
+    id_famille_produit=2,
     staging_monthly_table="staging_monthly_v_magneto"
 )
 
@@ -252,6 +260,7 @@ update_mb_magneto_table = UpdateDimensionOperator(
     update_query=UpdateSqlQueries.update_query,
     kpi="marge_reel",
     item="magneto",
+    id_famille_produit=2,
     staging_monthly_table="staging_monthly_mb_magneto"
 )
 

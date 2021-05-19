@@ -100,3 +100,30 @@ where
     famille_produit.id_famille_produit = 1
 
 limit 5;
+
+
+
+
+
+
+### Vérifier que les update mensuels sont corrects :
+
+## dans le modèle étoile :
+select ca_reel, famille_produit.lib_famille_produit, temps.annee, temps.lib_mois
+from sales 
+join temps on sales.id_temps = temps.id_temps
+join ville on sales.id_ville = ville.id_ville
+join famille_produit on sales.id_famille_produit = famille_produit.id_famille_produit
+
+where 
+	temps.annee = 2021 AND temps.lib_mois = 'janvier' AND
+	ville.lib_ville = 'marseille' AND
+    famille_produit.lib_famille_produit = 'hifi'
+
+limit 5;
+
+## dans 
+SELECT * les staging mensuels :
+FROM staging_monthly_ca_hifi
+WHERE  villes = 'marseille' AND lib_mois = 'janvier' AND annee = 2021 
+LIMIT 5;

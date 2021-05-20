@@ -50,6 +50,36 @@ create_tables = PostgresOperator(
     postgres_conn_id="redshift"
 )
 
+stage_monthly_to_redshifts = []
+kpi_items = [
+    {'kpi_item' : 'ca_fours', 'S3_key' : 'monthly_CA_Fours'}, 
+    {'kpi_item' : 'v_fours', 'S3_key' : 'monthly_V_Fours'}, 
+    {'kpi_item' : 'mb_fours', 'S3_key' : 'monthly_MB_Fours'},
+    {'kpi_item' : 'ca_hifi', 'S3_key' : }, 
+    {'kpi_item' : 'v_hifi', 'S3_key' : }, 
+    {'kpi_item' : 'mb_hifi', 'S3_key' : },
+    {'kpi_item' : 'ca_magneto', 'S3_key' : }, 
+    {'kpi_item' : 'v_magneto', 'S3_key' : }, 
+    {'kpi_item' : 'mb_magneto', 'S3_key' : }
+]
+
+for kpi_item in kpi_items :
+    stage_monthly_to_redshift = StageToRedshiftOperator(
+        task_id=f"stage_monthly_{kpi_items['kpi_item']}_to_redshift",
+        dag=dag,
+        redshift_conn_id="redshift",
+        aws_credentials_id="aws_credentials",
+        table=f"staging_monthly_{kpi_items['kpi_item']}",
+        S3_bucket="darties",
+        S3_key=f"{kpi_items['S3_key']}",
+        delimiter=",",
+        formatting="JSON 'auto'"
+    )
+    stage_monthly_to_redshifts.append(stage_monthly_to_redshift)
+
+
+
+
 stage_monthly_ca_fours_to_redshift = StageToRedshiftOperator(
     task_id='stage_monthly_ca_fours_to_redshift',
     dag=dag,

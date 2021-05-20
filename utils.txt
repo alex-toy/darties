@@ -116,10 +116,11 @@ join ville on sales.id_ville = ville.id_ville
 join famille_produit on sales.id_famille_produit = famille_produit.id_famille_produit
 
 where 
-	temps.annee = 2021 AND temps.lib_mois = 'janvier' AND
+	temps.annee = 2021 AND 
+    temps.lib_mois = 'janvier' AND
 	ville.lib_ville = 'marseille';
 
-limit 5;
+
 
 ## dans les staging mensuels :
 SELECT 

@@ -272,14 +272,35 @@ update_mb_magneto_table = UpdateDimensionOperator(
 ### Quality checks
 milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
 columns = ['ca_reel', 'vente_reel', 'marge_reel']
+months = ['janvier', 'fevrier', 'mars']
+null_quality_checks = []
 
-january_null_quality_checks = CheckMonthlyNullOperator(
-    task_id='january_null_quality_checks',
-    dag=dag,
-    redshift_conn_id="redshift",
-    columns=columns,
-    month='janvier'
-)
+for month in months :
+    null_quality_check = CheckMonthlyNullOperator(
+        task_id=f"{month}_null_quality_checks",
+        dag=dag,
+        redshift_conn_id="redshift",
+        columns=columns,
+        month=month
+    )
+    null_quality_checks.append(null_quality_check)
+
+
+# january_null_quality_checks = CheckMonthlyNullOperator(
+#     task_id='january_null_quality_checks',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     columns=columns,
+#     month='janvier'
+# )
+
+# february_null_quality_checks = CheckMonthlyNullOperator(
+#     task_id='february_null_quality_checks',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     columns=columns,
+#     month='fevrier'
+# )
 
 
 
@@ -312,7 +333,7 @@ milestone_1 >> \
 ] >> \
 milestone_2 >> \
 [
-    january_null_quality_checks
+    null_quality_check for null_quality_check in null_quality_checks
 ] >> \
 unstage_sales_to_S3 >> \
 end_operator

@@ -55,23 +55,23 @@ kpi_items = [
     {'kpi_item' : 'ca_fours', 'S3_key' : 'monthly_CA_Fours'}, 
     {'kpi_item' : 'v_fours', 'S3_key' : 'monthly_V_Fours'}, 
     {'kpi_item' : 'mb_fours', 'S3_key' : 'monthly_MB_Fours'},
-    {'kpi_item' : 'ca_hifi', 'S3_key' : }, 
-    {'kpi_item' : 'v_hifi', 'S3_key' : }, 
-    {'kpi_item' : 'mb_hifi', 'S3_key' : },
-    {'kpi_item' : 'ca_magneto', 'S3_key' : }, 
-    {'kpi_item' : 'v_magneto', 'S3_key' : }, 
-    {'kpi_item' : 'mb_magneto', 'S3_key' : }
+    {'kpi_item' : 'ca_hifi', 'S3_key' : 'monthly_CA_Hifi'}, 
+    {'kpi_item' : 'v_hifi', 'S3_key' : 'monthly_V_Hifi'}, 
+    {'kpi_item' : 'mb_hifi', 'S3_key' : 'monthly_MB_Hifi'},
+    {'kpi_item' : 'ca_magneto', 'S3_key' : 'monthly_CA_Magneto'}, 
+    {'kpi_item' : 'v_magneto', 'S3_key' : 'monthly_V_Magneto'}, 
+    {'kpi_item' : 'mb_magneto', 'S3_key' : 'monthly_MB_Magneto'}
 ]
 
 for kpi_item in kpi_items :
     stage_monthly_to_redshift = StageToRedshiftOperator(
-        task_id=f"stage_monthly_{kpi_items['kpi_item']}_to_redshift",
+        task_id=f"stage_monthly_{kpi_item['kpi_item']}_to_redshift",
         dag=dag,
         redshift_conn_id="redshift",
         aws_credentials_id="aws_credentials",
-        table=f"staging_monthly_{kpi_items['kpi_item']}",
+        table=f"staging_monthly_{kpi_item['kpi_item']}",
         S3_bucket="darties",
-        S3_key=f"{kpi_items['S3_key']}",
+        S3_key=f"{kpi_item['S3_key']}",
         delimiter=",",
         formatting="JSON 'auto'"
     )
@@ -196,6 +196,42 @@ stage_monthly_mb_magneto_to_redshift = StageToRedshiftOperator(
 
 ### Update sales table
 milestone_1 = DummyOperator(task_id='milestone_1',  dag=dag)
+
+
+update_tables = []
+kpi_items = [
+    {'kpi_item' : 'ca_fours', 'kpi' : 'CA_reel', 'item' : 'fours'}, 
+    {'kpi_item' : 'v_fours', 'kpi' : 'vente_reel', 'item' : 'fours'}, 
+    {'kpi_item' : 'mb_fours', 'kpi' : 'marge_reel', 'item' : 'fours'},
+    {'kpi_item' : 'ca_hifi', 'kpi' : 'CA_reel', 'item' : 'hifi'}, 
+    {'kpi_item' : 'v_hifi', 'kpi' : 'vente_reel', 'item' : 'hifi'}, 
+    {'kpi_item' : 'mb_hifi', 'kpi' : 'marge_reel', 'item' : 'hifi'},
+    {'kpi_item' : 'ca_magneto', 'kpi' : 'CA_reel', 'item' : 'magneto'}, 
+    {'kpi_item' : 'v_magneto', 'kpi' : 'vente_reel', 'item' : 'magneto'}, 
+    {'kpi_item' : 'mb_magneto', 'kpi' : 'marge_reel', 'item' : 'magneto'}
+]
+
+id_famille_produit = {
+    'fours' : 3,
+    'magneto' : 2,
+    'hifi' : 1
+}
+
+for kpi_item in kpi_items :
+    update_table = UpdateDimensionOperator(
+        task_id=f"update_{kpi_item['kpi_item']}_table",
+        dag=dag,
+        redshift_conn_id="redshift",
+        update_query=UpdateSqlQueries.update_query,
+        kpi=f"{kpi_item['kpi']}",
+        item=f"{kpi_item['item']}",
+        id_famille_produit=id_famille_produit[kpi_item['item']],
+        staging_monthly_table=f"staging_monthly_{kpi_item['kpi_item']}"
+    )
+    update_tables.append(update_table)
+
+
+
 
 update_ca_fours_table = UpdateDimensionOperator(
     task_id='update_ca_fours_table',
@@ -351,15 +387,11 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 ## DAG
 start_operator >> create_tables >> \
 [ 
-    stage_monthly_ca_fours_to_redshift, stage_monthly_v_fours_to_redshift, stage_monthly_mb_fours_to_redshift,
-    stage_monthly_ca_hifi_to_redshift, stage_monthly_v_hifi_to_redshift, stage_monthly_mb_hifi_to_redshift,
-    stage_monthly_ca_magneto_to_redshift, stage_monthly_v_magneto_to_redshift, stage_monthly_mb_magneto_to_redshift
+    smr for smr in stage_monthly_to_redshifts
 ] >> \
 milestone_1 >> \
 [
-    update_ca_fours_table, update_v_fours_table, update_mb_fours_table,
-    update_ca_hifi_table, update_v_hifi_table, update_mb_hifi_table,
-    update_ca_magneto_table, update_v_magneto_table, update_mb_magneto_table
+    ut for ut in update_tables
 ] >> \
 milestone_2 >> \
 [

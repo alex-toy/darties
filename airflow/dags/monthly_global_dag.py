@@ -80,117 +80,117 @@ for kpi_item in kpi_items :
 
 
 
-stage_monthly_ca_fours_to_redshift = StageToRedshiftOperator(
-    task_id='stage_monthly_ca_fours_to_redshift',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    table="staging_monthly_ca_fours",
-    S3_bucket="darties",
-    S3_key="monthly_CA_Fours",
-    delimiter=",",
-    formatting="JSON 'auto'"
-)
+# stage_monthly_ca_fours_to_redshift = StageToRedshiftOperator(
+#     task_id='stage_monthly_ca_fours_to_redshift',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     table="staging_monthly_ca_fours",
+#     S3_bucket="darties",
+#     S3_key="monthly_CA_Fours",
+#     delimiter=",",
+#     formatting="JSON 'auto'"
+# )
 
-stage_monthly_v_fours_to_redshift = StageToRedshiftOperator(
-    task_id='stage_monthly_v_fours_to_redshift',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    table="staging_monthly_v_fours",
-    S3_bucket="darties",
-    S3_key="monthly_V_Fours",
-    delimiter=",",
-    formatting="JSON 'auto'"
-)
+# stage_monthly_v_fours_to_redshift = StageToRedshiftOperator(
+#     task_id='stage_monthly_v_fours_to_redshift',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     table="staging_monthly_v_fours",
+#     S3_bucket="darties",
+#     S3_key="monthly_V_Fours",
+#     delimiter=",",
+#     formatting="JSON 'auto'"
+# )
 
-stage_monthly_mb_fours_to_redshift = StageToRedshiftOperator(
-    task_id='stage_monthly_mb_fours_to_redshift',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    table="staging_monthly_mb_fours",
-    S3_bucket="darties",
-    S3_key="monthly_MB_Fours",
-    delimiter=",",
-    formatting="JSON 'auto'"
-)
-
-
-
-stage_monthly_ca_hifi_to_redshift = StageToRedshiftOperator(
-    task_id='stage_monthly_ca_hifi_to_redshift',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    table="staging_monthly_ca_hifi",
-    S3_bucket="darties",
-    S3_key="monthly_CA_Hifi",
-    delimiter=",",
-    formatting="JSON 'auto'"
-)
-
-stage_monthly_v_hifi_to_redshift = StageToRedshiftOperator(
-    task_id='stage_monthly_v_hifi_to_redshift',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    table="staging_monthly_v_hifi",
-    S3_bucket="darties",
-    S3_key="monthly_V_Hifi",
-    delimiter=",",
-    formatting="JSON 'auto'"
-)
-
-stage_monthly_mb_hifi_to_redshift = StageToRedshiftOperator(
-    task_id='stage_monthly_mb_hifi_to_redshift',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    table="staging_monthly_mb_hifi",
-    S3_bucket="darties",
-    S3_key="monthly_MB_Hifi",
-    delimiter=",",
-    formatting="JSON 'auto'"
-)
+# stage_monthly_mb_fours_to_redshift = StageToRedshiftOperator(
+#     task_id='stage_monthly_mb_fours_to_redshift',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     table="staging_monthly_mb_fours",
+#     S3_bucket="darties",
+#     S3_key="monthly_MB_Fours",
+#     delimiter=",",
+#     formatting="JSON 'auto'"
+# )
 
 
 
-stage_monthly_ca_magneto_to_redshift = StageToRedshiftOperator(
-    task_id='stage_monthly_ca_magneto_to_redshift',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    table="staging_monthly_ca_magneto",
-    S3_bucket="darties",
-    S3_key="monthly_CA_Magneto",
-    delimiter=",",
-    formatting="JSON 'auto'"
-)
+# stage_monthly_ca_hifi_to_redshift = StageToRedshiftOperator(
+#     task_id='stage_monthly_ca_hifi_to_redshift',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     table="staging_monthly_ca_hifi",
+#     S3_bucket="darties",
+#     S3_key="monthly_CA_Hifi",
+#     delimiter=",",
+#     formatting="JSON 'auto'"
+# )
 
-stage_monthly_v_magneto_to_redshift = StageToRedshiftOperator(
-    task_id='stage_monthly_v_magneto_to_redshift',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    table="staging_monthly_v_magneto",
-    S3_bucket="darties",
-    S3_key="monthly_V_Magneto",
-    delimiter=",",
-    formatting="JSON 'auto'"
-)
+# stage_monthly_v_hifi_to_redshift = StageToRedshiftOperator(
+#     task_id='stage_monthly_v_hifi_to_redshift',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     table="staging_monthly_v_hifi",
+#     S3_bucket="darties",
+#     S3_key="monthly_V_Hifi",
+#     delimiter=",",
+#     formatting="JSON 'auto'"
+# )
 
-stage_monthly_mb_magneto_to_redshift = StageToRedshiftOperator(
-    task_id='stage_monthly_mb_magneto_to_redshift',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    table="staging_monthly_mb_magneto",
-    S3_bucket="darties",
-    S3_key="monthly_MB_Magneto",
-    delimiter=",",
-    formatting="JSON 'auto'"
-)
+# stage_monthly_mb_hifi_to_redshift = StageToRedshiftOperator(
+#     task_id='stage_monthly_mb_hifi_to_redshift',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     table="staging_monthly_mb_hifi",
+#     S3_bucket="darties",
+#     S3_key="monthly_MB_Hifi",
+#     delimiter=",",
+#     formatting="JSON 'auto'"
+# )
+
+
+
+# stage_monthly_ca_magneto_to_redshift = StageToRedshiftOperator(
+#     task_id='stage_monthly_ca_magneto_to_redshift',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     table="staging_monthly_ca_magneto",
+#     S3_bucket="darties",
+#     S3_key="monthly_CA_Magneto",
+#     delimiter=",",
+#     formatting="JSON 'auto'"
+# )
+
+# stage_monthly_v_magneto_to_redshift = StageToRedshiftOperator(
+#     task_id='stage_monthly_v_magneto_to_redshift',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     table="staging_monthly_v_magneto",
+#     S3_bucket="darties",
+#     S3_key="monthly_V_Magneto",
+#     delimiter=",",
+#     formatting="JSON 'auto'"
+# )
+
+# stage_monthly_mb_magneto_to_redshift = StageToRedshiftOperator(
+#     task_id='stage_monthly_mb_magneto_to_redshift',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     table="staging_monthly_mb_magneto",
+#     S3_bucket="darties",
+#     S3_key="monthly_MB_Magneto",
+#     delimiter=",",
+#     formatting="JSON 'auto'"
+# )
 
 
 
@@ -233,106 +233,106 @@ for kpi_item in kpi_items :
 
 
 
-update_ca_fours_table = UpdateDimensionOperator(
-    task_id='update_ca_fours_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    update_query=UpdateSqlQueries.update_query,
-    kpi="CA_reel",
-    item="fours",
-    id_famille_produit=3,
-    staging_monthly_table="staging_monthly_ca_fours"
-)
+# update_ca_fours_table = UpdateDimensionOperator(
+#     task_id='update_ca_fours_table',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     update_query=UpdateSqlQueries.update_query,
+#     kpi="CA_reel",
+#     item="fours",
+#     id_famille_produit=3,
+#     staging_monthly_table="staging_monthly_ca_fours"
+# )
 
-update_v_fours_table = UpdateDimensionOperator(
-    task_id='update_v_fours_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    update_query=UpdateSqlQueries.update_query,
-    kpi="vente_reel",
-    item="fours",
-    id_famille_produit=3,
-    staging_monthly_table="staging_monthly_v_fours"
-)
+# update_v_fours_table = UpdateDimensionOperator(
+#     task_id='update_v_fours_table',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     update_query=UpdateSqlQueries.update_query,
+#     kpi="vente_reel",
+#     item="fours",
+#     id_famille_produit=3,
+#     staging_monthly_table="staging_monthly_v_fours"
+# )
 
-update_mb_fours_table = UpdateDimensionOperator(
-    task_id='update_mb_fours_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    update_query=UpdateSqlQueries.update_query,
-    kpi="marge_reel",
-    item="fours",
-    id_famille_produit=3,
-    staging_monthly_table="staging_monthly_mb_fours"
-)
-
-
-update_ca_hifi_table = UpdateDimensionOperator(
-    task_id='update_ca_hifi_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    update_query=UpdateSqlQueries.update_query,
-    kpi="CA_reel",
-    item="hifi",
-    id_famille_produit=1,
-    staging_monthly_table="staging_monthly_ca_hifi"
-)
-
-update_v_hifi_table = UpdateDimensionOperator(
-    task_id='update_v_hifi_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    update_query=UpdateSqlQueries.update_query,
-    kpi="vente_reel",
-    item="hifi",
-    id_famille_produit=1,
-    staging_monthly_table="staging_monthly_v_hifi"
-)
-
-update_mb_hifi_table = UpdateDimensionOperator(
-    task_id='update_mb_hifi_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    update_query=UpdateSqlQueries.update_query,
-    kpi="marge_reel",
-    item="hifi",
-    id_famille_produit=1,
-    staging_monthly_table="staging_monthly_mb_hifi"
-)
+# update_mb_fours_table = UpdateDimensionOperator(
+#     task_id='update_mb_fours_table',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     update_query=UpdateSqlQueries.update_query,
+#     kpi="marge_reel",
+#     item="fours",
+#     id_famille_produit=3,
+#     staging_monthly_table="staging_monthly_mb_fours"
+# )
 
 
-update_ca_magneto_table = UpdateDimensionOperator(
-    task_id='update_ca_magneto_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    update_query=UpdateSqlQueries.update_query,
-    kpi="CA_reel",
-    item="magneto",
-    id_famille_produit=2,
-    staging_monthly_table="staging_monthly_ca_magneto"
-)
+# update_ca_hifi_table = UpdateDimensionOperator(
+#     task_id='update_ca_hifi_table',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     update_query=UpdateSqlQueries.update_query,
+#     kpi="CA_reel",
+#     item="hifi",
+#     id_famille_produit=1,
+#     staging_monthly_table="staging_monthly_ca_hifi"
+# )
 
-update_v_magneto_table = UpdateDimensionOperator(
-    task_id='update_v_magneto_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    update_query=UpdateSqlQueries.update_query,
-    kpi="vente_reel",
-    item="magneto",
-    id_famille_produit=2,
-    staging_monthly_table="staging_monthly_v_magneto"
-)
+# update_v_hifi_table = UpdateDimensionOperator(
+#     task_id='update_v_hifi_table',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     update_query=UpdateSqlQueries.update_query,
+#     kpi="vente_reel",
+#     item="hifi",
+#     id_famille_produit=1,
+#     staging_monthly_table="staging_monthly_v_hifi"
+# )
 
-update_mb_magneto_table = UpdateDimensionOperator(
-    task_id='update_mb_magneto_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    update_query=UpdateSqlQueries.update_query,
-    kpi="marge_reel",
-    item="magneto",
-    id_famille_produit=2,
-    staging_monthly_table="staging_monthly_mb_magneto"
-)
+# update_mb_hifi_table = UpdateDimensionOperator(
+#     task_id='update_mb_hifi_table',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     update_query=UpdateSqlQueries.update_query,
+#     kpi="marge_reel",
+#     item="hifi",
+#     id_famille_produit=1,
+#     staging_monthly_table="staging_monthly_mb_hifi"
+# )
+
+
+# update_ca_magneto_table = UpdateDimensionOperator(
+#     task_id='update_ca_magneto_table',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     update_query=UpdateSqlQueries.update_query,
+#     kpi="CA_reel",
+#     item="magneto",
+#     id_famille_produit=2,
+#     staging_monthly_table="staging_monthly_ca_magneto"
+# )
+
+# update_v_magneto_table = UpdateDimensionOperator(
+#     task_id='update_v_magneto_table',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     update_query=UpdateSqlQueries.update_query,
+#     kpi="vente_reel",
+#     item="magneto",
+#     id_famille_produit=2,
+#     staging_monthly_table="staging_monthly_v_magneto"
+# )
+
+# update_mb_magneto_table = UpdateDimensionOperator(
+#     task_id='update_mb_magneto_table',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     update_query=UpdateSqlQueries.update_query,
+#     kpi="marge_reel",
+#     item="magneto",
+#     id_famille_produit=2,
+#     staging_monthly_table="staging_monthly_mb_magneto"
+# )
 
 
 ### Quality checks
@@ -395,7 +395,7 @@ milestone_1 >> \
 ] >> \
 milestone_2 >> \
 [
-    null_quality_check for null_quality_check in null_quality_checks
+    nqc for nqc in null_quality_checks
 ] >> \
 unstage_sales_to_S3 >> \
 end_operator

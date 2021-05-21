@@ -441,10 +441,11 @@ CREATE TABLE IF NOT EXISTS public.sales (
 	id_magasin int4 NOT NULL,
 	vente_objectif decimal(16,8),
 	vente_reel decimal(16,8),
-	CA_reel decimal(16,8),
 	CA_objectif decimal(16,8),
-	marge_reel decimal(16,8),
+	CA_reel decimal(16,8),
 	marge_objectif decimal(16,8),
+	marge_reel decimal(16,8),
+	
 	CONSTRAINT sales_pkey PRIMARY KEY (id_ville, id_temps, id_famille_produit, id_magasin),
 	
 	CONSTRAINT fk_id_ville FOREIGN KEY (id_ville) REFERENCES  ville(id_ville),

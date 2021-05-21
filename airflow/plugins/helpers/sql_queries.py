@@ -2,7 +2,7 @@ class SqlQueries:
 
 
     sales_table_insert = ("""
-        (id_ville, id_temps, id_famille_produit, id_magasin, vente_objectif, vente_reel, CA_reel, CA_objectif, marge_reel, marge_objectif) 
+        (id_ville, id_temps, id_famille_produit, id_magasin, vente_objectif, vente_reel, CA_objectif, CA_reel, marge_objectif, marge_reel) 
         SELECT  
             ville.id_ville,
             temps.id_temps,

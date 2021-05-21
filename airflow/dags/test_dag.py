@@ -22,6 +22,8 @@ from infrastructure.SalesData import SalesData
 from infrastructure.UserData import UserData
 from infrastructure.StoreData import StoreData
 
+from operators.load_fact import LoadFactOperator
+
 
 import config.config as cf
 
@@ -55,24 +57,19 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-update_ca_fours_table = UpdateDimensionOperator(
-    task_id='update_ca_fours_table',
+Load_sales_fact_table = LoadFactOperator(
+    task_id='Load_sales_fact_table',
     dag=dag,
     redshift_conn_id="redshift",
-    update_query=UpdateSqlQueries.update_query,
-    kpi="ca_reel",
-    item="fours",
-    id_famille_produit=3,
-    staging_monthly_table="staging_monthly_ca_fours"
+    table="sales",
+    query=SqlQueries.sales_table_insert
 )
-
-
 
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> update_ca_fours_table >> end_operator
+start_operator >> Load_sales_fact_table >> end_operator
 
 
 

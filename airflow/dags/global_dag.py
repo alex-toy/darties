@@ -143,7 +143,7 @@ for dimension_item in dimension_items :
 
 
 
-#Build fact table
+### Build fact table
 milestone_2 = DummyOperator(task_id='milestone_2',  dag=dag)
 
 Load_sales_fact_table = LoadFactOperator(
@@ -154,6 +154,9 @@ Load_sales_fact_table = LoadFactOperator(
     query=SqlQueries.sales_table_insert
 )
 
+
+
+### Quality checks
 tables = ['sales', 'sales', 'sales', 'sales', 'magasin', 'utilisateur', 'cours']
 columns = ['id_ville', 'id_temps', 'id_famille_produit', 'id_magasin', 'id_enseigne', 'id_profil', 'id_devise']
 

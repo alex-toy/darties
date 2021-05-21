@@ -294,7 +294,7 @@ dimension_items = [
 
 for dimension_item in dimension_items :
     build_dimension_table = BuildDimensionOperator(
-        task_id=f"load_{dimension_item}_dimension_table",
+        task_id=f"build_{dimension_item}_dimension_table",
         dag=dag,
         redshift_conn_id="redshift",
         table=dimension_item,
@@ -326,23 +326,23 @@ for dimension_item in dimension_items :
 
 load_dimension_tables = []
 dimension_items = [
-    {"item" : "ville", "query" : SqlQueries.ville_table_insert},
-    {"item" : "devise", "query" : SqlQueries.devise_table_insert},
-    {"item" : "cours", "query" : SqlQueries.cours_table_insert},
-    {"item" : "magasin", "query" : SqlQueries.magasin_table_insert}
+    {'item' : 'ville', "query" : SqlQueries.ville_table_insert},
+    {'item' : "devise", "query" : SqlQueries.devise_table_insert},
+    {'item' : "cours", "query" : SqlQueries.cours_table_insert},
+    {'item' : "magasin", "query" : SqlQueries.magasin_table_insert}
 ]
 
 
 for dimension_item in dimension_items :
-    build_dimension_table = LoadDimensionOperator(
-        task_id=f"load_{dimension_item["item"]}_dimension_table",
+    load_dimension_table = LoadDimensionOperator(
+        task_id=f"load_{dimension_item['item']}_dimension_table",
         dag=dag,
         redshift_conn_id="redshift",
         table=dimension_item["item"],
         query=dimension_item["query"],
         append=False
     )
-    build_dimension_tables.append(build_dimension_table)
+    load_dimension_tables.append(load_dimension_table)
 
 
 
@@ -424,6 +424,33 @@ positive_quality_checks = CheckPositiveOperator(
 
 ## Unstage to S3
 
+unstage_to_S3s = []
+dimension_items = [
+    "ville",
+    "temps",
+    "magasin",
+    "cours",
+    "devise",
+    "famille_produit",
+    "staging_enseigne",
+    "utilisateur",
+    "staging_profil"
+]
+
+
+for dimension_item in dimension_items :
+    unstage_to_S3 = UnstageFromRedshiftOperator(
+        task_id=f"unstage_{dimension_item}_to_S3",
+        dag=dag,
+        redshift_conn_id="redshift",
+        aws_credentials_id="aws_credentials",
+        S3_bucket="darties",
+        table=dimension_item
+    )
+    unstage_to_S3s.append(unstage_to_S3)
+
+
+
 unstage_ville_to_S3 = UnstageFromRedshiftOperator(
     task_id='unstage_ville_to_S3',
     dag=dag,
@@ -442,68 +469,68 @@ unstage_temps_to_S3 = UnstageFromRedshiftOperator(
     table="temps"
 )
 
-unstage_magasin_to_S3 = UnstageFromRedshiftOperator(
-    task_id='unstage_magasin_to_S3',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    S3_bucket="darties",
-    table="magasin"
-)
+# unstage_magasin_to_S3 = UnstageFromRedshiftOperator(
+#     task_id='unstage_magasin_to_S3',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     S3_bucket="darties",
+#     table="magasin"
+# )
 
-unstage_cours_to_S3 = UnstageFromRedshiftOperator(
-    task_id='unstage_cours_to_S3',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    S3_bucket="darties",
-    table="cours"
-)
+# unstage_cours_to_S3 = UnstageFromRedshiftOperator(
+#     task_id='unstage_cours_to_S3',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     S3_bucket="darties",
+#     table="cours"
+# )
 
-unstage_devise_to_S3 = UnstageFromRedshiftOperator(
-    task_id='unstage_devise_to_S3',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    S3_bucket="darties",
-    table="devise"
-)
+# unstage_devise_to_S3 = UnstageFromRedshiftOperator(
+#     task_id='unstage_devise_to_S3',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     S3_bucket="darties",
+#     table="devise"
+# )
 
-unstage_famille_produit_to_S3 = UnstageFromRedshiftOperator(
-    task_id='unstage_famille_produit_to_S3',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    S3_bucket="darties",
-    table="famille_produit"
-)
+# unstage_famille_produit_to_S3 = UnstageFromRedshiftOperator(
+#     task_id='unstage_famille_produit_to_S3',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     S3_bucket="darties",
+#     table="famille_produit"
+# )
 
-unstage_enseigne_to_S3 = UnstageFromRedshiftOperator(
-    task_id='unstage_enseigne_to_S3',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    S3_bucket="darties",
-    table="staging_enseigne"
-)
+# unstage_enseigne_to_S3 = UnstageFromRedshiftOperator(
+#     task_id='unstage_enseigne_to_S3',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     S3_bucket="darties",
+#     table="staging_enseigne"
+# )
 
-unstage_utilisateur_to_S3 = UnstageFromRedshiftOperator(
-    task_id='unstage_utilisateur_to_S3',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    S3_bucket="darties",
-    table="utilisateur"
-)
+# unstage_utilisateur_to_S3 = UnstageFromRedshiftOperator(
+#     task_id='unstage_utilisateur_to_S3',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     S3_bucket="darties",
+#     table="utilisateur"
+# )
 
-unstage_profil_to_S3 = UnstageFromRedshiftOperator(
-    task_id='unstage_profil_to_S3',
-    dag=dag,
-    redshift_conn_id="redshift",
-    aws_credentials_id="aws_credentials",
-    S3_bucket="darties",
-    table="staging_profil"
-)
+# unstage_profil_to_S3 = UnstageFromRedshiftOperator(
+#     task_id='unstage_profil_to_S3',
+#     dag=dag,
+#     redshift_conn_id="redshift",
+#     aws_credentials_id="aws_credentials",
+#     S3_bucket="darties",
+#     table="staging_profil"
+# )
 
 
 
@@ -520,8 +547,7 @@ start_operator >> create_tables >> \
 ] >> \
 milestone_1 >> \
 [
-    load_time_dimension_table, load_famille_produit_dimension_table, load_ville_dimension_table, 
-    load_devise_dimension_table, load_cours_dimension_table, load_magasin_dimension_table
+    dt for dt in load_dimension_tables + build_dimension_tables
 ] >> \
 Load_sales_fact_table >> \
 [
@@ -529,9 +555,7 @@ Load_sales_fact_table >> \
 ] >> \
 milestone_2 >> \
 [
-    unstage_temps_to_S3, unstage_ville_to_S3, unstage_magasin_to_S3, unstage_cours_to_S3, 
-    unstage_devise_to_S3, unstage_famille_produit_to_S3, unstage_enseigne_to_S3, 
-    unstage_utilisateur_to_S3, unstage_profil_to_S3
+    utS for utS in unstage_to_S3s
 ] >> \
 end_operator
 

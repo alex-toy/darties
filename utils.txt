@@ -71,7 +71,11 @@ JOIN temps ON temps.id_temps = sales.id_temps
 JOIN ville ON sales.id_ville = ville.id_ville
 JOIN famille_produit ON famille_produit.id_famille_produit = sales.id_famille_produit
 
-WHERE famille_produit.lib_famille_produit = 'hifi' AND temps.annee = 2020 AND temps.lib_mois = 'avril'
+WHERE 
+    famille_produit.lib_famille_produit = 'hifi' AND 
+    temps.annee = 2020 AND 
+    temps.lib_mois = 'avril' AND 
+    ville = 'strasbourg'
 
 limit 10;
 
@@ -97,10 +101,7 @@ join famille_produit on sales.id_famille_produit = famille_produit.id_famille_pr
 where 
 	temps.annee = 2020 AND temps.lib_mois = 'janvier' AND
 	ville.lib_ville = 'marseille' AND
-    famille_produit.id_famille_produit = 1
-
-limit 5;
-
+    famille_produit.id_famille_produit = 1;
 
 
 

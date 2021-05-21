@@ -76,20 +76,6 @@ end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
 
-# start_operator >> \
-# [ 
-#     load_mapping_regions, load_cities, load_currency
-# ] >> \
-# sales_clean_file >> \
-# [
-#     sales_clean_file, user_clean_file, store_clean_file
-# ] >> \
-# check_no_null_values >> \
-# upload_file >> \
-# end_operator
-
-
-
 start_operator >> \
 sales_clean_file >> upload_file >> \
 end_operator

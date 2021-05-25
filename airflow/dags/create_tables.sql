@@ -314,21 +314,20 @@ CREATE TABLE IF NOT EXISTS public.staging_profil (
 	id_profil int4 NOT NULL,
 	lib_profil varchar(20),
 	type_zone varchar(20),
-	id_zone int4,
 	annee int4,
 	CONSTRAINT profil_pkey PRIMARY KEY (id_profil)
 );
 
 
 CREATE TABLE IF NOT EXISTS public.staging_utilisateur (
-	reg_com varchar(30),
-	villes varchar(30),
 	nom varchar(15),
 	prenom varchar(15),
-	"login" varchar(15),
+	"login" varchar(30),
 	pwd varchar(25),
 	mail varchar(30),
 	id_profil int4 NOT NULL,
+	id_region int4,
+	id_magasin int4,
 	annee int4
 );
 

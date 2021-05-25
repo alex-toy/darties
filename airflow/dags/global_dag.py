@@ -69,10 +69,9 @@ kpi_items = [
     {'kpi_item' : 'currency', 'S3_key' : 'currency'},
     {'kpi_item' : 'cities', 'S3_key' : 'ville'},
     {'kpi_item' : 'mapping', 'S3_key' : 'mapping'},
-    {'kpi_item' : 'profil', 'S3_key' : 'profil'},
-    {'kpi_item' : 'utilisateur', 'S3_key' : 'users'},
+    {'kpi_item' : 'profil', 'S3_key' : 'Profil'},
+    {'kpi_item' : 'utilisateur', 'S3_key' : 'Utilisateur'},
     {'kpi_item' : 'enseigne', 'S3_key' : 'enseignes'},
-    {'kpi_item' : 'magasin', 'S3_key' : 'magasin'},
     {'kpi_item' : 'magasin', 'S3_key' : 'magasin'}
 ]
 

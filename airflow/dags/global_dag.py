@@ -190,7 +190,7 @@ dimension_items = [
     "devise",
     "famille_produit",
     "staging_enseigne",
-    "utilisateur",
+    "staging_utilisateur",
     "staging_profil"
 ]
 

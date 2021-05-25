@@ -11,6 +11,7 @@ from airflow.operators.postgres_operator import PostgresOperator
 from airflow.operators.python_operator import PythonOperator
 
 from operators.stage_redshift import StageToRedshiftOperator
+from operators.unstage_from_redshift import UnstageFromRedshiftOperator
 from operators.load_mapping_regions import LoadMappingOperator
 from operators.build_dimension import BuildDimensionOperator
 from operators.update_dimension import UpdateDimensionOperator
@@ -57,19 +58,31 @@ dag = DAG(
 start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
 
 
-Load_sales_fact_table = LoadFactOperator(
-    task_id='Load_sales_fact_table',
-    dag=dag,
-    redshift_conn_id="redshift",
-    table="sales",
-    query=SqlQueries.sales_table_insert
-)
+unstage_to_S3s = []
+dimension_items = [
+    "staging_utilisateur"
+]
+
+
+for dimension_item in dimension_items :
+    unstage_to_S3 = UnstageFromRedshiftOperator(
+        task_id=f"unstage_{dimension_item}_to_S3",
+        dag=dag,
+        redshift_conn_id="redshift",
+        aws_credentials_id="aws_credentials",
+        S3_bucket="darties",
+        table=dimension_item
+    )
+    unstage_to_S3s.append(unstage_to_S3)
 
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
 
 
-start_operator >> Load_sales_fact_table >> end_operator
+start_operator >> \
+[
+    utS for utS in unstage_to_S3s
+] >> end_operator
 
 
 

@@ -138,6 +138,8 @@ In this project, the initial data is first cleaned and then pushed to a AWS S3 b
 
 
 
+## 4. Data dictionary
+
 Here is how the data is modelled according to a star schema :
 
 - **Sales** : Fact table. For a given **city**, at a given **time**, for a given **product family** (ovens, hi-fi systems or video recorders) and in a given **store**, what were the previsional and real **sales**, what were the previsional and real **turnover** and what were the previsional and real **gross margin**. 
@@ -162,7 +164,7 @@ Here is how the data is modelled according to a star schema :
 
 
 
-## 4. Scaling scenarios :
+## 5. Scaling scenarios :
 
 - **Data was increased by 100x** : if the data were to be significantly increase in size, such that it would take too much time/memory to load the data and cause the program to break, we would use S3 partitions to solve the problem. So far, the data is partitioned, as explained above, by family product, then by year. We could then partition by month, or even by week, or even by day if need be. This way, we will split the data into multiple smaller chunks and then process them in parallel.
 
@@ -184,7 +186,7 @@ Here is how the data is modelled according to a star schema :
     - **Classic Load Balancer** : basic load balancing across multiple Amazon EC2 instances and operates at both the request level and the connection level, for applications built within the EC2-Classic network.
 
 
-## 5. Example queries and results for sales analysis
+## 6. Example queries and results for sales analysis
 
 Once the data has been ETLed, you are free to take full benefit from the power of star modelling and make business driven queries like :
 

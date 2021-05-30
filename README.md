@@ -83,6 +83,8 @@ We will also need to webscrap some missing parts. In order to do so, we will use
 
 - We will extract some information about the cities from the following url : https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peuplées
 
+- We will find a mapping between regions previous names and new names at the following urls : https://www.axl.cefan.ulaval.ca/europe/france_departements.htm and https://www.regions-et-departements.fr/regions-francaises
+
 ## 3. Database schema design and ETL pipeline
 
 In this project, the initial data is first cleaned and then pushed to a AWS S3 bucket before processing. Following is the structure of the data you will find in the S3 bucket.

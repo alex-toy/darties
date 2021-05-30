@@ -159,8 +159,13 @@ Here is how the data is modelled according to a star schema :
 <img src="generals/star_schema.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 
+## 4. Scaling scenarios :
 
-## 4. Example queries and results for sales analysis
+    - if the data were to be significantly increase in size
+
+
+
+## 5. Example queries and results for sales analysis
 
 Once the data has been ETLed, you are free to take full benefit from the power of star modelling and make business driven queries like :
 

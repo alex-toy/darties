@@ -173,10 +173,10 @@ Here is how the data is modelled according to a star schema :
     - Ensures high availability and reliability by sending requests only to servers that are online.
     - Provides the flexibility to add or subtract servers as demand dictates.
 
-<p align="center">
-  <img width="500" height="350" src="generals/schema-bilanciatori.png" alt="credit go to : https://kb.arubacloud.fr">
-</p>
-If we deployed our application in AWS, we would use Elastic Load Balancing which offers four types of load balancers :
+    <p align="center">
+    <img width="500" height="350" src="generals/schema-bilanciatori.png" alt="credit go to : https://kb.arubacloud.fr">
+    </p>
+    If we deployed our application in AWS, we would use Elastic Load Balancing which offers four types of load balancers :
 
     - **Application Load Balancer** : load balancing of HTTP and HTTPS traffic.
     - **Network Load Balancer** : load balancing of Transmission Control Protocol (TCP), User Datagram Protocol (UDP), and Transport Layer Security (TLS) traffic.
@@ -197,109 +197,109 @@ Once the data has been ETLed, you are free to take full benefit from the power o
 # Project Organization 
 ----------------------
 
-├── Dockerfile
-├── README.md
-├── activate.sh
-├── airflow
-│   ├── =1.0.0
-│   ├── __init__.py
-│   ├── __init__.pyc
-│   ├── __pycache__
-│   │   └── __init__.cpython-38.pyc
-│   ├── airflow-webserver.pid
-│   ├── airflow.cfg
-│   ├── airflow.db
-│   ├── dags
-│   │   ├── create_monthly_tables.sql
-│   │   ├── create_tables.sql
-│   │   ├── global_dag.py
-│   │   ├── initial_dag.py
-│   │   ├── monthly_global_dag.py
-│   │   ├── monthly_initial_dag.py
-│   │   └── test_dag.py
-│   ├── data
-│   │   ├── README.md
-│   │   ├── monthly_sales
-│   │   │   ├── Janvier_2021.xlsx
-│   │   │   ├── fevrier_2021.xlsx
-│   │   │   └── mars_2021.xlsx
-│   │   ├── sales
-│   │   │   ├── 2019_HISTO.xlsx
-│   │   │   ├── 2020_HISTO.xlsx
-│   │   │   ├── 2021_BUDGET.xlsx
-│   │   │   └── README.md
-│   │   ├── store
-│   │   │   ├── 2021_magasin.xlsx
-│   │   │   └── README.md
-│   │   └── users
-│   │       ├── 2021_utilisateurs.xlsx
-│   │       └── README.md
-│   ├── logs
-│   │   └── README.md
-│   ├── output
-│   ├── plugins
-│   │   ├── __init__.py
-│   │   ├── config
-│   │   │   └── config.py
-│   │   ├── helpers
-│   │   │   ├── __init__.py
-│   │   │   ├── sql_queries.py
-│   │   │   └── update_sql_queries.py
-│   │   ├── infrastructure
-│   │   │   ├── MonthlySalesData.py
-│   │   │   ├── SalesData.py
-│   │   │   ├── StoreData.py
-│   │   │   ├── UserData.py
-│   │   │   ├── __init__.py
-│   │   └── operators
-│   │       ├── __init__.py
-│   │       ├── build_dimension.py
-│   │       ├── check_monthly_null.py
-│   │       ├── check_null.py
-│   │       ├── check_positive.py
-│   │       ├── clean_file.py
-│   │       ├── clean_monthly_file.py
-│   │       ├── data_quality.py
-│   │       ├── load_cities.py
-│   │       ├── load_currency.py
-│   │       ├── load_dimension.py
-│   │       ├── load_fact.py
-│   │       ├── load_mapping_regions.py
-│   │       ├── stage_redshift.py
-│   │       ├── unstage_from_redshift.py
-│   │       ├── update_dimension.py
-│   │       ├── upload_file.py
-│   │       └── upload_monthly_file.py
-│   └── unittests.cfg
-├── airflow.cfg
-├── airflow.db
-├── dwh_P6.cfg
-├── generals
-│   ├── airflow_screen.png
-│   ├── dataviz.png
-│   ├── dataviz2.png
-│   ├── global_dag.png
-│   ├── initial_dag.png
-│   ├── initial_data.png
-│   ├── initial_data_cities.png
-│   ├── monthly_global_dag.png
-│   ├── schema-bilanciatori.jpg
-│   └── star_schema.png
-├── init
-├── init.sh
-├── manifest.json
-├── poetry.lock
-├── pyproject.toml
-├── requirements.txt
-├── unittests.cfg
-├── utils
-│   ├── IaC_1.py
-│   ├── IaC_2.py
-│   ├── create_bucket.py
-│   ├── release_resources.py
-│   ├── settings.py
-│   └── upload_file.py
-└── utils.txt
+    ├── Dockerfile
+    ├── README.md
+    ├── activate.sh
+    ├── airflow
+    │   ├── =1.0.0
+    │   ├── __init__.py
+    │   ├── __init__.pyc
+    │   ├── __pycache__
+    │   │   └── __init__.cpython-38.pyc
+    │   ├── airflow-webserver.pid
+    │   ├── airflow.cfg
+    │   ├── airflow.db
+    │   ├── dags
+    │   │   ├── create_monthly_tables.sql
+    │   │   ├── create_tables.sql
+    │   │   ├── global_dag.py
+    │   │   ├── initial_dag.py
+    │   │   ├── monthly_global_dag.py
+    │   │   ├── monthly_initial_dag.py
+    │   │   └── test_dag.py
+    │   ├── data
+    │   │   ├── README.md
+    │   │   ├── monthly_sales
+    │   │   │   ├── Janvier_2021.xlsx
+    │   │   │   ├── fevrier_2021.xlsx
+    │   │   │   └── mars_2021.xlsx
+    │   │   ├── sales
+    │   │   │   ├── 2019_HISTO.xlsx
+    │   │   │   ├── 2020_HISTO.xlsx
+    │   │   │   ├── 2021_BUDGET.xlsx
+    │   │   │   └── README.md
+    │   │   ├── store
+    │   │   │   ├── 2021_magasin.xlsx
+    │   │   │   └── README.md
+    │   │   └── users
+    │   │       ├── 2021_utilisateurs.xlsx
+    │   │       └── README.md
+    │   ├── logs
+    │   │   └── README.md
+    │   ├── output
+    │   ├── plugins
+    │   │   ├── __init__.py
+    │   │   ├── config
+    │   │   │   └── config.py
+    │   │   ├── helpers
+    │   │   │   ├── __init__.py
+    │   │   │   ├── sql_queries.py
+    │   │   │   └── update_sql_queries.py
+    │   │   ├── infrastructure
+    │   │   │   ├── MonthlySalesData.py
+    │   │   │   ├── SalesData.py
+    │   │   │   ├── StoreData.py
+    │   │   │   ├── UserData.py
+    │   │   │   ├── __init__.py
+    │   │   └── operators
+    │   │       ├── __init__.py
+    │   │       ├── build_dimension.py
+    │   │       ├── check_monthly_null.py
+    │   │       ├── check_null.py
+    │   │       ├── check_positive.py
+    │   │       ├── clean_file.py
+    │   │       ├── clean_monthly_file.py
+    │   │       ├── data_quality.py
+    │   │       ├── load_cities.py
+    │   │       ├── load_currency.py
+    │   │       ├── load_dimension.py
+    │   │       ├── load_fact.py
+    │   │       ├── load_mapping_regions.py
+    │   │       ├── stage_redshift.py
+    │   │       ├── unstage_from_redshift.py
+    │   │       ├── update_dimension.py
+    │   │       ├── upload_file.py
+    │   │       └── upload_monthly_file.py
+    │   └── unittests.cfg
+    ├── airflow.cfg
+    ├── airflow.db
+    ├── dwh_P6.cfg
+    ├── generals
+    │   ├── airflow_screen.png
+    │   ├── dataviz.png
+    │   ├── dataviz2.png
+    │   ├── global_dag.png
+    │   ├── initial_dag.png
+    │   ├── initial_data.png
+    │   ├── initial_data_cities.png
+    │   ├── monthly_global_dag.png
+    │   ├── schema-bilanciatori.jpg
+    │   └── star_schema.png
+    ├── init
+    ├── init.sh
+    ├── manifest.json
+    ├── poetry.lock
+    ├── pyproject.toml
+    ├── requirements.txt
+    ├── unittests.cfg
+    ├── utils
+    │   ├── IaC_1.py
+    │   ├── IaC_2.py
+    │   ├── create_bucket.py
+    │   ├── release_resources.py
+    │   ├── settings.py
+    │   └── upload_file.py
+    └── utils.txt
 
 
 

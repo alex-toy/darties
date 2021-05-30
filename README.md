@@ -173,7 +173,7 @@ Here is how the data is modelled according to a star schema :
     - Ensures high availability and reliability by sending requests only to servers that are online
     - Provides the flexibility to add or subtract servers as demand dictates
 
-<img src="generals/schema-bilanciatori.png" alt="Markdown Monster icon" style="float: center; margin-right: 10px;" />
+<img src="generals/schema-bilanciatori.png" align="center" alt="Markdown Monster icon" style="float: center; margin-right: 10px;" />
 
 
 

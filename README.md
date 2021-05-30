@@ -169,14 +169,15 @@ Here is how the data is modelled according to a star schema :
 - **Pipelines would be run on a daily basis by 7 am every day** : The Airflow scheduler is designed to run as a persistent service in an Airflow production environment. To kick it off, all you need to do is execute airflow scheduler. Each DAG may or may not have a schedule, which informs how DAG Runs are created. *schedule_interval* is defined as a DAG arguments, and receives preferably a cron expression. In this case, we will set it this way : schedule_interval='0 7 * * *'
 
 - **Database needed to be accessed by 100+ people** : in case of increased traffic, we would need to use use a load balancer. Load balancing refers to efficiently distributing incoming network traffic across a group of backend servers, also known as a server farm or server pool. A load balancer performs the following functions:
-    - Distributes client requests or network load efficiently across multiple servers
-    - Ensures high availability and reliability by sending requests only to servers that are online
-    - Provides the flexibility to add or subtract servers as demand dictates
+    - Distributes client requests or network load efficiently across multiple servers.
+    - Ensures high availability and reliability by sending requests only to servers that are online.
+    - Provides the flexibility to add or subtract servers as demand dictates.
 
 <p align="center">
   <img width="500" height="350" src="generals/schema-bilanciatori.png" alt="credit go to : https://kb.arubacloud.fr">
 </p>
 If we deployed our application in AWS, we would use Elastic Load Balancing which offers four types of load balancers :
+
     - **Application Load Balancer** : load balancing of HTTP and HTTPS traffic.
     - **Network Load Balancer** : load balancing of Transmission Control Protocol (TCP), User Datagram Protocol (UDP), and Transport Layer Security (TLS) traffic.
     - **Gateway Load Balancer** : third-party virtual networking appliances, transparent to the source and destination of traffic.

@@ -176,7 +176,11 @@ Here is how the data is modelled according to a star schema :
 <p align="center">
   <img width="500" height="350" src="generals/schema-bilanciatori.png" alt="credit go to : https://kb.arubacloud.fr">
 </p>
-
+If we deployed our application in AWS, we would use Elastic Load Balancing which offers four types of load balancers :
+    - **Application Load Balancer** : load balancing of HTTP and HTTPS traffic.
+    - **Network Load Balancer** : load balancing of Transmission Control Protocol (TCP), User Datagram Protocol (UDP), and Transport Layer Security (TLS) traffic.
+    - **Gateway Load Balancer** : third-party virtual networking appliances, transparent to the source and destination of traffic.
+    - **Classic Load Balancer** : basic load balancing across multiple Amazon EC2 instances and operates at both the request level and the connection level, for applications built within the EC2-Classic network.
 
 
 ## 5. Example queries and results for sales analysis

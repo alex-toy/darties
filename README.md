@@ -166,8 +166,7 @@ Here is how the data is modelled according to a star schema :
 
 - **Data was increased by 100x** : if the data were to be significantly increase in size, such that it would take too much time/memory to load the data and cause the program to break, we would use S3 partitions to solve the problem. So far, the data is partitioned, as explained above, by family product, then by year. We could then partition by month, or even by week, or even by day if need be. 
 
-- **pipelines would be run on a daily basis by 7 am every day** : Airflow has a schedule interval parameter inside its DAG object. We should set it this way :
-schedule_interval='0 7 * * *'
+- **pipelines would be run on a daily basis by 7 am every day** : The Airflow scheduler is designed to run as a persistent service in an Airflow production environment. To kick it off, all you need to do is execute airflow scheduler. Each DAG may or may not have a schedule, which informs how DAG Runs are created. *schedule_interval* is defined as a DAG arguments, and receives preferably a cron expression. In this case, we will set it this way : schedule_interval='0 7 * * *'
 
 - **database needed to be accessed by 100+ people.** : if the data were to b
 

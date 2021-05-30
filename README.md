@@ -164,11 +164,12 @@ Here is how the data is modelled according to a star schema :
 
 ## 4. Scaling scenarios :
 
-- **Data was increased by 100x** : if the data were to be significantly increase in size, such that it would take too much time/memory to load the data and cause the program to break, we would use S3 partitions to solve the problem. So far, the data is partitioned, as explained above, by family product, then by year. We could then partition by month, or even by week, or even by day if need be. 
+- **Data was increased by 100x** : if the data were to be significantly increase in size, such that it would take too much time/memory to load the data and cause the program to break, we would use S3 partitions to solve the problem. So far, the data is partitioned, as explained above, by family product, then by year. We could then partition by month, or even by week, or even by day if need be. This way, we will split the data into multiple smaller chunks and then process them in parallel.
 
-- **pipelines would be run on a daily basis by 7 am every day** : The Airflow scheduler is designed to run as a persistent service in an Airflow production environment. To kick it off, all you need to do is execute airflow scheduler. Each DAG may or may not have a schedule, which informs how DAG Runs are created. *schedule_interval* is defined as a DAG arguments, and receives preferably a cron expression. In this case, we will set it this way : schedule_interval='0 7 * * *'
+- **Pipelines would be run on a daily basis by 7 am every day** : The Airflow scheduler is designed to run as a persistent service in an Airflow production environment. To kick it off, all you need to do is execute airflow scheduler. Each DAG may or may not have a schedule, which informs how DAG Runs are created. *schedule_interval* is defined as a DAG arguments, and receives preferably a cron expression. In this case, we will set it this way : schedule_interval='0 7 * * *'
 
-- **database needed to be accessed by 100+ people.** : if the data were to b
+- **Database needed to be accessed by 100+ people** : in case of increased traffic, we would use a load balancer.
+<img src="generals/schema-bilanciatori.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 
 
@@ -185,91 +186,111 @@ Once the data has been ETLed, you are free to take full benefit from the power o
 # Project Organization 
 ----------------------
 
-    ├── Dockerfile
-    ├── README.md
-    ├── activate.sh
-    ├── airflow
-    │   ├── airflow-webserver.pid
-    │   ├── airflow.cfg
-    │   ├── airflow.db
-    │   ├── dags
-    │   │   ├── create_tables.sql
-    │   │   ├── global_dag.py
-    │   │   ├── initial_dag.py
-    │   │   └── test_dag.py
-    │   ├── data
-    │   │   ├── README.md
-    │   │   ├── sales
-    │   │   │   ├── 2020_HISTO.xlsx
-    │   │   │   ├── 2021_BUDGET.xlsx
-    │   │   │   └── README.md
-    │   │   ├── store
-    │   │   │   ├── 2021_magasin.xlsx
-    │   │   │   └── README.md
-    │   │   └── users
-    │   │       ├── 2021_utilisateurs.xlsx
-    │   │       └── README.md
-    │   ├── logs
-    │   │   ├── README.md
-    │   │   ├── dag_processor_manager
-    │   │   ├── global_dag
-    │   │   └── scheduler
-    │   ├── output
-    │   │   ├── README.md
-    │   ├── plugins
-    │   │   ├── __init__.py
-    │   │   ├── config
-    │   │   │   ├── __init__.py
-    │   │   │   └── config.py
-    │   │   ├── helpers
-    │   │   │   ├── __init__.py
-    │   │   │   └── sql_queries.py
-    │   │   ├── infrastructure
-    │   │   │   ├── SalesData.py
-    │   │   │   ├── StoreData.py
-    │   │   │   ├── UserData.py
-    │   │   │   ├── __init__.py
-    │   │   └── operators
-    │   │       ├── __init__.py
-    │   │       ├── build_dimension.py
-    │   │       ├── check_null.py
-    │   │       ├── check_positive.py
-    │   │       ├── clean_file.py
-    │   │       ├── data_quality.py
-    │   │       ├── load_cities.py
-    │   │       ├── load_currency.py
-    │   │       ├── load_dimension.py
-    │   │       ├── load_fact.py
-    │   │       ├── load_mapping_regions.py
-    │   │       ├── stage_redshift.py
-    │   │       ├── unstage_from_redshift.py
-    │   │       └── upload_file.py
-    │   └── unittests.cfg
-    ├── airflow.cfg
-    ├── airflow.db
-    ├── dwh_P6.cfg
-    ├── generals
-    │   ├── Présentation\ Projet\ Darties.pdf
-    │   ├── airflow_screen.png
-    │   ├── global_dag.png
-    │   ├── initial_dag.png
-    │   ├── initial_data.png
-    │   ├── initial_data_cities.png
-    │   └── star_schema.png
-    ├── init
-    ├── init.sh
-    ├── poetry.lock
-    ├── pyproject.toml
-    ├── requirements.txt
-    ├── unittests.cfg
-    ├── utils
-    │   ├── IaC_1.py
-    │   ├── IaC_2.py
-    │   ├── create_bucket.py
-    │   ├── release_resources.py
-    │   ├── settings.py
-    │   └── upload_file.py
-    └── utils.txt
+├── Dockerfile
+├── README.md
+├── activate.sh
+├── airflow
+│   ├── =1.0.0
+│   ├── __init__.py
+│   ├── __init__.pyc
+│   ├── __pycache__
+│   │   └── __init__.cpython-38.pyc
+│   ├── airflow-webserver.pid
+│   ├── airflow.cfg
+│   ├── airflow.db
+│   ├── dags
+│   │   ├── create_monthly_tables.sql
+│   │   ├── create_tables.sql
+│   │   ├── global_dag.py
+│   │   ├── initial_dag.py
+│   │   ├── monthly_global_dag.py
+│   │   ├── monthly_initial_dag.py
+│   │   └── test_dag.py
+│   ├── data
+│   │   ├── README.md
+│   │   ├── monthly_sales
+│   │   │   ├── Janvier_2021.xlsx
+│   │   │   ├── fevrier_2021.xlsx
+│   │   │   └── mars_2021.xlsx
+│   │   ├── sales
+│   │   │   ├── 2019_HISTO.xlsx
+│   │   │   ├── 2020_HISTO.xlsx
+│   │   │   ├── 2021_BUDGET.xlsx
+│   │   │   └── README.md
+│   │   ├── store
+│   │   │   ├── 2021_magasin.xlsx
+│   │   │   └── README.md
+│   │   └── users
+│   │       ├── 2021_utilisateurs.xlsx
+│   │       └── README.md
+│   ├── logs
+│   │   └── README.md
+│   ├── output
+│   ├── plugins
+│   │   ├── __init__.py
+│   │   ├── config
+│   │   │   └── config.py
+│   │   ├── helpers
+│   │   │   ├── __init__.py
+│   │   │   ├── sql_queries.py
+│   │   │   └── update_sql_queries.py
+│   │   ├── infrastructure
+│   │   │   ├── MonthlySalesData.py
+│   │   │   ├── SalesData.py
+│   │   │   ├── StoreData.py
+│   │   │   ├── UserData.py
+│   │   │   ├── __init__.py
+│   │   └── operators
+│   │       ├── __init__.py
+│   │       ├── build_dimension.py
+│   │       ├── check_monthly_null.py
+│   │       ├── check_null.py
+│   │       ├── check_positive.py
+│   │       ├── clean_file.py
+│   │       ├── clean_monthly_file.py
+│   │       ├── data_quality.py
+│   │       ├── load_cities.py
+│   │       ├── load_currency.py
+│   │       ├── load_dimension.py
+│   │       ├── load_fact.py
+│   │       ├── load_mapping_regions.py
+│   │       ├── stage_redshift.py
+│   │       ├── unstage_from_redshift.py
+│   │       ├── update_dimension.py
+│   │       ├── upload_file.py
+│   │       └── upload_monthly_file.py
+│   └── unittests.cfg
+├── airflow.cfg
+├── airflow.db
+├── dwh_P6.cfg
+├── generals
+│   ├── airflow_screen.png
+│   ├── dataviz.png
+│   ├── dataviz2.png
+│   ├── global_dag.png
+│   ├── initial_dag.png
+│   ├── initial_data.png
+│   ├── initial_data_cities.png
+│   ├── monthly_global_dag.png
+│   ├── schema-bilanciatori.jpg
+│   └── star_schema.png
+├── init
+├── init.sh
+├── manifest.json
+├── poetry.lock
+├── pyproject.toml
+├── requirements.txt
+├── unittests.cfg
+├── utils
+│   ├── IaC_1.py
+│   ├── IaC_2.py
+│   ├── create_bucket.py
+│   ├── release_resources.py
+│   ├── settings.py
+│   └── upload_file.py
+└── utils.txt
+
+
 
 
 # Getting started

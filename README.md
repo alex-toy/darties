@@ -175,6 +175,10 @@ Here is how the data is modelled according to a star schema :
 
 <img src="generals/schema-bilanciatori.png" align="center" alt="Markdown Monster icon" style="float: center; margin-right: 10px;" />
 
+<p align="center">
+  <img width="460" height="300" src="generals/schema-bilanciatori.png">
+</p>
+
 
 
 ## 5. Example queries and results for sales analysis

@@ -162,7 +162,7 @@ Here is how the data is modelled according to a star schema :
 
 ## 4. Scaling scenarios :
 
-- **Data was increased by 100x** : if the data were to be significantly increase in size
+- **Data was increased by 100x** : if the data were to be significantly increase in size, such that it would take too much time/memory to load the data and cause the program to break, we would use S3 partitions to solve the problem. So far, the data is partitioned, as explained above, by family product, then by year. We could then partition by month, or even by week, or even by day if need be. 
 
 - **pipelines would be run on a daily basis by 7 am every day** : if the data were to be significantly increase in size
 

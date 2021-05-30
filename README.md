@@ -159,9 +159,14 @@ Here is how the data is modelled according to a star schema :
 <img src="generals/star_schema.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 
+
 ## 4. Scaling scenarios :
 
-    - if the data were to be significantly increase in size
+- **Data was increased by 100x** : if the data were to be significantly increase in size
+
+- **pipelines would be run on a daily basis by 7 am every day** : if the data were to be significantly increase in size
+
+- **database needed to be accessed by 100+ people.** : if the data were to b
 
 
 

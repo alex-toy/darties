@@ -189,6 +189,8 @@ Here is how the data is modelled according to a star schema :
     - **Gateway Load Balancer** : third-party virtual networking appliances, transparent to the source and destination of traffic.
     - **Classic Load Balancer** : basic load balancing across multiple Amazon EC2 instances and operates at both the request level and the connection level, for applications built within the EC2-Classic network.
 
+As a matter of fact, in our precise case, users will never need to modify the database from the star schema, only read it from our dataviz application (see darties_interface : https://github.com/alex-toy/darties_interface)
+
 
 ## 6. Example queries and results for sales analysis
 

@@ -162,7 +162,11 @@ Here is how the data is modelled according to a star schema :
 
 <img src="generals/star_schema.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
+- Definition of columns : 
 
+<img src="generals/dictionary1.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
+
+<img src="generals/dictionary2.png" alt="Markdown Monster icon" style="float: left; margin-right: 10px;" />
 
 ## 5. Scaling scenarios :
 
